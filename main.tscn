@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxu2sjo2474x"]
+
+[ext_resource type="Texture2D" uid="uid://vcl7pgwvma8r" path="res://assets/tile.png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://c5tie26lw05s" path="res://cam.gd" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bery1yrvp4pyc" path="res://nodes/sound/sound_node.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://6r3xc3aq74dk" path="res://nodes/delay/delay_node.tscn" id="4_1bvp3"]
+
+[node name="main" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_offset = Vector2(2, 2)
+repeat_size = Vector2(256, 256)
+repeat_times = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_1bvp3")
+
+[node name="cam" type="Camera2D" parent="." node_paths=PackedStringArray("parallax")]
+zoom = Vector2(5, 5)
+script = ExtResource("2_7mycd")
+parallax = NodePath("../Parallax2D")
+
+[node name="nodes" type="Node2D" parent="."]
+
+[node name="sound_node" parent="nodes" instance=ExtResource("3_h2yge")]
+
+[node name="delay_node" parent="nodes" instance=ExtResource("4_1bvp3")]
+position = Vector2(80, 0)
+
+[node name="connections" type="Node2D" parent="."]
