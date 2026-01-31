@@ -8,6 +8,9 @@ signal move
 @export var PARENT : Node
 var node : Node
 
+@export_group("RightMenu")
+@export var RIGHT_MENU : RightMenu
+
 @export_group("Body")
 @export var BODY_SIZE : Vector2
 @export var BODY_SPRITE : Texture2D

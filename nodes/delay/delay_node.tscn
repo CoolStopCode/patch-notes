@@ -3,13 +3,26 @@
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/node.tscn" id="1_k5r1f"]
 [ext_resource type="PackedScene" uid="uid://dt8bkdw4hgam6" path="res://nodes/delay/delay.tscn" id="2_hfk3y"]
 [ext_resource type="Texture2D" uid="uid://bd6hnai1ybd82" path="res://nodes/delay/delay.png" id="2_kh4xr"]
+[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="3_ni1yb"]
+[ext_resource type="Script" uid="uid://kiyrmpw53rp3" path="res://classes/right_menu.gd" id="4_332yh"]
+[ext_resource type="Script" uid="uid://dnyrnf764pbti" path="res://classes/right_menu_properties/right_menu_file.gd" id="4_jrjdy"]
 [ext_resource type="Texture2D" uid="uid://cmipc44lwcsan" path="res://nodes/delay/clock.png" id="4_sem8f"]
+
+[sub_resource type="Resource" id="Resource_ugnbf"]
+script = ExtResource("4_jrjdy")
+metadata/_custom_type_script = "uid://dnyrnf764pbti"
+
+[sub_resource type="Resource" id="Resource_jrjdy"]
+script = ExtResource("4_332yh")
+properties = Array[ExtResource("3_ni1yb")]([SubResource("Resource_ugnbf")])
+metadata/_custom_type_script = "uid://kiyrmpw53rp3"
 
 [node name="delay_node" type="Node2D" unique_id=1131330581]
 
 [node name="node" parent="." unique_id=223179628 node_paths=PackedStringArray("PARENT") instance=ExtResource("1_k5r1f")]
 NODE_SCENE = ExtResource("2_hfk3y")
 PARENT = NodePath("..")
+RIGHT_MENU = SubResource("Resource_jrjdy")
 BODY_SIZE = Vector2(16, 16)
 BODY_SPRITE = ExtResource("2_kh4xr")
 ports_in = Array[Vector2]([Vector2(-6, 0)])
