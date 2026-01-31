@@ -5,6 +5,7 @@ signal actuate_output(port : int)
 signal move
 
 @export var NODE_SCENE : PackedScene
+@export var PARENT : Node
 var node : Node
 
 @export_group("Body")
@@ -44,8 +45,8 @@ func load_node(node_scene):
 	var node_instance = node_scene.instantiate()
 	return node_instance
 
-func emit_output(port := 0):
-	actuate_output.emit(port)
+func emit_output(_port := 0):
+	actuate_output.emit()
 
 func receive_input(port := 0):
 	node.receive_input(port)
@@ -63,7 +64,7 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion and mouse_dragging:
 		var free_pos := get_global_mouse_position() + drag_offset
-		global_position = Constants.snap_to_grid(free_pos)
+		PARENT.global_position = Constants.snap_to_grid(free_pos)
 		move.emit()
 
 func _process(_delta: float) -> void:

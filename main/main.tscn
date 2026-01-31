@@ -4,10 +4,31 @@
 [ext_resource type="Script" uid="uid://c5tie26lw05s" path="res://main/cam.gd" id="2_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://bery1yrvp4pyc" path="res://nodes/sound/sound_node.tscn" id="3_4dugh"]
 [ext_resource type="PackedScene" uid="uid://6r3xc3aq74dk" path="res://nodes/delay/delay_node.tscn" id="4_67ri8"]
+[ext_resource type="PackedScene" uid="uid://2ce5xafhxovn" path="res://nodes/metronome/metronome_node.tscn" id="5_4dugh"]
 [ext_resource type="Script" uid="uid://joxfc4vkp5jo" path="res://main/connections.gd" id="5_grrlh"]
 [ext_resource type="PackedScene" uid="uid://clrqt7pijmicg" path="res://node/connection/line.tscn" id="6_kfbq2"]
 
 [node name="main" type="Node2D" unique_id=762756189]
+
+[node name="cam" type="Camera2D" parent="." unique_id=1871032146 node_paths=PackedStringArray("parallax")]
+zoom = Vector2(5, 5)
+script = ExtResource("2_kfbq2")
+parallax = NodePath("../Parallax2D")
+
+[node name="ColorRect" type="ColorRect" parent="cam" unique_id=336630443]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3016.0
+offset_top = -1994.0
+offset_right = 3016.0
+offset_bottom = 1886.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0774323, 0.10635611, 0.14767575, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1740911388]
 scroll_offset = Vector2(2, 2)
@@ -17,17 +38,15 @@ repeat_times = 30
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1453103106]
 texture = ExtResource("1_3wy1v")
 
-[node name="cam" type="Camera2D" parent="." unique_id=1871032146 node_paths=PackedStringArray("parallax")]
-zoom = Vector2(5, 5)
-script = ExtResource("2_kfbq2")
-parallax = NodePath("../Parallax2D")
-
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
 
 [node name="sound_node" parent="nodes" unique_id=266324404 instance=ExtResource("3_4dugh")]
 
 [node name="delay_node" parent="nodes" unique_id=1799708002 instance=ExtResource("4_67ri8")]
-position = Vector2(80, 0)
+position = Vector2(88, 7)
+
+[node name="metronome_node" parent="nodes" unique_id=1064046719 instance=ExtResource("5_4dugh")]
+position = Vector2(54, -72)
 
 [node name="connections" type="Node2D" parent="." unique_id=1328758278]
 script = ExtResource("5_grrlh")

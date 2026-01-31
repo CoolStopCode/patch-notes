@@ -6,8 +6,8 @@ extends Camera2D
 @export var pan_speed := 10.0
 
 @export var parallax : Parallax2D
-@export var start_hide_parallax := 2.5
-@export var end_hide_parallax := 1.2
+@export var start_hide_parallax := 3.0
+@export var end_hide_parallax := 1.4
 
 var last_mouse_screen := Vector2.ZERO
 

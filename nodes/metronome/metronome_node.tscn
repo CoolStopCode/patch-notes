@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://2ce5xafhxovn"]
+
+[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/node.tscn" id="1_yw3lt"]
+[ext_resource type="PackedScene" uid="uid://rvymux2jgxrj" path="res://nodes/metronome/metronome.tscn" id="2_yw3lt"]
+[ext_resource type="Texture2D" uid="uid://btx8po676u5p0" path="res://nodes/metronome/metronome.png" id="3_q6twt"]
+
+[node name="metronome_node" type="Node2D" unique_id=1064046719]
+
+[node name="node" parent="." unique_id=1970947894 node_paths=PackedStringArray("PARENT") instance=ExtResource("1_yw3lt")]
+NODE_SCENE = ExtResource("2_yw3lt")
+PARENT = NodePath("..")
+BODY_SIZE = Vector2(28, 28)
+BODY_SPRITE = ExtResource("3_q6twt")
+ports_out = Array[Vector2]([Vector2(14, 4), Vector2(14, 0), Vector2(14, -4)])

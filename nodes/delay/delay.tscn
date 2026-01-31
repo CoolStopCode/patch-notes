@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dt8bkdw4hgam6"]
 
-[ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="1_dem5t"]
+[ext_resource type="Script" uid="uid://0tpc3tcjadvo" path="res://nodes/delay/delay.gd" id="1_l3200"]
 
 [node name="delay" type="Node2D" unique_id=225146586]
-script = ExtResource("1_dem5t")
+script = ExtResource("1_l3200")

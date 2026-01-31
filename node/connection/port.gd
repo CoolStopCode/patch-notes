@@ -12,12 +12,11 @@ signal clicked(port : int, inputoutput : bool)
 func _on_button_pressed() -> void:
 	clicked.emit(port, inputoutput)
 
-
-
 func _on_button_mouse_entered() -> void:
+	if inputoutput == ConnectionManager.preview_inputoutput and ConnectionManager.currently_creating_preview:
+		return
 	hovering = true
 	update_texture()
-
 
 func _on_button_mouse_exited() -> void:
 	hovering = false

@@ -8,6 +8,8 @@ var to: Node2D
 var to_port : int
 var line: Line2D
 
+var pulse_tween: Tween
+
 # from is always output, to is always input
 func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: Line2D):
 	from = _from
@@ -17,13 +19,14 @@ func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: 
 	line = _line
 
 	# listen to both ends
-	from.actuate_output.connect(_on_endpoint_gone)
+	from.actuate_output.connect(_on_actuate_output)
 	
 	
 	from.tree_exiting.connect(_on_endpoint_gone)
 	from.move.connect(update)
-	to.tree_exiting.connect(_on_endpoint_gone)
-	to.move.connect(update)
+	if from != to:
+		to.tree_exiting.connect(_on_endpoint_gone)
+		to.move.connect(update)
 	
 
 func update():
@@ -45,8 +48,24 @@ func _on_endpoint_gone():
 	queue_free()
 
 func _on_actuate_output():
-	to.receive_input()
+	pulse()
 	
+	to.receive_input()
+
+func pulse():
+	if pulse_tween and pulse_tween.is_running():
+		pulse_tween.kill()
+
+	# ✨ Create new tween
+	pulse_tween = line.create_tween()
+	pulse_tween.set_trans(Tween.TRANS_CIRC)
+	pulse_tween.set_ease(Tween.EASE_OUT)
+
+	var base := line.default_color
+	var bright := base * 4.0
+
+	pulse_tween.tween_property(line, "default_color", base, 0.15).from(bright)
+
 func queue_free():
 	if is_instance_valid(line):
 		line.queue_free()

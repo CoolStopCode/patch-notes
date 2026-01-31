@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cbsxpbv0ehqvn"]
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
+[ext_resource type="AudioStream" uid="uid://lc2snscwapfm" path="res://assets/demo/phonk-cowbell-1-200542.wav" id="2_eecq4"]
 
-[node name="sound" type="Node2D" unique_id=493411972]
+[node name="sound" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("audio_node")]
 script = ExtResource("2_84dgq")
+audio_node = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=684576736]
+stream = ExtResource("2_eecq4")

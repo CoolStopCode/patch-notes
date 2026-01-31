@@ -6,8 +6,9 @@
 
 [node name="sound_node" type="Node2D" unique_id=300515006]
 
-[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_3gs82")]
+[node name="node" parent="." unique_id=109182909 node_paths=PackedStringArray("PARENT") instance=ExtResource("1_3gs82")]
 NODE_SCENE = ExtResource("2_1ymeb")
+PARENT = NodePath("..")
 BODY_SIZE = Vector2(20, 20)
 BODY_SPRITE = ExtResource("3_dppko")
 ports_in = Array[Vector2]([Vector2(-10, 0)])

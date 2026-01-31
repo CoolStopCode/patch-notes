@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://rvymux2jgxrj"]
+
+[ext_resource type="Script" uid="uid://deha5io8tt6o3" path="res://nodes/metronome/metronome.gd" id="1_4wxud"]
+[ext_resource type="Texture2D" uid="uid://djofayn5paan1" path="res://nodes/metronome/metronome_2.png" id="3_317f5"]
+[ext_resource type="Texture2D" uid="uid://dl7pi3317gdr3" path="res://nodes/metronome/metronome_1.png" id="3_b4fcd"]
+
+[node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite")]
+script = ExtResource("1_4wxud")
+timer = NodePath("Timer")
+sprite = NodePath("Button/Sprite2D2")
+sprite_left = ExtResource("3_b4fcd")
+sprite_right = ExtResource("3_317f5")
+
+[node name="Button" type="TextureButton" parent="." unique_id=2078144194]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Button" unique_id=1720834859]
+position = Vector2(7, 4)
+texture = ExtResource("3_b4fcd")
+
+[node name="Timer" type="Timer" parent="." unique_id=1180642700]
+wait_time = 0.5
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,11 @@
+extends Node2D
+
+signal actuate_output(port : int)
+
+
+func emit_output(port := 0):
+	actuate_output.emit(port)
+
+func receive_input(_port := 0):
+	await get_tree().create_timer(1.0).timeout
+	emit_output(0)
