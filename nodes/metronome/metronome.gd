@@ -2,6 +2,8 @@ extends Node2D
 
 signal actuate_output(port : int)
 
+@export var base_node : Node
+
 @export var timer : Timer
 @export var sprite : Sprite2D
 @export var sprite_left : Texture
@@ -9,6 +11,7 @@ signal actuate_output(port : int)
 
 var running := false
 var hovering := false
+var pulse_tween : Tween
 
 func emit_output(port := 0):
 	actuate_output.emit(port)
@@ -21,6 +24,19 @@ func pulse():
 		sprite.texture = sprite_right
 	else:
 		sprite.texture = sprite_left
+	
+	if pulse_tween and pulse_tween.is_running():
+		pulse_tween.kill()
+
+	pulse_tween = create_tween()
+	pulse_tween.set_trans(Tween.TRANS_CIRC)
+	pulse_tween.set_ease(Tween.EASE_OUT)
+
+	var base := Color(1, 1, 1)
+	var bright := base * 2.0
+	
+	pulse_tween.tween_property(base_node.body_sprite_node, "modulate", base, 0.3).from(bright)
+	
 	emit_output(0)
 	emit_output(1)
 	emit_output(2)
@@ -48,3 +64,11 @@ func _on_button_mouse_exited() -> void:
 	hovering = true
 	sprite.modulate = Color(1.0, 1.0, 1.0)
 	
+
+
+func _on_button_button_down() -> void:
+	sprite.modulate = Color(0.7, 0.7, 0.7)
+
+
+func _on_button_button_up() -> void:
+	sprite.modulate = Color(1.2, 1.2, 1.2)

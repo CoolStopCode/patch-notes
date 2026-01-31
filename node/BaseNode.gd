@@ -38,6 +38,7 @@ var drag_offset : Vector2
 func _ready():
 	node = load_node(NODE_SCENE)
 	node.actuate_output.connect(emit_output)
+	node.base_node = self
 	add_child(node)
 	initiate_children()
 

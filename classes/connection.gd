@@ -38,11 +38,13 @@ func update():
 		Vector2(line.get_point_position(line.get_point_count() - 2).x, to.ports_in[to_port].y + to.global_position.y)
 	)
 	
+	
 	#BETTER SOLUTION:
 	#instead of click to create 2 points, click only creates one point, but its locked to 90 degree angles.
 	#however, you can click on a port without it being in line with your last point, it will automatically create the points
 	#needed to connect your last point and the port using only vertical and horizontal segments. (can also click from port to
 	#port with this same thing)
+
 
 func _on_endpoint_gone():
 	queue_free()

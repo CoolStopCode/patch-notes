@@ -2,6 +2,7 @@ extends Node2D
 
 signal actuate_output(port : int)
 
+@export var base_node : Node
 
 func emit_output(port := 0):
 	actuate_output.emit(port)
