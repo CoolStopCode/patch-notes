@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://joxfc4vkp5jo" path="res://main/connections.gd" id="5_grrlh"]
 [ext_resource type="PackedScene" uid="uid://cwmj884r7uq4b" path="res://nodes/template/template_node.tscn" id="6_67ri8"]
 [ext_resource type="PackedScene" uid="uid://clrqt7pijmicg" path="res://node/connection/line.tscn" id="6_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://bm5pmb6c8425r" path="res://right_menu/right_menu.tscn" id="9_grrlh"]
 
 [node name="main" type="Node2D" unique_id=762756189]
 
@@ -58,3 +59,9 @@ position = Vector2(121, -31)
 [node name="connections" type="Node2D" parent="." unique_id=1328758278]
 script = ExtResource("5_grrlh")
 line_scene = ExtResource("6_kfbq2")
+
+[node name="right_menu" parent="." unique_id=927175835 instance=ExtResource("9_grrlh")]
+offset_left = 43.0
+offset_top = 5.0
+offset_right = 172.0
+offset_bottom = 64.0

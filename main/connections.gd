@@ -54,7 +54,7 @@ func cleanup_points():
 			preview_line.remove_point(point)
 		elif previous.y == current.y and current.y == next.y:
 			preview_line.remove_point(point)
-	if preview_line.get_point_count() < 4:
+	if preview_line.get_point_count() < 3:
 		var pos1 := preview_line.get_point_position(0)
 		var pos2 := preview_line.get_point_position(preview_line.get_point_count() - 1)
 		var midpoint := (pos1 + pos2) / 2
@@ -67,6 +67,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseButton:
 			if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
 				add_joint_to_line()
+			if event.button_index == MouseButton.MOUSE_BUTTON_RIGHT and event.pressed:
+				preview_line.queue_free()
+				preview_line = null
+				ConnectionManager.connection_quit.emit()
 
 func _input(event: InputEvent) -> void:
 	if ConnectionManager.currently_creating_preview:

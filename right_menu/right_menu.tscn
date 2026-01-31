@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bm5pmb6c8425r"]
+
+[node name="right_menu" type="Panel" unique_id=337513332]
+offset_right = 129.0
+offset_bottom = 59.0
+
+[node name="Control" type="Control" parent="." unique_id=1234993818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1264795040]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/VBoxContainer" unique_id=1121519289]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Control" unique_id=1170934815]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "name"
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/Control" unique_id=412695508]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
