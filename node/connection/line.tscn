@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://clrqt7pijmicg"]
+
+[node name="line" type="Line2D" unique_id=1334082171]
+width = 2.0
+default_color = Color(0.272, 0.3018667, 0.4, 1)

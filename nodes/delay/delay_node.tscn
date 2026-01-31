@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://6r3xc3aq74dk"]
+[gd_scene format=3 uid="uid://6r3xc3aq74dk"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/node.tscn" id="1_k5r1f"]
 [ext_resource type="PackedScene" uid="uid://dt8bkdw4hgam6" path="res://nodes/delay/delay.tscn" id="2_hfk3y"]
 [ext_resource type="Texture2D" uid="uid://bd6hnai1ybd82" path="res://nodes/delay/delay.png" id="2_kh4xr"]
 
-[node name="delay_node" type="Node2D"]
+[node name="delay_node" type="Node2D" unique_id=1131330581]
 
-[node name="node" parent="." instance=ExtResource("1_k5r1f")]
+[node name="node" parent="." unique_id=223179628 instance=ExtResource("1_k5r1f")]
 NODE_SCENE = ExtResource("2_hfk3y")
 BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("2_kh4xr")
-connections_in = Array[Vector2]([Vector2(-6, 0)])
-connections_out = Array[Vector2]([Vector2(6, 0)])
+ports_in = Array[Vector2]([Vector2(-6, 0)])
+ports_out = Array[Vector2]([Vector2(6, 0)])

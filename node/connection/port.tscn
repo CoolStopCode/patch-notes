@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dwkbfvuetmc7t"]
+
+[ext_resource type="Script" uid="uid://c3j151vdt8won" path="res://node/connection/port.gd" id="1_u2ryo"]
+[ext_resource type="Texture2D" uid="uid://bvni43cv6q0ht" path="res://assets/port/port.png" id="2_u2ryo"]
+[ext_resource type="Texture2D" uid="uid://tuvc8i7o3hd7" path="res://assets/port/aa.png" id="3_s7c6m"]
+
+[node name="connection" type="Node2D" unique_id=1461903126 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_u2ryo")
+port_texture = ExtResource("2_u2ryo")
+hover_texture = ExtResource("3_s7c6m")
+sprite = NodePath("Sprite2D")
+
+[node name="Button" type="TextureButton" parent="." unique_id=2003753259]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=277114309]
+texture = ExtResource("2_u2ryo")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

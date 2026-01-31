@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbsxpbv0ehqvn"]
+[gd_scene format=3 uid="uid://cbsxpbv0ehqvn"]
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
 
-[node name="sound" type="Node2D"]
+[node name="sound" type="Node2D" unique_id=493411972]
 script = ExtResource("2_84dgq")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=684576736]
