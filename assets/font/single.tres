@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cosdrrt3ct7mw"]
+
+[ext_resource type="FontFile" uid="uid://bqh7wm4k4bepm" path="res://assets/font/kiwi4.ttf" id="1_lgjvu"]
+
+[resource]
+font = ExtResource("1_lgjvu")
+font_size = 5
