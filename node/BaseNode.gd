@@ -8,9 +8,6 @@ signal move
 @export var PARENT : Node
 var node : Node
 
-@export_group("RightMenu")
-@export var RIGHT_MENU : RightMenu
-
 @export_group("Body")
 @export var BODY_SIZE : Vector2
 @export var BODY_SPRITE : Texture2D
@@ -65,9 +62,9 @@ func _input(event: InputEvent) -> void:
 			Cursor.dragging = true
 		else:
 			if mouse_dragging:
-				Cursor.dragging = false
 				if distance_moved == Vector2(0, 0):
-					GlobalNodes.right_menu.initialize(global_position, RIGHT_MENU)
+					GlobalNodes.right_menu.initialize(node)
+			Cursor.dragging = false
 			mouse_dragging = false
 
 	if event is InputEventMouseMotion and mouse_dragging:

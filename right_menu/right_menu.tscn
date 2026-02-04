@@ -129,6 +129,7 @@ layout_mode = 2
 
 [node name="file" parent="Control/properties" unique_id=666578009 instance=ExtResource("14_m8ntj")]
 layout_mode = 2
+extensions = []
 
 [node name="bool" parent="Control/properties" unique_id=298554915 instance=ExtResource("15_3gduk")]
 layout_mode = 2

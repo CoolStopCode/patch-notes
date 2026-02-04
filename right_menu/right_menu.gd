@@ -9,25 +9,21 @@ var property_scenes: Dictionary = {
 	RightMenuSlider: preload("res://right_menu/properties/slider.tscn")
 }
 
-func set_subproperties(ui: Node, property: RightMenuProperty) -> void:
-	property.apply_to(ui)
-	ui.load_exports()
-
 
 func _ready() -> void:
 	GlobalNodes.right_menu = self
 
-func initialize(pos : Vector2, properties : RightMenu):
-	for node in properties_container.get_children():
-		properties_container.remove_child(node)
-		node.queue_free()
+func initialize(node : Node2D):
+	for n in properties_container.get_children():
+		properties_container.remove_child(n)
+		n.queue_free()
 
-	position = pos
-	for property: RightMenuProperty in properties.properties:
+	position = node.global_position
+	for property: RightMenuProperty in node.properties:
 		var script: Script = property.get_script()
 		var ui : Control = property_scenes[script].instantiate()
 		properties_container.add_child(ui)
-		set_subproperties(ui, property)
+		ui.bind_to_property(property, node)
 	
 	show()
 
@@ -45,4 +41,4 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var pos := get_global_mouse_position()
 		if not get_global_rect().has_point(pos):
-			hide()
+			close()

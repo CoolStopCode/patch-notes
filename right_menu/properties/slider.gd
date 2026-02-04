@@ -12,10 +12,25 @@ extends Control
 @export var slider_node : Slider
 @export var name_node : Label
 
-func _ready() -> void:
-	_update_slider_state()
+var property: RightMenuProperty 
+var node: Node
 
-func load_exports():
+func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
+	property = prop
+	node = target_node
+
+	property_name = property.property_name
+	value = property.value
+	min_value = property.min_value
+	max_value = property.max_value
+	min_slider = property.min_slider
+	max_slider = property.max_slider
+	step_slider = property.step_slider
+
+	_load_exports()
+	_update_slider_state()
+	
+func _load_exports():
 	name_node.text = property_name
 	line_edit_node.text = str(value)
 	slider_node.min_value = min_slider
@@ -35,6 +50,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		line_edit_node.text = filtered
 		line_edit_node.caret_column = min(caret, filtered.length())
 	
+	property.value = value
 	_update_slider_state()
 
 func _commit_text():
@@ -44,6 +60,7 @@ func _commit_text():
 	else:
 		value = clamp(float(text), min_value, max_value)
 	line_edit_node.text = str(value)
+	property.value = value
 	_update_slider_state()
 
 func _update_slider_state():
@@ -63,4 +80,5 @@ func _on_slider_value_changed(new_value: float) -> void:
 	if new_value < min_slider or new_value > max_slider:
 		return
 	value = new_value
+	property.value = value
 	line_edit_node.text = str(value)

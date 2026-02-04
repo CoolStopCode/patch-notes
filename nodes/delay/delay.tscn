@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://dt8bkdw4hgam6"]
 
 [ext_resource type="Script" uid="uid://0tpc3tcjadvo" path="res://nodes/delay/delay.gd" id="1_l3200"]
+[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_1u6sv"]
+[ext_resource type="Script" uid="uid://bvd4hq8gi1kxc" path="res://classes/right_menu_properties/right_menu_slider.gd" id="3_6mtkf"]
+[ext_resource type="Texture2D" uid="uid://cmipc44lwcsan" path="res://nodes/delay/clock.png" id="4_6mtkf"]
+
+[sub_resource type="Resource" id="Resource_1u6sv"]
+script = ExtResource("3_6mtkf")
+value = 3.0
+property_name = "Delay"
+metadata/_custom_type_script = "uid://bvd4hq8gi1kxc"
 
 [node name="delay" type="Node2D" unique_id=225146586]
 script = ExtResource("1_l3200")
+properties = Array[ExtResource("2_1u6sv")]([SubResource("Resource_1u6sv")])
+
+[node name="Clock" type="Sprite2D" parent="." unique_id=1298922194]
+texture = ExtResource("4_6mtkf")
