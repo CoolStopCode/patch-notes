@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bm5pmb6c8425r"]
 
-[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="1_q1asp"]
+[ext_resource type="Script" uid="uid://c7gdddd6nrxuk" path="res://right_menu/right_menu.gd" id="1_aqqhy"]
 [ext_resource type="Texture2D" uid="uid://84wa2s3ryhbh" path="res://right_menu/ui/panel/1/panel.png" id="1_yther"]
 [ext_resource type="Texture2D" uid="uid://du2ap6y2kvy5a" path="res://right_menu/ui/buttons/delete.png" id="2_dx8gg"]
 [ext_resource type="Shader" uid="uid://jkw2lo6xb5ww" path="res://right_menu/shadow.gdshader" id="2_yther"]
@@ -12,8 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://bx2b38xh4r5mw" path="res://right_menu/ui/buttons/normal.png" id="8_aqqhy"]
 [ext_resource type="Texture2D" uid="uid://bgsrhmd10sw8v" path="res://right_menu/ui/buttons/normal_press.png" id="9_m8ntj"]
 [ext_resource type="Texture2D" uid="uid://c1jrxupjrdvd0" path="res://right_menu/ui/buttons/normal_hover.png" id="10_3gduk"]
-[ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://delay_icon.png" id="13_2h14e"]
-[ext_resource type="Texture2D" uid="uid://dxkf73jy6wu8g" path="res://line.png" id="14_cifxj"]
+[ext_resource type="PackedScene" uid="uid://b6s5wscmguewq" path="res://right_menu/properties/arrows.tscn" id="12_pq21j"]
+[ext_resource type="PackedScene" uid="uid://c0u27aialwqwt" path="res://right_menu/properties/slider.tscn" id="13_aqqhy"]
+[ext_resource type="Texture2D" uid="uid://dxkf73jy6wu8g" path="res://right_menu/ui/line.png" id="14_cifxj"]
+[ext_resource type="PackedScene" uid="uid://08pc8uk0wtlx" path="res://right_menu/properties/file.tscn" id="14_m8ntj"]
+[ext_resource type="PackedScene" uid="uid://b6qklynirtdbh" path="res://right_menu/properties/bool.tscn" id="15_3gduk"]
+[ext_resource type="Texture2D" uid="uid://fm1r3ouexi27" path="res://nodes/sound/sound_icon.png" id="16_pq21j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2h14e"]
 shader = ExtResource("2_yther")
@@ -21,11 +25,13 @@ shader_parameter/spread = 10.0
 shader_parameter/corner_radius = 11.0
 shader_parameter/opacity = 0.25
 
-[node name="right_menu" type="Control" unique_id=2040120194]
+[node name="right_menu" type="Control" unique_id=2040120194 node_paths=PackedStringArray("properties_container")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 60.0
+script = ExtResource("1_aqqhy")
+properties_container = NodePath("Control/properties")
 
 [node name="shadow" type="NinePatchRect" parent="." unique_id=1495510944]
 material = SubResource("ShaderMaterial_2h14e")
@@ -105,7 +111,7 @@ texture_normal = ExtResource("8_aqqhy")
 texture_pressed = ExtResource("9_m8ntj")
 texture_hover = ExtResource("10_3gduk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1264795040]
+[node name="properties" type="VBoxContainer" parent="Control" unique_id=1264795040]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,24 +119,21 @@ anchor_bottom = 1.0
 offset_top = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 1
 
-[node name="property" type="Control" parent="Control/VBoxContainer" unique_id=1121519289]
-custom_minimum_size = Vector2(0, 6)
+[node name="arrows" parent="Control/properties" unique_id=1089333438 instance=ExtResource("12_pq21j")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/property" unique_id=1170934815]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_right = 28.0
-grow_vertical = 2
-text = "property"
-label_settings = ExtResource("1_q1asp")
-vertical_alignment = 1
+[node name="slider" parent="Control/properties" unique_id=552505619 instance=ExtResource("13_aqqhy")]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1020807048]
+[node name="file" parent="Control/properties" unique_id=666578009 instance=ExtResource("14_m8ntj")]
+layout_mode = 2
+
+[node name="bool" parent="Control/properties" unique_id=298554915 instance=ExtResource("15_3gduk")]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="Control" unique_id=1020807048]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -140,9 +143,9 @@ offset_top = 3.0
 offset_right = 5.0
 offset_bottom = 13.0
 grow_horizontal = 2
-texture = ExtResource("13_2h14e")
+texture = ExtResource("16_pq21j")
 
-[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1546341706]
+[node name="line" type="TextureRect" parent="Control" unique_id=1546341706]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

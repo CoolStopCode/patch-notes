@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Constants="*res://global/constants.gd"
 Cursor="*res://global/cursor.gd"
 ConnectionManager="*res://global/connection_manager.gd"
+GlobalNodes="*uid://cejucmy7okxjl"
 
 [debug]
 

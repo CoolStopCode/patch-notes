@@ -8,6 +8,7 @@ var preview_line_last_point : Vector2
 func _ready() -> void:
 	ConnectionManager.connection_started.connect(on_connection_started)
 	ConnectionManager.connection_ended.connect(on_connection_ended)
+	GlobalNodes.connections = self
 
 func random_brightness_hsv(color: Color, minimum := 0.6, maximum := 1.4) -> Color:
 	var h = color.h

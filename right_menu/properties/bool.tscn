@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b6qklynirtdbh"]
+
+[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="1_4ehpj"]
+[ext_resource type="Script" uid="uid://bsc1fky2t7cu2" path="res://right_menu/properties/bool.gd" id="1_5ph55"]
+[ext_resource type="Texture2D" uid="uid://bkk0rat6xrud5" path="res://right_menu/ui/checkbox/off.png" id="2_5ph55"]
+[ext_resource type="Texture2D" uid="uid://bil2rhno7nau1" path="res://right_menu/ui/checkbox/off_press.png" id="3_05dp6"]
+[ext_resource type="Texture2D" uid="uid://cmj5ud1u4rgmo" path="res://right_menu/ui/checkbox/off_hover.png" id="4_ptxqx"]
+[ext_resource type="Texture2D" uid="uid://tpi6ufjou234" path="res://right_menu/ui/checkbox/on.png" id="5_ds4fd"]
+[ext_resource type="Texture2D" uid="uid://beh6x0r4abkuc" path="res://right_menu/ui/checkbox/on_press.png" id="6_jh4jg"]
+[ext_resource type="Texture2D" uid="uid://2t8xhw7o76af" path="res://right_menu/ui/checkbox/on_hover.png" id="7_w0m0t"]
+
+[node name="bool" type="Control" unique_id=298554915 node_paths=PackedStringArray("name_node", "button_node")]
+custom_minimum_size = Vector2(100, 6)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5ph55")
+property_name = "Boolean"
+name_node = NodePath("Label")
+button_node = NodePath("TextureButton")
+off_texture = ExtResource("2_5ph55")
+off_press_texture = ExtResource("3_05dp6")
+off_hover_texture = ExtResource("4_ptxqx")
+on_texture = ExtResource("5_ds4fd")
+on_press_texture = ExtResource("6_jh4jg")
+on_hover_texture = ExtResource("7_w0m0t")
+
+[node name="Label" type="Label" parent="." unique_id=1005391349]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 28.0
+grow_vertical = 2
+text = "property"
+label_settings = ExtResource("1_4ehpj")
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=2113001679]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("2_5ph55")
+texture_pressed = ExtResource("3_05dp6")
+texture_hover = ExtResource("4_ptxqx")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

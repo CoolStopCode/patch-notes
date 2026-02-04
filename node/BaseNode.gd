@@ -37,6 +37,7 @@ var mouse_hovering := false:
 		mouse_hovering_changed.emit(value)
 var mouse_dragging := false
 var drag_offset : Vector2
+var distance_moved : Vector2
 
 func _ready():
 	node = load_node(NODE_SCENE)
@@ -58,17 +59,22 @@ func receive_input(port := 0):
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and mouse_hovering:
+			distance_moved = Vector2(0, 0)
 			drag_offset = global_position - get_global_mouse_position()
 			mouse_dragging = true
 			Cursor.dragging = true
 		else:
 			if mouse_dragging:
 				Cursor.dragging = false
+				if distance_moved == Vector2(0, 0):
+					GlobalNodes.right_menu.initialize(global_position, RIGHT_MENU)
 			mouse_dragging = false
 
 	if event is InputEventMouseMotion and mouse_dragging:
+		var last_pos := global_position
 		var free_pos := get_global_mouse_position() + drag_offset
 		PARENT.global_position = Constants.snap_to_grid(free_pos)
+		distance_moved += abs(global_position - last_pos)
 		move.emit()
 
 func _process(_delta: float) -> void:

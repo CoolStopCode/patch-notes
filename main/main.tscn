@@ -63,5 +63,5 @@ line_scene = ExtResource("6_kfbq2")
 [node name="right_menu" parent="." unique_id=927175835 instance=ExtResource("9_grrlh")]
 offset_left = 43.0
 offset_top = 5.0
-offset_right = 172.0
-offset_bottom = 64.0
+offset_right = 143.0
+offset_bottom = 65.0
