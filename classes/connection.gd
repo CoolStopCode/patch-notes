@@ -21,7 +21,6 @@ func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: 
 	# listen to both ends
 	from.actuate_output.connect(_on_actuate_output)
 	
-	
 	from.tree_exiting.connect(_on_endpoint_gone)
 	from.move.connect(update)
 	if from != to:
@@ -37,19 +36,14 @@ func update():
 	line.set_point_position(line.get_point_count() - 2, 
 		Vector2(line.get_point_position(line.get_point_count() - 2).x, to.ports_in[to_port].y + to.global_position.y)
 	)
-	
-	
-	#BETTER SOLUTION:
-	#instead of click to create 2 points, click only creates one point, but its locked to 90 degree angles.
-	#however, you can click on a port without it being in line with your last point, it will automatically create the points
-	#needed to connect your last point and the port using only vertical and horizontal segments. (can also click from port to
-	#port with this same thing)
 
 
 func _on_endpoint_gone():
 	queue_free()
 
-func _on_actuate_output():
+func _on_actuate_output(_port):
+	if from_port != _port:
+		return
 	pulse()
 	
 	to.receive_input()
@@ -58,7 +52,6 @@ func pulse():
 	if pulse_tween and pulse_tween.is_running():
 		pulse_tween.kill()
 
-	# ✨ Create new tween
 	pulse_tween = line.create_tween()
 	pulse_tween.set_trans(Tween.TRANS_CIRC)
 	pulse_tween.set_ease(Tween.EASE_OUT)

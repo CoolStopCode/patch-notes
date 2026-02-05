@@ -13,7 +13,19 @@ extends Control
 @export var on_press_texture : Texture
 @export var on_hover_texture : Texture
 
-func load_exports():
+var property: RightMenuProperty 
+var node: Node
+
+func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
+	property = prop
+	node = target_node
+
+	property_name = property.property_name
+	value = property.value
+	
+	_load_exports()
+
+func _load_exports():
 	name_node.text = property_name
 
 func _ready() -> void:
@@ -22,6 +34,7 @@ func _ready() -> void:
 
 func _on_texture_button_pressed() -> void:
 	value = not value
+	property_changed()
 	update_textures()
 
 func update_textures():
@@ -33,3 +46,7 @@ func update_textures():
 		button_node.texture_normal = off_texture 
 		button_node.texture_pressed = off_press_texture 
 		button_node.texture_hover = off_hover_texture
+
+func property_changed():
+	property.value = value
+	node.property_changed(property)

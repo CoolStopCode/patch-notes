@@ -11,7 +11,22 @@ extends Control
 @export var right_button : BaseButton
 @export var name_node : Label
 
-func load_exports():
+var property: RightMenuProperty 
+var node: Node
+
+func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
+	property = prop
+	node = target_node
+
+	property_name = property.property_name
+	value = property.value
+	min_value = property.min_value
+	max_value = property.max_value
+	step = property.step
+	
+	_load_exports()
+
+func _load_exports():
 	name_node.text = property_name
 	line_edit_node.text = str(value)
 
@@ -21,12 +36,14 @@ func _ready() -> void:
 func _on_left_pressed() -> void:
 	value -= step
 	line_edit_node.text = str(value)
+	property_changed()
 	_update_button_state()
 
 
 func _on_right_pressed() -> void:
 	value += step
 	line_edit_node.text = str(value)
+	property_changed()
 	_update_button_state()
 
 
@@ -44,6 +61,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		line_edit_node.text = filtered
 		line_edit_node.caret_column = min(caret, filtered.length())
 	
+	property_changed()
 	_update_button_state()
 
 func _commit_text():
@@ -53,6 +71,7 @@ func _commit_text():
 	else:
 		value = clampi(int(text), min_value, max_value)
 	line_edit_node.text = str(value)
+	property_changed()
 	_update_button_state()
 
 func _update_button_state():
@@ -65,3 +84,8 @@ func _on_line_edit_focus_exited() -> void:
 
 func _on_line_edit_text_submitted(_new_text: String) -> void:
 	_commit_text()
+
+func property_changed():
+	property.value = value
+	node.property_changed(property)
+	

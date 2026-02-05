@@ -2,6 +2,7 @@ extends Node2D
 
 signal actuate_output(port : int)
 
+@export var properties : Array[RightMenuProperty]
 @export var base_node : Node
 
 @export var timer : Timer
@@ -12,6 +13,10 @@ signal actuate_output(port : int)
 var running := false
 var hovering := false
 var pulse_tween : Tween
+
+func property_changed(property : RightMenuProperty):
+	if property == properties[0]:
+		timer.wait_time = 60.0 / property.value
 
 func emit_output(port := 0):
 	actuate_output.emit(port)
@@ -36,10 +41,6 @@ func pulse():
 	var bright := base * 2.0
 	
 	pulse_tween.tween_property(base_node.body_sprite_node, "modulate", base, 0.3).from(bright)
-	
-	emit_output(0)
-	emit_output(1)
-	emit_output(2)
 
 
 func _on_button_pressed() -> void:
@@ -54,6 +55,9 @@ func _on_button_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	pulse()
+	emit_output(0)
+	emit_output(1)
+	emit_output(2)
 
 
 func _on_button_mouse_entered() -> void:

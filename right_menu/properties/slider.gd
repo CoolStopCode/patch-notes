@@ -20,21 +20,32 @@ func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
 	node = target_node
 
 	property_name = property.property_name
+	
 	value = property.value
 	min_value = property.min_value
 	max_value = property.max_value
 	min_slider = property.min_slider
 	max_slider = property.max_slider
 	step_slider = property.step_slider
-
-	_load_exports()
-	_update_slider_state()
 	
+	_load_exports()
+	
+	_update_slider_state()
+
 func _load_exports():
+	
 	name_node.text = property_name
 	line_edit_node.text = str(value)
+	
+	slider_node.step = step_slider
+	slider_node.min_value = value
+	slider_node.max_value = value # ensure no clamping happens before min and max are set
+	slider_node.value = value
+	print(value)
 	slider_node.min_value = min_slider
 	slider_node.max_value = max_slider
+	print(value)
+	
 
 func _on_line_edit_text_changed(new_text: String) -> void:
 	if new_text == "":
@@ -50,7 +61,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		line_edit_node.text = filtered
 		line_edit_node.caret_column = min(caret, filtered.length())
 	
-	property.value = value
+	property_changed()
 	_update_slider_state()
 
 func _commit_text():
@@ -60,7 +71,7 @@ func _commit_text():
 	else:
 		value = clamp(float(text), min_value, max_value)
 	line_edit_node.text = str(value)
-	property.value = value
+	property_changed()
 	_update_slider_state()
 
 func _update_slider_state():
@@ -80,5 +91,9 @@ func _on_slider_value_changed(new_value: float) -> void:
 	if new_value < min_slider or new_value > max_slider:
 		return
 	value = new_value
-	property.value = value
+	property_changed()
 	line_edit_node.text = str(value)
+
+func property_changed():
+	property.value = value
+	node.property_changed(property)

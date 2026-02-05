@@ -48,7 +48,7 @@ func load_node(node_scene):
 	return node_instance
 
 func emit_output(_port := 0):
-	actuate_output.emit()
+	actuate_output.emit(_port)
 
 func receive_input(port := 0):
 	node.receive_input(port)

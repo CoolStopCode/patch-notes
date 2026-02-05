@@ -1,11 +1,22 @@
 [gd_scene format=3 uid="uid://rvymux2jgxrj"]
 
 [ext_resource type="Script" uid="uid://deha5io8tt6o3" path="res://nodes/metronome/metronome.gd" id="1_4wxud"]
+[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_317f5"]
 [ext_resource type="Texture2D" uid="uid://djofayn5paan1" path="res://nodes/metronome/metronome_2.png" id="3_317f5"]
 [ext_resource type="Texture2D" uid="uid://dl7pi3317gdr3" path="res://nodes/metronome/metronome_1.png" id="3_b4fcd"]
+[ext_resource type="Script" uid="uid://dytrld4dmvbom" path="res://classes/right_menu_properties/right_menu_arrows.gd" id="3_x33jy"]
+
+[sub_resource type="Resource" id="Resource_3jx18"]
+script = ExtResource("3_x33jy")
+value = 120
+min_value = 1
+max_value = 1000
+property_name = "BPM"
+metadata/_custom_type_script = "uid://dytrld4dmvbom"
 
 [node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite")]
 script = ExtResource("1_4wxud")
+properties = Array[ExtResource("2_317f5")]([SubResource("Resource_3jx18")])
 timer = NodePath("Timer")
 sprite = NodePath("Button/Sprite2D2")
 sprite_left = ExtResource("3_b4fcd")

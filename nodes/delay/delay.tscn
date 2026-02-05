@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_1u6sv"]
 script = ExtResource("3_6mtkf")
-value = 3.0
+value = 1.0
 property_name = "Delay"
 metadata/_custom_type_script = "uid://bvd4hq8gi1kxc"
 

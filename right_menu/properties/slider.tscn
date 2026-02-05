@@ -63,6 +63,9 @@ offset_right = -4.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("2_574ki")
+min_value = -1000000000000.0
+max_value = 1000000000000.0
+value = 0.010009766
 
 [connection signal="focus_exited" from="ColorRect/LineEdit" to="." method="_on_line_edit_focus_exited"]
 [connection signal="text_changed" from="ColorRect/LineEdit" to="." method="_on_line_edit_text_changed"]

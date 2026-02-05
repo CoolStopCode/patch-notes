@@ -2,9 +2,36 @@
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
 [ext_resource type="AudioStream" uid="uid://lc2snscwapfm" path="res://assets/demo/phonk-cowbell-1-200542.wav" id="2_eecq4"]
+[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_g1t6i"]
+[ext_resource type="Script" uid="uid://dnyrnf764pbti" path="res://classes/right_menu_properties/right_menu_file.gd" id="3_sbhlm"]
+[ext_resource type="Script" uid="uid://bvd4hq8gi1kxc" path="res://classes/right_menu_properties/right_menu_slider.gd" id="4_wg1kc"]
+
+[sub_resource type="Resource" id="Resource_081ax"]
+script = ExtResource("3_sbhlm")
+property_name = "Source"
+metadata/_custom_type_script = "uid://dnyrnf764pbti"
+
+[sub_resource type="Resource" id="Resource_iml68"]
+script = ExtResource("4_wg1kc")
+value = 1.0
+max_value = 10.0
+max_slider = 2.0
+property_name = "Volume"
+metadata/_custom_type_script = "uid://bvd4hq8gi1kxc"
+
+[sub_resource type="Resource" id="Resource_g1t6i"]
+script = ExtResource("4_wg1kc")
+value = 1.0
+min_value = 0.01
+max_value = 50.0
+min_slider = 0.1
+max_slider = 4.0
+property_name = "Speed"
+metadata/_custom_type_script = "uid://bvd4hq8gi1kxc"
 
 [node name="sound" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("audio_node")]
 script = ExtResource("2_84dgq")
+properties = Array[ExtResource("2_g1t6i")]([SubResource("Resource_081ax"), SubResource("Resource_iml68"), SubResource("Resource_g1t6i")])
 audio_node = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=684576736]
