@@ -26,7 +26,6 @@ func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: 
 	if from != to:
 		to.tree_exiting.connect(_on_endpoint_gone)
 		to.move.connect(update)
-	
 
 func update():
 	line.set_point_position(0, from.ports_out[from_port] + from.global_position)
@@ -39,28 +38,45 @@ func update():
 
 
 func _on_endpoint_gone():
-	queue_free()
+	free_connection()
 
 func _on_actuate_output(_port):
 	if from_port != _port:
 		return
 	pulse()
-	
 	to.receive_input()
 
 func pulse():
 	if pulse_tween and pulse_tween.is_running():
+		line.modulate = Color(1.0, 1.0, 1.0)
 		pulse_tween.kill()
 
 	pulse_tween = line.create_tween()
 	pulse_tween.set_trans(Tween.TRANS_CIRC)
 	pulse_tween.set_ease(Tween.EASE_OUT)
 
-	var base := line.default_color
-	var bright := base * 4.0
+	var base := Color(1.0, 1.0, 1.0)
+	var bright := base * 3.0
 
-	pulse_tween.tween_property(line, "default_color", base, 0.15).from(bright)
+	pulse_tween.tween_property(line, "modulate", base, 0.4).from(bright)
 
-func queue_free():
+func free_connection():
+	if is_instance_valid(from):
+		from.actuate_output.disconnect(_on_actuate_output)
+		from.tree_exiting.disconnect(_on_endpoint_gone)
+		from.move.disconnect(update)
+
+	if is_instance_valid(to) and to != from:
+		to.tree_exiting.disconnect(_on_endpoint_gone)
+		to.move.disconnect(update)
+
+	if pulse_tween and pulse_tween.is_running():
+		pulse_tween.kill()
+
 	if is_instance_valid(line):
 		line.queue_free()
+
+	from = null
+	to = null
+	line = null
+	pulse_tween = null

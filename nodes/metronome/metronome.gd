@@ -7,6 +7,7 @@ signal actuate_output(port : int)
 
 @export var timer : Timer
 @export var sprite : Sprite2D
+@export var audio : AudioStreamPlayer
 @export var sprite_left : Texture
 @export var sprite_right : Texture
 
@@ -40,6 +41,8 @@ func pulse():
 	var base := Color(1, 1, 1)
 	var bright := base * 2.0
 	
+	if properties[1].value:
+		audio.play()
 	pulse_tween.tween_property(base_node.body_sprite_node, "modulate", base, 0.3).from(bright)
 
 

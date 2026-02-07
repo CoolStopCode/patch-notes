@@ -5,6 +5,9 @@ signal actuate_output(port : int)
 @export var properties : Array[RightMenuProperty]
 @export var base_node : Node
 
+func property_changed(_property : RightMenuProperty):
+	pass
+
 func emit_output(port := 0):
 	actuate_output.emit(port)
 

@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cbsxpbv0ehqvn"]
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
-[ext_resource type="AudioStream" uid="uid://lc2snscwapfm" path="res://assets/demo/phonk-cowbell-1-200542.wav" id="2_eecq4"]
 [ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_g1t6i"]
 [ext_resource type="Script" uid="uid://dnyrnf764pbti" path="res://classes/right_menu_properties/right_menu_file.gd" id="3_sbhlm"]
 [ext_resource type="Script" uid="uid://bvd4hq8gi1kxc" path="res://classes/right_menu_properties/right_menu_slider.gd" id="4_wg1kc"]
+[ext_resource type="AudioStream" uid="uid://clyuet8mkrfwj" path="res://assets/demo/kick.mp3" id="5_g1t6i"]
 
 [sub_resource type="Resource" id="Resource_081ax"]
 script = ExtResource("3_sbhlm")
+extensions = ["wav", "mp3"]
 property_name = "Source"
 metadata/_custom_type_script = "uid://dnyrnf764pbti"
 
@@ -35,4 +36,4 @@ properties = Array[ExtResource("2_g1t6i")]([SubResource("Resource_081ax"), SubRe
 audio_node = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=684576736]
-stream = ExtResource("2_eecq4")
+stream = ExtResource("5_g1t6i")

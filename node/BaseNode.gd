@@ -5,7 +5,6 @@ signal actuate_output(port : int)
 signal move
 
 @export var NODE_SCENE : PackedScene
-@export var PARENT : Node
 var node : Node
 
 @export_group("Body")
@@ -17,6 +16,7 @@ var node : Node
 @export var ports_out : Array[Vector2]
 
 @export_group("Nodes (private)")
+@export var parent : Node
 @export var hover_rectangle_node : ColorRect
 @export var body_sprite_node : Sprite2D
 @export var area_node : Area2D
@@ -26,21 +26,34 @@ var node : Node
 @export var PORT_SCENE : PackedScene
 
 signal mouse_hovering_changed(value: bool)
-var mouse_hovering := false:
-	set(value):
-		if mouse_hovering == value:
-			return
-		mouse_hovering = value
-		mouse_hovering_changed.emit(value)
+var mouse_hovering := false
+
 var mouse_dragging := false
 var drag_offset : Vector2
 var distance_moved : Vector2
 
+# NOTE: Duplication issue caused by re-instantiating export scenes (NODE_SCENE, inputs, outputs)
+# while they still exist from past duplication. Fix by clearing old instances.
 func _ready():
-	node = load_node(NODE_SCENE)
-	node.actuate_output.connect(emit_output)
-	node.base_node = self
-	add_child(node)
+	parent = get_parent()
+	
+	node = get_node_or_null("NODE")
+
+	if node == null:
+		node = load_node(NODE_SCENE)
+		node.actuate_output.connect(emit_output)
+		node.base_node = self
+		node.name = "NODE"
+		add_child(node)
+	else:
+		node.actuate_output.connect(emit_output)
+	var duplicated_props = node.properties.map(func(p):
+		return p.duplicate(true)
+	)
+	
+	# Force the generic array data into the typed array
+	node.properties.assign(duplicated_props)
+	
 	initiate_children()
 
 func load_node(node_scene):
@@ -56,6 +69,8 @@ func receive_input(port := 0):
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and mouse_hovering:
+			get_viewport().set_input_as_handled()
+			
 			distance_moved = Vector2(0, 0)
 			drag_offset = global_position - get_global_mouse_position()
 			mouse_dragging = true
@@ -70,7 +85,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_dragging:
 		var last_pos := global_position
 		var free_pos := get_global_mouse_position() + drag_offset
-		PARENT.global_position = Constants.snap_to_grid(free_pos)
+		parent.global_position = Constants.snap_to_grid(free_pos)
 		distance_moved += abs(global_position - last_pos)
 		move.emit()
 
@@ -89,14 +104,20 @@ func initiate_children():
 	shape.set_size(BODY_SIZE)
 	area_collision_node.shape = shape
 	
-	area_node.mouse_entered.connect(func(): mouse_hovering = true)
-	area_node.mouse_exited.connect(func(): mouse_hovering = false)
-	mouse_hovering_changed.connect(func(value): 
-		hover_rectangle_node.visible = value
-		Cursor.hovering = value
+	area_node.mouse_entered.connect(func(): 
+		mouse_hovering = true
+		hover_rectangle_node.visible = true
+		Cursor.hovering = true
+	)
+	area_node.mouse_exited.connect(func(): 
+		mouse_hovering = false
+		hover_rectangle_node.visible = false
+		Cursor.hovering = false
 	)
 	hover_rectangle_node.visible = false
 	
+	Constants.clear_children(inputs_node)
+	Constants.clear_children(outputs_node)
 	var i := 0
 	for pos in ports_in:
 		var port_node = load_node(PORT_SCENE)
@@ -104,6 +125,7 @@ func initiate_children():
 		port_node.port = i
 		port_node.inputoutput = true
 		port_node.clicked.connect(port_clicked)
+		port_node.name = "input" + str(i)
 		inputs_node.add_child(port_node)
 		i += 1
 	i = 0
@@ -113,6 +135,7 @@ func initiate_children():
 		port_node.port = i
 		port_node.inputoutput = false
 		port_node.clicked.connect(port_clicked)
+		port_node.name = "output" + str(i)
 		outputs_node.add_child(port_node)
 		i += 1
 

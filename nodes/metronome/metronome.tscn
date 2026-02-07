@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://djofayn5paan1" path="res://nodes/metronome/metronome_2.png" id="3_317f5"]
 [ext_resource type="Texture2D" uid="uid://dl7pi3317gdr3" path="res://nodes/metronome/metronome_1.png" id="3_b4fcd"]
 [ext_resource type="Script" uid="uid://dytrld4dmvbom" path="res://classes/right_menu_properties/right_menu_arrows.gd" id="3_x33jy"]
+[ext_resource type="Script" uid="uid://b56folei78bis" path="res://classes/right_menu_properties/right_menu_bool.gd" id="4_rnel1"]
+[ext_resource type="AudioStream" uid="uid://4og2vyd3ss8m" path="res://nodes/metronome/metronome.mp3" id="6_3jx18"]
 
 [sub_resource type="Resource" id="Resource_3jx18"]
 script = ExtResource("3_x33jy")
@@ -14,11 +16,17 @@ max_value = 1000
 property_name = "BPM"
 metadata/_custom_type_script = "uid://dytrld4dmvbom"
 
-[node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite")]
+[sub_resource type="Resource" id="Resource_mgo4r"]
+script = ExtResource("4_rnel1")
+property_name = "Sound"
+metadata/_custom_type_script = "uid://b56folei78bis"
+
+[node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite", "audio")]
 script = ExtResource("1_4wxud")
-properties = Array[ExtResource("2_317f5")]([SubResource("Resource_3jx18")])
+properties = Array[ExtResource("2_317f5")]([SubResource("Resource_3jx18"), SubResource("Resource_mgo4r")])
 timer = NodePath("Timer")
 sprite = NodePath("Button/Sprite2D2")
+audio = NodePath("tick")
 sprite_left = ExtResource("3_b4fcd")
 sprite_right = ExtResource("3_317f5")
 
@@ -41,6 +49,9 @@ texture = ExtResource("3_b4fcd")
 
 [node name="Timer" type="Timer" parent="." unique_id=1180642700]
 wait_time = 0.5
+
+[node name="tick" type="AudioStreamPlayer" parent="." unique_id=919373823]
+stream = ExtResource("6_3jx18")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

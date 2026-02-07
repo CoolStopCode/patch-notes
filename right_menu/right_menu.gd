@@ -9,30 +9,33 @@ var property_scenes: Dictionary = {
 	RightMenuSlider: preload("res://right_menu/properties/slider.tscn")
 }
 
+var active_node : Node
+var active := false
 
 func _ready() -> void:
+	active = false
+	hide()
 	GlobalNodes.right_menu = self
 
 func initialize(node : Node2D):
-	for n in properties_container.get_children():
-		properties_container.remove_child(n)
-		n.queue_free()
+	Constants.clear_children(properties_container)
 
 	position = node.global_position
+	active_node = node
 	for property: RightMenuProperty in node.properties:
 		var script: Script = property.get_script()
 		var ui : Control = property_scenes[script].instantiate()
 		properties_container.add_child(ui)
 		ui.bind_to_property(property, node)
 	
+	active = true
 	show()
 
 func close():
+	active = false
 	hide()
 	
-	for node in properties_container.get_children():
-		properties_container.remove_child(node)
-		node.queue_free()
+	Constants.clear_children(properties_container)
 
 func _input(event: InputEvent) -> void:
 	if not visible:
@@ -42,3 +45,14 @@ func _input(event: InputEvent) -> void:
 		var pos := get_global_mouse_position()
 		if not get_global_rect().has_point(pos):
 			close()
+
+func _on_delete_pressed() -> void:
+	if active:
+		active_node.base_node.parent.queue_free()
+		close()
+
+func _on_duplicate_pressed() -> void:
+	if active:
+		var copy = active_node.base_node.parent.duplicate()
+		GlobalNodes.nodes.add_child(copy)
+		close()

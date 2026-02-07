@@ -41,11 +41,8 @@ func _load_exports():
 	slider_node.min_value = value
 	slider_node.max_value = value # ensure no clamping happens before min and max are set
 	slider_node.value = value
-	print(value)
 	slider_node.min_value = min_slider
 	slider_node.max_value = max_slider
-	print(value)
-	
 
 func _on_line_edit_text_changed(new_text: String) -> void:
 	if new_text == "":

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://lc2snscwapfm"
-path="res://.godot/imported/phonk-cowbell-1-200542.wav-3b989fe425def1479724ac3007f50080.sample"
+path="res://.godot/imported/phonk.wav-47c8035c8d5a12919159c795dc9c2fee.sample"
 
 [deps]
 
-source_file="res://assets/demo/phonk-cowbell-1-200542.wav"
-dest_files=["res://.godot/imported/phonk-cowbell-1-200542.wav-3b989fe425def1479724ac3007f50080.sample"]
+source_file="res://assets/demo/phonk.wav"
+dest_files=["res://.godot/imported/phonk.wav-47c8035c8d5a12919159c795dc9c2fee.sample"]
 
 [params]
 
