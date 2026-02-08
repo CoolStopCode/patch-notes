@@ -33,8 +33,6 @@ var mouse_dragging := false
 var drag_offset : Vector2
 var distance_moved : Vector2
 
-# NOTE: Duplication issue caused by re-instantiating export scenes (NODE_SCENE, inputs, outputs)
-# while they still exist from past duplication. Fix by clearing old instances.
 func _ready():
 	parent = get_parent()
 	

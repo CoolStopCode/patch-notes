@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://wgm1mfk1boxm" path="res://nodes/delay/delay_node.tscn" id="4_67ri8"]
 [ext_resource type="PackedScene" uid="uid://2ce5xafhxovn" path="res://nodes/metronome/metronome_node.tscn" id="5_4dugh"]
 [ext_resource type="Script" uid="uid://joxfc4vkp5jo" path="res://main/connections.gd" id="5_grrlh"]
-[ext_resource type="PackedScene" uid="uid://cwmj884r7uq4b" path="res://nodes/template/template_node.tscn" id="6_67ri8"]
 [ext_resource type="PackedScene" uid="uid://clrqt7pijmicg" path="res://node/connection/line.tscn" id="6_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://dwk368hj5olf3" path="res://nodes/count/count_node.tscn" id="7_0i4oc"]
+[ext_resource type="PackedScene" uid="uid://53kebl2pvk8g" path="res://nodes/toggle/toggle_node.tscn" id="8_bsumw"]
 [ext_resource type="PackedScene" uid="uid://bm5pmb6c8425r" path="res://right_menu/right_menu.tscn" id="9_grrlh"]
 
 [node name="main" type="Node2D" unique_id=762756189]
@@ -47,25 +48,19 @@ texture = ExtResource("1_3wy1v")
 script = ExtResource("3_0i4oc")
 
 [node name="sound_node" parent="nodes" unique_id=266324404 instance=ExtResource("3_4dugh")]
-position = Vector2(47, -52)
-
-[node name="sound_node3" parent="nodes" unique_id=300515006 instance=ExtResource("3_4dugh")]
-position = Vector2(41, -116)
-
-[node name="sound_node2" parent="nodes" unique_id=576724049 instance=ExtResource("3_4dugh")]
-position = Vector2(-25, -67)
+position = Vector2(44, -44)
 
 [node name="delay_node" parent="nodes" unique_id=1799708002 instance=ExtResource("4_67ri8")]
-position = Vector2(178, -48)
+position = Vector2(132, -44)
 
 [node name="metronome_node" parent="nodes" unique_id=1064046719 instance=ExtResource("5_4dugh")]
-position = Vector2(132, -94)
+position = Vector2(88, -44)
 
-[node name="metronome_node2" parent="nodes" unique_id=538035856 instance=ExtResource("5_4dugh")]
-position = Vector2(229, -129)
+[node name="count_node" parent="nodes" unique_id=300515006 instance=ExtResource("7_0i4oc")]
+position = Vector2(176, -44)
 
-[node name="template_node" parent="nodes" unique_id=1904363394 instance=ExtResource("6_67ri8")]
-position = Vector2(121, -31)
+[node name="toggle_node" parent="nodes" unique_id=296866800 instance=ExtResource("8_bsumw")]
+position = Vector2(220, -44)
 
 [node name="connections" type="Node2D" parent="." unique_id=1328758278]
 script = ExtResource("5_grrlh")
