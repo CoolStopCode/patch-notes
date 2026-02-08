@@ -1,0 +1,5 @@
+1. LED node (just pulses on input received)
+2. Toggle node (click to toggle pass through, easier than going into option menu)
+3. Count node (for every nth input, it emits output)
+4. Skin sound node (just a sound node, but instead of waveform, the entire node's a customizable texture)
+5. Button node (on click emits a single pulse)

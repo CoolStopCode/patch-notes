@@ -56,3 +56,7 @@ func _on_duplicate_pressed() -> void:
 		var copy = active_node.base_node.parent.duplicate()
 		GlobalNodes.nodes.add_child(copy)
 		close()
+
+func _on_state_state_set(state: Constants.NodeState) -> void:
+	if active:
+		active_node.base_node.node_state = state

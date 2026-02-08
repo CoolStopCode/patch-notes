@@ -14,6 +14,7 @@ var node : Node
 @export_group("Ports")
 @export var ports_in : Array[Vector2]
 @export var ports_out : Array[Vector2]
+@export var node_state : Constants.NodeState = Constants.NodeState.NORMAL
 
 @export_group("Nodes (private)")
 @export var parent : Node
@@ -64,7 +65,13 @@ func emit_output(_port := 0):
 	actuate_output.emit(_port)
 
 func receive_input(port := 0):
-	node.receive_input(port)
+	if node_state == Constants.NodeState.NORMAL:
+		node.receive_input(port)
+	elif node_state == Constants.NodeState.PASS:
+		for p in range(ports_out.size()):
+			actuate_output.emit(p)
+	elif node_state == Constants.NodeState.BROKEN:
+		return
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

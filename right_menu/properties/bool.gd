@@ -24,12 +24,10 @@ func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
 	value = property.value
 	
 	_load_exports()
+	update_textures()
 
 func _load_exports():
 	name_node.text = property_name
-
-func _ready() -> void:
-	update_textures()
 
 
 func _on_texture_button_pressed() -> void:
