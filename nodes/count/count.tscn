@@ -11,6 +11,20 @@ min_value = 1
 property_name = "Count"
 metadata/_custom_type_script = "uid://dytrld4dmvbom"
 
-[node name="count" type="Node2D" unique_id=493411972]
+[node name="count" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("1_4eduf")
 properties = Array[ExtResource("2_xigt8")]([SubResource("Resource_xxmkq")])
+progress_bar = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1186890211]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

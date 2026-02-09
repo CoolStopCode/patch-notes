@@ -12,7 +12,7 @@
 script = ExtResource("3_x33jy")
 value = 120
 min_value = 1
-max_value = 1000
+max_value = 10000
 property_name = "BPM"
 metadata/_custom_type_script = "uid://dytrld4dmvbom"
 

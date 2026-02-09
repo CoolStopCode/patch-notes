@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dwk368hj5olf3" path="res://nodes/count/count_node.tscn" id="7_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://53kebl2pvk8g" path="res://nodes/toggle/toggle_node.tscn" id="8_bsumw"]
 [ext_resource type="PackedScene" uid="uid://bm5pmb6c8425r" path="res://right_menu/right_menu.tscn" id="9_grrlh"]
+[ext_resource type="PackedScene" uid="uid://b0nm11hloorkq" path="res://nodes/flip_count/flip_count_node.tscn" id="12_fwcvl"]
 
 [node name="main" type="Node2D" unique_id=762756189]
 
@@ -71,3 +72,6 @@ offset_left = 43.0
 offset_top = 5.0
 offset_right = 143.0
 offset_bottom = 65.0
+
+[node name="flip_count_node" parent="." unique_id=1350815466 instance=ExtResource("12_fwcvl")]
+position = Vector2(264, -44)
