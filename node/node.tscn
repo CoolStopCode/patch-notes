@@ -29,6 +29,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.09803922)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230663560]
+texture_filter = 1
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1531858387]
 

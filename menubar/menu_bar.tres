@@ -1,0 +1,43 @@
+[gd_resource type="Theme" format=3 uid="uid://b2a3mxh5ehvvk"]
+
+[ext_resource type="FontFile" uid="uid://bqh7wm4k4bepm" path="res://assets/font/kiwi4.ttf" id="1_qawyp"]
+[ext_resource type="StyleBox" uid="uid://dq3guaopv6nek" path="res://menubar/hover_box.tres" id="2_3kwjt"]
+[ext_resource type="StyleBox" uid="uid://cnwv2apllhm0k" path="res://menubar/pressed_box.tres" id="3_u5dhh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5dhh"]
+bg_color = Color(1, 1, 1, 0.20392157)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7o7o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2vy1"]
+bg_color = Color(1, 1, 1, 0.30588236)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qawyp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kwjt"]
+content_margin_top = 3.0
+bg_color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_u5dhh")
+Button/styles/normal = SubResource("StyleBoxEmpty_y7o7o")
+Button/styles/pressed = SubResource("StyleBoxFlat_g2vy1")
+MenuBar/colors/font_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+MenuBar/constants/h_separation = 24
+MenuBar/font_sizes/font_size = 30
+MenuBar/fonts/font = ExtResource("1_qawyp")
+MenuBar/styles/hover = ExtResource("2_3kwjt")
+MenuBar/styles/normal = SubResource("StyleBoxEmpty_qawyp")
+MenuBar/styles/pressed = ExtResource("3_u5dhh")
+PopupMenu/colors/font_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+PopupMenu/constants/v_separation = 6
+PopupMenu/font_sizes/font_size = 30
+PopupMenu/fonts/font = ExtResource("1_qawyp")
+PopupMenu/styles/hover = ExtResource("2_3kwjt")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_3kwjt")

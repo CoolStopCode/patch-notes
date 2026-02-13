@@ -21,7 +21,7 @@ script = ExtResource("4_rnel1")
 property_name = "Sound"
 metadata/_custom_type_script = "uid://b56folei78bis"
 
-[node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite", "audio")]
+[node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite", "audio", "button")]
 script = ExtResource("1_4wxud")
 properties = Array[ExtResource("2_317f5")]([SubResource("Resource_3jx18"), SubResource("Resource_mgo4r")])
 timer = NodePath("Timer")
@@ -29,6 +29,7 @@ sprite = NodePath("Button/Sprite2D2")
 audio = NodePath("tick")
 sprite_left = ExtResource("3_b4fcd")
 sprite_right = ExtResource("3_317f5")
+button = NodePath("Button")
 
 [node name="Button" type="TextureButton" parent="." unique_id=2078144194]
 anchors_preset = 8
@@ -44,6 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Button" unique_id=1720834859]
+texture_filter = 1
 position = Vector2(6, 4)
 texture = ExtResource("3_b4fcd")
 

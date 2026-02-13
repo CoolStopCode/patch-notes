@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Patch Notes"
-run/main_scene="res://main/main.tscn"
+run/main_scene="uid://dtwykwm07uxi5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -53,3 +53,4 @@ LMB={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

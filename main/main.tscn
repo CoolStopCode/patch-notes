@@ -15,26 +15,26 @@
 
 [node name="main" type="Node2D" unique_id=762756189]
 
-[node name="cam" type="Camera2D" parent="." unique_id=1871032146 node_paths=PackedStringArray("parallax")]
-zoom = Vector2(5, 5)
-script = ExtResource("2_kfbq2")
-parallax = NodePath("../Parallax2D")
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="cam" unique_id=336630443]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=336630443]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3016.0
-offset_top = -1994.0
-offset_right = 3016.0
-offset_bottom = 1886.0
+offset_left = -500000.0
+offset_top = -500000.0
+offset_right = 500000.0
+offset_bottom = 500000.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0774323, 0.10635611, 0.14767575, 1)
+metadata/_edit_lock_ = true
+
+[node name="cam" type="Camera2D" parent="." unique_id=1871032146 node_paths=PackedStringArray("parallax")]
+zoom = Vector2(5, 5)
+script = ExtResource("2_kfbq2")
+parallax = NodePath("../Parallax2D")
 metadata/_edit_lock_ = true
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1740911388]
@@ -43,6 +43,7 @@ repeat_size = Vector2(256, 256)
 repeat_times = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1453103106]
+texture_filter = 1
 texture = ExtResource("1_3wy1v")
 
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
@@ -63,6 +64,9 @@ position = Vector2(176, -44)
 [node name="toggle_node" parent="nodes" unique_id=296866800 instance=ExtResource("8_bsumw")]
 position = Vector2(220, -44)
 
+[node name="flip_count_node" parent="nodes" unique_id=1350815466 instance=ExtResource("12_fwcvl")]
+position = Vector2(264, -44)
+
 [node name="connections" type="Node2D" parent="." unique_id=1328758278]
 script = ExtResource("5_grrlh")
 line_scene = ExtResource("6_kfbq2")
@@ -72,6 +76,3 @@ offset_left = 43.0
 offset_top = 5.0
 offset_right = 143.0
 offset_bottom = 65.0
-
-[node name="flip_count_node" parent="." unique_id=1350815466 instance=ExtResource("12_fwcvl")]
-position = Vector2(264, -44)

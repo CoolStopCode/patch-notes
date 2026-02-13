@@ -15,6 +15,7 @@ off_hover_texture = ExtResource("5_f0r6q")
 button_node = NodePath("TextureButton")
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=683327846]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

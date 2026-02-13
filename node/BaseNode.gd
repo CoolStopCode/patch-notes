@@ -52,6 +52,8 @@ func _ready():
 	
 	# Force the generic array data into the typed array
 	node.properties.assign(duplicated_props)
+	if node.has_method("start_drag"):
+		node.start_drag()
 	
 	initiate_children()
 
@@ -71,21 +73,25 @@ func receive_input(port := 0):
 	elif node_state == Constants.NodeState.BROKEN:
 		return
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed and mouse_hovering:
+		if (event.pressed and mouse_hovering) and not mouse_dragging:
 			get_viewport().set_input_as_handled()
 			
 			distance_moved = Vector2(0, 0)
 			drag_offset = global_position - get_global_mouse_position()
 			mouse_dragging = true
 			Cursor.dragging = true
+			if node.has_method("start_drag"):
+				node.start_drag()
 		else:
 			if mouse_dragging:
 				if distance_moved == Vector2(0, 0):
 					GlobalNodes.right_menu.initialize(node)
 			Cursor.dragging = false
 			mouse_dragging = false
+			if node.has_method("end_drag"):
+				node.end_drag()
 
 	if event is InputEventMouseMotion and mouse_dragging:
 		var last_pos := global_position
@@ -109,7 +115,7 @@ func initiate_children():
 	shape.set_size(BODY_SIZE)
 	area_collision_node.shape = shape
 	
-	area_node.mouse_entered.connect(func(): 
+	area_node.mouse_entered.connect(func():
 		mouse_hovering = true
 		hover_rectangle_node.visible = true
 		Cursor.hovering = true

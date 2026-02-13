@@ -10,6 +10,7 @@ signal actuate_output(port : int)
 @export var audio : AudioStreamPlayer
 @export var sprite_left : Texture
 @export var sprite_right : Texture
+@export var button : TextureButton
 
 var running := false
 var hovering := false
@@ -45,6 +46,11 @@ func pulse():
 		audio.play()
 	pulse_tween.tween_property(base_node.body_sprite_node, "modulate", base, 0.3).from(bright)
 
+func start_drag():
+	button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func end_drag():
+	button.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func _on_button_pressed() -> void:
 	if running:

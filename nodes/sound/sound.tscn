@@ -28,6 +28,7 @@ min_value = 0.01
 max_value = 50.0
 min_slider = 0.1
 max_slider = 4.0
+step_slider = 0.01
 property_name = "Speed"
 metadata/_custom_type_script = "uid://bvd4hq8gi1kxc"
 

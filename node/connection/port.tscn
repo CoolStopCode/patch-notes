@@ -24,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=277114309]
+texture_filter = 1
 texture = ExtResource("2_u2ryo")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

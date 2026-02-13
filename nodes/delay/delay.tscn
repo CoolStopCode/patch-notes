@@ -16,4 +16,5 @@ script = ExtResource("1_l3200")
 properties = Array[ExtResource("2_1u6sv")]([SubResource("Resource_1u6sv")])
 
 [node name="Clock" type="Sprite2D" parent="." unique_id=1298922194]
+texture_filter = 1
 texture = ExtResource("4_6mtkf")

@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dtwykwm07uxi5"]
+
+[ext_resource type="PackedScene" uid="uid://dxu2sjo2474x" path="res://main/main.tscn" id="1_aewvg"]
+[ext_resource type="Theme" uid="uid://b2a3mxh5ehvvk" path="res://menubar/menu_bar.tres" id="2_et0yp"]
+[ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_1a1h6"]
+[ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/node_type.tscn" id="4_1a1h6"]
+
+[node name="window" type="Control" unique_id=1313663587]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=615982753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_behavior_recursive = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=97346073]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+physics_object_picking = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="main" parent="SubViewportContainer/SubViewport" unique_id=762756189 instance=ExtResource("1_aewvg")]
+
+[node name="Control" type="Control" parent="." unique_id=1513347353]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1413422481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=1879667139]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="MenuBar" type="MenuBar" parent="Control" unique_id=726522113]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 204.0
+offset_bottom = 30.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("2_et0yp")
+
+[node name="PopupMenu" type="PopupMenu" parent="Control/MenuBar" unique_id=1404865118]
+oversampling_override = 1.0
+title = "File"
+position = Vector2i(0, 31)
+size = Vector2i(132, 63)
+allow_search = false
+prefer_native_menu = true
+shrink_height = false
+shrink_width = false
+item_count = 2
+item_0/text = "Save"
+item_0/id = 0
+item_1/text = "Load"
+item_1/id = 1
+
+[node name="PopupMenu2" type="PopupMenu" parent="Control/MenuBar" unique_id=859280789]
+oversampling_override = 1.0
+title = "Edit"
+size = Vector2i(200, 100)
+theme = ExtResource("2_et0yp")
+prefer_native_menu = true
+item_count = 2
+item_0/text = "Undo"
+item_0/id = 0
+item_1/text = "Redo"
+item_1/id = 1
+
+[node name="nodes" type="HBoxContainer" parent="Control" unique_id=818164865]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_right = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("3_1a1h6")
+node_type_scene = ExtResource("4_1a1h6")
