@@ -26,7 +26,7 @@ func receive_input(_port := 0):
 
 func update_progress_bar():
 	if properties[0].value - 1 == 0:
-		progress_bar.size.x = 10.0
+		progress_bar.size.x = 6.0
 		return
 	var progress : float = float(current_count) / float(properties[0].value - 1)
-	progress_bar.size.x = round(progress * 10)
+	progress_bar.size.x = round(progress * 6)

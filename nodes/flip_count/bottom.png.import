@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtnth0pdv3w4k"
-path="res://.godot/imported/flip_count.png-766fff936726cbdc42b22b3eaff91cfc.ctex"
+uid="uid://cyr05x45ne43r"
+path="res://.godot/imported/bottom.png-932edc2072534ecc34aa2579e582e8d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://nodes/flip_count/flip_count.png"
-dest_files=["res://.godot/imported/flip_count.png-766fff936726cbdc42b22b3eaff91cfc.ctex"]
+source_file="res://nodes/flip_count/bottom.png"
+dest_files=["res://.godot/imported/bottom.png-932edc2072534ecc34aa2579e582e8d8.ctex"]
 
 [params]
 

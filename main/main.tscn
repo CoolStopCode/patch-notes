@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxu2sjo2474x"]
 
-[ext_resource type="Texture2D" uid="uid://vcl7pgwvma8r" path="res://assets/tile.png" id="1_3wy1v"]
+[ext_resource type="Texture2D" uid="uid://dftnhe1wq4f20" path="res://assets/tile2.png" id="2_fwcvl"]
 [ext_resource type="Script" uid="uid://c5tie26lw05s" path="res://main/cam.gd" id="2_kfbq2"]
 [ext_resource type="Script" uid="uid://dud2w01irceu4" path="res://main/nodes.gd" id="3_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://bery1yrvp4pyc" path="res://nodes/sound/sound_node.tscn" id="3_4dugh"]
@@ -44,7 +44,7 @@ repeat_times = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1453103106]
 texture_filter = 1
-texture = ExtResource("1_3wy1v")
+texture = ExtResource("2_fwcvl")
 
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
 script = ExtResource("3_0i4oc")

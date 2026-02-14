@@ -28,6 +28,11 @@ func receive_input(_port := 0):
 	if toggled:
 		emit_output(0)
 
+func start_drag():
+	button_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func end_drag():
+	button_node.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func _on_texture_button_pressed() -> void:
 	toggled = not toggled

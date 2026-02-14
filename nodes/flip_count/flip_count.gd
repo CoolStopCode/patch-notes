@@ -29,9 +29,9 @@ func receive_input(_port := 0):
 		outputting_top = not outputting_top
 	
 	if outputting_top:
-		emit_output(0)
-	else:
 		emit_output(1)
+	else:
+		emit_output(0)
 	update_sprites()
 
 func update_sprites():
@@ -41,7 +41,7 @@ func update_sprites():
 		flip_sprite.texture = bottom_texture
 	
 	if properties[0].value - 1 == 0:
-		progress_bar.size.x = 18.0
+		progress_bar.size.x = 12.0
 		return
 	var progress : float = float(current_count) / float(properties[0].value - 1)
-	progress_bar.size.x = round(progress * 18)
+	progress_bar.size.x = round(progress * 12)

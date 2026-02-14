@@ -32,13 +32,14 @@ shader_parameter/spread = 10.0
 shader_parameter/corner_radius = 11.0
 shader_parameter/opacity = 0.25
 
-[node name="right_menu" type="Control" unique_id=2040120194 node_paths=PackedStringArray("properties_container")]
+[node name="right_menu" type="Control" unique_id=2040120194 node_paths=PackedStringArray("properties_container", "state_button")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 60.0
 script = ExtResource("1_aqqhy")
 properties_container = NodePath("Control/properties")
+state_button = NodePath("Control/state")
 
 [node name="shadow" type="NinePatchRect" parent="." unique_id=1495510944]
 material = SubResource("ShaderMaterial_2h14e")

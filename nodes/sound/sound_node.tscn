@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bery1yrvp4pyc"]
 
-[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/node.tscn" id="1_3gs82"]
+[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_3gs82"]
 [ext_resource type="PackedScene" uid="uid://cbsxpbv0ehqvn" path="res://nodes/sound/sound.tscn" id="2_1ymeb"]
 [ext_resource type="Texture2D" uid="uid://cjvrr4tgnhn08" path="res://nodes/sound/sound.png" id="3_dppko"]
 

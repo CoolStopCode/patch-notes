@@ -1,6 +1,7 @@
 extends Control
 
 @export var properties_container: VBoxContainer
+@export var state_button : TextureButton
 
 var property_scenes: Dictionary = {
 	RightMenuArrows: preload("res://right_menu/properties/arrows.tscn"),
@@ -27,6 +28,8 @@ func initialize(node : Node2D):
 		var ui : Control = property_scenes[script].instantiate()
 		properties_container.add_child(ui)
 		ui.bind_to_property(property, node)
+	
+	state_button.load_state(node.base_node.node_state)
 	
 	active = true
 	show()

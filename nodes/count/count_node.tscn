@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwk368hj5olf3"]
 
-[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/node.tscn" id="1_bd3y7"]
+[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_bd3y7"]
 [ext_resource type="PackedScene" uid="uid://ysvcdv8n6720" path="res://nodes/count/count.tscn" id="2_qhtw3"]
 [ext_resource type="Texture2D" uid="uid://dji0b6d2nb0vy" path="res://nodes/count/count.png" id="3_ibxdi"]
 

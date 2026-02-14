@@ -50,11 +50,11 @@ func _ready():
 		return p.duplicate(true)
 	)
 	
-	# Force the generic array data into the typed array
 	node.properties.assign(duplicated_props)
 	if node.has_method("start_drag"):
 		node.start_drag()
-	
+	inputs_node.move_to_front()
+	outputs_node.move_to_front()
 	initiate_children()
 
 func load_node(node_scene):
