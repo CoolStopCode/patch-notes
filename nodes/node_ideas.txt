@@ -2,3 +2,6 @@
 2. Toggle node (click to toggle pass through, easier than going into option menu)
 4. Skin sound node (just a sound node, but instead of waveform, the entire node's a customizable texture)
 5. Button node (on click emits a single pulse)
+6. Random node (chooses randomly between outputs, can set chances)
+7. Teleport node (sender & receiver, can set ID/channel)
+8. Button node (emits pulse on click)

@@ -10,11 +10,12 @@ var node : Node
 @export_group("Body")
 @export var BODY_SIZE : Vector2
 @export var BODY_SPRITE : Texture2D
-
-@export_group("Ports")
 @export var ports_in : Array[Vector2]
 @export var ports_out : Array[Vector2]
+
+@export_group("Options")
 @export var node_state : Constants.NodeState = Constants.NodeState.NORMAL
+@export var right_menu_icon : Texture
 
 @export_group("Nodes (private)")
 @export var parent : Node

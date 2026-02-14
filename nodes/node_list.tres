@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://d2umlwy6xlmp2" path="res://nodes/count/mini.png" id="4_nq05t"]
 [ext_resource type="Texture2D" uid="uid://dbcyu7fkjb1kh" path="res://nodes/toggle/mini.png" id="5_npd1s"]
 [ext_resource type="PackedScene" uid="uid://2ce5xafhxovn" path="res://nodes/metronome/metronome_node.tscn" id="5_p202v"]
-[ext_resource type="Texture2D" uid="uid://bac41lvobvbqs" path="res://nodes/flip_count/old/mini.png" id="6_g5usu"]
 [ext_resource type="Texture2D" uid="uid://ds748lrsk88c5" path="res://nodes/delay/mini.png" id="7_1hq8w"]
 [ext_resource type="PackedScene" uid="uid://dwk368hj5olf3" path="res://nodes/count/count_node.tscn" id="7_trqhb"]
 [ext_resource type="PackedScene" uid="uid://53kebl2pvk8g" path="res://nodes/toggle/toggle_node.tscn" id="9_yixbm"]
+[ext_resource type="Texture2D" uid="uid://bg1fjqb2e2fcj" path="res://nodes/flip_count/mini.png" id="10_y0apq"]
 [ext_resource type="PackedScene" uid="uid://b0nm11hloorkq" path="res://nodes/flip_count/flip_count_node.tscn" id="11_wbw8c"]
 [ext_resource type="PackedScene" uid="uid://wgm1mfk1boxm" path="res://nodes/delay/delay_node.tscn" id="13_kqqvq"]
 
@@ -46,7 +46,7 @@ metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 [sub_resource type="Resource" id="Resource_wbw8c"]
 script = ExtResource("1_7ih71")
 name = "Flip Count"
-mini_icon = ExtResource("6_g5usu")
+mini_icon = ExtResource("10_y0apq")
 node_scene = ExtResource("11_wbw8c")
 metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 

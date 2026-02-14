@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_aehqe"]
 [ext_resource type="PackedScene" uid="uid://b37jyxra2py70" path="res://nodes/toggle/toggle.tscn" id="2_v8jeo"]
 [ext_resource type="Texture2D" uid="uid://cu7t420ftbcpw" path="res://nodes/toggle/toggle.png" id="3_hf7dk"]
+[ext_resource type="Texture2D" uid="uid://dubkr7qmn5865" path="res://nodes/toggle/icon.png" id="4_d8jnf"]
 
 [node name="toggle_node" type="Node2D" unique_id=300515006]
 
@@ -12,3 +13,4 @@ BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("3_hf7dk")
 ports_in = Array[Vector2]([Vector2(-6, 0)])
 ports_out = Array[Vector2]([Vector2(6, 0)])
+right_menu_icon = ExtResource("4_d8jnf")

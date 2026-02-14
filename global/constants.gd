@@ -1,7 +1,7 @@
 extends Node
 
 @export var GRID_SIZE := Vector2(4, 4)
-@export var NODE_LIST : NodeList = load("res://node/node_list.tres")
+@export var NODE_LIST : NodeList = load("res://nodes/node_list.tres")
 
 enum NodeState {
 	NORMAL,

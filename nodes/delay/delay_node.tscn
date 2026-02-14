@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_7efxc"]
 [ext_resource type="PackedScene" uid="uid://dt8bkdw4hgam6" path="res://nodes/delay/delay.tscn" id="2_hfk3y"]
 [ext_resource type="Texture2D" uid="uid://bd6hnai1ybd82" path="res://nodes/delay/delay.png" id="2_kh4xr"]
+[ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/delay/icon.png" id="4_sem8f"]
 
 [node name="delay_node" type="Node2D" unique_id=1064046719]
 
@@ -12,3 +13,4 @@ BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("2_kh4xr")
 ports_in = Array[Vector2]([Vector2(-6, 0)])
 ports_out = Array[Vector2]([Vector2(6, 0)])
+right_menu_icon = ExtResource("4_sem8f")

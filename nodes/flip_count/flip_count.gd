@@ -14,7 +14,7 @@ var current_count := 0
 var outputting_top := false
 
 func _ready() -> void:
-	pass
+	update_sprites()
 
 func property_changed(_property : RightMenuProperty):
 	pass

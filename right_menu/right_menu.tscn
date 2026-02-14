@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://08pc8uk0wtlx" path="res://right_menu/properties/file.tscn" id="14_m8ntj"]
 [ext_resource type="PackedScene" uid="uid://b6qklynirtdbh" path="res://right_menu/properties/bool.tscn" id="15_3gduk"]
 [ext_resource type="Texture2D" uid="uid://bvas8emwb2fee" path="res://right_menu/ui/buttons/pass_press.png" id="15_8gb4x"]
-[ext_resource type="Texture2D" uid="uid://fm1r3ouexi27" path="res://nodes/sound/sound_icon.png" id="16_pq21j"]
+[ext_resource type="Texture2D" uid="uid://fm1r3ouexi27" path="res://nodes/sound/icon.png" id="16_pq21j"]
 [ext_resource type="Texture2D" uid="uid://bulrahkvbftyq" path="res://right_menu/ui/buttons/pass_hover.png" id="16_q1axu"]
 [ext_resource type="Texture2D" uid="uid://bgmh370ihia14" path="res://right_menu/ui/buttons/broken.png" id="17_qkuk7"]
 [ext_resource type="Texture2D" uid="uid://d3nonodyk8bhr" path="res://right_menu/ui/buttons/broken_press.png" id="18_wxghv"]
@@ -32,7 +32,7 @@ shader_parameter/spread = 10.0
 shader_parameter/corner_radius = 11.0
 shader_parameter/opacity = 0.25
 
-[node name="right_menu" type="Control" unique_id=2040120194 node_paths=PackedStringArray("properties_container", "state_button")]
+[node name="right_menu" type="Control" unique_id=2040120194 node_paths=PackedStringArray("properties_container", "state_button", "icon_node")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
@@ -40,6 +40,7 @@ offset_bottom = 60.0
 script = ExtResource("1_aqqhy")
 properties_container = NodePath("Control/properties")
 state_button = NodePath("Control/state")
+icon_node = NodePath("Control/icon")
 
 [node name="shadow" type="NinePatchRect" parent="." unique_id=1495510944]
 material = SubResource("ShaderMaterial_2h14e")
