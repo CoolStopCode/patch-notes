@@ -6,5 +6,5 @@ func _on_file_id_pressed(id: int) -> void:
 		Save.save()
 
 
-func _on_edit_id_pressed(id: int) -> void:
+func _on_edit_id_pressed(_id: int) -> void:
 	pass # Replace with function body.

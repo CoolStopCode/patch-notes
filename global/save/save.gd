@@ -12,4 +12,6 @@ func save():
 		file_save.nodes.append(node_save)
 	file_save.connections = ConnectionManager.connections
 	
-	ResourceSaver.save(file_save, "res://save.tres")
+	var err = ResourceSaver.save(file_save, "res://save.tres")
+	if err != OK:
+		print("Save failed:", err)

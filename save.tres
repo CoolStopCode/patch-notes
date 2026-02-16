@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="FileSave" format=3]
+
+[ext_resource type="Script" path="res://classes/save/file_save.gd" id="1_dvlvu"]
+
+[resource]
+script = ExtResource("1_dvlvu")

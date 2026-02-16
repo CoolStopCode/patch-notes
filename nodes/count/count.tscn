@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://ysvcdv8n6720"]
 
 [ext_resource type="Script" uid="uid://cmw070v38wsen" path="res://nodes/count/count.gd" id="1_4eduf"]
-[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_xigt8"]
-[ext_resource type="Script" uid="uid://dytrld4dmvbom" path="res://classes/right_menu_properties/right_menu_arrows.gd" id="3_hdkxo"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="2_xigt8"]
+[ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="3_hdkxo"]
 
 [sub_resource type="Resource" id="Resource_xxmkq"]
 script = ExtResource("3_hdkxo")
 value = 2
 min_value = 1
+max_value = 1000
 property_name = "Count"
-metadata/_custom_type_script = "uid://dytrld4dmvbom"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [node name="count" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("1_4eduf")
