@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://wdjcdakcpqo8"]
+
+[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="1_hbsfg"]
+[ext_resource type="Script" uid="uid://cpng8eh66dawo" path="res://inspector/properties/checkbox.gd" id="1_p66om"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="2_a8sem"]
+[ext_resource type="Texture2D" uid="uid://knuj61vunu70" path="res://inspector/ui/checkbox/checkbox_false.png" id="2_uivtc"]
+[ext_resource type="Texture2D" uid="uid://doep4bryxrc5e" path="res://inspector/ui/checkbox/checkbox_true.png" id="3_a8sem"]
+
+[node name="checkbox" type="Control" unique_id=1089333438 node_paths=PackedStringArray("name_node", "texture_rect")]
+custom_minimum_size = Vector2(92, 6)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p66om")
+name_node = NodePath("name")
+texture_rect = NodePath("Button/TextureRect")
+off_texture = ExtResource("2_uivtc")
+on_texture = ExtResource("3_a8sem")
+
+[node name="name" type="Label" parent="." unique_id=854757395]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+text = "property"
+label_settings = ExtResource("1_hbsfg")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1663868823]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_a8sem")
+
+[node name="TextureRect" type="TextureRect" parent="Button" unique_id=1118882268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_a8sem")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

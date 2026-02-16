@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dtwykwm07uxi5"]
 
-[ext_resource type="PackedScene" uid="uid://dxu2sjo2474x" path="res://main/main.tscn" id="1_aewvg"]
+[ext_resource type="PackedScene" uid="uid://dxu2sjo2474x" path="res://main/workspace.tscn" id="1_aewvg"]
 [ext_resource type="Theme" uid="uid://b2a3mxh5ehvvk" path="res://menubar/menu_bar.tres" id="2_et0yp"]
 [ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_1a1h6"]
 [ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/node_type.tscn" id="4_1a1h6"]
+[ext_resource type="PackedScene" uid="uid://bvuw8a1l3xivn" path="res://inspector/inspector.tscn" id="5_g3nch"]
 
 [node name="window" type="Control" unique_id=1313663587]
 layout_mode = 3
@@ -111,3 +112,18 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("3_1a1h6")
 node_type_scene = ExtResource("4_1a1h6")
+
+[node name="inspector" parent="." unique_id=1063628290 instance=ExtResource("5_g3nch")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -612.0
+offset_top = -432.0
+offset_right = -512.0
+offset_bottom = -362.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(6, 6)

@@ -1,0 +1,59 @@
+[gd_resource type="Theme" format=3 uid="uid://4bven1lkpiqj"]
+
+[ext_resource type="FontFile" uid="uid://bqh7wm4k4bepm" path="res://assets/font/kiwi4.ttf" id="1_4u47k"]
+[ext_resource type="Texture2D" uid="uid://b1w7ckh3rq5h" path="res://inspector/ui/slider/grabber_hover.png" id="2_ge1kt"]
+[ext_resource type="Texture2D" uid="uid://ckduxsvcbj1ke" path="res://inspector/ui/slider/grabber.png" id="3_mggdt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3672v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bydeo"]
+bg_color = Color(1, 1, 1, 0.20392157)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51k5n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sggbr"]
+bg_color = Color(1, 1, 1, 0.30588236)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5alx7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a437r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51k5n"]
+bg_color = Color(0.28627452, 0.3254902, 0.34509805, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bydeo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6fegi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ge1kt"]
+
+[resource]
+default_font = ExtResource("1_4u47k")
+default_font_size = 5
+Button/styles/disabled = SubResource("StyleBoxEmpty_3672v")
+Button/styles/hover = SubResource("StyleBoxFlat_bydeo")
+Button/styles/normal = SubResource("StyleBoxEmpty_51k5n")
+Button/styles/pressed = SubResource("StyleBoxFlat_sggbr")
+HSlider/icons/grabber = ExtResource("3_mggdt")
+HSlider/icons/grabber_highlight = ExtResource("2_ge1kt")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_5alx7")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_a437r")
+HSlider/styles/slider = SubResource("StyleBoxFlat_51k5n")
+LineEdit/colors/caret_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+LineEdit/colors/font_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+LineEdit/constants/minimum_character_width = 0
+LineEdit/font_sizes/font_size = 5
+LineEdit/fonts/font = ExtResource("1_4u47k")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_bydeo")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_6fegi")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_ge1kt")

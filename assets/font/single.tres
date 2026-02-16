@@ -5,3 +5,4 @@
 [resource]
 font = ExtResource("1_lgjvu")
 font_size = 5
+font_color = Color(0.92156863, 0.92941177, 0.9137255, 1)

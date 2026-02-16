@@ -88,7 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			if mouse_dragging:
 				if distance_moved == Vector2(0, 0):
-					GlobalNodes.right_menu.initialize(node)
+					GlobalNodes.inspector.initialize(node)
 			Cursor.dragging = false
 			mouse_dragging = false
 			if node.has_method("end_drag"):

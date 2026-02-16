@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://bvuw8a1l3xivn"]
+
+[ext_resource type="Texture2D" uid="uid://6vwaq4bkv6qe" path="res://inspector/ui/panel.png" id="1_25v8v"]
+[ext_resource type="Script" uid="uid://dxidv2tldn8jv" path="res://inspector/inspector.gd" id="1_hvs03"]
+[ext_resource type="Texture2D" uid="uid://ctw0junlp5n77" path="res://inspector/ui/buttons/delete.png" id="2_p64rp"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="2_p862u"]
+[ext_resource type="Texture2D" uid="uid://ctxlm3ma4eu61" path="res://inspector/ui/buttons/duplicate.png" id="3_e8c74"]
+[ext_resource type="Texture2D" uid="uid://ck6wq8srxwul3" path="res://inspector/ui/buttons/normal.png" id="4_mj7ji"]
+[ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/delay/icon.png" id="5_mj7ji"]
+[ext_resource type="Script" uid="uid://bexdng7pcgnsp" path="res://inspector/state_button.gd" id="5_xj2kl"]
+[ext_resource type="Texture2D" uid="uid://cat3amsm3f710" path="res://inspector/ui/buttons/pass.png" id="7_11p25"]
+[ext_resource type="PackedScene" uid="uid://c7vpfpgd7v5u5" path="res://inspector/properties/arrows.tscn" id="7_ukqej"]
+[ext_resource type="Texture2D" uid="uid://clapmhhos6k4h" path="res://inspector/ui/buttons/broken.png" id="8_hvs03"]
+[ext_resource type="PackedScene" uid="uid://xasjqvbp7v56" path="res://inspector/properties/slider.tscn" id="8_y40wd"]
+[ext_resource type="PackedScene" uid="uid://wdjcdakcpqo8" path="res://inspector/properties/checkbox.tscn" id="9_qgfes"]
+[ext_resource type="PackedScene" uid="uid://dranpyvfut750" path="res://inspector/properties/file.tscn" id="10_qy24m"]
+
+[node name="inspector" type="Control" unique_id=1063628290 node_paths=PackedStringArray("properties_container", "state_button", "icon_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 70.0
+script = ExtResource("1_hvs03")
+properties_container = NodePath("properties")
+state_button = NodePath("state")
+icon_node = NodePath("icon")
+
+[node name="bg" type="NinePatchRect" parent="." unique_id=2129196231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_25v8v")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="delete" type="Button" parent="." unique_id=731586698]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -34.0
+offset_top = 4.0
+offset_right = -24.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource("2_p862u")
+
+[node name="TextureRect" type="TextureRect" parent="delete" unique_id=1209473373]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p64rp")
+
+[node name="duplicate" type="Button" parent="." unique_id=891462766]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 4.0
+offset_right = -14.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource("2_p862u")
+
+[node name="TextureRect" type="TextureRect" parent="duplicate" unique_id=1450053557]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_e8c74")
+
+[node name="state" type="Button" parent="." unique_id=1742768030 node_paths=PackedStringArray("texture_rect")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -14.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource("2_p862u")
+script = ExtResource("5_xj2kl")
+normal_texture = ExtResource("4_mj7ji")
+pass_texture = ExtResource("7_11p25")
+broken_texture = ExtResource("8_hvs03")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="state" unique_id=1900099764]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mj7ji")
+
+[node name="icon" type="TextureRect" parent="." unique_id=401588696]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 14.0
+offset_bottom = 14.0
+texture = ExtResource("5_mj7ji")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=113047279]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 16.0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=73461224]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_top = 15.0
+offset_right = -3.0
+offset_bottom = 16.0
+grow_horizontal = 0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="properties" type="VBoxContainer" parent="." unique_id=355710217]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 96.0
+offset_bottom = 58.0
+theme_override_constants/separation = 1
+
+[node name="arrows" parent="properties" unique_id=1089333438 instance=ExtResource("7_ukqej")]
+layout_mode = 2
+
+[node name="slider" parent="properties" unique_id=1502196512 instance=ExtResource("8_y40wd")]
+layout_mode = 2
+
+[node name="checkbox" parent="properties" unique_id=1828453161 instance=ExtResource("9_qgfes")]
+layout_mode = 2
+
+[node name="file" parent="properties" unique_id=621781365 instance=ExtResource("10_qy24m")]
+layout_mode = 2
+
+[connection signal="pressed" from="state" to="state" method="_on_pressed"]
