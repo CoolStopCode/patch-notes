@@ -58,7 +58,7 @@ func cleanup_points():
 	if preview_line.get_point_count() < 3:
 		var pos1 := preview_line.get_point_position(0)
 		var pos2 := preview_line.get_point_position(preview_line.get_point_count() - 1)
-		var midpoint := (pos1 + pos2) / 2
+		var midpoint : Vector2 = Constants.snap_to_grid((pos1 + pos2) / 2)
 		preview_line.add_point(midpoint, 1)
 		preview_line.add_point(midpoint, 1)
 
