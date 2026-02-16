@@ -70,3 +70,4 @@ access = 2
 use_native_dialog = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_selected"]
