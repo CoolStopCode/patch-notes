@@ -1,29 +1,29 @@
 [gd_scene format=3 uid="uid://rvymux2jgxrj"]
 
 [ext_resource type="Script" uid="uid://deha5io8tt6o3" path="res://nodes/metronome/metronome.gd" id="1_4wxud"]
-[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_317f5"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="2_rnel1"]
 [ext_resource type="Texture2D" uid="uid://djofayn5paan1" path="res://nodes/metronome/metronome_2.png" id="3_317f5"]
 [ext_resource type="Texture2D" uid="uid://dl7pi3317gdr3" path="res://nodes/metronome/metronome_1.png" id="3_b4fcd"]
-[ext_resource type="Script" uid="uid://dytrld4dmvbom" path="res://classes/right_menu_properties/right_menu_arrows.gd" id="3_x33jy"]
-[ext_resource type="Script" uid="uid://b56folei78bis" path="res://classes/right_menu_properties/right_menu_bool.gd" id="4_rnel1"]
+[ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="3_mgo4r"]
+[ext_resource type="Script" uid="uid://b4mbe53ef6bwf" path="res://classes/inspector_properties/inspector_checkbox.gd" id="4_37m8p"]
 [ext_resource type="AudioStream" uid="uid://4og2vyd3ss8m" path="res://nodes/metronome/metronome.mp3" id="6_3jx18"]
 
-[sub_resource type="Resource" id="Resource_3jx18"]
-script = ExtResource("3_x33jy")
+[sub_resource type="Resource" id="Resource_2ofr7"]
+script = ExtResource("3_mgo4r")
 value = 120
 min_value = 1
 max_value = 10000
 property_name = "BPM"
-metadata/_custom_type_script = "uid://dytrld4dmvbom"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
-[sub_resource type="Resource" id="Resource_mgo4r"]
-script = ExtResource("4_rnel1")
+[sub_resource type="Resource" id="Resource_lynna"]
+script = ExtResource("4_37m8p")
 property_name = "Sound"
-metadata/_custom_type_script = "uid://b56folei78bis"
+metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
 [node name="metronome" type="Node2D" unique_id=214276474 node_paths=PackedStringArray("timer", "sprite", "audio", "button")]
 script = ExtResource("1_4wxud")
-properties = Array[ExtResource("2_317f5")]([SubResource("Resource_3jx18"), SubResource("Resource_mgo4r")])
+properties = Array[ExtResource("2_rnel1")]([SubResource("Resource_2ofr7"), SubResource("Resource_lynna")])
 timer = NodePath("Timer")
 sprite = NodePath("Button/Sprite2D2")
 audio = NodePath("tick")

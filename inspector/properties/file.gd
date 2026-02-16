@@ -8,10 +8,10 @@ extends Control
 @export var button_node : Button
 @export var file_dialog: FileDialog
 
-var property: RightMenuProperty 
+var property: InspectorProperty 
 var node: Node
 
-func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
+func bind_to_property(prop: InspectorProperty, target_node: Node) -> void:
 	property = prop
 	node = target_node
 

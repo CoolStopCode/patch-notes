@@ -2,7 +2,7 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[RightMenuProperty]
+@export var properties : Array[InspectorProperty]
 @export var base_node : Node
 
 @export var on_texture : Texture
@@ -18,7 +18,7 @@ var toggled := true
 func _ready() -> void:
 	update_texture()
 
-func property_changed(_property : RightMenuProperty):
+func property_changed(_property : InspectorProperty):
 	pass
 
 func emit_output(port := 0):

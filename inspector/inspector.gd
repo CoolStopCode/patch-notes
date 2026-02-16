@@ -5,10 +5,10 @@ extends Control
 @export var icon_node : TextureRect
 
 var property_scenes: Dictionary = {
-	RightMenuArrows: preload("res://inspector/properties/arrows.tscn"),
-	RightMenuBool: preload("res://inspector/properties/checkbox.tscn"),
-	RightMenuFile: preload("res://inspector/properties/file.tscn"),
-	RightMenuSlider: preload("res://inspector/properties/slider.tscn")
+	InspectorCheckbox: preload("res://inspector/properties/checkbox.tscn"),
+	InspectorFile: preload("res://inspector/properties/file.tscn"),
+	InspectorArrows: preload("res://inspector/properties/arrows.tscn"),
+	InspectorSlider: preload("res://inspector/properties/slider.tscn")
 }
 
 var active_node : Node
@@ -22,7 +22,7 @@ func _ready() -> void:
 func initialize(node : Node2D):
 	Constants.clear_children(properties_container)
 	active_node = node
-	for property: RightMenuProperty in node.properties:
+	for property: InspectorProperty in node.properties:
 		var script: Script = property.get_script()
 		var ui : Control = property_scenes[script].instantiate()
 		properties_container.add_child(ui)

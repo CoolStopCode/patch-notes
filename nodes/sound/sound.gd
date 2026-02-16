@@ -2,7 +2,7 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[RightMenuProperty]
+@export var properties : Array[InspectorProperty]
 @export var base_node : Node
 
 @export var audio_node : AudioStreamPlayer
@@ -54,7 +54,7 @@ func _ready() -> void:
 		FREQ_MAX_VALUE
 	)
 
-func property_changed(property : RightMenuProperty):
+func property_changed(property : InspectorProperty):
 	if property == properties[0]:
 		audio_file = load(property.path)
 		audio_node.stream = audio_file

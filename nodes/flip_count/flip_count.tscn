@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cgg1kky72m4fc"]
 
 [ext_resource type="Script" uid="uid://coyocvnlddnb6" path="res://nodes/flip_count/flip_count.gd" id="1_5qba8"]
-[ext_resource type="Script" uid="uid://bisg63t7jbdf8" path="res://classes/right_menu_property.gd" id="2_i27dv"]
-[ext_resource type="Script" uid="uid://dytrld4dmvbom" path="res://classes/right_menu_properties/right_menu_arrows.gd" id="3_yjqx1"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="2_i27dv"]
+[ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="3_yjqx1"]
 [ext_resource type="Texture2D" uid="uid://cyr05x45ne43r" path="res://nodes/flip_count/bottom.png" id="4_yjqx1"]
 [ext_resource type="Texture2D" uid="uid://dqx2swl5l1c4x" path="res://nodes/flip_count/top.png" id="5_wutjl"]
 
@@ -10,8 +10,9 @@
 script = ExtResource("3_yjqx1")
 value = 2
 min_value = 1
+max_value = 1000
 property_name = "Count"
-metadata/_custom_type_script = "uid://dytrld4dmvbom"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [node name="template" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("progress_bar", "flip_sprite")]
 script = ExtResource("1_5qba8")

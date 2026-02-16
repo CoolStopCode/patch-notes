@@ -2,7 +2,7 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[RightMenuProperty]
+@export var properties : Array[InspectorProperty]
 @export var base_node : Node
 
 @export var timer : Timer
@@ -16,7 +16,7 @@ var running := false
 var hovering := false
 var pulse_tween : Tween
 
-func property_changed(property : RightMenuProperty):
+func property_changed(property : InspectorProperty):
 	if property == properties[0]:
 		timer.wait_time = 60.0 / property.value
 

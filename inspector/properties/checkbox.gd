@@ -9,10 +9,10 @@ extends Control
 @export var off_texture : Texture
 @export var on_texture : Texture
 
-var property: RightMenuProperty 
+var property: InspectorProperty 
 var node: Node
 
-func bind_to_property(prop: RightMenuProperty, target_node: Node) -> void:
+func bind_to_property(prop: InspectorProperty, target_node: Node) -> void:
 	property = prop
 	node = target_node
 
