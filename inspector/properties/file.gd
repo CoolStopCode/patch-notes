@@ -43,4 +43,4 @@ func _on_file_selected(selected_path: String) -> void:
 
 func property_changed():
 	property.path = path
-	node.property_changed(property)
+	node.property_changed.emit(property)

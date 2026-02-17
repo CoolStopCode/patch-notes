@@ -2,7 +2,6 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[InspectorProperty]
 @export var base_node : Node
 
 @export var timer : Timer
@@ -15,6 +14,10 @@ signal actuate_output(port : int)
 var running := false
 var hovering := false
 var pulse_tween : Tween
+var properties : Array[InspectorProperty]
+
+func _ready() -> void:
+	properties = base_node.properties
 
 func property_changed(property : InspectorProperty):
 	if property == properties[0]:

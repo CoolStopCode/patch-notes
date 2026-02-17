@@ -33,7 +33,7 @@ func update_textures():
 
 func property_changed():
 	property.value = value
-	node.property_changed(property)
+	node.property_changed.emit(property)
 
 
 func _on_button_pressed() -> void:

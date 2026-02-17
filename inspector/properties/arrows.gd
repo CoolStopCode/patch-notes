@@ -103,5 +103,5 @@ func _on_line_edit_text_submitted(_new_text: String) -> void:
 
 func property_changed():
 	property.value = value
-	node.property_changed(property)
+	node.property_changed.emit(property)
 	

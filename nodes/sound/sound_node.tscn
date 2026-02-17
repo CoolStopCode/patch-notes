@@ -4,6 +4,33 @@
 [ext_resource type="PackedScene" uid="uid://cbsxpbv0ehqvn" path="res://nodes/sound/sound.tscn" id="2_1ymeb"]
 [ext_resource type="Texture2D" uid="uid://cjvrr4tgnhn08" path="res://nodes/sound/sound.png" id="3_dppko"]
 [ext_resource type="Texture2D" uid="uid://cthwa23y0431c" path="res://nodes/sound/icon3.png" id="4_1ymeb"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_y5pa0"]
+[ext_resource type="Script" uid="uid://dpcev18b4nbi1" path="res://classes/inspector_properties/inspector_file.gd" id="6_cgfmt"]
+[ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="7_snjxo"]
+
+[sub_resource type="Resource" id="Resource_lwpcr"]
+script = ExtResource("6_cgfmt")
+extensions = ["wav", "mp3"]
+property_name = "Source"
+metadata/_custom_type_script = "uid://dpcev18b4nbi1"
+
+[sub_resource type="Resource" id="Resource_xtdwe"]
+script = ExtResource("7_snjxo")
+value = 1.0
+max_slider = 2.0
+property_name = "Volume"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_e5g2c"]
+script = ExtResource("7_snjxo")
+value = 1.0
+min_value = 0.01
+max_value = 1000.0
+min_slider = 0.1
+max_slider = 5.0
+step_slider = 0.01
+property_name = "Speed"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [node name="sound_node" type="Node2D" unique_id=300515006]
 
@@ -14,3 +41,4 @@ BODY_SPRITE = ExtResource("3_dppko")
 ports_in = Array[Vector2]([Vector2(-10, 0)])
 ports_out = Array[Vector2]([Vector2(10, 0)])
 right_menu_icon = ExtResource("4_1ymeb")
+properties = Array[ExtResource("5_y5pa0")]([SubResource("Resource_lwpcr"), SubResource("Resource_xtdwe"), SubResource("Resource_e5g2c")])

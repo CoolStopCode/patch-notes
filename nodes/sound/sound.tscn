@@ -1,39 +1,11 @@
 [gd_scene format=3 uid="uid://cbsxpbv0ehqvn"]
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
-[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="2_sbhlm"]
-[ext_resource type="Script" uid="uid://dpcev18b4nbi1" path="res://classes/inspector_properties/inspector_file.gd" id="3_wg1kc"]
-[ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="4_081ax"]
 [ext_resource type="Texture2D" uid="uid://blt5yrc1id2v5" path="res://nodes/sound/waveform.png" id="6_sbhlm"]
 [ext_resource type="AudioStream" uid="uid://bxodb2ak8p8u" path="res://assets/demo/arp.wav" id="6_wg1kc"]
 
-[sub_resource type="Resource" id="Resource_iml68"]
-script = ExtResource("3_wg1kc")
-extensions = ["mp3", "wav"]
-property_name = "Source"
-metadata/_custom_type_script = "uid://dpcev18b4nbi1"
-
-[sub_resource type="Resource" id="Resource_gkhin"]
-script = ExtResource("4_081ax")
-value = 1.0
-max_value = 10.0
-max_slider = 2.0
-property_name = "Volume"
-metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
-
-[sub_resource type="Resource" id="Resource_6ft8t"]
-script = ExtResource("4_081ax")
-value = 1.0
-min_value = 0.01
-min_slider = 0.01
-max_slider = 4.0
-step_slider = 0.01
-property_name = "Speed"
-metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
-
 [node name="sound" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("audio_node", "waveform_node")]
 script = ExtResource("2_84dgq")
-properties = Array[ExtResource("2_sbhlm")]([SubResource("Resource_iml68"), SubResource("Resource_gkhin"), SubResource("Resource_6ft8t")])
 audio_node = NodePath("AudioStreamPlayer")
 waveform_node = NodePath("waveform")
 waveform_texture = ExtResource("6_sbhlm")

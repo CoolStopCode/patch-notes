@@ -3,6 +3,7 @@ class_name BaseNode
 
 signal actuate_output(port : int)
 signal move
+signal property_changed(property : InspectorProperty)
 
 @export var NODE_SCENE : PackedScene
 var node : Node
@@ -16,6 +17,7 @@ var node : Node
 @export_group("Options")
 @export var node_state : Constants.NodeState = Constants.NodeState.NORMAL
 @export var right_menu_icon : Texture
+@export var properties : Array[InspectorProperty]
 
 @export_group("Nodes (private)")
 @export var parent : Node
@@ -54,6 +56,7 @@ func _ready():
 	node.properties.assign(duplicated_props)
 	if node.has_method("start_drag"):
 		node.start_drag()
+	property_changed.connect(node.property_changed)
 	inputs_node.move_to_front()
 	outputs_node.move_to_front()
 	initiate_children()
@@ -88,7 +91,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			if mouse_dragging:
 				if distance_moved == Vector2(0, 0):
-					GlobalNodes.inspector.initialize(node)
+					GlobalNodes.inspector.initialize(self)
 			Cursor.dragging = false
 			mouse_dragging = false
 			if node.has_method("end_drag"):

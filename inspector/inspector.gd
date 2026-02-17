@@ -28,8 +28,8 @@ func initialize(node : Node2D):
 		properties_container.add_child(ui)
 		ui.bind_to_property(property, node)
 	
-	state_button.load_state(node.base_node.node_state)
-	icon_node.texture = node.base_node.right_menu_icon
+	state_button.load_state(node.node_state)
+	icon_node.texture = node.right_menu_icon
 	active = true
 	show()
 

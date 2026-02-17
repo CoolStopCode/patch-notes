@@ -4,13 +4,8 @@
 [ext_resource type="Script" uid="uid://c5tie26lw05s" path="res://main/cam.gd" id="2_kfbq2"]
 [ext_resource type="Script" uid="uid://dud2w01irceu4" path="res://main/nodes.gd" id="3_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://bery1yrvp4pyc" path="res://nodes/sound/sound_node.tscn" id="3_4dugh"]
-[ext_resource type="PackedScene" uid="uid://wgm1mfk1boxm" path="res://nodes/delay/delay_node.tscn" id="4_67ri8"]
-[ext_resource type="PackedScene" uid="uid://2ce5xafhxovn" path="res://nodes/metronome/metronome_node.tscn" id="5_4dugh"]
 [ext_resource type="Script" uid="uid://joxfc4vkp5jo" path="res://main/connections.gd" id="5_grrlh"]
 [ext_resource type="PackedScene" uid="uid://clrqt7pijmicg" path="res://node/connection/line.tscn" id="6_kfbq2"]
-[ext_resource type="PackedScene" uid="uid://dwk368hj5olf3" path="res://nodes/count/count_node.tscn" id="7_0i4oc"]
-[ext_resource type="PackedScene" uid="uid://53kebl2pvk8g" path="res://nodes/toggle/toggle_node.tscn" id="8_bsumw"]
-[ext_resource type="PackedScene" uid="uid://b0nm11hloorkq" path="res://nodes/flip_count/flip_count_node.tscn" id="12_fwcvl"]
 
 [node name="workspace" type="Node2D" unique_id=762756189]
 
@@ -50,21 +45,6 @@ script = ExtResource("3_0i4oc")
 
 [node name="sound_node" parent="nodes" unique_id=266324404 instance=ExtResource("3_4dugh")]
 position = Vector2(44, -44)
-
-[node name="delay_node" parent="nodes" unique_id=1799708002 instance=ExtResource("4_67ri8")]
-position = Vector2(132, -44)
-
-[node name="metronome_node" parent="nodes" unique_id=1064046719 instance=ExtResource("5_4dugh")]
-position = Vector2(88, -44)
-
-[node name="count_node" parent="nodes" unique_id=300515006 instance=ExtResource("7_0i4oc")]
-position = Vector2(176, -44)
-
-[node name="toggle_node" parent="nodes" unique_id=296866800 instance=ExtResource("8_bsumw")]
-position = Vector2(220, -44)
-
-[node name="flip_count_node" parent="nodes" unique_id=1350815466 instance=ExtResource("12_fwcvl")]
-position = Vector2(264, -44)
 
 [node name="connections" type="Node2D" parent="." unique_id=1328758278]
 script = ExtResource("5_grrlh")
