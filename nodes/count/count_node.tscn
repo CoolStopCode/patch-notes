@@ -4,6 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://ysvcdv8n6720" path="res://nodes/count/count.tscn" id="2_qhtw3"]
 [ext_resource type="Texture2D" uid="uid://dji0b6d2nb0vy" path="res://nodes/count/count.png" id="3_ibxdi"]
 [ext_resource type="Texture2D" uid="uid://clpkyxbf751py" path="res://nodes/count/icon2.png" id="4_py11v"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_ab1hs"]
+[ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="6_ro87n"]
+
+[sub_resource type="Resource" id="Resource_c6fri"]
+script = ExtResource("6_ro87n")
+value = 2
+min_value = 1
+max_value = 1000
+property_name = "Count"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [node name="count_node" type="Node2D" unique_id=300515006]
 
@@ -14,3 +24,4 @@ BODY_SPRITE = ExtResource("3_ibxdi")
 ports_in = Array[Vector2]([Vector2(-6, 0)])
 ports_out = Array[Vector2]([Vector2(6, 0)])
 right_menu_icon = ExtResource("4_py11v")
+properties = Array[ExtResource("5_ab1hs")]([SubResource("Resource_c6fri")])

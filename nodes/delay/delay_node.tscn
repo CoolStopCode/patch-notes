@@ -4,6 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dt8bkdw4hgam6" path="res://nodes/delay/delay.tscn" id="2_hfk3y"]
 [ext_resource type="Texture2D" uid="uid://bd6hnai1ybd82" path="res://nodes/delay/delay.png" id="2_kh4xr"]
 [ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/delay/icon.png" id="4_sem8f"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_ni1yb"]
+[ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="6_332yh"]
+
+[sub_resource type="Resource" id="Resource_jrjdy"]
+script = ExtResource("6_332yh")
+value = 0.5
+max_value = 1000.0
+max_slider = 5.0
+step_slider = 0.001
+property_name = "Delay"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [node name="delay_node" type="Node2D" unique_id=1064046719]
 
@@ -14,3 +25,4 @@ BODY_SPRITE = ExtResource("2_kh4xr")
 ports_in = Array[Vector2]([Vector2(-6, 0)])
 ports_out = Array[Vector2]([Vector2(6, 0)])
 right_menu_icon = ExtResource("4_sem8f")
+properties = Array[ExtResource("5_ni1yb")]([SubResource("Resource_jrjdy")])

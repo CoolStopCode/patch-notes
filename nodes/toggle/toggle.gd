@@ -2,7 +2,6 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[InspectorProperty]
 @export var base_node : Node
 
 @export var on_texture : Texture
@@ -13,9 +12,11 @@ signal actuate_output(port : int)
 @export var button_node : TextureButton
 
 var toggled := true
+var properties : Array[InspectorProperty]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	properties = base_node.properties
 	update_texture()
 
 func property_changed(_property : InspectorProperty):

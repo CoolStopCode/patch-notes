@@ -2,7 +2,6 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[InspectorProperty]
 @export var base_node : Node
 
 @export var progress_bar : ColorRect
@@ -12,8 +11,10 @@ signal actuate_output(port : int)
 
 var current_count := 0
 var outputting_top := false
+var properties : Array[InspectorProperty]
 
 func _ready() -> void:
+	properties = base_node.properties
 	update_sprites()
 
 func property_changed(_property : InspectorProperty):

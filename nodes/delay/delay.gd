@@ -2,8 +2,11 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[InspectorProperty]
 @export var base_node : Node
+var properties : Array[InspectorProperty]
+
+func _ready() -> void:
+	properties = base_node.properties
 
 func property_changed(_property : InspectorProperty):
 	pass
