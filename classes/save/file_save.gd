@@ -1,5 +1,5 @@
 class_name FileSave
 extends Resource
 
-var nodes : Array[NodeSave] = []
-var connections : Array[Connection] = []
+@export var nodes : Array[NodeSave] = []
+@export var connections : Array[ConnectionSave] = []

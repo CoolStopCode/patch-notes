@@ -1,6 +1,118 @@
-[gd_resource type="Resource" script_class="FileSave" format=3]
+[gd_resource type="Resource" script_class="FileSave" format=3 uid="uid://ddtc1elp6g5hb"]
 
-[ext_resource type="Script" path="res://classes/save/file_save.gd" id="1_dvlvu"]
+[ext_resource type="Script" uid="uid://ctt27jfgk8trk" path="res://classes/save/connection_save.gd" id="1_rqh7u"]
+[ext_resource type="Script" uid="uid://2qtckkhre6qu" path="res://classes/save/node_save.gd" id="2_ddq2i"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="3_pt7fg"]
+[ext_resource type="Script" uid="uid://dpcev18b4nbi1" path="res://classes/inspector_properties/inspector_file.gd" id="4_ftcuf"]
+[ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="5_2ejmb"]
+[ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="6_r0v35"]
+[ext_resource type="Script" uid="uid://b4mbe53ef6bwf" path="res://classes/inspector_properties/inspector_checkbox.gd" id="7_ustsu"]
+[ext_resource type="Script" uid="uid://bln5vqfg1m4ti" path="res://classes/save/file_save.gd" id="8_lvm1w"]
+
+[sub_resource type="Resource" id="Resource_vx2ek"]
+script = ExtResource("1_rqh7u")
+from_path = NodePath("metronome_node/node")
+from_port = 2
+to_path = NodePath("sound_node/node")
+points = PackedVector2Array(-42, -56, -24, -56, -24, -56, -10, -56)
+
+[sub_resource type="Resource" id="Resource_f0mu0"]
+script = ExtResource("4_ftcuf")
+property_name = "Source"
+metadata/_custom_type_script = "uid://dpcev18b4nbi1"
+
+[sub_resource type="Resource" id="Resource_x38by"]
+script = ExtResource("5_2ejmb")
+value = 1.0
+max_value = 10.0
+max_slider = 2.0
+property_name = "Volume"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_sdwon"]
+script = ExtResource("5_2ejmb")
+value = 1.0
+min_value = 0.01
+min_slider = 0.01
+max_slider = 4.0
+step_slider = 0.01
+property_name = "Speed"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_hv7ey"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/sound/sound_node.tscn"
+position = Vector2(0, -56)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_f0mu0"), SubResource("Resource_x38by"), SubResource("Resource_sdwon")])
+
+[sub_resource type="Resource" id="Resource_68se2"]
+script = ExtResource("5_2ejmb")
+value = 0.5
+max_value = 1000.0
+max_slider = 5.0
+step_slider = 0.001
+property_name = "Delay"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_sg3ud"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/delay/delay_node.tscn"
+position = Vector2(132, -44)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_68se2")])
+
+[sub_resource type="Resource" id="Resource_fstv8"]
+script = ExtResource("6_r0v35")
+value = 120
+min_value = 1
+max_value = 10000
+property_name = "BPM"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_87qy6"]
+script = ExtResource("7_ustsu")
+property_name = "Sound"
+metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
+
+[sub_resource type="Resource" id="Resource_xr4rn"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/metronome/metronome_node.tscn"
+position = Vector2(-56, -52)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_fstv8"), SubResource("Resource_87qy6")])
+
+[sub_resource type="Resource" id="Resource_vk8wq"]
+script = ExtResource("6_r0v35")
+value = 2
+min_value = 1
+max_value = 1000
+property_name = "Count"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_nhvwt"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/count/count_node.tscn"
+position = Vector2(176, -44)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_vk8wq")])
+
+[sub_resource type="Resource" id="Resource_c3oso"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/toggle/toggle_node.tscn"
+position = Vector2(220, -44)
+
+[sub_resource type="Resource" id="Resource_nlc4g"]
+script = ExtResource("6_r0v35")
+value = 2
+min_value = 1
+max_value = 1000
+property_name = "Count"
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_40ja8"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/flip_count/flip_count_node.tscn"
+position = Vector2(264, -44)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_nlc4g")])
 
 [resource]
-script = ExtResource("1_dvlvu")
+script = ExtResource("8_lvm1w")
+nodes = Array[ExtResource("2_ddq2i")]([SubResource("Resource_hv7ey"), SubResource("Resource_sg3ud"), SubResource("Resource_xr4rn"), SubResource("Resource_nhvwt"), SubResource("Resource_c3oso"), SubResource("Resource_40ja8")])
+connections = Array[ExtResource("1_rqh7u")]([SubResource("Resource_vx2ek")])
