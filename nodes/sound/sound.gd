@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	properties = base_node.properties
-	audio_node.stream = audio_file
+	audio_node.stream = load(properties[0].path) if properties[0].path else audio_file
 	Constants.clear_children(waveform_node)
 	for i in range(waveform_count):
 		var node := Sprite2D.new()
