@@ -9,35 +9,42 @@
 [ext_resource type="Script" path="res://classes/inspector_properties/inspector_arrows.gd" id="7_ustsu"]
 [ext_resource type="Script" path="res://classes/save/file_save.gd" id="8_lvm1w"]
 
-[sub_resource type="Resource" id="Resource_vx2ek"]
+[sub_resource type="Resource" id="Resource_rqh7u"]
+script = ExtResource("1_rqh7u")
+from_id = 2
+to_id = 3
+points = PackedVector2Array(34, -76, 40, -76, 40, -76, 46, -76)
+
+[sub_resource type="Resource" id="Resource_ddq2i"]
 script = ExtResource("1_rqh7u")
 from_id = 1
 from_port = 2
-points = PackedVector2Array(-14, -60, -8, -60, -8, -60, -2, -60)
+to_id = 2
+points = PackedVector2Array(10, -44, 20, -44, 20, -76, 22, -76)
 
-[sub_resource type="Resource" id="Resource_f0mu0"]
+[sub_resource type="Resource" id="Resource_pt7fg"]
 script = ExtResource("1_rqh7u")
 from_id = 1
-to_id = 2
-points = PackedVector2Array(-14, -52, 4, -52, 4, -20, 6, -20)
+from_port = 1
+points = PackedVector2Array(10, -40, 32, -40, 32, -44, 34, -44)
 
-[sub_resource type="Resource" id="Resource_x38by"]
+[sub_resource type="Resource" id="Resource_ftcuf"]
 script = ExtResource("4_ftcuf")
 extensions = PackedStringArray("wav", "mp3")
 path = "/Users/gh/projects/godot/patch-notes/assets/demo/kick2.wav"
 property_name = "Source"
 metadata/_custom_type_script = "uid://dpcev18b4nbi1"
 
-[sub_resource type="Resource" id="Resource_sdwon"]
+[sub_resource type="Resource" id="Resource_2ejmb"]
 script = ExtResource("5_2ejmb")
 value = 1.0
 max_slider = 2.0
 property_name = "Volume"
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[sub_resource type="Resource" id="Resource_hv7ey"]
+[sub_resource type="Resource" id="Resource_r0v35"]
 script = ExtResource("5_2ejmb")
-value = 2.3000000000000003
+value = 1.0
 min_value = 0.01
 max_value = 1000.0
 min_slider = 0.1
@@ -46,15 +53,15 @@ step_slider = 0.01
 property_name = "Speed"
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[sub_resource type="Resource" id="Resource_68se2"]
+[sub_resource type="Resource" id="Resource_ustsu"]
 script = ExtResource("2_ddq2i")
 scene_path = "res://nodes/sound/sound_node.tscn"
-position = Vector2(8, -60)
-properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_x38by"), SubResource("Resource_sdwon"), SubResource("Resource_hv7ey")])
+position = Vector2(44, -44)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_ftcuf"), SubResource("Resource_2ejmb"), SubResource("Resource_r0v35")])
 
-[sub_resource type="Resource" id="Resource_sg3ud"]
+[sub_resource type="Resource" id="Resource_lvm1w"]
 script = ExtResource("5_2ejmb")
-value = 137.8
+value = 120.0
 min_value = 1.0
 max_value = 10000.0
 min_slider = 40.0
@@ -62,35 +69,66 @@ max_slider = 240.0
 property_name = "BPM"
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[sub_resource type="Resource" id="Resource_fstv8"]
+[sub_resource type="Resource" id="Resource_vx2ek"]
 script = ExtResource("6_r0v35")
-value = true
 property_name = "Sound"
 metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
-[sub_resource type="Resource" id="Resource_87qy6"]
+[sub_resource type="Resource" id="Resource_f0mu0"]
 script = ExtResource("2_ddq2i")
 scene_path = "res://nodes/metronome/metronome_node.tscn"
-position = Vector2(-28, -56)
-properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_sg3ud"), SubResource("Resource_fstv8")])
+position = Vector2(-4, -40)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_lvm1w"), SubResource("Resource_vx2ek")])
 id = 1
 
-[sub_resource type="Resource" id="Resource_xr4rn"]
+[sub_resource type="Resource" id="Resource_x38by"]
 script = ExtResource("7_ustsu")
-value = 4
+value = 2
 min_value = 1
 max_value = 1000
 property_name = "Count"
 metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
-[sub_resource type="Resource" id="Resource_vk8wq"]
+[sub_resource type="Resource" id="Resource_sdwon"]
 script = ExtResource("2_ddq2i")
 scene_path = "res://nodes/count/count_node.tscn"
-position = Vector2(12, -20)
-properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_xr4rn")])
+position = Vector2(28, -76)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_x38by")])
 id = 2
+
+[sub_resource type="Resource" id="Resource_hv7ey"]
+script = ExtResource("4_ftcuf")
+extensions = PackedStringArray("wav", "mp3")
+path = "/Users/gh/projects/godot/patch-notes/assets/demo/snap.wav"
+property_name = "Source"
+metadata/_custom_type_script = "uid://dpcev18b4nbi1"
+
+[sub_resource type="Resource" id="Resource_68se2"]
+script = ExtResource("5_2ejmb")
+value = 1.0
+max_slider = 2.0
+property_name = "Volume"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_sg3ud"]
+script = ExtResource("5_2ejmb")
+value = 1.0
+min_value = 0.01
+max_value = 1000.0
+min_slider = 0.1
+max_slider = 5.0
+step_slider = 0.01
+property_name = "Speed"
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_fstv8"]
+script = ExtResource("2_ddq2i")
+scene_path = "res://nodes/sound/sound_node.tscn"
+position = Vector2(56, -76)
+properties = Array[ExtResource("3_pt7fg")]([SubResource("Resource_hv7ey"), SubResource("Resource_68se2"), SubResource("Resource_sg3ud")])
+id = 3
 
 [resource]
 script = ExtResource("8_lvm1w")
-nodes = Array[ExtResource("2_ddq2i")]([SubResource("Resource_68se2"), SubResource("Resource_87qy6"), SubResource("Resource_vk8wq")])
-connections = Array[ExtResource("1_rqh7u")]([SubResource("Resource_vx2ek"), SubResource("Resource_f0mu0")])
+nodes = Array[ExtResource("2_ddq2i")]([SubResource("Resource_ustsu"), SubResource("Resource_f0mu0"), SubResource("Resource_sdwon"), SubResource("Resource_fstv8")])
+connections = Array[ExtResource("1_rqh7u")]([SubResource("Resource_rqh7u"), SubResource("Resource_ddq2i"), SubResource("Resource_pt7fg")])
