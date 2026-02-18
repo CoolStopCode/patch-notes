@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://brk50o5oqv132"
-path="res://.godot/imported/guitar.wav-3729f87afc5b17cb963bc3d0e37acca3.sample"
+uid="uid://g4ag30j33rvk"
+path="res://.godot/imported/snare3.wav-d0ba44befd0bb03b07bd31ba4c326306.sample"
 
 [deps]
 
-source_file="res://assets/demo/guitar.wav"
-dest_files=["res://.godot/imported/guitar.wav-3729f87afc5b17cb963bc3d0e37acca3.sample"]
+source_file="res://assets/audio/snare3.wav"
+dest_files=["res://.godot/imported/snare3.wav-d0ba44befd0bb03b07bd31ba4c326306.sample"]
 
 [params]
 

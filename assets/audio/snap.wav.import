@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://lxkrhtx1m5ak"
-path="res://.godot/imported/snap.wav-0e252710fbb6cf6dbf120d8d5073cfbe.sample"
+path="res://.godot/imported/snap.wav-6c91624591121c9372dfa4100fcaa4d3.sample"
 
 [deps]
 
-source_file="res://assets/demo/snap.wav"
-dest_files=["res://.godot/imported/snap.wav-0e252710fbb6cf6dbf120d8d5073cfbe.sample"]
+source_file="res://assets/audio/snap.wav"
+dest_files=["res://.godot/imported/snap.wav-6c91624591121c9372dfa4100fcaa4d3.sample"]
 
 [params]
 
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=2
+compress/mode=0

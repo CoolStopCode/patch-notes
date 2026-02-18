@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://clrqt7pijmicg" path="res://node/connection/line.tscn" id="6_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dwk368hj5olf3" path="res://nodes/count/count_node.tscn" id="7_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://53kebl2pvk8g" path="res://nodes/toggle/toggle_node.tscn" id="8_bsumw"]
-[ext_resource type="PackedScene" uid="uid://bm5pmb6c8425r" path="res://right_menu/right_menu.tscn" id="9_grrlh"]
 [ext_resource type="PackedScene" uid="uid://b0nm11hloorkq" path="res://nodes/flip_count/flip_count_node.tscn" id="12_fwcvl"]
 
 [node name="main" type="Node2D" unique_id=762756189]
@@ -46,6 +45,10 @@ repeat_times = 30
 texture_filter = 1
 texture = ExtResource("2_fwcvl")
 
+[node name="connections" type="Node2D" parent="." unique_id=1328758278]
+script = ExtResource("5_grrlh")
+line_scene = ExtResource("6_kfbq2")
+
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
 script = ExtResource("3_0i4oc")
 
@@ -66,13 +69,3 @@ position = Vector2(220, -44)
 
 [node name="flip_count_node" parent="nodes" unique_id=1350815466 instance=ExtResource("12_fwcvl")]
 position = Vector2(264, -44)
-
-[node name="connections" type="Node2D" parent="." unique_id=1328758278]
-script = ExtResource("5_grrlh")
-line_scene = ExtResource("6_kfbq2")
-
-[node name="right_menu" parent="." unique_id=927175835 instance=ExtResource("9_grrlh")]
-offset_left = 43.0
-offset_top = 5.0
-offset_right = 143.0
-offset_bottom = 65.0

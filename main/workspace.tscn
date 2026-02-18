@@ -40,12 +40,12 @@ repeat_times = 30
 texture_filter = 1
 texture = ExtResource("2_fwcvl")
 
+[node name="connections" type="Node2D" parent="." unique_id=1328758278]
+script = ExtResource("5_grrlh")
+line_scene = ExtResource("6_kfbq2")
+
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
 script = ExtResource("3_0i4oc")
 
 [node name="sound_node" parent="nodes" unique_id=266324404 instance=ExtResource("3_4dugh")]
 position = Vector2(44, -44)
-
-[node name="connections" type="Node2D" parent="." unique_id=1328758278]
-script = ExtResource("5_grrlh")
-line_scene = ExtResource("6_kfbq2")

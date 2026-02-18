@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dwkbfvuetmc7t"]
 
-[ext_resource type="Script" uid="uid://c3j151vdt8won" path="res://node/connection/port.gd" id="1_u2ryo"]
-[ext_resource type="Texture2D" uid="uid://bvni43cv6q0ht" path="res://assets/port/port.png" id="2_u2ryo"]
-[ext_resource type="Texture2D" uid="uid://tuvc8i7o3hd7" path="res://assets/port/aa.png" id="3_s7c6m"]
+[ext_resource type="Script" uid="uid://c3j151vdt8won" path="res://node/port/port.gd" id="1_u2ryo"]
+[ext_resource type="Texture2D" uid="uid://bvni43cv6q0ht" path="res://node/port/port.png" id="2_u2ryo"]
+[ext_resource type="Texture2D" uid="uid://tuvc8i7o3hd7" path="res://node/port/aa.png" id="3_s7c6m"]
 
 [node name="connection" type="Node2D" unique_id=1461903126 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_u2ryo")

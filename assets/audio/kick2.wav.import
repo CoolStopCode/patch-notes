@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bxodb2ak8p8u"
-path="res://.godot/imported/arp.wav-8269a2da0192e9e28483e3e40a8dd513.sample"
+uid="uid://b6qsrrij062qw"
+path="res://.godot/imported/kick2.wav-eb92777263ac046f6f4110b4971ef3e7.sample"
 
 [deps]
 
-source_file="res://assets/demo/arp.wav"
-dest_files=["res://.godot/imported/arp.wav-8269a2da0192e9e28483e3e40a8dd513.sample"]
+source_file="res://assets/audio/kick2.wav"
+dest_files=["res://.godot/imported/kick2.wav-eb92777263ac046f6f4110b4971ef3e7.sample"]
 
 [params]
 

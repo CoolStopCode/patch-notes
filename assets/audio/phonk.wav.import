@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://g4ag30j33rvk"
-path="res://.godot/imported/snare3.wav-6e0b2a3312d324fe0bbee76dcb6ef4ba.sample"
+uid="uid://lc2snscwapfm"
+path="res://.godot/imported/phonk.wav-0866cc3a45f10b237afaedf25f35afa3.sample"
 
 [deps]
 
-source_file="res://assets/demo/snare3.wav"
-dest_files=["res://.godot/imported/snare3.wav-6e0b2a3312d324fe0bbee76dcb6ef4ba.sample"]
+source_file="res://assets/audio/phonk.wav"
+dest_files=["res://.godot/imported/phonk.wav-0866cc3a45f10b237afaedf25f35afa3.sample"]
 
 [params]
 

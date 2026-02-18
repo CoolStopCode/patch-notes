@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
 [ext_resource type="Texture2D" uid="uid://blt5yrc1id2v5" path="res://nodes/sound/waveform.png" id="6_sbhlm"]
-[ext_resource type="AudioStream" uid="uid://bxodb2ak8p8u" path="res://assets/demo/arp.wav" id="6_wg1kc"]
+[ext_resource type="AudioStream" uid="uid://bxodb2ak8p8u" path="res://assets/audio/arp.wav" id="6_wg1kc"]
 
 [node name="sound" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("audio_node", "waveform_node")]
 script = ExtResource("2_84dgq")

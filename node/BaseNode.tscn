@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rk88bpc6g6w5"]
 
 [ext_resource type="Script" uid="uid://c4l3hr0qkmk6f" path="res://node/BaseNode.gd" id="1_68giq"]
-[ext_resource type="PackedScene" uid="uid://dwkbfvuetmc7t" path="res://node/connection/port.tscn" id="2_iqnxv"]
+[ext_resource type="PackedScene" uid="uid://dwkbfvuetmc7t" path="res://node/port/port.tscn" id="2_iqnxv"]
 
 [node name="BaseNode" type="Node2D" unique_id=1970947894 node_paths=PackedStringArray("hover_rectangle_node", "body_sprite_node", "area_node", "area_collision_node", "inputs_node", "outputs_node")]
 script = ExtResource("1_68giq")
