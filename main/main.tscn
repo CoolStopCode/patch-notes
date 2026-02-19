@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cpskpoahfr8hj"]
+[gd_scene format=3 uid="uid://bwwju0asehv1a"]
 
 [ext_resource type="Texture2D" uid="uid://dftnhe1wq4f20" path="res://assets/tile2.png" id="2_fwcvl"]
 [ext_resource type="Script" uid="uid://c5tie26lw05s" path="res://main/cam.gd" id="2_kfbq2"]

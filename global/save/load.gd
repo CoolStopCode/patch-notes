@@ -1,7 +1,17 @@
 extends Node
 
-func load_save():
-	var file_save : FileSave = load("res://save.tres")
+func load_from(path : String):
+	var file_save : FileSave
+	if path.substr(path.length() - 2, path.length()) == ".🎵":
+		var temp_path := path.substr(0, path.length() - 2) + ".tres"
+		var dir = DirAccess.open(path.get_base_dir())
+		dir.rename(path.get_file(), temp_path.get_file())
+		
+		file_save = ResourceLoader.load(temp_path) as FileSave
+		
+		dir.rename(temp_path.get_file(), path.get_file())
+	else:
+		file_save = ResourceLoader.load(path) as FileSave
 	
 	Constants.clear_children(GlobalNodes.nodes)
 	Constants.clear_children(GlobalNodes.connections)
@@ -31,3 +41,8 @@ func load_save():
 			line
 		)
 		ConnectionManager.connections.append(connection_instance)
+
+func clear_all():
+	Constants.clear_children(GlobalNodes.nodes)
+	Constants.clear_children(GlobalNodes.connections)
+	ConnectionManager.connections = []

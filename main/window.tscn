@@ -36,13 +36,15 @@ render_target_update_mode = 4
 
 [node name="main" parent="SubViewportContainer/SubViewport" unique_id=762756189 instance=ExtResource("1_aewvg")]
 
-[node name="menubar" type="Control" parent="." unique_id=1513347353]
+[node name="menubar" type="Control" parent="." unique_id=1513347353 node_paths=PackedStringArray("save_as_dialogue", "load_from_dialogue")]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 36.0
 grow_horizontal = 2
 script = ExtResource("2_yna84")
+save_as_dialogue = NodePath("save_as")
+load_from_dialogue = NodePath("load_from")
 
 [node name="ColorRect" type="ColorRect" parent="menubar" unique_id=1413422481]
 layout_mode = 1
@@ -83,11 +85,15 @@ allow_search = false
 prefer_native_menu = true
 shrink_height = false
 shrink_width = false
-item_count = 2
+item_count = 4
 item_0/text = "Save"
 item_0/id = 0
-item_1/text = "Load"
+item_1/text = "Save As"
 item_1/id = 1
+item_2/text = "Load From"
+item_2/id = 2
+item_3/text = "Clear All"
+item_3/id = 3
 
 [node name="edit" type="PopupMenu" parent="menubar/MenuBar" unique_id=859280789]
 oversampling_override = 1.0
@@ -115,6 +121,20 @@ theme_override_constants/separation = 0
 script = ExtResource("3_1a1h6")
 node_type_scene = ExtResource("4_1a1h6")
 
+[node name="save_as" type="FileDialog" parent="menubar" unique_id=1591685469]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+access = 2
+filters = PackedStringArray("*.🎵")
+
+[node name="load_from" type="FileDialog" parent="menubar" unique_id=143564412]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.🎵", "*.tres")
+
 [node name="inspector" parent="." unique_id=1063628290 instance=ExtResource("5_g3nch")]
 layout_mode = 1
 anchors_preset = 3
@@ -132,3 +152,5 @@ scale = Vector2(6, 6)
 
 [connection signal="id_pressed" from="menubar/MenuBar/file" to="menubar" method="_on_file_id_pressed"]
 [connection signal="id_pressed" from="menubar/MenuBar/edit" to="menubar" method="_on_edit_id_pressed"]
+[connection signal="file_selected" from="menubar/save_as" to="menubar" method="_on_save_as_file_selected"]
+[connection signal="file_selected" from="menubar/load_from" to="menubar" method="_on_load_from_file_selected"]
