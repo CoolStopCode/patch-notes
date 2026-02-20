@@ -24,11 +24,16 @@ func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: 
 	
 	from.tree_exiting.connect(_on_endpoint_gone)
 	from.move.connect(update)
+	from.ports_modified.connect(update)
 	if from != to:
 		to.tree_exiting.connect(_on_endpoint_gone)
 		to.move.connect(update)
+		to.ports_modified.connect(update)
 
 func update():
+	if from.ports_out.size() <= from_port or to.ports_in.size() <= to_port:
+		free_connection()
+		return
 	line.set_point_position(0, from.ports_out[from_port] + from.global_position)
 	line.set_point_position(1, Vector2(line.get_point_position(1).x, from.ports_out[from_port].y + from.global_position.y))
 	
@@ -66,10 +71,12 @@ func free_connection():
 		from.actuate_output.disconnect(_on_actuate_output)
 		from.tree_exiting.disconnect(_on_endpoint_gone)
 		from.move.disconnect(update)
+		from.ports_modified.disconnect(update)
 
 	if is_instance_valid(to) and to != from:
 		to.tree_exiting.disconnect(_on_endpoint_gone)
 		to.move.disconnect(update)
+		to.ports_modified.disconnect(update)
 
 	if pulse_tween and pulse_tween.is_running():
 		pulse_tween.kill()

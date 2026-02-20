@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bg1fjqb2e2fcj" path="res://nodes/flip_count/mini.png" id="10_y0apq"]
 [ext_resource type="PackedScene" uid="uid://b0nm11hloorkq" path="res://nodes/flip_count/flip_count_node.tscn" id="11_wbw8c"]
 [ext_resource type="PackedScene" uid="uid://wgm1mfk1boxm" path="res://nodes/delay/delay_node.tscn" id="13_kqqvq"]
+[ext_resource type="Texture2D" uid="uid://tekmh1uuv6q" path="res://nodes/progression/mini.png" id="14_oo77e"]
+[ext_resource type="PackedScene" uid="uid://b3lfjnsy2ki4u" path="res://nodes/progression/progression_node.tscn" id="15_617em"]
 
 [sub_resource type="Resource" id="Resource_vdd44"]
 script = ExtResource("1_7ih71")
@@ -57,7 +59,14 @@ mini_icon = ExtResource("7_1hq8w")
 node_scene = ExtResource("13_kqqvq")
 metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 
+[sub_resource type="Resource" id="Resource_sj840"]
+script = ExtResource("1_7ih71")
+name = "Progression"
+mini_icon = ExtResource("14_oo77e")
+node_scene = ExtResource("15_617em")
+metadata/_custom_type_script = "uid://dkpeaewtb25r8"
+
 [resource]
 script = ExtResource("2_vj25q")
-node_list = Array[ExtResource("1_7ih71")]([SubResource("Resource_vdd44"), SubResource("Resource_p202v"), SubResource("Resource_trqhb"), SubResource("Resource_yixbm"), SubResource("Resource_wbw8c"), SubResource("Resource_kqqvq")])
+node_list = Array[ExtResource("1_7ih71")]([SubResource("Resource_vdd44"), SubResource("Resource_p202v"), SubResource("Resource_trqhb"), SubResource("Resource_yixbm"), SubResource("Resource_wbw8c"), SubResource("Resource_kqqvq"), SubResource("Resource_sj840")])
 metadata/_custom_type_script = "uid://bcon2a66d3gb3"

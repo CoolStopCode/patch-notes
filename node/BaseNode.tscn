@@ -5,6 +5,7 @@
 
 [node name="BaseNode" type="Node2D" unique_id=1970947894 node_paths=PackedStringArray("hover_rectangle_node", "body_sprite_node", "area_node", "area_collision_node", "inputs_node", "outputs_node")]
 script = ExtResource("1_68giq")
+BODY_SIZE = Vector2(20, 20)
 hover_rectangle_node = NodePath("ColorRect")
 body_sprite_node = NodePath("Sprite2D")
 area_node = NodePath("hitbox")

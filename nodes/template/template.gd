@@ -2,12 +2,11 @@ extends Node2D
 
 signal actuate_output(port : int)
 
-@export var properties : Array[InspectorProperty]
 @export var base_node : Node
+var properties : Array[InspectorProperty]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	properties = base_node.properties
 
 func property_changed(_property : InspectorProperty):
 	pass

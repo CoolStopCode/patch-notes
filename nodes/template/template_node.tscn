@@ -6,9 +6,8 @@
 
 [node name="template_node" type="Node2D" unique_id=300515006]
 
-[node name="node" parent="." unique_id=109182909 node_paths=PackedStringArray("PARENT") instance=ExtResource("1_qphcg")]
+[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_qphcg")]
 NODE_SCENE = ExtResource("2_n3i8l")
-PARENT = NodePath("..")
 BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("3_fpsvk")
 ports_in = Array[Vector2]([Vector2(-6, 0)])

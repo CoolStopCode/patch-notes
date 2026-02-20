@@ -4,6 +4,7 @@ class_name BaseNode
 signal actuate_output(port : int)
 signal move
 signal property_changed(property : InspectorProperty)
+signal ports_modified
 
 @export var NODE_SCENE : PackedScene
 var node : Node
@@ -49,11 +50,11 @@ func _ready():
 		add_child(node)
 	else:
 		node.actuate_output.connect(emit_output)
-	var duplicated_props = node.properties.map(func(p):
+	var duplicated_props = properties.map(func(p):
 		return p.duplicate(true)
 	)
 	
-	node.properties.assign(duplicated_props)
+	properties.assign(duplicated_props)
 	if node.has_method("start_drag"):
 		node.start_drag()
 	property_changed.connect(node.property_changed)
@@ -131,8 +132,12 @@ func initiate_children():
 	)
 	hover_rectangle_node.visible = false
 	
+	load_in_ports()
+	load_out_ports()
+
+func load_in_ports():
+	ports_modified.emit()
 	Constants.clear_children(inputs_node)
-	Constants.clear_children(outputs_node)
 	var i := 0
 	for pos in ports_in:
 		var port_node = load_node(PORT_SCENE)
@@ -143,7 +148,11 @@ func initiate_children():
 		port_node.name = "input" + str(i)
 		inputs_node.add_child(port_node)
 		i += 1
-	i = 0
+
+func load_out_ports():
+	ports_modified.emit()
+	Constants.clear_children(outputs_node)
+	var i := 0
 	for pos in ports_out:
 		var port_node = load_node(PORT_SCENE)
 		port_node.position = pos
