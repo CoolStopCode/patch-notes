@@ -1,0 +1,5 @@
+- Select connections (delete, edit points, change color)
+- Multi select nodes (same nodes will be able to control properties but different nodes just delete)
+- undo redo
+- record song
+- audosave

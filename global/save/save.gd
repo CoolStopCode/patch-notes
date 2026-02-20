@@ -21,6 +21,8 @@ func save_to(path : String):
 		id_counter += 1
 		file_save.nodes.append(node_save)
 	for connection in ConnectionManager.connections:
+		if connection.freed:
+			return
 		var connection_save := ConnectionSave.new()
 		connection_save.from_id = id_map.get(connection.from, -1)
 		connection_save.to_id = id_map.get(connection.to, -1)

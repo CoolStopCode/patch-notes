@@ -7,6 +7,7 @@ var from_port : int
 var to: Node2D
 var to_port : int
 var line: Line2D
+var freed := false
 
 var pulse_tween: Tween
 
@@ -80,3 +81,5 @@ func free_connection():
 	to = null
 	line = null
 	pulse_tween = null
+	
+	freed = true
