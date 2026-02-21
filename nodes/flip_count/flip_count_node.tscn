@@ -3,9 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_152l8"]
 [ext_resource type="PackedScene" uid="uid://cgg1kky72m4fc" path="res://nodes/flip_count/flip_count.tscn" id="2_vo2b1"]
 [ext_resource type="Texture2D" uid="uid://dtnth0pdv3w4k" path="res://nodes/flip_count/flip_count.png" id="3_rf7u2"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_bgs13"]
 [ext_resource type="Texture2D" uid="uid://b71vdpsodahfh" path="res://nodes/flip_count/icon.png" id="4_pfals"]
 [ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_o0mrp"]
 [ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="6_bgs13"]
+
+[sub_resource type="Resource" id="Resource_bah5d"]
+script = ExtResource("4_bgs13")
+position = Vector2(-10, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_3thhr"]
+script = ExtResource("4_bgs13")
+position = Vector2(10, 4)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_o11ep"]
+script = ExtResource("4_bgs13")
+position = Vector2(10, -4)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_n4umg"]
 script = ExtResource("6_bgs13")
@@ -19,9 +35,8 @@ metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [node name="node" parent="." unique_id=109182909 instance=ExtResource("1_152l8")]
 NODE_SCENE = ExtResource("2_vo2b1")
-BODY_SIZE = Vector2(20, 20)
 BODY_SPRITE = ExtResource("3_rf7u2")
-ports_in = Array[Vector2]([Vector2(-10, 0)])
-ports_out = Array[Vector2]([Vector2(10, 4), Vector2(10, -4)])
+ports_in = Array[ExtResource("4_bgs13")]([SubResource("Resource_bah5d")])
+ports_out = Array[ExtResource("4_bgs13")]([SubResource("Resource_3thhr"), SubResource("Resource_o11ep")])
 right_menu_icon = ExtResource("4_pfals")
 properties = Array[ExtResource("5_o0mrp")]([SubResource("Resource_n4umg")])

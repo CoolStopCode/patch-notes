@@ -3,9 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_7efxc"]
 [ext_resource type="PackedScene" uid="uid://dt8bkdw4hgam6" path="res://nodes/delay/delay.tscn" id="2_hfk3y"]
 [ext_resource type="Texture2D" uid="uid://bd6hnai1ybd82" path="res://nodes/delay/delay.png" id="2_kh4xr"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_332yh"]
 [ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/delay/icon.png" id="4_sem8f"]
 [ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_ni1yb"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="6_332yh"]
+
+[sub_resource type="Resource" id="Resource_ugnbf"]
+script = ExtResource("4_332yh")
+position = Vector2(-6, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_7pth0"]
+script = ExtResource("4_332yh")
+position = Vector2(6, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_jrjdy"]
 script = ExtResource("6_332yh")
@@ -22,7 +33,7 @@ metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 NODE_SCENE = ExtResource("2_hfk3y")
 BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("2_kh4xr")
-ports_in = Array[Vector2]([Vector2(-6, 0)])
-ports_out = Array[Vector2]([Vector2(6, 0)])
+ports_in = Array[ExtResource("4_332yh")]([SubResource("Resource_ugnbf")])
+ports_out = Array[ExtResource("4_332yh")]([SubResource("Resource_7pth0")])
 right_menu_icon = ExtResource("4_sem8f")
 properties = Array[ExtResource("5_ni1yb")]([SubResource("Resource_jrjdy")])

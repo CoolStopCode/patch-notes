@@ -4,6 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://b37jyxra2py70" path="res://nodes/toggle/toggle.tscn" id="2_v8jeo"]
 [ext_resource type="Texture2D" uid="uid://cu7t420ftbcpw" path="res://nodes/toggle/toggle.png" id="3_hf7dk"]
 [ext_resource type="Texture2D" uid="uid://dubkr7qmn5865" path="res://nodes/toggle/icon.png" id="4_d8jnf"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_ywwcu"]
+
+[sub_resource type="Resource" id="Resource_mwvp0"]
+script = ExtResource("4_ywwcu")
+position = Vector2(-6, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_k1ubb"]
+script = ExtResource("4_ywwcu")
+position = Vector2(6, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [node name="toggle_node" type="Node2D" unique_id=300515006]
 
@@ -11,6 +22,6 @@
 NODE_SCENE = ExtResource("2_v8jeo")
 BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("3_hf7dk")
-ports_in = Array[Vector2]([Vector2(-6, 0)])
-ports_out = Array[Vector2]([Vector2(6, 0)])
+ports_in = Array[ExtResource("4_ywwcu")]([SubResource("Resource_mwvp0")])
+ports_out = Array[ExtResource("4_ywwcu")]([SubResource("Resource_k1ubb")])
 right_menu_icon = ExtResource("4_d8jnf")

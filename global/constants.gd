@@ -8,8 +8,9 @@ enum NodeState {
 	PASS,
 	BROKEN
 }
+enum Axis { HORIZONTAL, VERTICAL }
 
-func snap_to_grid(pos):
+func snap_to_grid(pos) -> Vector2:
 	return snapped(pos, GRID_SIZE)
 
 func clear_children(node):

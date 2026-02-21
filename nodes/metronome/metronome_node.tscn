@@ -4,9 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://rvymux2jgxrj" path="res://nodes/metronome/metronome.tscn" id="2_yw3lt"]
 [ext_resource type="Texture2D" uid="uid://btx8po676u5p0" path="res://nodes/metronome/metronome.png" id="3_q6twt"]
 [ext_resource type="Texture2D" uid="uid://tbrxkfixlswe" path="res://nodes/metronome/icon.png" id="4_1oar1"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_smf4h"]
 [ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_kpsjo"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="6_smf4h"]
 [ext_resource type="Script" uid="uid://b4mbe53ef6bwf" path="res://classes/inspector_properties/inspector_checkbox.gd" id="7_ew62m"]
+
+[sub_resource type="Resource" id="Resource_ew62m"]
+script = ExtResource("4_smf4h")
+position = Vector2(14, 4)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_g1gny"]
+script = ExtResource("4_smf4h")
+position = Vector2(14, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_he4q5"]
+script = ExtResource("4_smf4h")
+position = Vector2(14, -4)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_sllq4"]
 script = ExtResource("6_smf4h")
@@ -29,6 +45,6 @@ metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 NODE_SCENE = ExtResource("2_yw3lt")
 BODY_SIZE = Vector2(28, 28)
 BODY_SPRITE = ExtResource("3_q6twt")
-ports_out = Array[Vector2]([Vector2(14, 4), Vector2(14, 0), Vector2(14, -4)])
+ports_out = Array[ExtResource("4_smf4h")]([SubResource("Resource_ew62m"), SubResource("Resource_g1gny"), SubResource("Resource_he4q5")])
 right_menu_icon = ExtResource("4_1oar1")
 properties = Array[ExtResource("5_kpsjo")]([SubResource("Resource_sllq4"), SubResource("Resource_e2jay")])

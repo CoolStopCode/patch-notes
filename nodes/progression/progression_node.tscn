@@ -3,8 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_qnsx0"]
 [ext_resource type="PackedScene" uid="uid://o43mwv1iwiiv" path="res://nodes/progression/progression.tscn" id="2_w58op"]
 [ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="3_aa5yf"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="3_jro67"]
 [ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="4_06okt"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="5_06okt"]
+
+[sub_resource type="Resource" id="Resource_x236l"]
+script = ExtResource("3_jro67")
+position = Vector2(0, -6)
+axis = 1
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_jro67"]
 script = ExtResource("4_06okt")
@@ -29,5 +36,5 @@ metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 [node name="node" parent="." unique_id=109182909 instance=ExtResource("1_qnsx0")]
 NODE_SCENE = ExtResource("2_w58op")
 BODY_SIZE = Vector2(12, 12)
-ports_in = Array[Vector2]([Vector2(0, -6)])
+ports_in = Array[ExtResource("3_jro67")]([SubResource("Resource_x236l")])
 properties = Array[ExtResource("3_aa5yf")]([SubResource("Resource_jro67"), SubResource("Resource_my6vv")])

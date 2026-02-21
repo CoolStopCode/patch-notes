@@ -34,13 +34,21 @@ func update():
 	if from.ports_out.size() <= from_port or to.ports_in.size() <= to_port:
 		free_connection()
 		return
-	line.set_point_position(0, from.ports_out[from_port] + from.global_position)
-	line.set_point_position(1, Vector2(line.get_point_position(1).x, from.ports_out[from_port].y + from.global_position.y))
+	line.set_point_position(0, from.ports_out[from_port].position + from.global_position)
+	if from.ports_out[from_port].axis == Constants.Axis.HORIZONTAL:
+		line.set_point_position(1, Vector2(line.get_point_position(1).x, from.ports_out[from_port].position.y + from.global_position.y))
+	else:
+		line.set_point_position(1, Vector2(from.ports_out[from_port].position.x + from.global_position.x, line.get_point_position(1).y))
 	
-	line.set_point_position(line.get_point_count() - 1, to.ports_in[to_port] + to.global_position)
-	line.set_point_position(line.get_point_count() - 2, 
-		Vector2(line.get_point_position(line.get_point_count() - 2).x, to.ports_in[to_port].y + to.global_position.y)
-	)
+	line.set_point_position(line.get_point_count() - 1, to.ports_in[to_port].position + to.global_position)
+	if from.ports_out[from_port].axis == Constants.Axis.HORIZONTAL:
+		line.set_point_position(line.get_point_count() - 2, 
+			Vector2(line.get_point_position(line.get_point_count() - 2).x, to.ports_in[to_port].position.y + to.global_position.y)
+		)
+	else:
+		line.set_point_position(line.get_point_count() - 2, 
+			Vector2(to.ports_in[to_port].position.x + to.global_position.x, line.get_point_position(line.get_point_count() - 2).y)
+		)
 
 
 func _on_endpoint_gone():

@@ -12,8 +12,8 @@ var node : Node
 @export_group("Body")
 @export var BODY_SIZE : Vector2
 @export var BODY_SPRITE : Texture2D
-@export var ports_in : Array[Vector2]
-@export var ports_out : Array[Vector2]
+@export var ports_in : Array[Port]
+@export var ports_out : Array[Port]
 
 @export_group("Options")
 @export var node_state : Constants.NodeState = Constants.NodeState.NORMAL
@@ -139,9 +139,9 @@ func load_in_ports():
 	ports_modified.emit()
 	Constants.clear_children(inputs_node)
 	var i := 0
-	for pos in ports_in:
+	for port in ports_in:
 		var port_node = load_node(PORT_SCENE)
-		port_node.position = pos
+		port_node.position = port.position
 		port_node.port = i
 		port_node.inputoutput = true
 		port_node.clicked.connect(port_clicked)
@@ -153,9 +153,9 @@ func load_out_ports():
 	ports_modified.emit()
 	Constants.clear_children(outputs_node)
 	var i := 0
-	for pos in ports_out:
+	for port in ports_out:
 		var port_node = load_node(PORT_SCENE)
-		port_node.position = pos
+		port_node.position = port.position
 		port_node.port = i
 		port_node.inputoutput = false
 		port_node.clicked.connect(port_clicked)

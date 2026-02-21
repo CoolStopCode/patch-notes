@@ -22,9 +22,9 @@ func on_connection_started(from : Node, port : int, _inputoutput : bool):
 	ConnectionManager.preview_from = from
 	ConnectionManager.preview_port = port
 	if ConnectionManager.preview_inputoutput:
-		preview_line.add_point(from.ports_in[port] + from.global_position)
+		preview_line.add_point(from.ports_in[port].position + from.global_position)
 	else:
-		preview_line.add_point(from.ports_out[port] + from.global_position)
+		preview_line.add_point(from.ports_out[port].position + from.global_position)
 	add_joint_to_line()
 	add_child(preview_line)
 

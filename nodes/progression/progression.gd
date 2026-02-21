@@ -33,7 +33,8 @@ func set_ports(count : int):
 	rect.size = Vector2(20, 4 * count + 8)
 	base_node.ports_out.clear()
 	for i in range(count):
-		base_node.ports_out.append(Vector2(10, 4 * i))
+		var port := Port.new(Vector2(10, 4 * i), Constants.Axis.HORIZONTAL)
+		base_node.ports_out.append(port)
 	
 	base_node.load_out_ports()
 
