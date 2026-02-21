@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpmgxwo07a67k" path="res://nodes/progression/progression.gd" id="1_jlnuo"]
 [ext_resource type="Texture2D" uid="uid://dgbsrf5ggmqwu" path="res://nodes/progression/progression.png" id="2_jlnuo"]
-[ext_resource type="Texture2D" uid="uid://bcqw2tjj32teg" path="res://nodes/progression/active.png" id="3_cx1nm"]
+[ext_resource type="Texture2D" uid="uid://bu24dphelfgp" path="res://nodes/progression/active.png" id="3_cx1nm"]
 
 [node name="progression" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("rect", "active_sprite", "timer")]
 script = ExtResource("1_jlnuo")

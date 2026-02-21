@@ -41,7 +41,8 @@ func _ready():
 	parent = get_parent()
 	
 	node = get_node_or_null("NODE")
-
+	initiate_children()
+	
 	if node == null:
 		node = load_node(NODE_SCENE)
 		node.actuate_output.connect(emit_output)
@@ -60,7 +61,6 @@ func _ready():
 	property_changed.connect(node.property_changed)
 	inputs_node.move_to_front()
 	outputs_node.move_to_front()
-	initiate_children()
 
 func load_node(node_scene):
 	var node_instance = node_scene.instantiate()

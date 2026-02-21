@@ -32,7 +32,6 @@ func load_from(path : String):
 		
 		var from_node = id_map.get(connection.from_id)
 		var to_node = id_map.get(connection.to_id)
-		print(from_node, to_node)
 		var connection_instance := Connection.new(
 			from_node,
 			connection.from_port,

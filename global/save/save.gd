@@ -6,6 +6,7 @@ func save():
 	save_to(default_path)
 
 func save_to(path : String):
+	print("STARTING SAVE")
 	var file_save := FileSave.new()
 	
 	var id_map := {}  # Node -> ID
@@ -22,7 +23,7 @@ func save_to(path : String):
 		file_save.nodes.append(node_save)
 	for connection in ConnectionManager.connections:
 		if connection.freed:
-			return
+			continue
 		var connection_save := ConnectionSave.new()
 		connection_save.from_id = id_map.get(connection.from, -1)
 		connection_save.to_id = id_map.get(connection.to, -1)
@@ -43,3 +44,5 @@ func save_to(path : String):
 	dir.rename(temp_path.get_file(), path.get_file())
 
 	default_path = path
+	
+	print("FINISHED SAVE")

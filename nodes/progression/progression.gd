@@ -23,7 +23,6 @@ func set_ports(count : int):
 	base_node.BODY_SIZE = Vector2(20, 4 * count + 8)
 	base_node.hover_rectangle_node.size = base_node.BODY_SIZE
 	base_node.hover_rectangle_node.position = Vector2(-10, -6)
-	print(base_node.hover_rectangle_node.position.y)
 	
 	var shape := RectangleShape2D.new()
 	shape.set_size(base_node.BODY_SIZE)
