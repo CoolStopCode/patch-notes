@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_x236l"]
 script = ExtResource("3_jro67")
-position = Vector2(0, -6)
+position = Vector2(0, -10)
 axis = 1
 metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 script = ExtResource("4_06okt")
 value = 4
 min_value = 1
-max_value = 16
+max_value = 8
 property_name = "Steps"
 metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 

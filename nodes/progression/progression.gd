@@ -20,17 +20,17 @@ func property_changed(property : InspectorProperty):
 		set_ports(properties[0].value)
 
 func set_ports(count : int):
-	base_node.BODY_SIZE = Vector2(20, 4 * count + 8)
+	base_node.BODY_SIZE = Vector2(20, 4 * count + 16)
 	base_node.hover_rectangle_node.size = base_node.BODY_SIZE
-	base_node.hover_rectangle_node.position = Vector2(-10, -6)
+	base_node.hover_rectangle_node.position = Vector2(-10, -10)
 	
 	var shape := RectangleShape2D.new()
 	shape.set_size(base_node.BODY_SIZE)
 	base_node.area_collision_node.shape = shape
-	base_node.area_collision_node.position.y = (base_node.BODY_SIZE.y - 12) / 2
+	base_node.area_collision_node.position.y = (base_node.BODY_SIZE.y - 16) / 2
 	
 	
-	rect.size = Vector2(20, 4 * count + 8)
+	rect.size = Vector2(20, 4 * count + 16)
 	base_node.ports_out.clear()
 	for i in range(count):
 		var port := Port.new(Vector2(10, 4 * i), Constants.Axis.HORIZONTAL)
