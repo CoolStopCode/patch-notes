@@ -42,10 +42,11 @@ func on_connection_started(from : Node, port : int, inputoutput : bool):
 
 func update_subpreview_line():
 	var mousex := Vector2(Constants.snap_to_grid(get_global_mouse_position()).x, subpreview_line.get_point_position(0).y)
-	var mousey := Constants.snap_to_grid(get_global_mouse_position())
+	var mousey := Vector2(subpreview_line.get_point_position(0).x, Constants.snap_to_grid(get_global_mouse_position()).y)
+	var mouse_pos := Constants.snap_to_grid(get_global_mouse_position())
 	subpreview_line.set_point_position(1, mousex if preview_from_port.axis == Constants.Axis.HORIZONTAL else mousey)
-	subpreview_line.set_point_position(2, mousex if preview_from_port.axis == Constants.Axis.VERTICAL else mousey)
-	subpreview_line.set_point_position(3, mousex if preview_from_port.axis == Constants.Axis.VERTICAL else mousey)
+	subpreview_line.set_point_position(2, mouse_pos)
+	subpreview_line.set_point_position(3, mouse_pos)
 
 func update_subpreview_line_final(to : Node, port : Port):
 	var first_point_pos := subpreview_line.get_point_position(0)
