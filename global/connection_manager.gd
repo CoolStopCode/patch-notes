@@ -7,6 +7,7 @@ var preview_inputoutput : bool
 var preview_from : Node
 var preview_port : int
 
+var hovering_port : Port
 signal connection_started(from : Node, port : int)
 signal connection_ended(to : Node, port : int)
 signal connection_quit

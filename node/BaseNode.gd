@@ -143,9 +143,11 @@ func load_in_ports():
 		var port_node = load_node(PORT_SCENE)
 		port_node.position = port.position
 		port_node.port = i
+		port_node.port_object = port
 		port_node.inputoutput = true
 		port_node.clicked.connect(port_clicked)
 		port_node.name = "input" + str(i)
+		port.parent = self
 		inputs_node.add_child(port_node)
 		i += 1
 
@@ -157,9 +159,11 @@ func load_out_ports():
 		var port_node = load_node(PORT_SCENE)
 		port_node.position = port.position
 		port_node.port = i
+		port_node.port_object = port
 		port_node.inputoutput = false
 		port_node.clicked.connect(port_clicked)
 		port_node.name = "output" + str(i)
+		port.parent = self
 		outputs_node.add_child(port_node)
 		i += 1
 
