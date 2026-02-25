@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://dnkw0yk3tner3" path="res://main/menubar.gd" id="2_yna84"]
 [ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_1a1h6"]
 [ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/node_type.tscn" id="4_1a1h6"]
-[ext_resource type="PackedScene" uid="uid://bvuw8a1l3xivn" path="res://inspector/inspector.tscn" id="5_g3nch"]
+[ext_resource type="PackedScene" uid="uid://bvuw8a1l3xivn" path="res://inspector/node/node_inspector.tscn" id="5_g3nch"]
+[ext_resource type="Script" uid="uid://ble0cj1gdf0tc" path="res://inspector/inspector.gd" id="6_8jboc"]
+[ext_resource type="PackedScene" uid="uid://b1hstu0hfplyb" path="res://inspector/connection/connection_inspector.tscn" id="7_sb2do"]
 
 [node name="window" type="Control" unique_id=1313663587]
 layout_mode = 3
@@ -88,11 +90,11 @@ shrink_width = false
 item_count = 4
 item_0/text = "Save"
 item_0/id = 0
-item_1/text = "Save As"
+item_1/text = "Save As..."
 item_1/id = 1
-item_2/text = "Load From"
+item_2/text = "Load From..."
 item_2/id = 2
-item_3/text = "Clear All"
+item_3/text = "New"
 item_3/id = 3
 
 [node name="edit" type="PopupMenu" parent="menubar/MenuBar" unique_id=859280789]
@@ -135,17 +137,51 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.🎵", "*.tres")
 
-[node name="inspector" parent="." unique_id=1063628290 instance=ExtResource("5_g3nch")]
+[node name="inspector" type="Control" parent="." unique_id=2071139525 node_paths=PackedStringArray("node_inspector", "connection_inspector")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -612.0
+offset_left = -611.0
 offset_top = -432.0
-offset_right = -512.0
-offset_bottom = -362.0
+offset_right = -11.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("6_8jboc")
+node_inspector = NodePath("node_inspector")
+connection_inspector = NodePath("connection_inspector")
+
+[node name="node_inspector" parent="inspector" unique_id=1063628290 instance=ExtResource("5_g3nch")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -420.0
+offset_right = -500.0
+offset_bottom = -350.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(6, 6)
+
+[node name="connection_inspector" parent="inspector" unique_id=158556783 instance=ExtResource("7_sb2do")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -420.0
+offset_right = -300.0
+offset_bottom = -350.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(6, 6)

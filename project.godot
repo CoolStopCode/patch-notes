@@ -40,6 +40,7 @@ folder_colors={
 "res://assets/": "yellow",
 "res://classes/": "gray",
 "res://global/": "gray",
+"res://inspector/": "blue",
 "res://main/": "pink",
 "res://node/": "purple",
 "res://nodes/": "green"

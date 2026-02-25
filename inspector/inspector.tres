@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://4bven1lkpiqj"]
 
 [ext_resource type="FontFile" uid="uid://bqh7wm4k4bepm" path="res://assets/font/kiwi4.ttf" id="1_4u47k"]
-[ext_resource type="Texture2D" uid="uid://b1w7ckh3rq5h" path="res://inspector/ui/slider/grabber_hover.png" id="2_ge1kt"]
-[ext_resource type="Texture2D" uid="uid://ckduxsvcbj1ke" path="res://inspector/ui/slider/grabber.png" id="3_mggdt"]
+[ext_resource type="Texture2D" uid="uid://b1w7ckh3rq5h" path="res://inspector/properties/slider/grabber_hover.png" id="2_ge1kt"]
+[ext_resource type="Texture2D" uid="uid://ckduxsvcbj1ke" path="res://inspector/properties/slider/grabber.png" id="3_mggdt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3672v"]
 
@@ -44,6 +44,8 @@ Button/styles/disabled = SubResource("StyleBoxEmpty_3672v")
 Button/styles/hover = SubResource("StyleBoxFlat_bydeo")
 Button/styles/normal = SubResource("StyleBoxEmpty_51k5n")
 Button/styles/pressed = SubResource("StyleBoxFlat_sggbr")
+GridContainer/constants/h_separation = 0
+GridContainer/constants/v_separation = 0
 HSlider/icons/grabber = ExtResource("3_mggdt")
 HSlider/icons/grabber_highlight = ExtResource("2_ge1kt")
 HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_5alx7")

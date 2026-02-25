@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ctai6lcocplc2" path="res://inspector/properties/file.gd" id="1_1d3se"]
 [ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="1_748b8"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="2_vw00t"]
-[ext_resource type="Texture2D" uid="uid://cvj75tldd4qob" path="res://inspector/ui/file/left_bracket.png" id="3_50kt7"]
-[ext_resource type="Texture2D" uid="uid://ckr04gqjd7dn5" path="res://inspector/ui/file/right_bracket.png" id="4_1d3se"]
+[ext_resource type="Texture2D" uid="uid://cvj75tldd4qob" path="res://inspector/properties/file/left_bracket.png" id="3_50kt7"]
+[ext_resource type="Texture2D" uid="uid://ckr04gqjd7dn5" path="res://inspector/properties/file/right_bracket.png" id="4_1d3se"]
 
 [node name="file" type="Control" unique_id=1089333438 node_paths=PackedStringArray("name_node", "button_node", "file_dialog")]
 custom_minimum_size = Vector2(92, 6)

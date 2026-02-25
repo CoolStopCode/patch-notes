@@ -2,8 +2,8 @@ extends Node2D
 
 @export var line_scene : PackedScene
 
-var preview_line : Line2D = null
-var subpreview_line : Line2D = null
+var preview_line : Node2D = null
+var subpreview_line : Node2D = null
 var preview_from_port : Port
 var preview_inputoutput : bool
 
@@ -26,13 +26,13 @@ func on_connection_started(from : Node, port : int, inputoutput : bool):
 	
 	#preview_line.default_color = random_brightness_hsv(preview_line.default_color, 0.7, 1.5)
 	preview_line = line_scene.instantiate()
-	preview_line.add_point(preview_from_port.position + from.global_position)
+	preview_line.line.add_point(preview_from_port.position + from.global_position)
 	add_child(preview_line)
 	subpreview_line = line_scene.instantiate()
-	subpreview_line.add_point(preview_from_port.position + from.global_position)
-	subpreview_line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
-	subpreview_line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
-	subpreview_line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
+	subpreview_line.line.add_point(preview_from_port.position + from.global_position)
+	subpreview_line.line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
+	subpreview_line.line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
+	subpreview_line.line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
 	add_child(subpreview_line)
 	#if ConnectionManager.preview_inputoutput:
 		#preview_line.add_point(from.ports_in[port].position + from.global_position)
@@ -41,42 +41,42 @@ func on_connection_started(from : Node, port : int, inputoutput : bool):
 	#add_child(preview_line)
 
 func update_subpreview_line():
-	var mousex := Vector2(Constants.snap_to_grid(get_global_mouse_position()).x, subpreview_line.get_point_position(0).y)
-	var mousey := Vector2(subpreview_line.get_point_position(0).x, Constants.snap_to_grid(get_global_mouse_position()).y)
+	var mousex := Vector2(Constants.snap_to_grid(get_global_mouse_position()).x, subpreview_line.line.get_point_position(0).y)
+	var mousey := Vector2(subpreview_line.line.get_point_position(0).x, Constants.snap_to_grid(get_global_mouse_position()).y)
 	var mouse_pos := Constants.snap_to_grid(get_global_mouse_position())
-	subpreview_line.set_point_position(1, mousex if preview_from_port.axis == Constants.Axis.HORIZONTAL else mousey)
-	subpreview_line.set_point_position(2, mouse_pos)
-	subpreview_line.set_point_position(3, mouse_pos)
+	subpreview_line.line.set_point_position(1, mousex if preview_from_port.axis == Constants.Axis.HORIZONTAL else mousey)
+	subpreview_line.line.set_point_position(2, mouse_pos)
+	subpreview_line.line.set_point_position(3, mouse_pos)
 
 func update_subpreview_line_final(to : Node, port : Port):
-	var first_point_pos := subpreview_line.get_point_position(0)
+	var first_point_pos : Vector2 = subpreview_line.line.get_point_position(0)
 	var port_pos : Vector2 = port.position + to.global_position
-	if port.axis == preview_from_port.axis and preview_line.get_point_count() <= 1:
+	if port.axis == preview_from_port.axis and preview_line.line.get_point_count() <= 1:
 		if port.axis == Constants.Axis.HORIZONTAL:
 			var midpoint_x := (first_point_pos.x + port_pos.x) / 2
-			subpreview_line.set_point_position(0, first_point_pos)
-			subpreview_line.set_point_position(1, Vector2(midpoint_x, first_point_pos.y))
-			subpreview_line.set_point_position(2, Vector2(midpoint_x, port_pos.y))
-			subpreview_line.set_point_position(3, port_pos)
+			subpreview_line.line.set_point_position(0, first_point_pos)
+			subpreview_line.line.set_point_position(1, Vector2(midpoint_x, first_point_pos.y))
+			subpreview_line.line.set_point_position(2, Vector2(midpoint_x, port_pos.y))
+			subpreview_line.line.set_point_position(3, port_pos)
 		else:
 			var midpoint_y := (first_point_pos.y + port_pos.y) / 2
-			subpreview_line.set_point_position(0, first_point_pos)
-			subpreview_line.set_point_position(1, Vector2(first_point_pos.x, midpoint_y))
-			subpreview_line.set_point_position(2, Vector2(port_pos.x, midpoint_y))
-			subpreview_line.set_point_position(3, port_pos)
+			subpreview_line.line.set_point_position(0, first_point_pos)
+			subpreview_line.line.set_point_position(1, Vector2(first_point_pos.x, midpoint_y))
+			subpreview_line.line.set_point_position(2, Vector2(port_pos.x, midpoint_y))
+			subpreview_line.line.set_point_position(3, port_pos)
 		return
 	if port.axis == Constants.Axis.HORIZONTAL:
 		if first_point_pos.y != port_pos.y:
-			subpreview_line.set_point_position(1, Vector2(first_point_pos.x, port_pos.y))
+			subpreview_line.line.set_point_position(1, Vector2(first_point_pos.x, port_pos.y))
 		if first_point_pos.x != port_pos.x:
-			subpreview_line.set_point_position(2, port_pos)
-			subpreview_line.set_point_position(3, port_pos)
+			subpreview_line.line.set_point_position(2, port_pos)
+			subpreview_line.line.set_point_position(3, port_pos)
 	else:
 		if first_point_pos.x != port_pos.x:
-			subpreview_line.set_point_position(1, Vector2(port_pos.x, first_point_pos.y))
+			subpreview_line.line.set_point_position(1, Vector2(port_pos.x, first_point_pos.y))
 		if first_point_pos.y != port_pos.y:
-			subpreview_line.set_point_position(2, port_pos)
-			subpreview_line.set_point_position(3, port_pos)
+			subpreview_line.line.set_point_position(2, port_pos)
+			subpreview_line.line.set_point_position(3, port_pos)
 	
 
 func on_connection_ended(to : Node, port : int, inputoutput : bool):
@@ -84,9 +84,9 @@ func on_connection_ended(to : Node, port : int, inputoutput : bool):
 						if inputoutput else\
 						to.ports_out[port]
 	
-	#preview_line.add_point(Vector2(0, 0))
-	#
+	
 	add_joint_final(to, preview_to_port)
+	preview_line.outline.points = preview_line.line.points
 	var connection = Connection.new(
 		ConnectionManager.preview_from if inputoutput else to, 
 		ConnectionManager.preview_port if inputoutput else port, 
@@ -140,38 +140,38 @@ func _input(event: InputEvent) -> void: # mouse move
 				update_subpreview_line()
 
 func add_joint():
-	var first_point_pos := subpreview_line.get_point_position(0)
-	var second_point_pos := subpreview_line.get_point_position(1)
-	var third_point_pos := subpreview_line.get_point_position(2)
+	var first_point_pos : Vector2 = subpreview_line.line.get_point_position(0)
+	var second_point_pos: Vector2 = subpreview_line.line.get_point_position(1)
+	var third_point_pos : Vector2 = subpreview_line.line.get_point_position(2)
 	if first_point_pos != second_point_pos:
-		preview_line.add_point(second_point_pos)
-		subpreview_line.set_point_position(0, second_point_pos)
+		preview_line.line.add_point(second_point_pos)
+		subpreview_line.line.set_point_position(0, second_point_pos)
 	if first_point_pos != third_point_pos:
-		preview_line.add_point(third_point_pos)
-		subpreview_line.set_point_position(0, third_point_pos)
+		preview_line.line.add_point(third_point_pos)
+		subpreview_line.line.set_point_position(0, third_point_pos)
 
 func add_joint_final(to : Node, port : Port):
-	var first_point_pos := subpreview_line.get_point_position(0)
+	var first_point_pos : Vector2 = subpreview_line.line.get_point_position(0)
 	var port_pos : Vector2 = port.position + to.global_position
-	if port.axis == preview_from_port.axis and preview_line.get_point_count() <= 1:
+	if port.axis == preview_from_port.axis and preview_line.line.get_point_count() <= 1:
 		if port.axis == Constants.Axis.HORIZONTAL:
 			var midpoint_x := (first_point_pos.x + port_pos.x) / 2
-			preview_line.add_point(Vector2(midpoint_x, first_point_pos.y))
-			preview_line.add_point(Vector2(midpoint_x, port_pos.y))
-			preview_line.add_point(port_pos)
+			preview_line.line.add_point(Vector2(midpoint_x, first_point_pos.y))
+			preview_line.line.add_point(Vector2(midpoint_x, port_pos.y))
+			preview_line.line.add_point(port_pos)
 		else:
 			var midpoint_y := (first_point_pos.y + port_pos.y) / 2
-			preview_line.add_point(Vector2(first_point_pos.x, midpoint_y))
-			preview_line.add_point(Vector2(port_pos.x, midpoint_y))
-			preview_line.add_point(port_pos)
+			preview_line.line.add_point(Vector2(first_point_pos.x, midpoint_y))
+			preview_line.line.add_point(Vector2(port_pos.x, midpoint_y))
+			preview_line.line.add_point(port_pos)
 		return
 	if port.axis == Constants.Axis.HORIZONTAL:
 		if first_point_pos.y != port_pos.y:
-			preview_line.add_point(Vector2(first_point_pos.x, port_pos.y))
+			preview_line.line.add_point(Vector2(first_point_pos.x, port_pos.y))
 		if first_point_pos.x != port_pos.x:
-			preview_line.add_point(port_pos)
+			preview_line.line.add_point(port_pos)
 	else:
 		if first_point_pos.x != port_pos.x:
-			preview_line.add_point(Vector2(port_pos.x, first_point_pos.y))
+			preview_line.line.add_point(Vector2(port_pos.x, first_point_pos.y))
 		if first_point_pos.y != port_pos.y:
-			preview_line.add_point(port_pos)
+			preview_line.line.add_point(port_pos)

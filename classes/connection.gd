@@ -6,25 +6,29 @@ var from: Node2D
 var from_port : int
 var to: Node2D
 var to_port : int
-var line: Line2D
+var line: Node2D
+var color: Color
 var freed := false
 
 var pulse_tween: Tween
 
 # from is always output, to is always input
-func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: Line2D):
+func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: Node2D):
 	from = _from
 	from_port = _from_port
 	to = _to
 	to_port = _to_port
 	line = _line
-
-	# listen to both ends
+	
+	line.pressed.connect(selected)
+	line.line.default_color = color
+	
 	from.actuate_output.connect(_on_actuate_output)
 	
 	from.tree_exiting.connect(_on_endpoint_gone)
 	from.move.connect(update)
 	from.ports_modified.connect(update)
+	
 	if from != to:
 		to.tree_exiting.connect(_on_endpoint_gone)
 		to.move.connect(update)
@@ -36,31 +40,39 @@ func update():
 		return
 	
 	if from.ports_out[from_port].axis != to.ports_in[to_port].axis:
-		line.set_point_position(0, from.ports_out[from_port].position + from.global_position)
-		line.set_point_position(line.get_point_count() - 1, to.ports_in[to_port].position + to.global_position)
+		line.line.set_point_position(0, from.ports_out[from_port].position + from.global_position)
+		line.line.set_point_position(line.line.get_point_count() - 1, to.ports_in[to_port].position + to.global_position)
 		
 		if from.ports_out[from_port].axis == Constants.Axis.HORIZONTAL:
-			line.set_point_position(1, Vector2(line.get_point_position(1).x, from.ports_out[from_port].position.y + from.global_position.y))
-			line.set_point_position(line.get_point_count() - 2, Vector2(to.ports_in[to_port].position.x + to.global_position.x, line.get_point_position(line.get_point_count() - 2).y))
+			line.line.set_point_position(1, Vector2(line.line.get_point_position(1).x, from.ports_out[from_port].position.y + from.global_position.y))
+			line.line.set_point_position(line.line.get_point_count() - 2, Vector2(to.ports_in[to_port].position.x + to.global_position.x, line.line.get_point_position(line.line.get_point_count() - 2).y))
 		else:
-			line.set_point_position(1, Vector2(from.ports_out[from_port].position.x + from.global_position.x, line.get_point_position(1).y))
-			line.set_point_position(line.get_point_count() - 2, Vector2(line.get_point_position(line.get_point_count() - 2).x, to.ports_in[to_port].position.y + to.global_position.y))
+			line.line.set_point_position(1, Vector2(from.ports_out[from_port].position.x + from.global_position.x, line.line.get_point_position(1).y))
+			line.line.set_point_position(line.line.get_point_count() - 2, Vector2(line.line.get_point_position(line.line.get_point_count() - 2).x, to.ports_in[to_port].position.y + to.global_position.y))
 		return
-	line.set_point_position(0, from.ports_out[from_port].position + from.global_position)
+	line.line.set_point_position(0, from.ports_out[from_port].position + from.global_position)
 	if from.ports_out[from_port].axis == Constants.Axis.HORIZONTAL:
-		line.set_point_position(1, Vector2(line.get_point_position(1).x, from.ports_out[from_port].position.y + from.global_position.y))
+		line.line.set_point_position(1, Vector2(line.line.get_point_position(1).x, from.ports_out[from_port].position.y + from.global_position.y))
 	else:
-		line.set_point_position(1, Vector2(from.ports_out[from_port].position.x + from.global_position.x, line.get_point_position(1).y))
+		line.line.set_point_position(1, Vector2(from.ports_out[from_port].position.x + from.global_position.x, line.line.get_point_position(1).y))
 	
-	line.set_point_position(line.get_point_count() - 1, to.ports_in[to_port].position + to.global_position)
+	line.line.set_point_position(line.line.get_point_count() - 1, to.ports_in[to_port].position + to.global_position)
 	if from.ports_out[from_port].axis == Constants.Axis.HORIZONTAL:
-		line.set_point_position(line.get_point_count() - 2, 
-			Vector2(line.get_point_position(line.get_point_count() - 2).x, to.ports_in[to_port].position.y + to.global_position.y)
+		line.line.set_point_position(line.line.get_point_count() - 2, 
+			Vector2(line.line.get_point_position(line.line.get_point_count() - 2).x, to.ports_in[to_port].position.y + to.global_position.y)
 		)
 	else:
-		line.set_point_position(line.get_point_count() - 2, 
-			Vector2(to.ports_in[to_port].position.x + to.global_position.x, line.get_point_position(line.get_point_count() - 2).y)
+		line.line.set_point_position(line.line.get_point_count() - 2, 
+			Vector2(to.ports_in[to_port].position.x + to.global_position.x, line.line.get_point_position(line.line.get_point_count() - 2).y)
 		)
+	
+	line.outline.points = line.line.points
+
+func selected():
+	GlobalNodes.inspector.open_connection_inspector(self)
+
+func deselected():
+	line.deselected()
 
 func _on_endpoint_gone():
 	free_connection()

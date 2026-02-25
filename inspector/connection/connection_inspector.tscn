@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://b1hstu0hfplyb"]
+
+[ext_resource type="Script" uid="uid://d3ga6unpfvty5" path="res://inspector/connection/connection_inspector.gd" id="1_bo20n"]
+[ext_resource type="Texture2D" uid="uid://6vwaq4bkv6qe" path="res://inspector/panel.png" id="2_s6qed"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_p045f"]
+[ext_resource type="Texture2D" uid="uid://ctw0junlp5n77" path="res://inspector/buttons/delete.png" id="4_x6k8g"]
+[ext_resource type="Script" uid="uid://bexdng7pcgnsp" path="res://inspector/node/state_button.gd" id="6_jchpv"]
+[ext_resource type="Texture2D" uid="uid://ck6wq8srxwul3" path="res://inspector/node/buttons/normal.png" id="7_4man1"]
+[ext_resource type="Texture2D" uid="uid://cat3amsm3f710" path="res://inspector/node/buttons/pass.png" id="8_3emdv"]
+[ext_resource type="Texture2D" uid="uid://clapmhhos6k4h" path="res://inspector/node/buttons/broken.png" id="9_c0p8x"]
+[ext_resource type="Texture2D" uid="uid://sgyglq74ifna" path="res://inspector/connection/normal.png" id="9_f0gd8"]
+[ext_resource type="Texture2D" uid="uid://el4m5hjo1c4x" path="res://inspector/connection/connection.png" id="10_776xh"]
+[ext_resource type="PackedScene" uid="uid://c8yeijhcmg1fl" path="res://inspector/connection/color_button.tscn" id="11_776xh"]
+
+[node name="connection_inspector" type="Control" unique_id=1063628290 node_paths=PackedStringArray("colors_parent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 70.0
+script = ExtResource("1_bo20n")
+colors_parent = NodePath("colors")
+color_button_scene = ExtResource("11_776xh")
+colors = Array[Color]([Color(0.34117648, 0.44705883, 0.46666667, 1), Color(1, 0, 0, 1), Color(0, 0, 0.7411765, 1), Color(0.54509807, 0.41960785, 0.63529414, 1)])
+
+[node name="bg" type="NinePatchRect" parent="." unique_id=2129196231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s6qed")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="delete" type="Button" parent="." unique_id=731586698]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 4.0
+offset_right = -14.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource("3_p045f")
+
+[node name="TextureRect" type="TextureRect" parent="delete" unique_id=1209473373]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_x6k8g")
+
+[node name="state" type="Button" parent="." unique_id=1742768030 node_paths=PackedStringArray("texture_rect")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -14.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource("3_p045f")
+script = ExtResource("6_jchpv")
+normal_texture = ExtResource("7_4man1")
+pass_texture = ExtResource("8_3emdv")
+broken_texture = ExtResource("9_c0p8x")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="state" unique_id=1900099764]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_f0gd8")
+
+[node name="icon" type="TextureRect" parent="." unique_id=401588696]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 10.0
+offset_bottom = 14.0
+texture = ExtResource("10_776xh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=113047279]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 15.0
+offset_right = 11.0
+offset_bottom = 16.0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=73461224]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -3.0
+offset_bottom = 16.0
+grow_horizontal = 0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="Label" type="Label" parent="." unique_id=314088122]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 19.0
+offset_right = 24.0
+offset_bottom = 23.0
+theme = ExtResource("3_p045f")
+text = "Color"
+
+[node name="colors" type="GridContainer" parent="." unique_id=1920566622]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 24.0
+offset_right = 57.0
+offset_bottom = 64.0
+theme = ExtResource("3_p045f")
+columns = 5
+
+[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="state" to="state" method="_on_pressed"]
+[connection signal="state_set" from="state" to="." method="_on_state_set"]

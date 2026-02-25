@@ -1,5 +1,19 @@
 [gd_scene format=3 uid="uid://clrqt7pijmicg"]
 
-[node name="line" type="Line2D" unique_id=1334082171]
+[ext_resource type="Script" uid="uid://suvragnk1eg5" path="res://node/connection/line.gd" id="1_ppdyb"]
+
+[node name="line" type="Node2D" unique_id=849487109 node_paths=PackedStringArray("outline", "line")]
+script = ExtResource("1_ppdyb")
+outline = NodePath("outline")
+line = NodePath("line")
+
+[node name="outline" type="Line2D" parent="." unique_id=1899540858]
+visible = false
+width = 4.0
+default_color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="line" type="Line2D" parent="." unique_id=955157371]
 width = 2.0
 default_color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+begin_cap_mode = 1
+end_cap_mode = 1

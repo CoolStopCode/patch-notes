@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://coh4t3jm3qwh5" path="res://inspector/properties/arrows.gd" id="1_76kay"]
 [ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="2_uxwe0"]
-[ext_resource type="Texture2D" uid="uid://bus0ip84oiiey" path="res://inspector/ui/arrow/left_arrow_disabled.png" id="3_j7euj"]
+[ext_resource type="Texture2D" uid="uid://bus0ip84oiiey" path="res://inspector/properties/arrow/left_arrow_disabled.png" id="3_j7euj"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_ucacb"]
-[ext_resource type="Texture2D" uid="uid://b8qfhv5lcq1vi" path="res://inspector/ui/arrow/left_arrow.png" id="4_j7euj"]
-[ext_resource type="Texture2D" uid="uid://b5qp534wklh7j" path="res://inspector/ui/arrow/right_arrow_disabled.png" id="5_3kwcj"]
-[ext_resource type="Texture2D" uid="uid://bkvddo1v6laq1" path="res://inspector/ui/arrow/right_arrow.png" id="6_s12xy"]
+[ext_resource type="Texture2D" uid="uid://b8qfhv5lcq1vi" path="res://inspector/properties/arrow/left_arrow.png" id="4_j7euj"]
+[ext_resource type="Texture2D" uid="uid://b5qp534wklh7j" path="res://inspector/properties/arrow/right_arrow_disabled.png" id="5_3kwcj"]
+[ext_resource type="Texture2D" uid="uid://bkvddo1v6laq1" path="res://inspector/properties/arrow/right_arrow.png" id="6_s12xy"]
 
 [node name="arrows" type="Control" unique_id=1089333438 node_paths=PackedStringArray("line_edit_node", "left_button", "left_texture_rect", "right_button", "right_texture_rect", "name_node")]
 custom_minimum_size = Vector2(92, 6)
