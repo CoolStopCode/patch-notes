@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c4l3hr0qkmk6f" path="res://node/BaseNode.gd" id="1_68giq"]
 [ext_resource type="PackedScene" uid="uid://dwkbfvuetmc7t" path="res://node/port/port.tscn" id="2_iqnxv"]
+[ext_resource type="Texture2D" uid="uid://bmmbsc677qey6" path="res://node/selected_outline.png" id="3_iqnxv"]
 
-[node name="BaseNode" type="Node2D" unique_id=1970947894 node_paths=PackedStringArray("hover_rectangle_node", "body_sprite_node", "area_node", "area_collision_node", "inputs_node", "outputs_node")]
+[node name="BaseNode" type="Node2D" unique_id=1970947894 node_paths=PackedStringArray("hover_rectangle_node", "body_sprite_node", "area_node", "area_collision_node", "inputs_node", "outputs_node", "selected_outline")]
 script = ExtResource("1_68giq")
 BODY_SIZE = Vector2(20, 20)
 hover_rectangle_node = NodePath("ColorRect")
@@ -12,6 +13,7 @@ area_node = NodePath("hitbox")
 area_collision_node = NodePath("hitbox/CollisionShape2D")
 inputs_node = NodePath("inputs")
 outputs_node = NodePath("outputs")
+selected_outline = NodePath("selected_outline")
 PORT_SCENE = ExtResource("2_iqnxv")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1719269032]
@@ -39,3 +41,22 @@ texture_filter = 1
 [node name="inputs" type="Node2D" parent="." unique_id=1267030901]
 
 [node name="outputs" type="Node2D" parent="." unique_id=803864095]
+
+[node name="selected_outline" type="NinePatchRect" parent="." unique_id=1176220450]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -21.5
+offset_right = 23.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_iqnxv")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4

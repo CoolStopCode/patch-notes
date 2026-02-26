@@ -26,8 +26,9 @@ func load_from(path : String):
 		GlobalNodes.nodes.add_child(node_instance)
 		id_map[node.id] = node_instance.get_child(0)
 	for connection in file_save.connections:
-		var line : Line2D = load("res://node/connection/line.tscn").instantiate()
-		line.points = connection.points
+		var line : Node2D = load("res://node/connection/line.tscn").instantiate()
+		line.line.points = connection.points
+		line.outline.points = connection.points
 		GlobalNodes.connections.add_child(line)
 		
 		var from_node = id_map.get(connection.from_id)
@@ -39,7 +40,10 @@ func load_from(path : String):
 			connection.to_port,
 			line
 		)
+		connection_instance.set_line_color(connection.color)
 		ConnectionManager.connections.append(connection_instance)
+	
+	Save.default_path = path
 
 func clear_all():
 	Constants.clear_children(GlobalNodes.nodes)

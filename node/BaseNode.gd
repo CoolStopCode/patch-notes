@@ -28,6 +28,7 @@ var node : Node
 @export var area_collision_node : CollisionShape2D
 @export var inputs_node : Node
 @export var outputs_node : Node
+@export var selected_outline : NinePatchRect
 @export var PORT_SCENE : PackedScene
 
 signal mouse_hovering_changed(value: bool)
@@ -113,6 +114,8 @@ func _process(_delta: float) -> void:
 func initiate_children():
 	hover_rectangle_node.size = BODY_SIZE
 	hover_rectangle_node.position = -BODY_SIZE * 0.5
+	selected_outline.size = BODY_SIZE + Vector2(2, 2)
+	selected_outline.position = -(BODY_SIZE + Vector2(2, 2)) * 0.5
 	
 	body_sprite_node.texture = BODY_SPRITE
 	
@@ -173,3 +176,9 @@ func port_clicked(port, inputoutput):
 			ConnectionManager.connection_ended.emit(self, port, inputoutput)
 	else:
 		ConnectionManager.connection_started.emit(self, port, inputoutput)
+
+func selected():
+	selected_outline.show()
+
+func deselected():
+	selected_outline.hide()

@@ -15,9 +15,10 @@ var active_node : Node
 var active := false
 
 func open(node : Node2D):
+	active_node = node
+	active_node.selected()
 	show()
 	Constants.clear_children(properties_container)
-	active_node = node
 	for property: InspectorProperty in node.properties:
 		var script: Script = property.get_script()
 		var ui : Control = property_scenes[script].instantiate()
@@ -29,13 +30,14 @@ func open(node : Node2D):
 	active = true
 
 func close():
+	if not active: return
+	active_node.deselected()
 	hide()
 	active = false
 	Constants.clear_children(properties_container)
 
 func _input(event: InputEvent) -> void:
-	if not visible:
-		return
+	if not active: return
 
 	if event is InputEventMouseButton and event.pressed:
 		var pos := get_global_mouse_position()

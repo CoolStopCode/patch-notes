@@ -6,3 +6,4 @@ extends Resource
 @export var to_id : int
 @export var to_port : int
 @export var points : PackedVector2Array
+@export var color : Color

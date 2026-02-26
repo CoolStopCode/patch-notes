@@ -7,7 +7,7 @@ var from_port : int
 var to: Node2D
 var to_port : int
 var line: Node2D
-var color: Color
+var color: Color = Color("819796")
 var freed := false
 
 var pulse_tween: Tween
@@ -70,6 +70,7 @@ func update():
 
 func selected():
 	GlobalNodes.inspector.open_connection_inspector(self)
+	line.selected()
 
 func deselected():
 	line.deselected()
@@ -121,3 +122,7 @@ func free_connection():
 	pulse_tween = null
 	
 	freed = true
+
+func set_line_color(col : Color):
+	color = col
+	line.line.default_color = col

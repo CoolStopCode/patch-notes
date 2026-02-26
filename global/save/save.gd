@@ -29,7 +29,8 @@ func save_to(path : String):
 		connection_save.to_id = id_map.get(connection.to, -1)
 		connection_save.from_port = connection.from_port
 		connection_save.to_port = connection.to_port
-		connection_save.points = connection.line.points
+		connection_save.points = connection.line.line.points
+		connection_save.color = connection.color
 		file_save.connections.append(connection_save)
 	
 	var temp_path := path.substr(0, path.length() - 2) + ".tres"

@@ -18,15 +18,16 @@ func _ready() -> void:
 		colors_parent.add_child(color_button_instance)
 
 func open(connection : Connection):
+	active_connection = connection
 	show()
 	active = true
-	active_connection = connection
 	other_color_button_pressed.emit()
 	for color_button in colors_parent.get_children():
 		if color_button.color == connection.color:
 			color_button.selected_rect.show()
 
 func close():
+	if not active: return
 	active_connection.deselected()
 	hide()
 	active = false
@@ -34,12 +35,10 @@ func close():
 func color_button_pressed(button : Button):
 	other_color_button_pressed.emit()
 	button.selected_rect.show()
-	active_connection.color = button.color
-	active_connection.line.line.default_color = button.color
+	active_connection.set_line_color(button.color)
 
 func _input(event: InputEvent) -> void:
-	if not visible:
-		return
+	if not active: return
 
 	if event is InputEventMouseButton and event.pressed:
 		var pos := get_global_mouse_position()

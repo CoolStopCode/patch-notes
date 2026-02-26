@@ -4,10 +4,10 @@ signal pressed
 @export var outline : Line2D
 @export var line : Line2D
 
-func is_mouse_on_line(line: Line2D, mouse: Vector2, tolerance := 4.0) -> bool:
-	var local_mouse = line.to_local(mouse)
+func is_mouse_on_line(detect_line: Line2D, mouse: Vector2, tolerance := 4.0) -> bool:
+	var local_mouse = detect_line.to_local(mouse)
 
-	var pts = line.points
+	var pts = detect_line.points
 	for i in range(pts.size() - 1):
 		var a = pts[i]
 		var b = pts[i + 1]
