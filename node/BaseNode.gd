@@ -33,6 +33,7 @@ var node : Node
 
 signal mouse_hovering_changed(value: bool)
 var mouse_hovering := false
+var node_selected := false
 
 var mouse_dragging := false
 var drag_offset : Vector2
@@ -110,6 +111,8 @@ func _process(_delta: float) -> void:
 	if mouse_dragging:
 		var free_pos := get_global_mouse_position() + drag_offset
 		global_position = Constants.snap_to_grid(free_pos)
+	if node_selected:
+		selected_outline.modulate.a = 0.35 * sin(Constants.global_time * 5.0) + 0.65
 
 func initiate_children():
 	hover_rectangle_node.size = BODY_SIZE
@@ -143,6 +146,7 @@ func load_in_ports():
 	Constants.clear_children(inputs_node)
 	var i := 0
 	for port in ports_in:
+		port = port.duplicate()
 		var port_node = load_node(PORT_SCENE)
 		port_node.position = port.position
 		port_node.port = i
@@ -159,6 +163,7 @@ func load_out_ports():
 	Constants.clear_children(outputs_node)
 	var i := 0
 	for port in ports_out:
+		port = port.duplicate()
 		var port_node = load_node(PORT_SCENE)
 		port_node.position = port.position
 		port_node.port = i
@@ -179,6 +184,8 @@ func port_clicked(port, inputoutput):
 
 func selected():
 	selected_outline.show()
+	node_selected = true
 
 func deselected():
 	selected_outline.hide()
+	node_selected = false

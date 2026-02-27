@@ -88,26 +88,6 @@ func on_connection_ended(to : Node, port : int, inputoutput : bool):
 	subpreview_line.queue_free()
 	subpreview_line = null
 
-func cleanup_points():
-	pass
-	#for point in range(preview_line.get_point_count() - 2, 0, -1):
-		#var previous : Vector2 = preview_line.get_point_position(point - 1)
-		#var current  : Vector2 = preview_line.get_point_position(point)
-		#var next     : Vector2 = preview_line.get_point_position(point + 1)
-		#if previous == current:
-			#preview_line.remove_point(point)
-		#elif previous.x == current.x and current.x == next.x:
-			#preview_line.remove_point(point)
-		#elif previous.y == current.y and current.y == next.y:
-			#preview_line.remove_point(point)
-	#if preview_line.get_point_count() < 3:
-		#var pos1 := preview_line.get_point_position(0)
-		#var pos2 := preview_line.get_point_position(preview_line.get_point_count() - 1)
-		#var midpoint : Vector2 = Constants.snap_to_grid((pos1 + pos2) / 2)
-		#preview_line.add_point(midpoint, 1)
-		#preview_line.add_point(midpoint, 1)
-
-
 func _unhandled_input(event: InputEvent) -> void: # mouse click
 	if ConnectionManager.currently_creating_preview: 
 		if event is InputEventMouseButton:

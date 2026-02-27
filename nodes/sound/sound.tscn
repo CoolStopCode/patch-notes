@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cbsxpbv0ehqvn"]
 
 [ext_resource type="Script" uid="uid://gpddwrks2jrn" path="res://nodes/sound/sound.gd" id="2_84dgq"]
+[ext_resource type="AudioStream" uid="uid://chsh8e77ugu3u" path="res://nodes/sound/guitarC.wav" id="3_a5kwh"]
 [ext_resource type="Texture2D" uid="uid://blt5yrc1id2v5" path="res://nodes/sound/waveform.png" id="6_sbhlm"]
-[ext_resource type="AudioStream" uid="uid://bxodb2ak8p8u" path="res://assets/audio/arp.wav" id="6_wg1kc"]
 
 [node name="sound" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("audio_node", "waveform_node")]
 script = ExtResource("2_84dgq")
 audio_node = NodePath("AudioStreamPlayer")
 waveform_node = NodePath("waveform")
 waveform_texture = ExtResource("6_sbhlm")
-audio_file = ExtResource("6_wg1kc")
+audio_file = ExtResource("3_a5kwh")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=684576736]
-stream = ExtResource("6_wg1kc")
+stream = ExtResource("3_a5kwh")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=274443413]
 visible = false

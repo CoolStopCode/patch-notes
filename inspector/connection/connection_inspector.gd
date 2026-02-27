@@ -50,3 +50,9 @@ func _input(event: InputEvent) -> void:
 func _on_state_set(state: Constants.ConnectionState) -> void:
 	if active:
 		active_connection.connection_state = state
+
+
+func _on_delete_pressed() -> void:
+	if active:
+		active_connection.free_connection()
+		close()

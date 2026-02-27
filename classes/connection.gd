@@ -73,7 +73,8 @@ func selected():
 	line.selected()
 
 func deselected():
-	line.deselected()
+	if is_instance_valid(line):
+		line.deselected()
 
 func _on_endpoint_gone():
 	free_connection()

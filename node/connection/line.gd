@@ -36,6 +36,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				selected()
 				pressed.emit()
 
+func _process(_delta: float) -> void:
+	if outline.visible:
+		outline.modulate.a = 0.35 * sin(Constants.global_time * 5.0) + 0.65
+
 func selected():
 	outline.show()
 
