@@ -23,6 +23,7 @@ func load_from(path : String):
 		var node_instance : Node = load(node.scene_path).instantiate()
 		node_instance.position = node.position
 		node_instance.get_child(0).properties = node.properties
+		node_instance.get_child(0).node_state = node.node_state
 		GlobalNodes.nodes.add_child(node_instance)
 		id_map[node.id] = node_instance.get_child(0)
 	for connection in file_save.connections:
@@ -40,6 +41,7 @@ func load_from(path : String):
 			connection.to_port,
 			line
 		)
+		connection_instance.connection_state = connection.connection_state
 		connection_instance.set_line_color(connection.color)
 		ConnectionManager.connections.append(connection_instance)
 	

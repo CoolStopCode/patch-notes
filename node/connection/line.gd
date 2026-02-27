@@ -4,6 +4,9 @@ signal pressed
 @export var outline : Line2D
 @export var line : Line2D
 
+func _ready() -> void:
+	line.default_color = Constants.DEFAULT_CONNECTION_COLOR
+
 func is_mouse_on_line(detect_line: Line2D, mouse: Vector2, tolerance := 4.0) -> bool:
 	var local_mouse = detect_line.to_local(mouse)
 

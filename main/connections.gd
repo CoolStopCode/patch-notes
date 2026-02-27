@@ -12,11 +12,6 @@ func _ready() -> void:
 	ConnectionManager.connection_ended.connect(on_connection_ended)
 	GlobalNodes.connections = self
 
-#func random_brightness_hsv(color: Color, minimum := 0.6, maximum := 1.4) -> Color:
-	#var h = color.h
-	#var s = color.s
-	#var v = clamp(color.v * randf_range(minimum, maximum), 0.0, 1.0)
-	#return Color.from_hsv(h, s, v, color.a)
 
 func on_connection_started(from : Node, port : int, inputoutput : bool):
 	preview_from_port = from.ports_in[port]\
@@ -24,7 +19,6 @@ func on_connection_started(from : Node, port : int, inputoutput : bool):
 						from.ports_out[port]
 	preview_inputoutput = inputoutput
 	
-	#preview_line.default_color = random_brightness_hsv(preview_line.default_color, 0.7, 1.5)
 	preview_line = line_scene.instantiate()
 	preview_line.line.add_point(preview_from_port.position + from.global_position)
 	add_child(preview_line)
@@ -34,11 +28,6 @@ func on_connection_started(from : Node, port : int, inputoutput : bool):
 	subpreview_line.line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
 	subpreview_line.line.add_point(Constants.snap_to_grid(get_global_mouse_position()))
 	add_child(subpreview_line)
-	#if ConnectionManager.preview_inputoutput:
-		#preview_line.add_point(from.ports_in[port].position + from.global_position)
-	#else:
-		#preview_line.add_point(from.ports_out[port].position + from.global_position)
-	#add_child(preview_line)
 
 func update_subpreview_line():
 	var mousex := Vector2(Constants.snap_to_grid(get_global_mouse_position()).x, subpreview_line.line.get_point_position(0).y)

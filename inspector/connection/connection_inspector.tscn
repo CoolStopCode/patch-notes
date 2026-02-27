@@ -4,23 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://6vwaq4bkv6qe" path="res://inspector/panel.png" id="2_s6qed"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_p045f"]
 [ext_resource type="Texture2D" uid="uid://ctw0junlp5n77" path="res://inspector/buttons/delete.png" id="4_x6k8g"]
-[ext_resource type="Script" uid="uid://bexdng7pcgnsp" path="res://inspector/node/state_button.gd" id="6_jchpv"]
-[ext_resource type="Texture2D" uid="uid://ck6wq8srxwul3" path="res://inspector/node/buttons/normal.png" id="7_4man1"]
-[ext_resource type="Texture2D" uid="uid://cat3amsm3f710" path="res://inspector/node/buttons/pass.png" id="8_3emdv"]
-[ext_resource type="Texture2D" uid="uid://clapmhhos6k4h" path="res://inspector/node/buttons/broken.png" id="9_c0p8x"]
-[ext_resource type="Texture2D" uid="uid://sgyglq74ifna" path="res://inspector/connection/normal.png" id="9_f0gd8"]
+[ext_resource type="Script" uid="uid://b2r4hmdunbelr" path="res://inspector/connection/state_button.gd" id="6_7cm0x"]
+[ext_resource type="Texture2D" uid="uid://be1djm87q41sc" path="res://inspector/connection/buttons/broken.png" id="8_w7gnb"]
+[ext_resource type="Texture2D" uid="uid://sgyglq74ifna" path="res://inspector/connection/buttons/normal.png" id="9_f0gd8"]
 [ext_resource type="Texture2D" uid="uid://el4m5hjo1c4x" path="res://inspector/connection/connection.png" id="10_776xh"]
 [ext_resource type="PackedScene" uid="uid://c8yeijhcmg1fl" path="res://inspector/connection/color_button.tscn" id="11_776xh"]
 
-[node name="connection_inspector" type="Control" unique_id=1063628290 node_paths=PackedStringArray("colors_parent")]
+[node name="connection_inspector" type="Control" unique_id=1063628290 node_paths=PackedStringArray("state_button", "colors_parent")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 60.0
 offset_bottom = 70.0
 script = ExtResource("1_bo20n")
+state_button = NodePath("state")
 colors_parent = NodePath("colors")
 color_button_scene = ExtResource("11_776xh")
-colors = Array[Color]([Color(0.34117648, 0.44705883, 0.46666667, 1), Color(1, 0, 0, 1), Color(0, 0, 0.7411765, 1), Color(0.54509807, 0.41960785, 0.63529414, 1)])
+colors = Array[Color]([Color(0.22352941, 0.2901961, 0.3137255, 1), Color(0.47843137, 0.21176471, 0.48235294, 1), Color(0.45882353, 0.14117648, 0.21960784, 1), Color(0.53333336, 0.29411766, 0.16862746, 1), Color(0.27450982, 0.50980395, 0.19607843, 1), Color(0.23529412, 0.36862746, 0.54509807, 1)])
 
 [node name="bg" type="NinePatchRect" parent="." unique_id=2129196231]
 layout_mode = 1
@@ -73,10 +72,9 @@ offset_right = -4.0
 offset_bottom = 14.0
 grow_horizontal = 0
 theme = ExtResource("3_p045f")
-script = ExtResource("6_jchpv")
-normal_texture = ExtResource("7_4man1")
-pass_texture = ExtResource("8_3emdv")
-broken_texture = ExtResource("9_c0p8x")
+script = ExtResource("6_7cm0x")
+normal_texture = ExtResource("9_f0gd8")
+broken_texture = ExtResource("8_w7gnb")
 texture_rect = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="state" unique_id=1900099764]

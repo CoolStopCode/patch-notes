@@ -7,7 +7,8 @@ var from_port : int
 var to: Node2D
 var to_port : int
 var line: Node2D
-var color: Color = Color("819796")
+var color: Color = Constants.DEFAULT_CONNECTION_COLOR
+var connection_state : Constants.ConnectionState = Constants.ConnectionState.NORMAL
 var freed := false
 
 var pulse_tween: Tween
@@ -21,7 +22,6 @@ func _init(_from: Node2D, _from_port : int, _to: Node2D, _to_port : int, _line: 
 	line = _line
 	
 	line.pressed.connect(selected)
-	line.line.default_color = color
 	
 	from.actuate_output.connect(_on_actuate_output)
 	
@@ -80,6 +80,8 @@ func _on_endpoint_gone():
 
 func _on_actuate_output(_port):
 	if from_port != _port:
+		return
+	if connection_state == Constants.ConnectionState.BROKEN:
 		return
 	pulse()
 	to.receive_input()

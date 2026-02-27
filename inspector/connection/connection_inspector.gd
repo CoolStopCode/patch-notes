@@ -1,6 +1,7 @@
 extends Control
 
 signal other_color_button_pressed
+@export var state_button : Button
 @export var colors_parent : Node
 @export var color_button_scene : PackedScene
 @export var colors : Array[Color]
@@ -22,6 +23,7 @@ func open(connection : Connection):
 	show()
 	active = true
 	other_color_button_pressed.emit()
+	state_button.load_state(connection.connection_state)
 	for color_button in colors_parent.get_children():
 		if color_button.color == connection.color:
 			color_button.selected_rect.show()
@@ -44,3 +46,7 @@ func _input(event: InputEvent) -> void:
 		var pos := get_global_mouse_position()
 		if not get_global_rect().has_point(pos):
 			close()
+
+func _on_state_set(state: Constants.ConnectionState) -> void:
+	if active:
+		active_connection.connection_state = state
