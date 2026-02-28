@@ -18,6 +18,5 @@ func _on_pressed() -> void:
 	var node := node_scene.instantiate()
 	node.mouse_dragging = true
 	node.drag_offset = Vector2(0, 0)
-	node.distance_moved = Vector2(10, 10)
 	Cursor.dragging = true
 	GlobalNodes.nodes.add_child(node)

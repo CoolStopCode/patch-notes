@@ -26,3 +26,8 @@ func _on_save_as_file_selected(path: String) -> void:
 
 func _on_load_from_file_selected(path: String) -> void:
 	Load.load_from(path)
+
+func _ready() -> void:
+	var documents_path = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	save_as_dialogue.current_dir = documents_path
+	load_from_dialogue.current_dir = documents_path

@@ -47,5 +47,5 @@ line_scene = ExtResource("6_kfbq2")
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
 script = ExtResource("3_0i4oc")
 
-[node name="sound_node" parent="." unique_id=1970947894 instance=ExtResource("3_4dugh")]
-position = Vector2(62, -34)
+[node name="sound_node" parent="nodes" unique_id=1970947894 instance=ExtResource("3_4dugh")]
+position = Vector2(68, -36)

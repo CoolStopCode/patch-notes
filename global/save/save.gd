@@ -16,10 +16,10 @@ func save_to(path : String):
 		var node_save := NodeSave.new()
 		node_save.scene_path = node.scene_file_path
 		node_save.position = node.position
-		node_save.properties = node.get_child(0).properties
-		node_save.node_state = node.get_child(0).node_state
+		node_save.properties = node.properties
+		node_save.node_state = node.node_state
 		node_save.id = id_counter
-		id_map[node.get_child(0)] = id_counter
+		id_map[node] = id_counter
 		id_counter += 1
 		file_save.nodes.append(node_save)
 	for connection in ConnectionManager.connections:

@@ -36,7 +36,7 @@ var node_selected := false
 
 var mouse_dragging := false
 var drag_offset : Vector2
-var distance_moved : Vector2
+var pre_drag_pos : Vector2
 
 func _ready():
 	node = get_node_or_null("NODE")
@@ -82,27 +82,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		if (event.pressed and mouse_hovering) and not mouse_dragging:
 			get_viewport().set_input_as_handled()
 			
-			distance_moved = Vector2(0, 0)
+			pre_drag_pos = global_position
 			drag_offset = global_position - get_global_mouse_position()
 			mouse_dragging = true
 			Cursor.dragging = true
 			if node.has_method("start_drag"):
 				node.start_drag()
-		else:
-			if mouse_dragging:
-				if distance_moved == Vector2(0, 0):
-					GlobalNodes.inspector.open_node_inspector(self)
+		elif (not event.pressed) and mouse_dragging:
+			if pre_drag_pos == global_position:
+				GlobalNodes.inspector.open_node_inspector(self)
+			else:
+				History.commit(HistoryNodeMove.new(self, pre_drag_pos, global_position))
+				if node.has_method("end_drag"):
+					node.end_drag()
 			Cursor.dragging = false
 			mouse_dragging = false
-			History.commit(HistoryNodeMove.new(self, global_position - distance_moved, global_position))
-			if node.has_method("end_drag"):
-				node.end_drag()
 
 	if event is InputEventMouseMotion and mouse_dragging:
-		var last_pos := global_position
 		var free_pos := get_global_mouse_position() + drag_offset
 		global_position = Constants.snap_to_grid(free_pos)
-		distance_moved += abs(global_position - last_pos)
 		move.emit()
 
 func _process(_delta: float) -> void:

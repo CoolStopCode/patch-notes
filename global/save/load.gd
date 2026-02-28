@@ -22,12 +22,12 @@ func load_from(path : String):
 	for node in file_save.nodes:
 		var node_instance : Node = load(node.scene_path).instantiate()
 		node_instance.position = node.position
-		node_instance.get_child(0).properties = node.properties
-		node_instance.get_child(0).node_state = node.node_state
+		node_instance.properties = node.properties
+		node_instance.node_state = node.node_state
 		GlobalNodes.nodes.add_child(node_instance)
-		id_map[node.id] = node_instance.get_child(0)
+		id_map[node.id] = node_instance
 	for connection in file_save.connections:
-		var line : Node2D = load("res://node/connection/line.tscn").instantiate()
+		var line : Node2D = preload("res://node/connection/line.tscn").instantiate()
 		line.line.points = connection.points
 		line.outline.points = connection.points
 		GlobalNodes.connections.add_child(line)
