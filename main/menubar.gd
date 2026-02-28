@@ -5,7 +5,10 @@ extends Control
 
 func _on_file_id_pressed(id: int) -> void:
 	if id == 0:
-		Save.save()
+		if not Save.default_path.is_empty():
+			Save.save()
+		else:
+			save_as_dialogue.popup()
 	if id == 1:
 		save_as_dialogue.popup()
 	elif id == 2:
@@ -19,7 +22,22 @@ func _on_edit_id_pressed(id: int) -> void:
 	if id == 1:
 		History.redo()
 
-
+func _unhandled_input(event):
+	if event.is_action_pressed("undo"):
+		if not event.is_action_pressed("redo"):
+			History.undo()
+		
+	if event.is_action_pressed("redo"):
+		History.redo()
+	
+	if event.is_action_pressed("save"):
+		if not Save.default_path.is_empty():
+			Save.save()
+		else:
+			save_as_dialogue.popup()
+	
+	if event.is_action_pressed("save as"):
+		save_as_dialogue.popup()
 
 func _on_save_as_file_selected(path: String) -> void:
 	Save.save_to(path)

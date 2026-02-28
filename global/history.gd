@@ -14,6 +14,9 @@ func undo():
 	if index == 0:
 		return
 	
+	print("UNDO")
+	print(timeline)
+	print(index)
 	index -= 1
 	timeline[index].undo()
 
@@ -21,5 +24,8 @@ func redo():
 	if index >= timeline.size():
 		return
 	
+	print("REDO")
+	print(timeline)
+	print(index)
 	timeline[index].redo()
 	index += 1

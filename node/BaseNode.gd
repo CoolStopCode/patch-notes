@@ -37,6 +37,7 @@ var node_selected := false
 var mouse_dragging := false
 var drag_offset : Vector2
 var pre_drag_pos : Vector2
+var creation_drag := true
 
 func _ready():
 	node = get_node_or_null("NODE")
@@ -91,10 +92,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif (not event.pressed) and mouse_dragging:
 			if pre_drag_pos == global_position:
 				GlobalNodes.inspector.open_node_inspector(self)
-			else:
-				History.commit(HistoryNodeMove.new(self, pre_drag_pos, global_position))
 				if node.has_method("end_drag"):
 					node.end_drag()
+			else:
+				if creation_drag:
+					History.commit(HistoryNodeCreate.new(load(scene_file_path), self, global_position))
+					print("CREATE")
+				else:
+					History.commit(HistoryNodeMove.new(self, pre_drag_pos, global_position))
+					print("MOVE")
+				creation_drag = false
 			Cursor.dragging = false
 			mouse_dragging = false
 

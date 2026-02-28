@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [node name="toggle_node" unique_id=1970947894 instance=ExtResource("1_aehqe")]
 NODE_SCENE = ExtResource("2_v8jeo")
+BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("3_hf7dk")
 ports_in = Array[ExtResource("4_ywwcu")]([SubResource("Resource_mwvp0")])
 ports_out = Array[ExtResource("4_ywwcu")]([SubResource("Resource_k1ubb")])

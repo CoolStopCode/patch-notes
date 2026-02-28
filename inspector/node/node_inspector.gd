@@ -46,12 +46,12 @@ func _input(event: InputEvent) -> void:
 
 func _on_delete_pressed() -> void:
 	if active:
-		active_node.parent.queue_free()
+		active_node.queue_free()
 		close()
 
 func _on_duplicate_pressed() -> void:
 	if active:
-		var copy = active_node.parent.duplicate()
+		var copy = active_node.duplicate()
 		copy.global_position += Constants.snap_to_grid(Vector2(5, 5))
 		GlobalNodes.nodes.add_child(copy)
 		close()
