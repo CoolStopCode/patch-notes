@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://djq4xcyku0jmg"]
+[gd_scene format=3 uid="uid://wgm1mfk1boxm"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_7efxc"]
 [ext_resource type="PackedScene" uid="uid://dt8bkdw4hgam6" path="res://nodes/delay/delay.tscn" id="2_hfk3y"]
@@ -27,7 +27,9 @@ step_slider = 0.001
 property_name = "Delay"
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[node name="delay_node" unique_id=1970947894 instance=ExtResource("1_7efxc")]
+[node name="delay_node" type="Node2D" unique_id=1064046719]
+
+[node name="node" parent="." unique_id=1970947894 instance=ExtResource("1_7efxc")]
 NODE_SCENE = ExtResource("2_hfk3y")
 BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("2_kh4xr")

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://byowggfrdjvxr"]
+[gd_scene format=3 uid="uid://b0nm11hloorkq"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_152l8"]
 [ext_resource type="PackedScene" uid="uid://cgg1kky72m4fc" path="res://nodes/flip_count/flip_count.tscn" id="2_vo2b1"]
@@ -31,7 +31,9 @@ max_value = 1000
 property_name = "Count"
 metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
-[node name="flip_count_node" unique_id=1970947894 instance=ExtResource("1_152l8")]
+[node name="flip_count_node" type="Node2D" unique_id=300515006]
+
+[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_152l8")]
 NODE_SCENE = ExtResource("2_vo2b1")
 BODY_SPRITE = ExtResource("3_rf7u2")
 ports_in = Array[ExtResource("4_bgs13")]([SubResource("Resource_bah5d")])

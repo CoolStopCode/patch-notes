@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://pm452txd0wsg"]
+[gd_scene format=3 uid="uid://2ce5xafhxovn"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_yw3lt"]
 [ext_resource type="PackedScene" uid="uid://rvymux2jgxrj" path="res://nodes/metronome/metronome.tscn" id="2_yw3lt"]
@@ -39,7 +39,9 @@ script = ExtResource("7_ew62m")
 property_name = "Sound"
 metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
-[node name="metronome_node" unique_id=1970947894 instance=ExtResource("1_yw3lt")]
+[node name="metronome_node" type="Node2D" unique_id=1064046719]
+
+[node name="node" parent="." unique_id=1970947894 instance=ExtResource("1_yw3lt")]
 NODE_SCENE = ExtResource("2_yw3lt")
 BODY_SIZE = Vector2(28, 28)
 BODY_SPRITE = ExtResource("3_q6twt")

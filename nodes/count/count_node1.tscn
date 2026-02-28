@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dgvuhk048w2q"]
+[gd_scene format=3 uid="uid://dwk368hj5olf3"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_bd3y7"]
 [ext_resource type="PackedScene" uid="uid://ysvcdv8n6720" path="res://nodes/count/count.tscn" id="2_qhtw3"]
@@ -26,7 +26,9 @@ max_value = 1000
 property_name = "Count"
 metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
-[node name="count_node" unique_id=1970947894 instance=ExtResource("1_bd3y7")]
+[node name="count_node" type="Node2D" unique_id=300515006]
+
+[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_bd3y7")]
 NODE_SCENE = ExtResource("2_qhtw3")
 BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("3_ibxdi")

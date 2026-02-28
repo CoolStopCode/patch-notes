@@ -21,7 +21,6 @@ var node : Node
 @export var properties : Array[InspectorProperty]
 
 @export_group("Nodes (private)")
-@export var parent : Node
 @export var hover_rectangle_node : ColorRect
 @export var body_sprite_node : Sprite2D
 @export var area_node : Area2D
@@ -40,8 +39,6 @@ var drag_offset : Vector2
 var distance_moved : Vector2
 
 func _ready():
-	parent = get_parent()
-	
 	node = get_node_or_null("NODE")
 	initiate_children()
 	
@@ -104,7 +101,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_dragging:
 		var last_pos := global_position
 		var free_pos := get_global_mouse_position() + drag_offset
-		parent.global_position = Constants.snap_to_grid(free_pos)
+		global_position = Constants.snap_to_grid(free_pos)
 		distance_moved += abs(global_position - last_pos)
 		move.emit()
 

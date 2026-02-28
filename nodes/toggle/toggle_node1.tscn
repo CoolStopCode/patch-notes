@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bqmk3eri0dw0w"]
+[gd_scene format=3 uid="uid://53kebl2pvk8g"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_aehqe"]
 [ext_resource type="PackedScene" uid="uid://b37jyxra2py70" path="res://nodes/toggle/toggle.tscn" id="2_v8jeo"]
@@ -16,8 +16,11 @@ script = ExtResource("4_ywwcu")
 position = Vector2(6, 0)
 metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
-[node name="toggle_node" unique_id=1970947894 instance=ExtResource("1_aehqe")]
+[node name="toggle_node" type="Node2D" unique_id=300515006]
+
+[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_aehqe")]
 NODE_SCENE = ExtResource("2_v8jeo")
+BODY_SIZE = Vector2(12, 12)
 BODY_SPRITE = ExtResource("3_hf7dk")
 ports_in = Array[ExtResource("4_ywwcu")]([SubResource("Resource_mwvp0")])
 ports_out = Array[ExtResource("4_ywwcu")]([SubResource("Resource_k1ubb")])

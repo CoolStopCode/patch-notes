@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dftnhe1wq4f20" path="res://assets/tile2.png" id="2_fwcvl"]
 [ext_resource type="Script" uid="uid://c5tie26lw05s" path="res://main/cam.gd" id="2_kfbq2"]
 [ext_resource type="Script" uid="uid://dud2w01irceu4" path="res://main/nodes.gd" id="3_0i4oc"]
-[ext_resource type="PackedScene" uid="uid://bery1yrvp4pyc" path="res://nodes/sound/sound_node1.tscn" id="3_4dugh"]
+[ext_resource type="PackedScene" uid="uid://cccaw8j2drsqv" path="res://nodes/sound/sound_node.tscn" id="3_4dugh"]
 [ext_resource type="Script" uid="uid://joxfc4vkp5jo" path="res://main/connections.gd" id="5_grrlh"]
 [ext_resource type="PackedScene" uid="uid://clrqt7pijmicg" path="res://node/connection/line.tscn" id="6_kfbq2"]
 
@@ -47,5 +47,5 @@ line_scene = ExtResource("6_kfbq2")
 [node name="nodes" type="Node2D" parent="." unique_id=1497758944]
 script = ExtResource("3_0i4oc")
 
-[node name="sound_node" parent="nodes" unique_id=266324404 instance=ExtResource("3_4dugh")]
-position = Vector2(44, -44)
+[node name="sound_node" parent="." unique_id=1970947894 instance=ExtResource("3_4dugh")]
+position = Vector2(62, -34)

@@ -1,25 +1,23 @@
-[gd_scene format=3 uid="uid://cwmj884r7uq4b"]
+[gd_scene format=3 uid="uid://bq7cgrr5o25ia"]
 
-[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_qphcg"]
-[ext_resource type="PackedScene" uid="uid://bfabky6nf6sfu" path="res://nodes/template/template.tscn" id="2_n3i8l"]
-[ext_resource type="Texture2D" uid="uid://ciwdsh0n0b4ae" path="res://nodes/template/template.png" id="3_fpsvk"]
-[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_fpsvk"]
+[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_a6hn7"]
+[ext_resource type="PackedScene" uid="uid://bfabky6nf6sfu" path="res://nodes/template/template.tscn" id="2_fpsvk"]
+[ext_resource type="Texture2D" uid="uid://ciwdsh0n0b4ae" path="res://nodes/template/template.png" id="3_ynjab"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_awp2p"]
 
 [sub_resource type="Resource" id="Resource_ynjab"]
-script = ExtResource("4_fpsvk")
+script = ExtResource("4_awp2p")
 position = Vector2(-6, 0)
 metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_awp2p"]
-script = ExtResource("4_fpsvk")
+script = ExtResource("4_awp2p")
 position = Vector2(6, 0)
 metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
-[node name="template_node" type="Node2D" unique_id=300515006]
-
-[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_qphcg")]
-NODE_SCENE = ExtResource("2_n3i8l")
+[node name="template_node" unique_id=1970947894 instance=ExtResource("1_a6hn7")]
+NODE_SCENE = ExtResource("2_fpsvk")
 BODY_SIZE = Vector2(12, 12)
-BODY_SPRITE = ExtResource("3_fpsvk")
-ports_in = Array[ExtResource("4_fpsvk")]([SubResource("Resource_ynjab")])
-ports_out = Array[ExtResource("4_fpsvk")]([SubResource("Resource_awp2p")])
+BODY_SPRITE = ExtResource("3_ynjab")
+ports_in = Array[ExtResource("4_awp2p")]([SubResource("Resource_ynjab")])
+ports_out = Array[ExtResource("4_awp2p")]([SubResource("Resource_awp2p")])

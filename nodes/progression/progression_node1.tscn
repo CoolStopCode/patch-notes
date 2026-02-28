@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bo45ld177p0y3"]
+[gd_scene format=3 uid="uid://b3lfjnsy2ki4u"]
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_qnsx0"]
 [ext_resource type="PackedScene" uid="uid://o43mwv1iwiiv" path="res://nodes/progression/progression.tscn" id="2_w58op"]
@@ -31,7 +31,9 @@ max_slider = 240.0
 property_name = "BPM"
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[node name="progression_node" unique_id=1970947894 instance=ExtResource("1_qnsx0")]
+[node name="progression_node" type="Node2D" unique_id=300515006]
+
+[node name="node" parent="." unique_id=109182909 instance=ExtResource("1_qnsx0")]
 NODE_SCENE = ExtResource("2_w58op")
 BODY_SIZE = Vector2(12, 12)
 ports_in = Array[ExtResource("3_jro67")]([SubResource("Resource_x236l")])
