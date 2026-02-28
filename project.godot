@@ -23,6 +23,7 @@ ConnectionManager="*res://global/connection_manager.gd"
 GlobalNodes="*uid://cejucmy7okxjl"
 Save="*uid://dehjvdhsukuxm"
 Load="*uid://umulofxvg8t0"
+History="*uid://b1podmnco7lxw"
 
 [debug]
 

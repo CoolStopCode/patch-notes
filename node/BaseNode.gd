@@ -97,6 +97,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					GlobalNodes.inspector.open_node_inspector(self)
 			Cursor.dragging = false
 			mouse_dragging = false
+			History.commit(HistoryNodeMove.new(self, global_position - distance_moved, global_position))
 			if node.has_method("end_drag"):
 				node.end_drag()
 
