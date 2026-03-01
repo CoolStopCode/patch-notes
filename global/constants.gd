@@ -26,3 +26,9 @@ func clear_children(node):
 
 func _process(delta: float) -> void:
 	global_time += delta
+
+func deep_duplicate_properties(props: Array[InspectorProperty]) -> Array[InspectorProperty]:
+	var copy : Array[InspectorProperty] = []
+	for p in props:
+		copy.append(p.duplicate(true))
+	return copy

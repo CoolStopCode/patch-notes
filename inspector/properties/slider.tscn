@@ -63,4 +63,5 @@ theme = ExtResource("2_4ts5h")
 [connection signal="focus_exited" from="Control/LineEdit" to="." method="_on_line_edit_focus_exited"]
 [connection signal="text_changed" from="Control/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="text_submitted" from="Control/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_slider_value_changed"]

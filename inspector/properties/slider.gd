@@ -83,14 +83,19 @@ func _on_line_edit_focus_exited() -> void:
 func _on_line_edit_text_submitted(_new_text: String) -> void:
 	_commit_text()
 
-func property_changed():
-	property.value = value
-	node.property_changed.emit(property)
-
-
 func _on_slider_value_changed(new_value: float) -> void:
 	if new_value < min_slider or new_value > max_slider:
 		return
 	value = new_value
-	property_changed()
 	line_edit_node.text = str(value)
+
+func property_changed():
+	var old_properties = Constants.deep_duplicate_properties(node.properties)
+	property.value = value
+	var new_properties = Constants.deep_duplicate_properties(node.properties)
+	History.commit(HistoryPropertyModify.new(node.ID, old_properties, new_properties))
+	node.property_changed(old_properties, new_properties, property)
+
+
+func _on_h_slider_drag_ended(_value_changed: bool) -> void:
+	property_changed()

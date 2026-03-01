@@ -3,7 +3,6 @@ class_name BaseNode
 
 signal actuate_output(port : int)
 signal move
-signal property_changed(property : InspectorProperty)
 signal ports_modified
 
 @export var NODE_SCENE : PackedScene
@@ -59,7 +58,6 @@ func _ready():
 	properties.assign(duplicated_props)
 	if node.has_method("start_drag"):
 		node.start_drag()
-	property_changed.connect(node.property_changed)
 	inputs_node.move_to_front()
 	outputs_node.move_to_front()
 
@@ -193,3 +191,7 @@ func selected():
 func deselected():
 	selected_outline.hide()
 	node_selected = false
+
+func property_changed(property : InspectorProperty):
+	if node.has_method("property_changed"):
+		node.property_changed(property)

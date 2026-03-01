@@ -102,6 +102,8 @@ func _on_line_edit_text_submitted(_new_text: String) -> void:
 	_commit_text()
 
 func property_changed():
+	var old_properties = Constants.deep_duplicate_properties(node.properties)
 	property.value = value
-	node.property_changed.emit(property)
-	
+	var new_properties = Constants.deep_duplicate_properties(node.properties)
+	History.commit(HistoryPropertyModify.new(node.ID, old_properties, new_properties))
+	node.property_changed(old_properties, new_properties, property)

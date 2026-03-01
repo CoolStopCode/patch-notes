@@ -32,8 +32,11 @@ func update_textures():
 		texture_rect.texture = off_texture 
 
 func property_changed():
+	var old_properties = Constants.deep_duplicate_properties(node.properties)
 	property.value = value
-	node.property_changed.emit(property)
+	var new_properties = Constants.deep_duplicate_properties(node.properties)
+	History.commit(HistoryPropertyModify.new(node.ID, old_properties, new_properties))
+	node.property_changed(old_properties, new_properties, property)
 
 
 func _on_button_pressed() -> void:

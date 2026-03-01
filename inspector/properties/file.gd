@@ -42,5 +42,8 @@ func _on_file_selected(selected_path: String) -> void:
 	button_node.text = file_name
 
 func property_changed():
+	var old_properties = Constants.deep_duplicate_properties(node.properties)
 	property.path = path
-	node.property_changed.emit(property)
+	var new_properties = Constants.deep_duplicate_properties(node.properties)
+	History.commit(HistoryPropertyModify.new(node.ID, old_properties, new_properties))
+	node.property_changed(old_properties, new_properties, property)

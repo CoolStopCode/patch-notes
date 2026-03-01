@@ -6,7 +6,10 @@ var id : int
 var position : Vector2
 
 func undo():
-	GlobalNodes.nodes.get_node_instance(id).queue_free()
+	var node : Node = GlobalNodes.nodes.get_node_instance(id)
+	node.queue_free()
+	if GlobalNodes.inspector.node_inspector.active_node == node:
+		GlobalNodes.inspector.node_inspector.close()
 
 func redo():
 	var node = node_scene.instantiate()

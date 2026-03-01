@@ -11,5 +11,5 @@ func add_node(node : Node):
 	add_child(node)
 	nodes.append(node)
 
-func get_node_instance(id : int):
+func get_node_instance(id : int) -> Node:
 	return nodes[id]

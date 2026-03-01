@@ -15,8 +15,8 @@ func undo():
 		return
 	
 	print("UNDO")
-	print(timeline)
-	print(index)
+	#print(timeline)
+	#print(index)
 	index -= 1
 	timeline[index].undo()
 
@@ -25,7 +25,7 @@ func redo():
 		return
 	
 	print("REDO")
-	print(timeline)
-	print(index)
+	#print(timeline)
+	#print(index)
 	timeline[index].redo()
 	index += 1
