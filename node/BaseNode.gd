@@ -7,6 +7,7 @@ signal property_changed(property : InspectorProperty)
 signal ports_modified
 
 @export var NODE_SCENE : PackedScene
+@export var ID : int
 var node : Node
 
 @export_group("Body")
@@ -96,10 +97,10 @@ func _unhandled_input(event: InputEvent) -> void:
 					node.end_drag()
 			else:
 				if creation_drag:
-					History.commit(HistoryNodeCreate.new(load(scene_file_path), self, global_position))
+					History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position))
 					print("CREATE")
 				else:
-					History.commit(HistoryNodeMove.new(self, pre_drag_pos, global_position))
+					History.commit(HistoryNodeMove.new(ID, pre_drag_pos, global_position))
 					print("MOVE")
 				creation_drag = false
 			Cursor.dragging = false

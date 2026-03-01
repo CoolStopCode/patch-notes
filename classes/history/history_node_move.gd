@@ -1,17 +1,17 @@
 class_name HistoryNodeMove
 extends HistoryAction
 
-var node : Node2D
+var id : int
 var from : Vector2
 var to : Vector2
 
 func undo():
-	node.position = from
+	GlobalNodes.nodes.get_node_instance(id).position = from
 
 func redo():
-	node.position = to
+	GlobalNodes.nodes.get_node_instance(id).position = to
 
-func _init(_node, _from, _to) -> void:
-	node = _node
+func _init(_id, _from, _to) -> void:
+	id = _id
 	from = _from
 	to = _to

@@ -19,4 +19,4 @@ func _on_pressed() -> void:
 	node.mouse_dragging = true
 	node.drag_offset = Vector2(0, 0)
 	Cursor.dragging = true
-	GlobalNodes.nodes.add_child(node)
+	GlobalNodes.nodes.add_node(node)
