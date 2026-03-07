@@ -9,7 +9,7 @@ var to : Array[InspectorProperty]
 func undo():
 	var node = GlobalNodes.nodes.get_node_instance(node_id)
 	node.properties = from.duplicate(true)
-	node
+	#gojif'fsdfidojg'iofdgjsd'gjs'ifgjsiodf
 	GlobalNodes.inspector.open_node_inspector(node)
 
 func redo():

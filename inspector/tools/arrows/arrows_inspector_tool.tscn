@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://g7kg48r4r52w"]
+
+[ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_ml8ev"]
+[ext_resource type="Script" uid="uid://wrr3q51pahy5" path="res://inspector/tools/arrows/arrows_inspector_tool.gd" id="2_bsjpt"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_fu0hw"]
+[ext_resource type="Texture2D" uid="uid://bus0ip84oiiey" path="res://inspector/tools/arrows/left_arrow_disabled.png" id="4_0g5hy"]
+[ext_resource type="Texture2D" uid="uid://b8qfhv5lcq1vi" path="res://inspector/tools/arrows/left_arrow.png" id="4_1pvmd"]
+[ext_resource type="Texture2D" uid="uid://bkvddo1v6laq1" path="res://inspector/tools/arrows/right_arrow.png" id="5_rv0ms"]
+[ext_resource type="Texture2D" uid="uid://b5qp534wklh7j" path="res://inspector/tools/arrows/right_arrow_disabled.png" id="6_55gqe"]
+
+[node name="arrows_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("line_edit_node", "left_button", "left_texture_rect", "right_button", "right_texture_rect") instance=ExtResource("1_ml8ev")]
+script = ExtResource("2_bsjpt")
+line_edit_node = NodePath("area/LineEdit")
+left_button = NodePath("area/left")
+left_texture_rect = NodePath("area/left/TextureRect")
+right_button = NodePath("area/right")
+right_texture_rect = NodePath("area/right/TextureRect2")
+left_texture_enabled = ExtResource("4_1pvmd")
+left_texture_disabled = ExtResource("4_0g5hy")
+right_texture_enabled = ExtResource("5_rv0ms")
+right_texture_disabled = ExtResource("6_55gqe")
+
+[node name="area" type="Control" parent="." index="1" unique_id=167701442]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_right = -5.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="area" index="0" unique_id=1740871511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fu0hw")
+text = "134"
+alignment = 1
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+caret_blink_interval = 0.4
+
+[node name="left" type="Button" parent="area" index="1" unique_id=998631010]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -3.0
+offset_bottom = 3.0
+grow_vertical = 2
+theme = ExtResource("3_fu0hw")
+
+[node name="TextureRect" type="TextureRect" parent="area/left" index="0" unique_id=1124545145]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1pvmd")
+
+[node name="right" type="Button" parent="area" index="2" unique_id=328866211]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -3.0
+offset_right = 6.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_fu0hw")
+
+[node name="TextureRect2" type="TextureRect" parent="area/right" index="0" unique_id=1441145875]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rv0ms")
+
+[connection signal="text_changed" from="area/LineEdit" to="." method="_on_text_changed"]
+[connection signal="text_submitted" from="area/LineEdit" to="." method="_on_text_submitted"]
+[connection signal="pressed" from="area/left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="area/right" to="." method="_on_right_pressed"]

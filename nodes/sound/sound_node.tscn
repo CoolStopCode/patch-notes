@@ -21,26 +21,30 @@ metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_lwpcr"]
 script = ExtResource("6_cgfmt")
-extensions = ["wav", "mp3"]
+filters = ["*.wav", "*.mp3"]
 property_name = "Source"
+value = null
+default_value = null
 metadata/_custom_type_script = "uid://dpcev18b4nbi1"
 
 [sub_resource type="Resource" id="Resource_xtdwe"]
 script = ExtResource("7_snjxo")
-value = 1.0
 max_slider = 2.0
 property_name = "Volume"
+value = 1.0
+default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [sub_resource type="Resource" id="Resource_e5g2c"]
 script = ExtResource("7_snjxo")
-value = 1.0
 min_value = 0.01
 max_value = 1000.0
 min_slider = 0.1
 max_slider = 5.0
 step_slider = 0.01
 property_name = "Speed"
+value = 1.0
+default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [node name="sound_node" unique_id=1970947894 instance=ExtResource("1_3gs82")]

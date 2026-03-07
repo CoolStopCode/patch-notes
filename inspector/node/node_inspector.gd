@@ -5,10 +5,10 @@ extends Control
 @export var icon_node : TextureRect
 
 var property_scenes: Dictionary = {
-	InspectorCheckbox: preload("res://inspector/properties/checkbox.tscn"),
-	InspectorFile: preload("res://inspector/properties/file.tscn"),
-	InspectorArrows: preload("res://inspector/properties/arrows.tscn"),
-	InspectorSlider: preload("res://inspector/properties/slider.tscn")
+	InspectorCheckbox: preload("res://inspector/tools/checkbox/checkbox_inspector_tool.tscn"),
+	InspectorFile: preload("res://inspector/tools/file/file_inspector_tool.tscn"),
+	InspectorArrows: preload("res://inspector/tools/arrows/arrows_inspector_tool.tscn"),
+	InspectorSlider: preload("res://inspector/tools/slider/slider_inspector_tool.tscn")
 }
 
 var active_node : Node
@@ -23,7 +23,7 @@ func open(node : Node2D):
 		var script: Script = property.get_script()
 		var ui : Control = property_scenes[script].instantiate()
 		properties_container.add_child(ui)
-		ui.bind_to_property(property, node)
+		ui.initiate(property, node)
 	
 	state_button.load_state(node.node_state)
 	icon_node.texture = node.right_menu_icon

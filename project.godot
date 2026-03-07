@@ -27,6 +27,8 @@ History="*uid://b1podmnco7lxw"
 
 [debug]
 
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=0
 
 [display]
@@ -34,6 +36,7 @@ gdscript/warnings/unused_signal=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/initial_position=Vector2i(0, -200)
+window/size/always_on_top=true
 
 [file_customization]
 

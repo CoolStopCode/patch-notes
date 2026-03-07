@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cb1pde7yel333"]
+
+[ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_8eiaj"]
+[ext_resource type="Script" uid="uid://cwqlbvpgry45g" path="res://inspector/tools/file/file_inspector_tool.gd" id="2_hky1k"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_p3hh2"]
+[ext_resource type="Texture2D" uid="uid://cvj75tldd4qob" path="res://inspector/properties/file/left_bracket.png" id="4_6e71h"]
+[ext_resource type="Texture2D" uid="uid://ckr04gqjd7dn5" path="res://inspector/properties/file/right_bracket.png" id="5_tqkg6"]
+
+[node name="file_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("button_node", "file_dialog") instance=ExtResource("1_8eiaj")]
+script = ExtResource("2_hky1k")
+button_node = NodePath("Button")
+file_dialog = NodePath("FileDialog")
+
+[node name="Button" type="Button" parent="." index="1" unique_id=131072623]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_p3hh2")
+text = "File"
+
+[node name="TextureRect" type="TextureRect" parent="Button" index="0" unique_id=847895912]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_vertical = 2
+texture = ExtResource("4_6e71h")
+
+[node name="TextureRect2" type="TextureRect" parent="Button" index="1" unique_id=1054833411]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_tqkg6")
+
+[node name="FileDialog" type="FileDialog" parent="." index="2" unique_id=2000339607]
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_selected"]

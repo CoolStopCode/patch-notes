@@ -14,11 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://xasjqvbp7v56" path="res://inspector/properties/slider.tscn" id="8_y40wd"]
 [ext_resource type="PackedScene" uid="uid://wdjcdakcpqo8" path="res://inspector/properties/checkbox.tscn" id="9_qgfes"]
 [ext_resource type="PackedScene" uid="uid://dranpyvfut750" path="res://inspector/properties/file.tscn" id="10_qy24m"]
+[ext_resource type="PackedScene" uid="uid://g7kg48r4r52w" path="res://inspector/tools/arrows/arrows_inspector_tool.tscn" id="11_4ytif"]
 
 [node name="node_inspector" type="Control" unique_id=1063628290 node_paths=PackedStringArray("properties_container", "state_button", "icon_node")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 100.0
+offset_right = 105.0
 offset_bottom = 70.0
 script = ExtResource("1_hvs03")
 properties_container = NodePath("properties")
@@ -159,6 +160,13 @@ offset_top = 18.0
 offset_right = 96.0
 offset_bottom = 58.0
 theme_override_constants/separation = 1
+
+[node name="arrows_tool" parent="properties" unique_id=37643168 instance=ExtResource("11_4ytif")]
+layout_mode = 2
+left_texture_enabled = null
+left_texture_disabled = null
+right_texture_enabled = null
+right_texture_disabled = null
 
 [node name="arrows" parent="properties" unique_id=1089333438 instance=ExtResource("7_ukqej")]
 layout_mode = 2

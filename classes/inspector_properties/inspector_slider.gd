@@ -1,7 +1,6 @@
 class_name InspectorSlider
 extends InspectorProperty
 
-@export var value: float
 @export var min_value: float = 0.0
 @export var max_value: float = 100.0
 @export var min_slider: float = 0.0

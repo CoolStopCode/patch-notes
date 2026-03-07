@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dvj3ru77ubm3w"]
+
+[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="1_8qv7j"]
+[ext_resource type="Script" uid="uid://ur5j3pkuycl4" path="res://inspector/tools/base_inspector_tool.gd" id="1_tnvuf"]
+
+[node name="base_inspector_tool" type="Control" unique_id=37643168 node_paths=PackedStringArray("name_node")]
+custom_minimum_size = Vector2(97, 6)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 92.0
+offset_bottom = 6.0
+script = ExtResource("1_tnvuf")
+name_node = NodePath("name")
+
+[node name="name" type="Label" parent="." unique_id=1957768091]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+text = "property 01"
+label_settings = ExtResource("1_8qv7j")
+vertical_alignment = 1

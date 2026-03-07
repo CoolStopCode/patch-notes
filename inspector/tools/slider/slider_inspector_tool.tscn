@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dlgeocxjmg8gw"]
+
+[ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_2jp8p"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="2_6qij3"]
+[ext_resource type="Script" uid="uid://inndu3l3ytre" path="res://inspector/tools/slider/slider_inspector_tool.gd" id="2_h52x2"]
+
+[node name="slider_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("line_edit_node", "slider_node") instance=ExtResource("1_2jp8p")]
+script = ExtResource("2_h52x2")
+line_edit_node = NodePath("Control/LineEdit")
+slider_node = NodePath("HSlider")
+
+[node name="Control" type="Control" parent="." index="1" unique_id=791856609]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_right = -38.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="Control" index="0" unique_id=495303983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_6qij3")
+text = "134"
+alignment = 1
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+caret_blink_interval = 0.4
+
+[node name="HSlider" type="HSlider" parent="." index="2" unique_id=2145709489]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_6qij3")
+
+[connection signal="focus_exited" from="Control/LineEdit" to="." method="_on_text_submitted"]
+[connection signal="text_submitted" from="Control/LineEdit" to="." method="_on_text_submitted"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_slider_drag_ended"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_slider_value_changed"]

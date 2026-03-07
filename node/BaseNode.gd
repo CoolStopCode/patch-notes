@@ -91,9 +91,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif (not event.pressed) and mouse_dragging:
 			if pre_drag_pos == global_position:
 				GlobalNodes.inspector.open_node_inspector(self)
+			else:
 				if node.has_method("end_drag"):
 					node.end_drag()
-			else:
 				if creation_drag:
 					History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position))
 					print("CREATE")

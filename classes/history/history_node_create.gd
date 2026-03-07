@@ -13,6 +13,7 @@ func undo():
 
 func redo():
 	var node = node_scene.instantiate()
+	node.creation_drag = false
 	node.position = position
 	GlobalNodes.nodes.add_child(node)
 	GlobalNodes.nodes.nodes[id] = node
