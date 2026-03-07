@@ -48,11 +48,10 @@ func _ready() -> void:
 		waveform_node.add_child(node)
 		waveform_nodes.append(node)
 	
-	spectra = compile_waveform(
-		audio_file,
-		TIME_SLICE_VALUE, 
-		VU_COUNT_VALUE, 
-		FREQ_MAX_VALUE
+	NodeThread.run(func():
+		spectra = compile_waveform(
+			audio_file, TIME_SLICE_VALUE, VU_COUNT_VALUE, FREQ_MAX_VALUE
+		)
 	)
 
 func property_changed(property : InspectorProperty):
@@ -134,7 +133,7 @@ func compile_waveform(
 	TIME_SLICE: float,
 	VU_COUNT: int,
 	FREQ_MAX: float
-) -> Array:
+):
 
 	var output: Array = []
 
