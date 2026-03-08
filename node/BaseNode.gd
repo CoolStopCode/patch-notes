@@ -38,6 +38,7 @@ var mouse_dragging := false
 var drag_offset : Vector2
 var pre_drag_pos : Vector2
 var creation_drag := true
+var duplicate_props := true
 
 func _ready():
 	node = get_node_or_null("NODE")
@@ -51,11 +52,13 @@ func _ready():
 		add_child(node)
 	else:
 		node.actuate_output.connect(emit_output)
-	var duplicated_props = properties.map(func(p):
-		return p.duplicate(true)
-	)
 	
-	properties.assign(duplicated_props)
+	if duplicate_props:
+		var duplicated_props = properties.map(func(p):
+			return p.duplicate(true)
+		)
+		properties.assign(duplicated_props)
+	
 	for property in properties:
 		property.value_changed.connect(func(): property_changed(property))
 	if node.has_method("start_drag"):
@@ -99,7 +102,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if node.has_method("end_drag"):
 					node.end_drag()
 				if creation_drag:
-					History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position))
+					History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position, properties))
 					print("CREATE")
 				else:
 					History.commit(HistoryNodeMove.new(ID, pre_drag_pos, global_position))
