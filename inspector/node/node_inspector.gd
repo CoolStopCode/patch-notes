@@ -26,7 +26,8 @@ func open(node : Node2D):
 		ui.initiate(property, node)
 	
 	state_button.load_state(node.node_state)
-	icon_node.texture = node.right_menu_icon
+	if node.right_menu_icon:
+		icon_node.texture = node.right_menu_icon
 	active = true
 
 func close():

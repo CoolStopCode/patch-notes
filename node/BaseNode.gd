@@ -56,6 +56,8 @@ func _ready():
 	)
 	
 	properties.assign(duplicated_props)
+	for property in properties:
+		property.value_changed.connect(func(): property_changed(property))
 	if node.has_method("start_drag"):
 		node.start_drag()
 	inputs_node.move_to_front()
@@ -90,6 +92,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				node.start_drag()
 		elif (not event.pressed) and mouse_dragging:
 			if pre_drag_pos == global_position:
+				if node.has_method("end_drag"):
+					node.end_drag()
 				GlobalNodes.inspector.open_node_inspector(self)
 			else:
 				if node.has_method("end_drag"):

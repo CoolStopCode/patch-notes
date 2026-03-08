@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_qnsx0"]
 [ext_resource type="PackedScene" uid="uid://o43mwv1iwiiv" path="res://nodes/progression/progression.tscn" id="2_w58op"]
-[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="3_aa5yf"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_properties/inspector_property.gd" id="3_aa5yf"]
 [ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="3_jro67"]
 [ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="4_06okt"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="5_06okt"]

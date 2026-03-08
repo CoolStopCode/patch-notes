@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cjvrr4tgnhn08" path="res://nodes/sound/sound.png" id="3_dppko"]
 [ext_resource type="Texture2D" uid="uid://cthwa23y0431c" path="res://nodes/sound/icon3.png" id="4_1ymeb"]
 [ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_cgfmt"]
-[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="5_y5pa0"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_properties/inspector_property.gd" id="5_y5pa0"]
 [ext_resource type="Script" uid="uid://dpcev18b4nbi1" path="res://classes/inspector_properties/inspector_file.gd" id="6_cgfmt"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="7_snjxo"]
 

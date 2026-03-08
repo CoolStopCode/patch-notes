@@ -31,7 +31,7 @@ func _on_text_changed(new_text: String) -> void:
 		set_value(float(filtered))
 		line_edit_node.caret_column = min(caret, filtered.length())
 
-func _on_text_submitted(new_text: String) -> void:
+func _on_text_submitted(new_text: String = "") -> void:
 	if line_edit_node.text == "":
 		set_value(property.min_value)
 	else:

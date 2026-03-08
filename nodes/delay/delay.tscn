@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt8bkdw4hgam6"]
 
 [ext_resource type="Script" uid="uid://0tpc3tcjadvo" path="res://nodes/delay/delay.gd" id="1_l3200"]
-[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_property.gd" id="2_6mtkf"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_properties/inspector_property.gd" id="2_6mtkf"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="3_in3ei"]
 [ext_resource type="Texture2D" uid="uid://cmipc44lwcsan" path="res://nodes/delay/clock.png" id="4_6mtkf"]
 

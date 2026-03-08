@@ -5,4 +5,6 @@ extends Resource
 @export var value : Variant
 @export var default_value: Variant
 
+signal value_changed
+
 func reset(): value = default_value

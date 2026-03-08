@@ -1,23 +1,20 @@
 class_name HistoryPropertyModify
 extends HistoryAction
 
-var node_id : int
-var from : Array[InspectorProperty]
-var to : Array[InspectorProperty]
-
+var property : InspectorProperty
+var from : Variant
+var to : Variant
 
 func undo():
-	var node = GlobalNodes.nodes.get_node_instance(node_id)
-	node.properties = from.duplicate(true)
-	#gojif'fsdfidojg'iofdgjsd'gjs'ifgjsiodf
-	GlobalNodes.inspector.open_node_inspector(node)
+	print("SETTING TO ", from)
+	property.value = from
+	property.value_changed.emit()
 
 func redo():
-	var node = GlobalNodes.nodes.get_node_instance(node_id)
-	node.properties = to.duplicate(true)
-	GlobalNodes.inspector.open_node_inspector(node)
+	property.value = to
+	property.value_changed.emit()
 
-func _init(_node_id: int, _from: Array, _to: Array) -> void:
-	node_id = _node_id
+func _init(_property : InspectorProperty, _from : Variant, _to : Variant) -> void:
+	property = _property
 	from = _from
 	to = _to

@@ -61,11 +61,10 @@ func property_changed(property : InspectorProperty):
 		if (audio_file is AudioStreamWAV)\
 		 and (audio_file.format == AudioStreamWAV.FORMAT_8_BITS\
 		 or audio_file.format == AudioStreamWAV.FORMAT_16_BITS):
-			spectra = compile_waveform(
-				audio_file,
-				TIME_SLICE_VALUE, 
-				VU_COUNT_VALUE, 
-				FREQ_MAX_VALUE
+			NodeThread.run(func():
+				spectra = compile_waveform(
+					audio_file, TIME_SLICE_VALUE, VU_COUNT_VALUE, FREQ_MAX_VALUE
+				)
 			)
 		else:
 			spectra = generate_random_waveform(
