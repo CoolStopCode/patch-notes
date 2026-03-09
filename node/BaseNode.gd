@@ -103,10 +103,8 @@ func _unhandled_input(event: InputEvent) -> void:
 					node.end_drag()
 				if creation_drag:
 					History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position, properties))
-					print("CREATE")
 				else:
 					History.commit(HistoryNodeMove.new(ID, pre_drag_pos, global_position))
-					print("MOVE")
 				creation_drag = false
 			Cursor.dragging = false
 			mouse_dragging = false

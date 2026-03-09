@@ -62,13 +62,15 @@ func _on_duplicate_pressed() -> void:
 		var copy : Node = node_scene.instantiate()
 		copy.properties = active_node.properties
 		copy.global_position = active_node.global_position + Constants.snap_to_grid(Vector2(5, 5))
+		copy.creation_drag = false
+		copy.duplicate_props = true
+		GlobalNodes.nodes.add_node(copy)
 		History.commit(HistoryNodeCreate.new(
 			node_scene, 
 			copy.ID,
 			copy.global_position, 
 			copy.properties
 		))
-		GlobalNodes.nodes.add_node(copy)
 		close()
 
 func _on_state_set(state: Constants.NodeState) -> void:

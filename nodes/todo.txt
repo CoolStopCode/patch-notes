@@ -1,3 +1,4 @@
 - Multi select nodes (same nodes will be able to control properties but different nodes just delete)
 - record song
 - audosave
+- save & import node and audio packs

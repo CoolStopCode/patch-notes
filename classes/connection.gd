@@ -2,6 +2,7 @@
 class_name Connection
 extends RefCounted   # important: not a Node
 
+var ID : int
 var from: Node2D
 var from_port : int
 var to: Node2D

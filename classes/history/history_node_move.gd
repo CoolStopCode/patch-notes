@@ -12,6 +12,7 @@ func redo():
 	GlobalNodes.nodes.get_node_instance(id).position = to
 
 func _init(_id, _from, _to) -> void:
+	name = "Node Move"
 	id = _id
 	from = _from
 	to = _to

@@ -22,6 +22,7 @@ func redo():
 	GlobalNodes.nodes.nodes[id] = node
 
 func _init(_node_scene, _id, _position, _properties) -> void:
+	name = "Node Create"
 	node_scene = _node_scene
 	id = _id
 	position = _position

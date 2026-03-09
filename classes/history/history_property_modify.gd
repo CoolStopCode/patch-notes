@@ -15,6 +15,7 @@ func redo():
 	property.value_changed.emit()
 
 func _init(_property : InspectorProperty, _from : Variant, _to : Variant) -> void:
+	name = "Property Modify"
 	property = _property
 	from = _from
 	to = _to

@@ -6,7 +6,12 @@ var index : int = 0
 func commit(action):
 	if index < timeline.size():
 		timeline = timeline.slice(0, index)
-
+	
+	if action.get("id") != null:
+		print("ACTION: ", action.name, ", ID: ", action.id)
+	else:
+		print("ACTION: ", action.name)
+	
 	timeline.append(action)
 	index += 1
 

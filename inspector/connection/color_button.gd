@@ -9,7 +9,10 @@ func _ready() -> void:
 	color_rect.color = color
 
 func _on_pressed() -> void:
-	color_button_pressed.emit(self)
+	color_button_pressed.emit(color)
 
-func other_color_button_pressed():
-	selected_rect.hide()
+func color_set(new_color : Color):
+	if new_color == color:
+		selected_rect.show()
+	else:
+		selected_rect.hide()

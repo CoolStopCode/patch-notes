@@ -14,6 +14,7 @@ func redo():
 	GlobalNodes.inspector.node_inspector.update_state_button()
 
 func _init(_id : int, _from : Constants.NodeState, _to : Constants.NodeState) -> void:
+	name = "Node State Modify"
 	id = _id
 	from = _from
 	to = _to

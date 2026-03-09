@@ -7,11 +7,41 @@ var subpreview_line : Node2D = null
 var preview_from_port : Port
 var preview_inputoutput : bool
 
+var connections : Array[Connection]
+
+func add_connection(connection : Connection):
+	connection.ID = connections.size()
+	connections.append(connection)
+	History.commit(HistoryConnectionCreate.new(
+		connection.ID,
+		connection.from.ID,
+		connection.from_port,
+		connection.to.ID,
+		connection.to_port,
+		connection.line.line.points,
+		connection.color,
+		connection.connection_state
+	))
+
+func get_connection_instance(id : int) -> Connection:
+	return connections[id]
+
 func _ready() -> void:
 	ConnectionManager.connection_started.connect(on_connection_started)
 	ConnectionManager.connection_ended.connect(on_connection_ended)
 	GlobalNodes.connections = self
 
+func quick_create_line(
+		points : PackedVector2Array,
+		color : Color
+	):
+	
+	var line : Node2D = line_scene.instantiate()
+	line.line.points = points
+	line.outline.points = points
+	line.line.default_color = color
+	
+	return line
 
 func on_connection_started(from : Node, port : int, inputoutput : bool):
 	preview_from_port = from.ports_in[port]\
@@ -83,7 +113,7 @@ func on_connection_ended(to : Node, port : int, inputoutput : bool):
 		port if inputoutput else ConnectionManager.preview_port, 
 		preview_line)
 	
-	ConnectionManager.connections.append(connection)
+	add_connection(connection)
 	preview_line = null
 	subpreview_line.queue_free()
 	subpreview_line = null

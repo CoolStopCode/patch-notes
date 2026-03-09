@@ -27,23 +27,37 @@ func load_from(path : String):
 		GlobalNodes.nodes.add_child(node_instance)
 		id_map[node.id] = node_instance
 	for connection in file_save.connections:
-		var line : Node2D = preload("res://node/connection/line.tscn").instantiate()
-		line.line.points = connection.points
-		line.outline.points = connection.points
-		GlobalNodes.connections.add_child(line)
-		
-		var from_node = id_map.get(connection.from_id)
-		var to_node = id_map.get(connection.to_id)
-		var connection_instance := Connection.new(
-			from_node,
-			connection.from_port,
-			to_node,
-			connection.to_port,
-			line
-		)
-		connection_instance.connection_state = connection.connection_state
-		connection_instance.set_line_color(connection.color)
-		ConnectionManager.connections.append(connection_instance)
+		pass
+		#GlobalNodes.connections.quick_create_line(
+			#points,
+			#color
+		#)
+		#
+		#var connection_instance := Connection.new(
+			#from_node,
+			#from_port,
+			#to_node,
+			#to_port,
+			#line
+		#)
+	
+		#var line : Node2D = preload("res://node/connection/line.tscn").instantiate()
+		#line.line.points = connection.points
+		#line.outline.points = connection.points
+		#GlobalNodes.connections.add_child(line)
+		#
+		#var from_node = 
+		#var to_node = id_map.get(connection.to_id)
+		#var connection_instance := Connection.new(
+			#from_node,
+			#connection.from_port,
+			#to_node,
+			#connection.to_port,
+			#line
+		#)
+		#connection_instance.connection_state = connection.connection_state
+		#connection_instance.set_line_color(connection.color)
+		#ConnectionManager.connections.append(connection_instance)
 	
 	Save.default_path = path
 

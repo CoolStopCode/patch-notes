@@ -56,7 +56,10 @@ func _ready() -> void:
 
 func property_changed(property : InspectorProperty):
 	if property == properties[0]:
-		audio_file = load(property.value)
+		if properties[0].value == null:
+			audio_file = preload("res://assets/audio/guitar.wav")
+		else:
+			audio_file = load(property.value)
 		audio_node.stream = audio_file
 		if (audio_file is AudioStreamWAV)\
 		 and (audio_file.format == AudioStreamWAV.FORMAT_8_BITS\
