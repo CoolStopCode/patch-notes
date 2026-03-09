@@ -7,9 +7,12 @@ var to : Vector2
 
 func undo():
 	GlobalNodes.nodes.get_node_instance(id).position = from
+	GlobalNodes.nodes.get_node_instance(id).move.emit()
 
 func redo():
 	GlobalNodes.nodes.get_node_instance(id).position = to
+	GlobalNodes.nodes.get_node_instance(id).move.emit()
+	
 
 func _init(_id, _from, _to) -> void:
 	name = "Node Move"

@@ -8,6 +8,7 @@ var id : int
 var position : Vector2
 var properties : Array[InspectorProperty]
 
+var connections : Array[Connection]
 var ids : Array[int]
 var from_ids : Array[int]
 var from_ports : Array[int]
@@ -23,11 +24,12 @@ func undo():
 	node.duplicate_props = false
 	node.position = position
 	node.properties = properties
+	node.ID = id
 	GlobalNodes.nodes.add_child(node)
 	GlobalNodes.nodes.nodes[id] = node
 	
-	var i := 0
-	for node_id in ids:
+	for i in range(ids.size()):
+		var connection_id = ids[i]
 		var from_id = from_ids[i]
 		var from_port = from_ports[i]
 		var to_id = to_ids[i]
@@ -46,11 +48,13 @@ func undo():
 			to_port,
 			line
 		)
+		connection.ID = connection_id
 		connection.set_line_color(color)
 		connection.connection_state = connection_state
+		print("REPLACING ", connection.ID)
+		connections[i] = connection
 		
-		GlobalNodes.connections.connections[node_id] = connection
-		i += 1
+		GlobalNodes.connections.connections[connection_id] = connection
 
 func redo():
 	var node : Node = GlobalNodes.nodes.get_node_instance(id)
@@ -67,6 +71,7 @@ func _init(_node_scene, _id, _position, _properties) -> void:
 	
 	for connection in GlobalNodes.connections.connections:
 		if connection.to == GlobalNodes.nodes.get_node_instance(id):
+			connections.append(connection)
 			ids.append(connection.ID)
 			from_ids.append(connection.from.ID)
 			from_ports.append(connection.from_port)
@@ -76,6 +81,7 @@ func _init(_node_scene, _id, _position, _properties) -> void:
 			pointss.append(connection.line.line.points)
 			states.append(connection.connection_state)
 		elif connection.from == GlobalNodes.nodes.get_node_instance(id):
+			connections.append(connection)
 			ids.append(connection.ID)
 			from_ids.append(connection.from.ID)
 			from_ports.append(connection.from_port)

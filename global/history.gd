@@ -19,18 +19,24 @@ func undo():
 	if index == 0:
 		return
 	
-	print("UNDO")
 	#print(timeline)
 	#print(index)
 	index -= 1
 	timeline[index].undo()
+	if timeline[index].get("id") != null:
+		print("UNDO: ", timeline[index].name, ", ID: ", timeline[index].id)
+	else:
+		print("UNDO: ", timeline[index].name)
 
 func redo():
 	if index >= timeline.size():
 		return
 	
-	print("REDO")
 	#print(timeline)
 	#print(index)
 	timeline[index].redo()
+	if timeline[index].get("id") != null:
+		print("REDO:: ", timeline[index].name, ", ID: ", timeline[index].id)
+	else:
+		print("REDO: ", timeline[index].name)
 	index += 1

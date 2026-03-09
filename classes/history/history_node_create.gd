@@ -18,6 +18,7 @@ func redo():
 	node.duplicate_props = false
 	node.position = position
 	node.properties = properties
+	node.ID = id
 	GlobalNodes.nodes.add_child(node)
 	GlobalNodes.nodes.nodes[id] = node
 

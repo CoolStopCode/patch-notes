@@ -71,17 +71,16 @@ func update_subpreview_line_final(to : Node, port : Port):
 	var first_point_pos : Vector2 = subpreview_line.line.get_point_position(0)
 	var port_pos : Vector2 = port.position + to.global_position
 	if port.axis == preview_from_port.axis and preview_line.line.get_point_count() <= 1:
+		var midpoint := Constants.snap_to_grid((first_point_pos + port_pos) / 2)
 		if port.axis == Constants.Axis.HORIZONTAL:
-			var midpoint_x := (first_point_pos.x + port_pos.x) / 2
 			subpreview_line.line.set_point_position(0, first_point_pos)
-			subpreview_line.line.set_point_position(1, Vector2(midpoint_x, first_point_pos.y))
-			subpreview_line.line.set_point_position(2, Vector2(midpoint_x, port_pos.y))
+			subpreview_line.line.set_point_position(1, Vector2(midpoint.x, first_point_pos.y))
+			subpreview_line.line.set_point_position(2, Vector2(midpoint.x, port_pos.y))
 			subpreview_line.line.set_point_position(3, port_pos)
 		else:
-			var midpoint_y := (first_point_pos.y + port_pos.y) / 2
 			subpreview_line.line.set_point_position(0, first_point_pos)
-			subpreview_line.line.set_point_position(1, Vector2(first_point_pos.x, midpoint_y))
-			subpreview_line.line.set_point_position(2, Vector2(port_pos.x, midpoint_y))
+			subpreview_line.line.set_point_position(1, Vector2(first_point_pos.x, midpoint.y))
+			subpreview_line.line.set_point_position(2, Vector2(port_pos.x, midpoint.y))
 			subpreview_line.line.set_point_position(3, port_pos)
 		return
 	if port.axis == Constants.Axis.HORIZONTAL:
@@ -153,15 +152,14 @@ func add_joint_final(to : Node, port : Port):
 	var first_point_pos : Vector2 = subpreview_line.line.get_point_position(0)
 	var port_pos : Vector2 = port.position + to.global_position
 	if port.axis == preview_from_port.axis and preview_line.line.get_point_count() <= 1:
+		var midpoint := Constants.snap_to_grid((first_point_pos + port_pos) / 2)
 		if port.axis == Constants.Axis.HORIZONTAL:
-			var midpoint_x := (first_point_pos.x + port_pos.x) / 2
-			preview_line.line.add_point(Vector2(midpoint_x, first_point_pos.y))
-			preview_line.line.add_point(Vector2(midpoint_x, port_pos.y))
+			preview_line.line.add_point(Vector2(midpoint.x, first_point_pos.y))
+			preview_line.line.add_point(Vector2(midpoint.x, port_pos.y))
 			preview_line.line.add_point(port_pos)
 		else:
-			var midpoint_y := (first_point_pos.y + port_pos.y) / 2
-			preview_line.line.add_point(Vector2(first_point_pos.x, midpoint_y))
-			preview_line.line.add_point(Vector2(port_pos.x, midpoint_y))
+			preview_line.line.add_point(Vector2(first_point_pos.x, midpoint.y))
+			preview_line.line.add_point(Vector2(port_pos.x, midpoint.y))
 			preview_line.line.add_point(port_pos)
 		return
 	if port.axis == Constants.Axis.HORIZONTAL:

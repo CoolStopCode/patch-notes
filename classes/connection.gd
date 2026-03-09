@@ -70,6 +70,7 @@ func update():
 	line.outline.points = line.line.points
 
 func selected():
+	print("CONNECTION ", ID, " SELECTED. FROM: ", from.ID, ", TO: ", to.ID)
 	GlobalNodes.inspector.open_connection_inspector(self)
 	line.selected()
 
