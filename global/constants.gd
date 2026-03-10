@@ -2,7 +2,7 @@ extends Node
 
 @export var DEV_MODE := false
 @export var GRID_SIZE := Vector2(4, 4)
-@export var NODE_LIST : NodeList = load("res://nodes/node_list.tres")
+@export var PACK_LIST : PackList = load("res://nodes/pack_list.tres")
 @export var DEFAULT_CONNECTION_COLOR : Color = Color("394a50")
 @export var global_time : float = 0.0
 

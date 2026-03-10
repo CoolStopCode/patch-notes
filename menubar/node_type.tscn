@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b0ci3u2c73b07"]
 
 [ext_resource type="Theme" uid="uid://b2a3mxh5ehvvk" path="res://menubar/menu_bar.tres" id="1_e1pwj"]
-[ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/sound/mini.png" id="2_5j2b7"]
+[ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/patch_notes/sound/mini.png" id="2_5j2b7"]
 [ext_resource type="Script" uid="uid://c5hmficrl6ahj" path="res://menubar/node_type.gd" id="2_48jeb"]
 
 [node name="node_type" type="Button" unique_id=1875999820 node_paths=PackedStringArray("texture")]

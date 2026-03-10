@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PackList" format=3 uid="uid://bip4lgcdx3slr"]
+
+[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/node_list.gd" id="1_vlwqh"]
+[ext_resource type="Resource" uid="uid://b5jal2mxrkq0r" path="res://nodes/patch_notes/node_list.tres" id="2_568mm"]
+[ext_resource type="Script" uid="uid://bar4wioea1vvm" path="res://classes/node/pack_list.gd" id="2_vde3h"]
+
+[resource]
+script = ExtResource("2_vde3h")
+pack_list = Array[ExtResource("1_vlwqh")]([ExtResource("2_568mm")])
+metadata/_custom_type_script = "uid://bar4wioea1vvm"
