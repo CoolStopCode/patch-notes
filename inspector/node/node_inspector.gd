@@ -72,6 +72,7 @@ func _on_duplicate_pressed() -> void:
 			copy.properties
 		))
 		close()
+		open(copy)
 
 func _on_state_set(state: Constants.NodeState) -> void:
 	if active:

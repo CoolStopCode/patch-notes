@@ -1,6 +1,7 @@
 class_name ConnectionSave
 extends Resource
 
+@export var id : int
 @export var from_id : int
 @export var from_port : int
 @export var to_id : int

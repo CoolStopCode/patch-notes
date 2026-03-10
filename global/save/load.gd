@@ -26,20 +26,28 @@ func load_from(path : String):
 		node_instance.node_state = node.node_state
 		GlobalNodes.nodes.add_child(node_instance)
 		id_map[node.id] = node_instance
+	
 	for connection in file_save.connections:
-		pass
-		#GlobalNodes.connections.quick_create_line(
-			#points,
-			#color
-		#)
-		#
-		#var connection_instance := Connection.new(
-			#from_node,
-			#from_port,
-			#to_node,
-			#to_port,
-			#line
-		#)
+		var line : Node2D = GlobalNodes.connections.quick_create_line(
+			connection.points,
+			connection.color
+		)
+		
+		var from_node = id_map.get(connection.from_id)
+		var to_node = id_map.get(connection.to_id)
+		var connection_instance := Connection.new(
+			from_node,
+			connection.from_port,
+			to_node,
+			connection.to_port,
+			line
+		)
+		connection_instance.connection_state = connection.connection_state
+		connection_instance.ID = connection.id
+		
+		GlobalNodes.connections.add_child(line)
+		connection_instance.set_line_color(connection.color)
+		GlobalNodes.connections.connections.append(connection_instance)
 	
 		#var line : Node2D = preload("res://node/connection/line.tscn").instantiate()
 		#line.line.points = connection.points

@@ -39,12 +39,6 @@ window/size/viewport_height=1080
 window/size/initial_position=Vector2i(0, -200)
 window/size/always_on_top=true
 
-[editor]
-
-movie_writer/speaker_mode=1
-movie_writer/video_quality=0.6
-movie_writer/movie_file="/Users/gh/Downloads/export.avi"
-
 [file_customization]
 
 folder_colors={

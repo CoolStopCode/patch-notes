@@ -10,7 +10,6 @@ func save_to(path : String):
 	var file_save := FileSave.new()
 	
 	var id_map := {}  # Node -> ID
-	var id_counter := 0
 	
 	for node in GlobalNodes.nodes.get_children():
 		var node_save := NodeSave.new()
@@ -18,14 +17,15 @@ func save_to(path : String):
 		node_save.position = node.position
 		node_save.properties = node.properties
 		node_save.node_state = node.node_state
-		node_save.id = id_counter
-		id_map[node] = id_counter
-		id_counter += 1
+		node_save.id = node.ID
+		id_map[node] = node.ID
 		file_save.nodes.append(node_save)
-	for connection in ConnectionManager.connections:
+	
+	for connection in GlobalNodes.connections.connections:
 		if connection.freed:
 			continue
 		var connection_save := ConnectionSave.new()
+		connection_save.id = connection.ID
 		connection_save.from_id = id_map.get(connection.from, -1)
 		connection_save.to_id = id_map.get(connection.to, -1)
 		connection_save.from_port = connection.from_port

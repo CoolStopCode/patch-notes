@@ -57,7 +57,7 @@ func _ready() -> void:
 func property_changed(property : InspectorProperty):
 	if property == properties[0]:
 		if properties[0].value == null:
-			audio_file = preload("res://assets/audio/guitar.wav")
+			audio_file = preload("res://nodes/sound/guitarC.wav")
 		else:
 			audio_file = load(property.value)
 		audio_node.stream = audio_file
