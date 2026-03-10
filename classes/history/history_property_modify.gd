@@ -6,7 +6,6 @@ var from : Variant
 var to : Variant
 
 func undo():
-	print("SETTING TO ", from)
 	property.value = from
 	property.value_changed.emit()
 

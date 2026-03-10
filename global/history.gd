@@ -8,9 +8,9 @@ func commit(action):
 		timeline = timeline.slice(0, index)
 	
 	if action.get("id") != null:
-		print("ACTION: ", action.name, ", ID: ", action.id)
+		if Constants.DEV_MODE: print("ACTION: ", action.name, ", ID: ", action.id)
 	else:
-		print("ACTION: ", action.name)
+		if Constants.DEV_MODE: print("ACTION: ", action.name)
 	
 	timeline.append(action)
 	index += 1
@@ -24,9 +24,9 @@ func undo():
 	index -= 1
 	timeline[index].undo()
 	if timeline[index].get("id") != null:
-		print("UNDO: ", timeline[index].name, ", ID: ", timeline[index].id)
+		if Constants.DEV_MODE: print("UNDO: ", timeline[index].name, ", ID: ", timeline[index].id)
 	else:
-		print("UNDO: ", timeline[index].name)
+		if Constants.DEV_MODE: print("UNDO: ", timeline[index].name)
 
 func redo():
 	if index >= timeline.size():
@@ -36,7 +36,7 @@ func redo():
 	#print(index)
 	timeline[index].redo()
 	if timeline[index].get("id") != null:
-		print("REDO:: ", timeline[index].name, ", ID: ", timeline[index].id)
+		if Constants.DEV_MODE: print("REDO: ", timeline[index].name, ", ID: ", timeline[index].id)
 	else:
-		print("REDO: ", timeline[index].name)
+		if Constants.DEV_MODE: print("REDO: ", timeline[index].name)
 	index += 1

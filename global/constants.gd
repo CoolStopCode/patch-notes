@@ -1,5 +1,6 @@
 extends Node
 
+@export var DEV_MODE := false
 @export var GRID_SIZE := Vector2(4, 4)
 @export var NODE_LIST : NodeList = load("res://nodes/node_list.tres")
 @export var DEFAULT_CONNECTION_COLOR : Color = Color("394a50")
@@ -32,3 +33,7 @@ func deep_duplicate_properties(props: Array[InspectorProperty]) -> Array[Inspect
 	for p in props:
 		copy.append(p.duplicate(true))
 	return copy
+
+func _ready() -> void:
+	DEV_MODE = OS.has_feature("editor") or "-dev" in OS.get_cmdline_args()
+	if DEV_MODE: print("===================\n  DEV MODE ACTIVE  \n===================\n")

@@ -22,6 +22,10 @@ func _on_edit_id_pressed(id: int) -> void:
 	if id == 1:
 		History.redo()
 
+func _on_dev_id_pressed(id: int) -> void:
+	if id == 0:
+		Load.load_from("res://dev/dev1.tscn")
+
 func _unhandled_input(event):
 	if event.is_action_pressed("undo"):
 		if not event.is_action_pressed("redo"):
@@ -49,3 +53,4 @@ func _ready() -> void:
 	var documents_path = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 	save_as_dialogue.current_dir = documents_path
 	load_from_dialogue.current_dir = documents_path
+	if not Constants.DEV_MODE: $MenuBar/dev.queue_free()

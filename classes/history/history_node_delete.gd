@@ -51,7 +51,6 @@ func undo():
 		connection.ID = connection_id
 		connection.set_line_color(color)
 		connection.connection_state = connection_state
-		print("REPLACING ", connection.ID)
 		connections[i] = connection
 		
 		GlobalNodes.connections.connections[connection_id] = connection

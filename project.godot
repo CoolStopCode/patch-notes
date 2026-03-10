@@ -44,6 +44,7 @@ window/size/always_on_top=true
 folder_colors={
 "res://assets/": "yellow",
 "res://classes/": "gray",
+"res://dev/": "red",
 "res://global/": "gray",
 "res://inspector/": "blue",
 "res://main/": "pink",

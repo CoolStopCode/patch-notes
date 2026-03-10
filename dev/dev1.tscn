@@ -1,0 +1,284 @@
+[gd_resource type="Resource" script_class="FileSave" format=3]
+
+[ext_resource type="Script" path="res://classes/save/connection_save.gd" id="1_hsfsa"]
+[ext_resource type="Script" path="res://classes/save/node_save.gd" id="2_7if5t"]
+[ext_resource type="Script" path="res://classes/inspector_properties/inspector_property.gd" id="3_cahht"]
+[ext_resource type="Script" path="res://classes/inspector_properties/inspector_slider.gd" id="4_hywiv"]
+[ext_resource type="Script" path="res://classes/inspector_properties/inspector_checkbox.gd" id="5_eigvw"]
+[ext_resource type="Script" path="res://classes/inspector_properties/inspector_file.gd" id="6_jkgtt"]
+[ext_resource type="Script" path="res://classes/inspector_properties/inspector_arrows.gd" id="7_0nhd7"]
+[ext_resource type="Script" path="res://classes/save/file_save.gd" id="8_tn47q"]
+
+[sub_resource type="Resource" id="Resource_i622i"]
+script = ExtResource("1_hsfsa")
+from_port = 2
+to_id = 1
+connection_state = 1
+points = PackedVector2Array(-50, -24, -28, -24, -28, -24, -6, -24)
+color = Color(0.23529412, 0.36862746, 0.54509807, 1)
+
+[sub_resource type="Resource" id="Resource_bpfn8"]
+script = ExtResource("1_hsfsa")
+id = 1
+from_id = 1
+to_id = 2
+points = PackedVector2Array(14, -24, 24, -24, 24, -24, 30, -24)
+color = Color(0.53333336, 0.29411766, 0.16862746, 1)
+
+[sub_resource type="Resource" id="Resource_gsvat"]
+script = ExtResource("1_hsfsa")
+id = 2
+from_port = 1
+to_id = 3
+points = PackedVector2Array(-50, -20, -12, -20, -12, -4, 4, -4, 4, 2)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_undwi"]
+script = ExtResource("1_hsfsa")
+id = 3
+from_id = 3
+to_id = 4
+points = PackedVector2Array(14, 12, 20, 12, 20, 12, 26, 12)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_0ahpf"]
+script = ExtResource("1_hsfsa")
+id = 4
+from_id = 3
+from_port = 2
+to_id = 5
+points = PackedVector2Array(14, 20, 20, 20, 20, 24, 26, 24)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_vfh47"]
+script = ExtResource("1_hsfsa")
+id = 5
+from_id = 5
+to_id = 6
+points = PackedVector2Array(38, 24, 48, 24, 48, 34)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_evpvv"]
+script = ExtResource("1_hsfsa")
+id = 6
+to_id = 8
+points = PackedVector2Array(-50, -16, -44, -16, -44, 4, -38, 4)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_6g8is"]
+script = ExtResource("1_hsfsa")
+id = 7
+to_id = 9
+points = PackedVector2Array(-50, -16, -44, -16, -44, 16, -38, 16)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_h16a0"]
+script = ExtResource("1_hsfsa")
+id = 8
+from_id = 9
+to_id = 11
+points = PackedVector2Array(-26, 16, -16, 16, -16, 40, -6, 40)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_au3qd"]
+script = ExtResource("1_hsfsa")
+id = 9
+from_id = 8
+to_id = 11
+points = PackedVector2Array(-26, 4, -16, 4, -16, 40, -6, 40)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_u5p5f"]
+script = ExtResource("1_hsfsa")
+id = 10
+from_id = 11
+from_port = 1
+to_id = 5
+points = PackedVector2Array(14, 36, 20, 36, 20, 24, 26, 24)
+color = Color(0.22352941, 0.2901961, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_r3cqd"]
+script = ExtResource("4_hywiv")
+min_value = 1.0
+max_value = 10000.0
+min_slider = 40.0
+max_slider = 240.0
+property_name = "BPM"
+value = 120.0
+default_value = null
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_xp4wg"]
+script = ExtResource("5_eigvw")
+property_name = "Sound"
+value = null
+default_value = null
+metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
+
+[sub_resource type="Resource" id="Resource_iqx1x"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/metronome/metronome_node.tscn"
+position = Vector2(-64, -20)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_r3cqd"), SubResource("Resource_xp4wg")])
+
+[sub_resource type="Resource" id="Resource_rtvga"]
+script = ExtResource("6_jkgtt")
+filters = PackedStringArray("*.wav", "*.mp3")
+property_name = "Source"
+value = "/Users/gh/projects/godot/patch-notes/assets/audio/chime.wav"
+default_value = null
+metadata/_custom_type_script = "uid://dpcev18b4nbi1"
+
+[sub_resource type="Resource" id="Resource_74mx2"]
+script = ExtResource("4_hywiv")
+max_slider = 2.0
+property_name = "Volume"
+value = 0.8
+default_value = null
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_pxjay"]
+script = ExtResource("4_hywiv")
+min_value = 0.01
+max_value = 1000.0
+min_slider = 0.1
+max_slider = 5.0
+step_slider = 0.01
+property_name = "Speed"
+value = 1.3
+default_value = null
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_wkri2"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/sound/sound_node.tscn"
+position = Vector2(4, -24)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_rtvga"), SubResource("Resource_74mx2"), SubResource("Resource_pxjay")])
+id = 1
+
+[sub_resource type="Resource" id="Resource_uyrts"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/sound/sound_node.tscn"
+position = Vector2(40, -24)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_rtvga"), SubResource("Resource_74mx2"), SubResource("Resource_pxjay")])
+id = 2
+
+[sub_resource type="Resource" id="Resource_5cbii"]
+script = ExtResource("7_0nhd7")
+min_value = 1
+max_value = 8
+property_name = "Steps"
+value = 3
+default_value = null
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_b7rgs"]
+script = ExtResource("4_hywiv")
+min_value = 1.0
+max_value = 10000.0
+min_slider = 40.0
+max_slider = 240.0
+property_name = "BPM"
+value = 120.0
+default_value = null
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_tpg7f"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/progression/progression_node.tscn"
+position = Vector2(4, 12)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_5cbii"), SubResource("Resource_b7rgs")])
+id = 3
+
+[sub_resource type="Resource" id="Resource_gts6q"]
+script = ExtResource("7_0nhd7")
+min_value = 1
+max_value = 1000
+property_name = "Count"
+value = 2
+default_value = null
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_kgd6e"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/count/count_node.tscn"
+position = Vector2(32, 12)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_gts6q")])
+id = 4
+
+[sub_resource type="Resource" id="Resource_2my3t"]
+script = ExtResource("7_0nhd7")
+min_value = 1
+max_value = 1000
+property_name = "Count"
+value = 2
+default_value = null
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_wjiu7"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/count/count_node.tscn"
+position = Vector2(32, 24)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_2my3t")])
+id = 5
+
+[sub_resource type="Resource" id="Resource_gti62"]
+script = ExtResource("7_0nhd7")
+min_value = 1
+max_value = 8
+property_name = "Steps"
+value = 4
+default_value = null
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_yc2pw"]
+script = ExtResource("4_hywiv")
+min_value = 1.0
+max_value = 10000.0
+min_slider = 40.0
+max_slider = 240.0
+property_name = "BPM"
+value = 120.0
+default_value = null
+metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
+
+[sub_resource type="Resource" id="Resource_avman"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/progression/progression_node.tscn"
+position = Vector2(48, 44)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_gti62"), SubResource("Resource_yc2pw")])
+id = 6
+
+[sub_resource type="Resource" id="Resource_pyrpb"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/toggle/toggle_node.tscn"
+position = Vector2(-32, 4)
+id = 8
+
+[sub_resource type="Resource" id="Resource_ywl1e"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/toggle/toggle_node.tscn"
+position = Vector2(-32, 16)
+id = 9
+
+[sub_resource type="Resource" id="Resource_7dnq1"]
+script = ExtResource("7_0nhd7")
+min_value = 1
+max_value = 1000
+property_name = "Count"
+value = 6
+default_value = null
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_08wm3"]
+script = ExtResource("2_7if5t")
+scene_path = "res://nodes/flip_count/flip_count_node.tscn"
+position = Vector2(4, 40)
+properties = Array[ExtResource("3_cahht")]([SubResource("Resource_7dnq1")])
+node_state = 1
+id = 11
+
+[resource]
+script = ExtResource("8_tn47q")
+nodes = Array[ExtResource("2_7if5t")]([SubResource("Resource_iqx1x"), SubResource("Resource_wkri2"), SubResource("Resource_uyrts"), SubResource("Resource_tpg7f"), SubResource("Resource_kgd6e"), SubResource("Resource_wjiu7"), SubResource("Resource_avman"), SubResource("Resource_pyrpb"), SubResource("Resource_ywl1e"), SubResource("Resource_08wm3")])
+connections = Array[ExtResource("1_hsfsa")]([SubResource("Resource_i622i"), SubResource("Resource_bpfn8"), SubResource("Resource_gsvat"), SubResource("Resource_undwi"), SubResource("Resource_0ahpf"), SubResource("Resource_vfh47"), SubResource("Resource_evpvv"), SubResource("Resource_6g8is"), SubResource("Resource_h16a0"), SubResource("Resource_au3qd"), SubResource("Resource_u5p5f")])
