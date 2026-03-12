@@ -47,6 +47,7 @@ folder_colors={
 "res://dev/": "red",
 "res://global/": "gray",
 "res://inspector/": "blue",
+"res://library/": "orange",
 "res://main/": "pink",
 "res://node/": "purple",
 "res://nodes/": "green"

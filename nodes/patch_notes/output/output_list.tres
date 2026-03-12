@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NodeList" format=3 uid="uid://b5jal2mxrkq0r"]
+
+[ext_resource type="Script" uid="uid://dkpeaewtb25r8" path="res://classes/node/node_type.gd" id="1_p0fyn"]
+[ext_resource type="Texture2D" uid="uid://cvbtco85388k7" path="res://nodes/patch_notes/output/output.png" id="1_x2y58"]
+[ext_resource type="PackedScene" uid="uid://cccaw8j2drsqv" path="res://nodes/patch_notes/output/sound/sound_node.tscn" id="3_a4jbw"]
+[ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/patch_notes/output/sound/icon.png" id="3_x2y58"]
+[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/node_list.gd" id="4_cwevi"]
+
+[sub_resource type="Resource" id="Resource_vdd44"]
+script = ExtResource("1_p0fyn")
+name = "Sound"
+icon = ExtResource("3_x2y58")
+node_scene = ExtResource("3_a4jbw")
+metadata/_custom_type_script = "uid://dkpeaewtb25r8"
+
+[resource]
+script = ExtResource("4_cwevi")
+name = "Output"
+icon = ExtResource("1_x2y58")
+node_list = Array[ExtResource("1_p0fyn")]([SubResource("Resource_vdd44")])
+metadata/_custom_type_script = "uid://bcon2a66d3gb3"

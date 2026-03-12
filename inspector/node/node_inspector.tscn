@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="2_p862u"]
 [ext_resource type="Texture2D" uid="uid://ctxlm3ma4eu61" path="res://inspector/node/buttons/duplicate.png" id="3_e8c74"]
 [ext_resource type="Texture2D" uid="uid://ck6wq8srxwul3" path="res://inspector/node/buttons/normal.png" id="4_mj7ji"]
-[ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/patch_notes/delay/icon.png" id="5_mj7ji"]
+[ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/patch_notes/control/delay/key.png" id="5_mj7ji"]
 [ext_resource type="Script" uid="uid://bexdng7pcgnsp" path="res://inspector/node/state_button.gd" id="5_xj2kl"]
 [ext_resource type="Texture2D" uid="uid://cat3amsm3f710" path="res://inspector/node/buttons/pass.png" id="7_11p25"]
 [ext_resource type="PackedScene" uid="uid://c7vpfpgd7v5u5" path="res://inspector/properties/arrows.tscn" id="7_ukqej"]

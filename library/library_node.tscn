@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://3c6ex4ug4bl6"]
+
+[ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/patch_notes/output/sound/icon.png" id="1_hhv8j"]
+[ext_resource type="Script" uid="uid://clx645hkpr81m" path="res://library/library_node.gd" id="1_m2qwc"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="1_oh1vx"]
+[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="2_o3wjt"]
+[ext_resource type="Texture2D" uid="uid://bhsw8j66awsyu" path="res://library/pin_enabled.png" id="4_e8f71"]
+
+[node name="library_node" type="Control" unique_id=744828149 node_paths=PackedStringArray("icon", "text")]
+custom_minimum_size = Vector2(72, 6)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 72.0
+offset_bottom = 6.0
+script = ExtResource("1_m2qwc")
+icon = NodePath("use/icon")
+text = NodePath("use/Label")
+
+[node name="use" type="Button" parent="." unique_id=173195865]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 66.0
+grow_vertical = 2
+theme = ExtResource("1_oh1vx")
+
+[node name="icon" type="TextureRect" parent="use" unique_id=2072739848]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_vertical = 2
+texture = ExtResource("1_hhv8j")
+
+[node name="Label" type="Label" parent="use" unique_id=1974575045]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 46.0
+offset_bottom = -1.0
+grow_vertical = 2
+text = "name here"
+label_settings = ExtResource("2_o3wjt")
+
+[node name="pin" type="Button" parent="." unique_id=242467174]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -3.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_oh1vx")
+
+[node name="TextureRect" type="TextureRect" parent="pin" unique_id=1596896554]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_e8f71")
+
+[connection signal="pressed" from="use" to="." method="_on_use_pressed"]

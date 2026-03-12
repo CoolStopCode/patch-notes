@@ -1,6 +1,6 @@
 extends Button
 
-@export var mini_icon : Texture
+@export var node_icon : Texture
 @export var node_name : String
 @export var node_scene : PackedScene
 
@@ -10,7 +10,7 @@ extends Button
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tooltip_text = node_name
-	texture.texture = mini_icon
+	texture.texture = node_icon
 
 
 func _on_pressed() -> void:

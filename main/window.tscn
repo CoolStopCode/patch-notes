@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_1a1h6"]
 [ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/node_type.tscn" id="4_1a1h6"]
 [ext_resource type="PackedScene" uid="uid://bvuw8a1l3xivn" path="res://inspector/node/node_inspector.tscn" id="5_g3nch"]
-[ext_resource type="Texture2D" uid="uid://3aa7bhsfhd7g" path="res://menubar/library/icon.png" id="6_1a1h6"]
+[ext_resource type="Texture2D" uid="uid://3aa7bhsfhd7g" path="res://menubar/library.png" id="6_1a1h6"]
 [ext_resource type="Script" uid="uid://ble0cj1gdf0tc" path="res://inspector/inspector.gd" id="6_8jboc"]
 [ext_resource type="PackedScene" uid="uid://b1hstu0hfplyb" path="res://inspector/connection/connection_inspector.tscn" id="7_sb2do"]
+[ext_resource type="PackedScene" uid="uid://lpp8lni3tp4l" path="res://library/library.tscn" id="10_8dttj"]
 
 [node name="window" type="Control" unique_id=1313663587]
 layout_mode = 3
@@ -103,7 +104,10 @@ oversampling_override = 1.0
 title = "Edit"
 size = Vector2i(200, 100)
 theme = ExtResource("2_et0yp")
+allow_search = false
 prefer_native_menu = true
+shrink_height = false
+shrink_width = false
 item_count = 2
 item_0/text = "Undo"
 item_0/id = 0
@@ -134,12 +138,12 @@ theme_override_constants/separation = 0
 script = ExtResource("3_1a1h6")
 node_type_scene = ExtResource("4_1a1h6")
 
-[node name="Button" type="Button" parent="menubar/nodes" unique_id=1276414569]
+[node name="library" type="Button" parent="menubar/nodes" unique_id=1276414569]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 theme = ExtResource("2_et0yp")
 
-[node name="TextureRect" type="TextureRect" parent="menubar/nodes/Button" unique_id=2016902192]
+[node name="TextureRect" type="TextureRect" parent="menubar/nodes/library" unique_id=2016902192]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -218,8 +222,21 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(6, 6)
 
+[node name="library" parent="." unique_id=1985169215 instance=ExtResource("10_8dttj")]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 54.000004
+offset_right = -160.0
+offset_bottom = 154.0
+grow_horizontal = 2
+
 [connection signal="id_pressed" from="menubar/MenuBar/file" to="menubar" method="_on_file_id_pressed"]
 [connection signal="id_pressed" from="menubar/MenuBar/edit" to="menubar" method="_on_edit_id_pressed"]
 [connection signal="id_pressed" from="menubar/MenuBar/dev" to="menubar" method="_on_dev_id_pressed"]
+[connection signal="pressed" from="menubar/nodes/library" to="menubar/nodes" method="_on_library_pressed"]
 [connection signal="file_selected" from="menubar/save_as" to="menubar" method="_on_save_as_file_selected"]
 [connection signal="file_selected" from="menubar/load_from" to="menubar" method="_on_load_from_file_selected"]

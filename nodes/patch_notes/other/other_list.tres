@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NodeList" format=3 uid="uid://binywuylt6ow3"]
+
+[ext_resource type="Script" uid="uid://dkpeaewtb25r8" path="res://classes/node/node_type.gd" id="1_bgkug"]
+[ext_resource type="Texture2D" uid="uid://bqvnsxsecgtbq" path="res://nodes/patch_notes/other/other.png" id="1_nnkls"]
+[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/node_list.gd" id="16_p3g67"]
+
+[resource]
+script = ExtResource("16_p3g67")
+name = "Other"
+icon = ExtResource("1_nnkls")
+metadata/_custom_type_script = "uid://bcon2a66d3gb3"
