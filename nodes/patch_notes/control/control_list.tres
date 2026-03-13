@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NodeList" format=3 uid="uid://cr82bmuhulutv"]
 
 [ext_resource type="Script" uid="uid://dkpeaewtb25r8" path="res://classes/node/node_type.gd" id="1_72m6c"]
-[ext_resource type="Texture2D" uid="uid://022eqliudwao" path="res://nodes/patch_notes/control/control.png" id="1_x6mv4"]
+[ext_resource type="Texture2D" uid="uid://dh13j20wld4kg" path="res://nodes/patch_notes/control/control2.png" id="1_x6mv4"]
 [ext_resource type="Texture2D" uid="uid://d2umlwy6xlmp2" path="res://nodes/patch_notes/control/count/icon.png" id="3_x6mv4"]
 [ext_resource type="Texture2D" uid="uid://bg1fjqb2e2fcj" path="res://nodes/patch_notes/control/flip_count/icon.png" id="5_rve8l"]
 [ext_resource type="PackedScene" uid="uid://dgvuhk048w2q" path="res://nodes/patch_notes/control/count/count_node.tscn" id="7_brhsd"]
@@ -17,6 +17,7 @@ script = ExtResource("1_72m6c")
 name = "Count"
 icon = ExtResource("3_x6mv4")
 node_scene = ExtResource("7_brhsd")
+pinned = true
 metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 
 [sub_resource type="Resource" id="Resource_wbw8c"]
@@ -38,6 +39,7 @@ script = ExtResource("1_72m6c")
 name = "Progression"
 icon = ExtResource("9_8xp0t")
 node_scene = ExtResource("15_3cv1f")
+pinned = true
 metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 
 [resource]

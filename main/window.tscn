@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b2a3mxh5ehvvk" path="res://menubar/menu_bar.tres" id="2_et0yp"]
 [ext_resource type="Script" uid="uid://dnkw0yk3tner3" path="res://main/menubar.gd" id="2_yna84"]
 [ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_1a1h6"]
-[ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/node_type.tscn" id="4_1a1h6"]
+[ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/pinned_node.tscn" id="4_1a1h6"]
 [ext_resource type="PackedScene" uid="uid://bvuw8a1l3xivn" path="res://inspector/node/node_inspector.tscn" id="5_g3nch"]
 [ext_resource type="Texture2D" uid="uid://3aa7bhsfhd7g" path="res://menubar/library.png" id="6_1a1h6"]
 [ext_resource type="Script" uid="uid://ble0cj1gdf0tc" path="res://inspector/inspector.gd" id="6_8jboc"]
@@ -124,7 +124,7 @@ item_count = 1
 item_0/text = "Example 1"
 item_0/id = 0
 
-[node name="nodes" type="HBoxContainer" parent="menubar" unique_id=818164865]
+[node name="nodes" type="HBoxContainer" parent="menubar" unique_id=818164865 node_paths=PackedStringArray("library_button_node")]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -137,6 +137,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("3_1a1h6")
 node_type_scene = ExtResource("4_1a1h6")
+library_button_node = NodePath("library")
 
 [node name="library" type="Button" parent="menubar/nodes" unique_id=1276414569]
 custom_minimum_size = Vector2(36, 36)

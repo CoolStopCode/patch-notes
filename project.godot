@@ -50,7 +50,11 @@ folder_colors={
 "res://library/": "orange",
 "res://main/": "pink",
 "res://node/": "purple",
-"res://nodes/": "green"
+"res://nodes/": "gray",
+"res://nodes/patch_notes/control/": "red",
+"res://nodes/patch_notes/input/": "yellow",
+"res://nodes/patch_notes/other/": "green",
+"res://nodes/patch_notes/output/": "blue"
 }
 
 [input]

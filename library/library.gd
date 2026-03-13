@@ -9,6 +9,7 @@ var categories := true
 @export var node_scene : PackedScene
 
 @export var exit_button : Button
+
 func _ready() -> void:
 	GlobalNodes.library = self
 
@@ -56,12 +57,22 @@ func load_nodes(node_list : NodeList):
 		instance.icon.texture = node.icon
 		instance.text.text = node.name
 		instance.node = node
+		instance.pinned = node.pinned
 		instance.node_used.connect(node_used)
+		instance.node_pin_update.connect(node_pin_update)
 		nodes_page.add_child(instance)
 
 func node_used(node : NodeType):
-	pass
+	var instance := node.node_scene.instantiate()
+	instance.mouse_dragging = true
+	instance.drag_offset = Vector2(0, 0)
+	Cursor.dragging = true
+	GlobalNodes.nodes.add_node(instance)
+	close()
 
+func node_pin_update(node : NodeType, pinned : bool):
+	node.pinned = pinned
+	GlobalNodes.node_bar.refresh()
 
 func _on_exit_pressed() -> void:
 	load_categories()

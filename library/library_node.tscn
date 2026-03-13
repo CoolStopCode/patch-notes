@@ -4,10 +4,11 @@
 [ext_resource type="Script" uid="uid://clx645hkpr81m" path="res://library/library_node.gd" id="1_m2qwc"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="1_oh1vx"]
 [ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="2_o3wjt"]
+[ext_resource type="Texture2D" uid="uid://lits4le7icxi" path="res://library/pin_disabled.png" id="3_n80un"]
 [ext_resource type="Texture2D" uid="uid://bhsw8j66awsyu" path="res://library/pin_enabled.png" id="4_e8f71"]
 
-[node name="library_node" type="Control" unique_id=744828149 node_paths=PackedStringArray("icon", "text")]
-custom_minimum_size = Vector2(72, 6)
+[node name="library_node" type="Control" unique_id=744828149 node_paths=PackedStringArray("icon", "text", "pin_texture_node")]
+custom_minimum_size = Vector2(74, 6)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 72.0
@@ -15,12 +16,15 @@ offset_bottom = 6.0
 script = ExtResource("1_m2qwc")
 icon = NodePath("use/icon")
 text = NodePath("use/Label")
+pin_texture_node = NodePath("pin/TextureRect")
+pin_texture_enabled = ExtResource("4_e8f71")
+pin_texture_disabled = ExtResource("3_n80un")
 
 [node name="use" type="Button" parent="." unique_id=173195865]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 66.0
+offset_right = 68.0
 grow_vertical = 2
 theme = ExtResource("1_oh1vx")
 
@@ -78,3 +82,4 @@ grow_vertical = 2
 texture = ExtResource("4_e8f71")
 
 [connection signal="pressed" from="use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="pin" to="." method="_on_pin_pressed"]
