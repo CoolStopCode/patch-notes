@@ -47,32 +47,38 @@ func _input(event: InputEvent) -> void:
 
 func _on_delete_pressed() -> void:
 	if active:
-		History.commit(HistoryNodeDelete.new(
-			load(active_node.scene_file_path), 
-			active_node.ID, 
-			active_node.global_position, 
-			active_node.properties
-		))
-		active_node.queue_free()
-		close()
+		delete_node()
 
 func _on_duplicate_pressed() -> void:
 	if active:
-		var node_scene := load(active_node.scene_file_path)
-		var copy : Node = node_scene.instantiate()
-		copy.properties = active_node.properties
-		copy.global_position = active_node.global_position + Constants.snap_to_grid(Vector2(5, 5))
-		copy.creation_drag = false
-		copy.duplicate_props = true
-		GlobalNodes.nodes.add_node(copy)
-		History.commit(HistoryNodeCreate.new(
-			node_scene, 
-			copy.ID,
-			copy.global_position, 
-			copy.properties
-		))
-		close()
-		open(copy)
+		duplicate_node()
+
+func duplicate_node():
+	var node_scene := load(active_node.scene_file_path)
+	var copy : Node = node_scene.instantiate()
+	copy.properties = active_node.properties
+	copy.global_position = active_node.global_position + Constants.snap_to_grid(Vector2(5, 5))
+	copy.creation_drag = false
+	copy.duplicate_props = true
+	GlobalNodes.nodes.add_node(copy)
+	History.commit(HistoryNodeCreate.new(
+		node_scene, 
+		copy.ID,
+		copy.global_position, 
+		copy.properties
+	))
+	close()
+	open(copy)
+
+func delete_node():
+	History.commit(HistoryNodeDelete.new(
+		load(active_node.scene_file_path), 
+		active_node.ID, 
+		active_node.global_position, 
+		active_node.properties
+	))
+	active_node.queue_free()
+	close()
 
 func _on_state_set(state: Constants.NodeState) -> void:
 	if active:
@@ -83,3 +89,12 @@ func _on_state_set(state: Constants.NodeState) -> void:
 func update_state_button():
 	if active:
 		state_button.apply_state(active_node.node_state)
+
+func _unhandled_input(event):
+	if not active: return
+
+	if event.is_action_pressed("duplicate"):
+		duplicate_node()
+	
+	if event.is_action_pressed("delete"):
+		delete_node()
