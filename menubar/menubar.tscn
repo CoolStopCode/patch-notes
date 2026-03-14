@@ -1,0 +1,309 @@
+[gd_scene format=3 uid="uid://cq5ndqf1vdcwe"]
+
+[ext_resource type="Script" uid="uid://dnkw0yk3tner3" path="res://menubar/menubar.gd" id="1_s8p5s"]
+[ext_resource type="Texture2D" uid="uid://bdhx4pyb45x54" path="res://menubar/record/bg.png" id="2_75uir"]
+[ext_resource type="Theme" uid="uid://b2a3mxh5ehvvk" path="res://menubar/menu_bar.tres" id="2_qiper"]
+[ext_resource type="Texture2D" uid="uid://dbluc2uxgu2a8" path="res://menubar/record/record_inactive.png" id="3_aam4f"]
+[ext_resource type="Script" uid="uid://civtnlakhqotd" path="res://menubar/record/record.gd" id="3_lng37"]
+[ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_sods4"]
+[ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/pinned_node.tscn" id="4_aam4f"]
+[ext_resource type="Texture2D" uid="uid://3aa7bhsfhd7g" path="res://menubar/library.png" id="5_75uir"]
+[ext_resource type="Texture2D" uid="uid://bjlvhpnqho72x" path="res://menubar/record/record_active1.png" id="5_cqb5x"]
+[ext_resource type="Texture2D" uid="uid://d3qg1l3r2wjgp" path="res://menubar/record/record_active2.png" id="6_gafyf"]
+[ext_resource type="Texture2D" uid="uid://bgnjjbtnqcrxe" path="res://menubar/record/record_cancel.png" id="8_c2e1i"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cqb5x"]
+load_path = "res://.godot/imported/record_accept.png-2a23e080c199290a2bb4d002a9ab55cb.ctex"
+
+[node name="menubar" type="Control" unique_id=590915607 node_paths=PackedStringArray("save_as_dialogue", "load_from_dialogue")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+script = ExtResource("1_s8p5s")
+save_as_dialogue = NodePath("save_as")
+load_from_dialogue = NodePath("load_from")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=942036527]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=15844192]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="record_bg" type="TextureRect" parent="." unique_id=435596928]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_bottom = 42.0
+grow_horizontal = 0
+texture = ExtResource("2_75uir")
+
+[node name="record" type="Control" parent="." unique_id=590036390 node_paths=PackedStringArray("save_recording_popup", "record_button_texture", "record_button", "accept_button", "delete_button", "waveform", "record_bg")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -18.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("3_lng37")
+save_recording_popup = NodePath("save_recording")
+record_button_texture = NodePath("record/TextureRect")
+record_button = NodePath("record")
+accept_button = NodePath("accept")
+delete_button = NodePath("cancel")
+waveform = NodePath("waveform")
+record_bg = NodePath("../record_bg")
+record_inactive = ExtResource("3_aam4f")
+record_active_1 = ExtResource("5_cqb5x")
+record_active_2 = ExtResource("6_gafyf")
+
+[node name="waveform" type="ColorRect" parent="record" unique_id=1388752151]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -6.0
+offset_right = -36.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.8745098, 0.5176471, 0.64705884, 1)
+
+[node name="record" type="Button" parent="record" unique_id=1344793989]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -18.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_qiper")
+
+[node name="TextureRect" type="TextureRect" parent="record/record" unique_id=1525113272]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_aam4f")
+
+[node name="accept" type="Button" parent="record" unique_id=1588218310]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -18.0
+offset_right = -36.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_qiper")
+
+[node name="TextureRect" type="TextureRect" parent="record/accept" unique_id=1195857600]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_cqb5x")
+
+[node name="cancel" type="Button" parent="record" unique_id=996525218]
+visible = false
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -18.0
+offset_right = -72.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_qiper")
+
+[node name="TextureRect" type="TextureRect" parent="record/cancel" unique_id=162039816]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_c2e1i")
+
+[node name="save_recording" type="FileDialog" parent="record" unique_id=818604538]
+access = 2
+filters = PackedStringArray("*.wav")
+
+[node name="MenuBar" type="MenuBar" parent="." unique_id=8000438]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 204.0
+offset_bottom = 30.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("2_qiper")
+
+[node name="file" type="PopupMenu" parent="MenuBar" unique_id=1184853495]
+oversampling_override = 1.0
+title = "File"
+position = Vector2i(0, 31)
+size = Vector2i(132, 63)
+allow_search = false
+prefer_native_menu = true
+shrink_height = false
+shrink_width = false
+item_count = 4
+item_0/text = "Save"
+item_0/id = 0
+item_1/text = "Save As..."
+item_1/id = 1
+item_2/text = "Load From..."
+item_2/id = 2
+item_3/text = "New"
+item_3/id = 3
+
+[node name="edit" type="PopupMenu" parent="MenuBar" unique_id=731438942]
+oversampling_override = 1.0
+title = "Edit"
+size = Vector2i(200, 100)
+theme = ExtResource("2_qiper")
+allow_search = false
+prefer_native_menu = true
+shrink_height = false
+shrink_width = false
+item_count = 2
+item_0/text = "Undo"
+item_0/id = 0
+item_1/text = "Redo"
+item_1/id = 1
+
+[node name="dev" type="PopupMenu" parent="MenuBar" unique_id=1279417380]
+oversampling_override = 1.0
+title = "Dev"
+size = Vector2i(200, 100)
+theme = ExtResource("2_qiper")
+prefer_native_menu = true
+item_count = 1
+item_0/text = "Example 1"
+item_0/id = 0
+
+[node name="nodes" type="HBoxContainer" parent="." unique_id=190462912 node_paths=PackedStringArray("library_button_node")]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_right = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("3_sods4")
+node_type_scene = ExtResource("4_aam4f")
+library_button_node = NodePath("library")
+
+[node name="library" type="Button" parent="nodes" unique_id=1860858255]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme = ExtResource("2_qiper")
+
+[node name="TextureRect" type="TextureRect" parent="nodes/library" unique_id=439071685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_75uir")
+
+[node name="save_as" type="FileDialog" parent="." unique_id=244786926]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+access = 2
+filters = PackedStringArray("*.🎵")
+
+[node name="load_from" type="FileDialog" parent="." unique_id=1830076467]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.🎵", "*.tres")
+
+[connection signal="pressed" from="record/record" to="record" method="_on_record_pressed"]
+[connection signal="pressed" from="record/accept" to="record" method="_on_accept_pressed"]
+[connection signal="pressed" from="record/cancel" to="record" method="_on_cancel_pressed"]
+[connection signal="file_selected" from="record/save_recording" to="record" method="_on_save_recording_file_selected"]
+[connection signal="id_pressed" from="MenuBar/file" to="." method="_on_file_id_pressed"]
+[connection signal="id_pressed" from="MenuBar/edit" to="." method="_on_edit_id_pressed"]
+[connection signal="id_pressed" from="MenuBar/dev" to="." method="_on_dev_id_pressed"]
+[connection signal="pressed" from="nodes/library" to="nodes" method="_on_library_pressed"]
+[connection signal="file_selected" from="save_as" to="." method="_on_save_as_file_selected"]
+[connection signal="file_selected" from="load_from" to="." method="_on_load_from_file_selected"]

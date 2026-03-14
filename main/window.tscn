@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://dtwykwm07uxi5"]
 
 [ext_resource type="PackedScene" uid="uid://dxu2sjo2474x" path="res://main/workspace.tscn" id="1_aewvg"]
-[ext_resource type="Theme" uid="uid://b2a3mxh5ehvvk" path="res://menubar/menu_bar.tres" id="2_et0yp"]
-[ext_resource type="Script" uid="uid://dnkw0yk3tner3" path="res://main/menubar.gd" id="2_yna84"]
-[ext_resource type="Script" uid="uid://lgojod56abg8" path="res://menubar/node_bar.gd" id="3_1a1h6"]
-[ext_resource type="PackedScene" uid="uid://b0ci3u2c73b07" path="res://menubar/pinned_node.tscn" id="4_1a1h6"]
+[ext_resource type="PackedScene" uid="uid://cq5ndqf1vdcwe" path="res://menubar/menubar.tscn" id="2_yna84"]
 [ext_resource type="PackedScene" uid="uid://bvuw8a1l3xivn" path="res://inspector/node/node_inspector.tscn" id="5_g3nch"]
-[ext_resource type="Texture2D" uid="uid://3aa7bhsfhd7g" path="res://menubar/library.png" id="6_1a1h6"]
 [ext_resource type="Script" uid="uid://ble0cj1gdf0tc" path="res://inspector/inspector.gd" id="6_8jboc"]
 [ext_resource type="PackedScene" uid="uid://b1hstu0hfplyb" path="res://inspector/connection/connection_inspector.tscn" id="7_sb2do"]
 [ext_resource type="PackedScene" uid="uid://lpp8lni3tp4l" path="res://library/library.tscn" id="10_8dttj"]
@@ -40,138 +36,8 @@ render_target_update_mode = 4
 
 [node name="main" parent="SubViewportContainer/SubViewport" unique_id=762756189 instance=ExtResource("1_aewvg")]
 
-[node name="menubar" type="Control" parent="." unique_id=1513347353 node_paths=PackedStringArray("save_as_dialogue", "load_from_dialogue")]
+[node name="menubar" parent="." unique_id=590915607 instance=ExtResource("2_yna84")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 36.0
-grow_horizontal = 2
-script = ExtResource("2_yna84")
-save_as_dialogue = NodePath("save_as")
-load_from_dialogue = NodePath("load_from")
-
-[node name="ColorRect" type="ColorRect" parent="menubar" unique_id=1413422481]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.03529412, 0.039215688, 0.078431375, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="menubar" unique_id=1879667139]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.92156863, 0.92941177, 0.9137255, 1)
-
-[node name="MenuBar" type="MenuBar" parent="menubar" unique_id=726522113]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 204.0
-offset_bottom = 30.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = ExtResource("2_et0yp")
-
-[node name="file" type="PopupMenu" parent="menubar/MenuBar" unique_id=1404865118]
-oversampling_override = 1.0
-title = "File"
-position = Vector2i(0, 31)
-size = Vector2i(132, 63)
-allow_search = false
-prefer_native_menu = true
-shrink_height = false
-shrink_width = false
-item_count = 4
-item_0/text = "Save"
-item_0/id = 0
-item_1/text = "Save As..."
-item_1/id = 1
-item_2/text = "Load From..."
-item_2/id = 2
-item_3/text = "New"
-item_3/id = 3
-
-[node name="edit" type="PopupMenu" parent="menubar/MenuBar" unique_id=859280789]
-oversampling_override = 1.0
-title = "Edit"
-size = Vector2i(200, 100)
-theme = ExtResource("2_et0yp")
-allow_search = false
-prefer_native_menu = true
-shrink_height = false
-shrink_width = false
-item_count = 2
-item_0/text = "Undo"
-item_0/id = 0
-item_1/text = "Redo"
-item_1/id = 1
-
-[node name="dev" type="PopupMenu" parent="menubar/MenuBar" unique_id=366557357]
-oversampling_override = 1.0
-title = "Dev"
-size = Vector2i(200, 100)
-theme = ExtResource("2_et0yp")
-prefer_native_menu = true
-item_count = 1
-item_0/text = "Example 1"
-item_0/id = 0
-
-[node name="nodes" type="HBoxContainer" parent="menubar" unique_id=818164865 node_paths=PackedStringArray("library_button_node")]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -18.0
-offset_right = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-script = ExtResource("3_1a1h6")
-node_type_scene = ExtResource("4_1a1h6")
-library_button_node = NodePath("library")
-
-[node name="library" type="Button" parent="menubar/nodes" unique_id=1276414569]
-custom_minimum_size = Vector2(36, 36)
-layout_mode = 2
-theme = ExtResource("2_et0yp")
-
-[node name="TextureRect" type="TextureRect" parent="menubar/nodes/library" unique_id=2016902192]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_1a1h6")
-
-[node name="save_as" type="FileDialog" parent="menubar" unique_id=1591685469]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-access = 2
-filters = PackedStringArray("*.🎵")
-
-[node name="load_from" type="FileDialog" parent="menubar" unique_id=143564412]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-file_mode = 0
-access = 2
-filters = PackedStringArray("*.🎵", "*.tres")
 
 [node name="inspector" type="Control" parent="." unique_id=2071139525 node_paths=PackedStringArray("node_inspector", "connection_inspector")]
 layout_mode = 1
@@ -234,10 +100,3 @@ offset_top = 54.000004
 offset_right = -160.0
 offset_bottom = 154.0
 grow_horizontal = 2
-
-[connection signal="id_pressed" from="menubar/MenuBar/file" to="menubar" method="_on_file_id_pressed"]
-[connection signal="id_pressed" from="menubar/MenuBar/edit" to="menubar" method="_on_edit_id_pressed"]
-[connection signal="id_pressed" from="menubar/MenuBar/dev" to="menubar" method="_on_dev_id_pressed"]
-[connection signal="pressed" from="menubar/nodes/library" to="menubar/nodes" method="_on_library_pressed"]
-[connection signal="file_selected" from="menubar/save_as" to="menubar" method="_on_save_as_file_selected"]
-[connection signal="file_selected" from="menubar/load_from" to="menubar" method="_on_load_from_file_selected"]
