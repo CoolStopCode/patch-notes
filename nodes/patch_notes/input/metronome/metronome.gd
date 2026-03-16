@@ -93,6 +93,7 @@ func _on_button_button_up() -> void:
 	sprite.modulate = Color(1.2, 1.2, 1.2)
 
 var last_beat := -1
+
 func _process(delta: float) -> void:
 	if not running: return
 	if not properties[2].value: return

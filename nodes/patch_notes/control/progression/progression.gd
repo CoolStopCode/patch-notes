@@ -10,6 +10,8 @@ var properties : Array[InspectorProperty]
 @export var timer : Timer
 
 var current_active : int
+var last_beat : int
+var running : bool
 
 func _ready() -> void:
 	properties = base_node.properties
@@ -51,6 +53,7 @@ func move_active(port):
 		timer.wait_time = 60.0 / properties[1].value
 		timer.start()
 	else:
+		running = false
 		active_sprite.hide()
 		timer.stop()
 		return
@@ -62,10 +65,26 @@ func receive_input(_port := 0):
 	start_progression()
 
 func start_progression():
+	last_beat = int(Constants.global_time / (60.0 / properties[1].value))
 	current_active = 0
+	running = true
 	move_active(0)
 
 
 func _on_timer_timeout() -> void:
+	if properties[2].value: return
+	
 	current_active += 1
 	move_active(current_active)
+
+func _process(delta: float) -> void:
+	if not running: return
+	if not properties[2].value: return
+	
+	var bpm = properties[1].value
+	var beat = int(Constants.global_time / (60.0 / bpm))
+
+	if beat != last_beat:
+		last_beat = beat
+		current_active += 1
+		move_active(current_active)
