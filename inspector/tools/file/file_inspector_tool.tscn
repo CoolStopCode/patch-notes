@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_8eiaj"]
 [ext_resource type="Script" uid="uid://cwqlbvpgry45g" path="res://inspector/tools/file/file_inspector_tool.gd" id="2_hky1k"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_p3hh2"]
-[ext_resource type="Texture2D" uid="uid://cvj75tldd4qob" path="res://inspector/properties/file/left_bracket.png" id="4_6e71h"]
-[ext_resource type="Texture2D" uid="uid://ckr04gqjd7dn5" path="res://inspector/properties/file/right_bracket.png" id="5_tqkg6"]
+[ext_resource type="Texture2D" uid="uid://co1qn2bnt0qts" path="res://inspector/tools/file/left_bracket.png" id="4_hky1k"]
+[ext_resource type="Texture2D" uid="uid://cic4gdix0ycng" path="res://inspector/tools/file/right_bracket.png" id="5_p3hh2"]
 
 [node name="file_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("button_node", "file_dialog") instance=ExtResource("1_8eiaj")]
 script = ExtResource("2_hky1k")
@@ -32,7 +32,7 @@ offset_top = -3.0
 offset_right = 2.0
 offset_bottom = 3.0
 grow_vertical = 2
-texture = ExtResource("4_6e71h")
+texture = ExtResource("4_hky1k")
 
 [node name="TextureRect2" type="TextureRect" parent="Button" index="1" unique_id=1054833411]
 layout_mode = 1
@@ -46,7 +46,7 @@ offset_top = -3.0
 offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("5_tqkg6")
+texture = ExtResource("5_p3hh2")
 
 [node name="FileDialog" type="FileDialog" parent="." index="2" unique_id=2000339607]
 title = "Open a File"

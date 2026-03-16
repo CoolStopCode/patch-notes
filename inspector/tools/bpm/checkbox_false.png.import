@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckr04gqjd7dn5"
-path="res://.godot/imported/right_bracket.png-278fe6eee285b068a35bbcf9a2ab603f.ctex"
+uid="uid://douvygxyi4jxv"
+path="res://.godot/imported/checkbox_false.png-b8324ec672e991fe28a47f518ab68935.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inspector/properties/file/right_bracket.png"
-dest_files=["res://.godot/imported/right_bracket.png-278fe6eee285b068a35bbcf9a2ab603f.ctex"]
+source_file="res://inspector/tools/bpm/checkbox_false.png"
+dest_files=["res://.godot/imported/checkbox_false.png-b8324ec672e991fe28a47f518ab68935.ctex"]
 
 [params]
 

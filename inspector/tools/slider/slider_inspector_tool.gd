@@ -23,7 +23,7 @@ func _on_text_changed(new_text: String) -> void:
 
 	var filtered := ""
 	for c in new_text:
-		if (c >= "0" and c <= "9") or c == "-":
+		if (c >= "0" and c <= "9") or c == "-" or c == ".":
 			filtered += c
 
 	if filtered != new_text:

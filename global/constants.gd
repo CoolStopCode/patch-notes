@@ -5,6 +5,7 @@ extends Node
 @export var PACK_LIST : PackList = load("res://nodes/pack_list.tres")
 @export var DEFAULT_CONNECTION_COLOR : Color = Color("394a50")
 @export var global_time : float = 0.0
+@export var global_bpm : float = 120.0
 
 enum NodeState {
 	NORMAL,

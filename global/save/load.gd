@@ -13,9 +13,13 @@ func load_from(path : String):
 	else:
 		file_save = ResourceLoader.load(path) as FileSave
 	
+	
+	
 	Constants.clear_children(GlobalNodes.nodes)
 	Constants.clear_children(GlobalNodes.connections)
 	ConnectionManager.connections = []
+	
+	Constants.global_bpm = file_save.global_bpm
 	
 	var id_map := {}
 	

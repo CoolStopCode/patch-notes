@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://c6yq28qa5w32d"]
+
+[ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_xkohj"]
+[ext_resource type="Script" uid="uid://db1pl0frs4jop" path="res://inspector/tools/bpm/bpm_inspector_tool.gd" id="2_drh3m"]
+[ext_resource type="Texture2D" uid="uid://douvygxyi4jxv" path="res://inspector/tools/bpm/checkbox_false.png" id="3_xcbil"]
+[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="4_3wuep"]
+[ext_resource type="Texture2D" uid="uid://doep4bryxrc5e" path="res://inspector/tools/checkbox/checkbox_true.png" id="4_eox3y"]
+[ext_resource type="Texture2D" uid="uid://lmuywrc1ss6g" path="res://inspector/tools/bpm/checkbox_true.png" id="4_i8j82"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="7_yyw5s"]
+
+[node name="arrows_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("checkbox_texture_rect", "global_parent", "global_bpm_edit_node", "global_mult_edit_node", "local_parent", "local_bpm_edit_node", "local_slider_node") instance=ExtResource("1_xkohj")]
+script = ExtResource("2_drh3m")
+checkbox_texture_rect = NodePath("area/checkbox/TextureRect")
+off_texture = ExtResource("3_xcbil")
+on_texture = ExtResource("4_i8j82")
+local_min_value = 10.0
+local_max_value = 50000.0
+local_min_slider = 60.0
+local_max_slider = 200.0
+local_step_slider = 1.0
+global_min_bpm = 10.0
+global_max_bpm = 10000.0
+global_min_mult = 1
+global_max_mult = 128
+global_parent = NodePath("area/global")
+global_bpm_edit_node = NodePath("area/global/value")
+global_mult_edit_node = NodePath("area/global/mult")
+local_parent = NodePath("area/local")
+local_bpm_edit_node = NodePath("area/local/Control/LineEdit")
+local_slider_node = NodePath("area/local/HSlider")
+
+[node name="name" parent="." index="0" unique_id=1957768091]
+offset_right = 12.0
+text = "BPM"
+
+[node name="area" type="Control" parent="." index="1" unique_id=167701442]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="checkbox" type="Button" parent="area" index="0" unique_id=1178674554]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 6.0
+grow_vertical = 2
+theme = ExtResource("7_yyw5s")
+
+[node name="TextureRect" type="TextureRect" parent="area/checkbox" index="0" unique_id=1943418203]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eox3y")
+
+[node name="global" type="Control" parent="area" index="1" unique_id=1843349298]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="value" type="LineEdit" parent="area/global" index="0" unique_id=703998166]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_right = -22.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("7_yyw5s")
+text = "134"
+alignment = 2
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+caret_blink_interval = 0.4
+
+[node name="times" type="Label" parent="area/global" index="1" unique_id=570570887]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = 2.0
+offset_right = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "*"
+label_settings = ExtResource("4_3wuep")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mult" type="LineEdit" parent="area/global" index="2" unique_id=1740871511]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("7_yyw5s")
+text = "134"
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+caret_blink_interval = 0.4
+
+[node name="local" type="Control" parent="area" index="2" unique_id=1038016760]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="area/local" index="0" unique_id=1213641998]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_right = -46.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="area/local/Control" index="0" unique_id=1995720913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_yyw5s")
+text = "134"
+alignment = 1
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+caret_blink_interval = 0.4
+
+[node name="HSlider" type="HSlider" parent="area/local" index="1" unique_id=187948532]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("7_yyw5s")
+
+[connection signal="pressed" from="area/checkbox" to="." method="_on_checkbox_pressed"]
+[connection signal="text_changed" from="area/global/value" to="." method="_on_global_bpm_text_changed"]
+[connection signal="text_submitted" from="area/global/value" to="." method="_on_global_bpm_text_submitted"]
+[connection signal="text_changed" from="area/global/mult" to="." method="_on_global_mult_text_changed"]
+[connection signal="text_submitted" from="area/global/mult" to="." method="_on_global_mult_text_submitted"]
+[connection signal="text_changed" from="area/local/Control/LineEdit" to="." method="_on_local_text_changed"]
+[connection signal="text_submitted" from="area/local/Control/LineEdit" to="." method="_on_local_text_submitted"]
+[connection signal="drag_ended" from="area/local/HSlider" to="." method="_on_local_slider_drag_ended"]
+[connection signal="value_changed" from="area/local/HSlider" to="." method="_on_local_slider_value_changed"]
