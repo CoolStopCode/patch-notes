@@ -54,10 +54,7 @@ func _ready():
 		node.actuate_output.connect(emit_output)
 	
 	if duplicate_props:
-		var duplicated_props = properties.map(func(p):
-			return p.duplicate(true)
-		)
-		properties.assign(duplicated_props)
+		duplicate_properties()
 	
 	for property in properties:
 		property.value_changed.connect(func(): property_changed(property))
@@ -65,6 +62,12 @@ func _ready():
 		node.start_drag()
 	inputs_node.move_to_front()
 	outputs_node.move_to_front()
+
+func duplicate_properties():
+	var new_props : Array[InspectorProperty] = []
+	for p in properties:
+		new_props.append(p.duplicate(true))
+	properties = new_props
 
 func load_node(node_scene):
 	var node_instance = node_scene.instantiate()
@@ -119,6 +122,7 @@ func _process(_delta: float) -> void:
 		var free_pos := get_global_mouse_position() + drag_offset
 		global_position = Constants.snap_to_grid(free_pos)
 	if node_selected:
+		print(properties[0].get_instance_id())
 		selected_outline.modulate.a = 0.35 * sin(Constants.global_time * 5.0) + 0.65
 
 func initiate_children():

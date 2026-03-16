@@ -56,17 +56,22 @@ func _on_duplicate_pressed() -> void:
 func duplicate_node():
 	var node_scene := load(active_node.scene_file_path)
 	var copy : Node = node_scene.instantiate()
+
 	copy.properties = active_node.properties
+	copy.duplicate_props = true
+
 	copy.global_position = active_node.global_position + Constants.snap_to_grid(Vector2(5, 5))
 	copy.creation_drag = false
-	copy.duplicate_props = true
+
 	GlobalNodes.nodes.add_node(copy)
+
 	History.commit(HistoryNodeCreate.new(
-		node_scene, 
+		node_scene,
 		copy.ID,
-		copy.global_position, 
+		copy.global_position,
 		copy.properties
 	))
+
 	close()
 	open(copy)
 
