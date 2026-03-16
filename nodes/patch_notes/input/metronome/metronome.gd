@@ -16,6 +16,7 @@ var hovering := false
 var pulse_tween : Tween
 var properties : Array[InspectorProperty]
 
+var goal_time : float
 func _ready() -> void:
 	properties = base_node.properties
 
@@ -30,6 +31,10 @@ func receive_input(_port := 0):
 	pass
 
 func pulse():
+	emit_output(0)
+	emit_output(1)
+	emit_output(2)
+	
 	if sprite.texture == sprite_left:
 		sprite.texture = sprite_right
 	else:
@@ -63,14 +68,12 @@ func _on_button_pressed() -> void:
 		timer.start()
 		_on_timer_timeout()
 		running = true
+		last_beat = int(Constants.global_time / (60.0 / properties[0].value))
 
 
 func _on_timer_timeout() -> void:
-	pulse()
-	emit_output(0)
-	emit_output(1)
-	emit_output(2)
-
+	if not properties[2].value:
+		pulse()
 
 func _on_button_mouse_entered() -> void:
 	hovering = true
@@ -88,3 +91,16 @@ func _on_button_button_down() -> void:
 
 func _on_button_button_up() -> void:
 	sprite.modulate = Color(1.2, 1.2, 1.2)
+
+var last_beat := -1
+func _process(delta: float) -> void:
+	if not running: return
+	if not properties[2].value: return
+	
+	var bpm = properties[0].value
+	var beat = int(Constants.global_time / (60.0 / bpm))
+
+	if beat != last_beat:
+		last_beat = beat
+		pulse()
+	

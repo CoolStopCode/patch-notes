@@ -26,17 +26,27 @@ metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_sllq4"]
 script = ExtResource("6_smf4h")
-value = 120.0
 min_value = 1.0
 max_value = 10000.0
 min_slider = 40.0
 max_slider = 240.0
 property_name = "BPM"
+value = 120.0
+default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [sub_resource type="Resource" id="Resource_e2jay"]
 script = ExtResource("7_ew62m")
 property_name = "Sound"
+value = null
+default_value = null
+metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
+
+[sub_resource type="Resource" id="Resource_esrpt"]
+script = ExtResource("7_ew62m")
+property_name = "Global Time"
+value = true
+default_value = null
 metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
 [node name="metronome_node" unique_id=1970947894 instance=ExtResource("1_yw3lt")]
@@ -45,4 +55,4 @@ BODY_SIZE = Vector2(28, 28)
 BODY_SPRITE = ExtResource("3_q6twt")
 ports_out = Array[ExtResource("4_smf4h")]([SubResource("Resource_ew62m"), SubResource("Resource_g1gny"), SubResource("Resource_he4q5")])
 right_menu_icon = ExtResource("4_1oar1")
-properties = Array[ExtResource("5_kpsjo")]([SubResource("Resource_sllq4"), SubResource("Resource_e2jay")])
+properties = Array[ExtResource("5_kpsjo")]([SubResource("Resource_sllq4"), SubResource("Resource_e2jay"), SubResource("Resource_esrpt")])
