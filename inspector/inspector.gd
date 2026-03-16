@@ -10,7 +10,6 @@ func open_node_inspector(node : Node):
 	node_inspector.open(node)
 	connection_inspector.close()
 
-
 func open_connection_inspector(connection : Connection):
 	node_inspector.close()
 	connection_inspector.open(connection)

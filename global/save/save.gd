@@ -9,8 +9,6 @@ func save_to(path : String):
 	print("STARTING SAVE")
 	var file_save := FileSave.new()
 	
-	file_save.global_bpm = Constants.global_bpm
-	
 	var id_map := {}  # Node -> ID
 	
 	for node in GlobalNodes.nodes.get_children():

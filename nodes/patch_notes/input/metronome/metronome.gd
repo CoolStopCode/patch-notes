@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func property_changed(property : InspectorProperty):
 	if property == properties[0]:
-		timer.wait_time = 60.0 / property.value[3]
+		timer.wait_time = 60.0 / property.value
 
 func emit_output(port := 0):
 	actuate_output.emit(port)
