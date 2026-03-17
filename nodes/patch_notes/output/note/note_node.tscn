@@ -2,12 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/BaseNode.tscn" id="1_7ku8g"]
 [ext_resource type="PackedScene" uid="uid://clgxkosdcnw2q" path="res://nodes/patch_notes/output/note/note.tscn" id="2_44v7l"]
-[ext_resource type="Texture2D" uid="uid://cxxpr8utrny2n" path="res://nodes/patch_notes/output/note/note.png" id="3_tn8ta"]
+[ext_resource type="Texture2D" uid="uid://ik34aq7puoa5" path="res://nodes/patch_notes/output/note/note.png" id="3_tn8ta"]
 [ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_gagng"]
 [ext_resource type="Texture2D" uid="uid://e3bad8dq7chi" path="res://nodes/patch_notes/output/note/key.png" id="5_80joa"]
 [ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_properties/inspector_property.gd" id="6_rasoo"]
 [ext_resource type="Script" uid="uid://dpcev18b4nbi1" path="res://classes/inspector_properties/inspector_file.gd" id="7_d0xiy"]
 [ext_resource type="Script" uid="uid://c8k7ogqy4nlf1" path="res://classes/inspector_properties/inspector_slider.gd" id="8_0i5sh"]
+[ext_resource type="Script" uid="uid://75nch6h8dtlg" path="res://classes/inspector_properties/inspector_note.gd" id="9_rasoo"]
+[ext_resource type="Script" uid="uid://dx8fgligx7ucy" path="res://classes/note.gd" id="10_d0xiy"]
 
 [sub_resource type="Resource" id="Resource_ynjab"]
 script = ExtResource("4_gagng")
@@ -19,7 +21,7 @@ script = ExtResource("4_gagng")
 position = Vector2(10, 0)
 metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
-[sub_resource type="Resource" id="Resource_lwpcr"]
+[sub_resource type="Resource" id="Resource_d0xiy"]
 script = ExtResource("7_d0xiy")
 filters = ["*.wav", "*.mp3"]
 property_name = "Source"
@@ -27,7 +29,7 @@ value = null
 default_value = null
 metadata/_custom_type_script = "uid://dpcev18b4nbi1"
 
-[sub_resource type="Resource" id="Resource_xtdwe"]
+[sub_resource type="Resource" id="Resource_0i5sh"]
 script = ExtResource("8_0i5sh")
 max_slider = 2.0
 property_name = "Volume"
@@ -35,7 +37,7 @@ value = 1.0
 default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[sub_resource type="Resource" id="Resource_e5g2c"]
+[sub_resource type="Resource" id="Resource_ac53w"]
 script = ExtResource("8_0i5sh")
 min_value = 0.01
 max_value = 1000.0
@@ -47,10 +49,28 @@ value = 1.0
 default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
+[sub_resource type="Resource" id="Resource_6gnqw"]
+script = ExtResource("10_d0xiy")
+metadata/_custom_type_script = "uid://dx8fgligx7ucy"
+
+[sub_resource type="Resource" id="Resource_iyhyi"]
+script = ExtResource("9_rasoo")
+property_name = "From"
+value = SubResource("Resource_6gnqw")
+default_value = null
+metadata/_custom_type_script = "uid://75nch6h8dtlg"
+
+[sub_resource type="Resource" id="Resource_u76gg"]
+script = ExtResource("9_rasoo")
+property_name = "To"
+value = SubResource("Resource_6gnqw")
+default_value = null
+metadata/_custom_type_script = "uid://75nch6h8dtlg"
+
 [node name="template_node" unique_id=1970947894 instance=ExtResource("1_7ku8g")]
 NODE_SCENE = ExtResource("2_44v7l")
 BODY_SPRITE = ExtResource("3_tn8ta")
 ports_in = Array[ExtResource("4_gagng")]([SubResource("Resource_ynjab")])
 ports_out = Array[ExtResource("4_gagng")]([SubResource("Resource_awp2p")])
 right_menu_icon = ExtResource("5_80joa")
-properties = Array[ExtResource("6_rasoo")]([SubResource("Resource_lwpcr"), SubResource("Resource_xtdwe"), SubResource("Resource_e5g2c")])
+properties = Array[ExtResource("6_rasoo")]([SubResource("Resource_d0xiy"), SubResource("Resource_0i5sh"), SubResource("Resource_ac53w"), SubResource("Resource_iyhyi"), SubResource("Resource_u76gg")])

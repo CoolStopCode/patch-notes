@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cccaw8j2drsqv" path="res://nodes/patch_notes/output/sound/sound_node.tscn" id="3_a4jbw"]
 [ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/patch_notes/output/sound/icon.png" id="3_x2y58"]
 [ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/node_list.gd" id="4_cwevi"]
-[ext_resource type="Texture2D" uid="uid://cxoahfxdybsiu" path="res://nodes/patch_notes/output/note/icon.png" id="5_cwevi"]
+[ext_resource type="Texture2D" uid="uid://1e6f7h7ay6e8" path="res://nodes/patch_notes/output/note/icon.png" id="5_cwevi"]
 [ext_resource type="PackedScene" uid="uid://dvj3xo3e1ydmc" path="res://nodes/patch_notes/output/note/note_node.tscn" id="6_w8d70"]
 
-[sub_resource type="Resource" id="Resource_spyc3"]
+[sub_resource type="Resource" id="Resource_x2y58"]
 script = ExtResource("1_p0fyn")
 name = "sound"
 icon = ExtResource("3_x2y58")
@@ -28,5 +28,5 @@ metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 script = ExtResource("4_cwevi")
 name = "Output"
 icon = ExtResource("1_x2y58")
-node_list = Array[ExtResource("1_p0fyn")]([SubResource("Resource_spyc3"), SubResource("Resource_17pux")])
+node_list = Array[ExtResource("1_p0fyn")]([SubResource("Resource_x2y58"), SubResource("Resource_17pux")])
 metadata/_custom_type_script = "uid://bcon2a66d3gb3"

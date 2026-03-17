@@ -8,7 +8,8 @@ var property_scenes: Dictionary = {
 	InspectorCheckbox: preload("res://inspector/tools/checkbox/checkbox_inspector_tool.tscn"),
 	InspectorFile: preload("res://inspector/tools/file/file_inspector_tool.tscn"),
 	InspectorArrows: preload("res://inspector/tools/arrows/arrows_inspector_tool.tscn"),
-	InspectorSlider: preload("res://inspector/tools/slider/slider_inspector_tool.tscn")
+	InspectorSlider: preload("res://inspector/tools/slider/slider_inspector_tool.tscn"),
+	InspectorNote: preload("res://inspector/tools/note/note_inspector_tool.tscn")
 }
 
 var active_node : Node

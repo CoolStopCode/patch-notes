@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cos5h3rhrbgt8"]
+
+[ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_wmbkc"]
+[ext_resource type="Script" uid="uid://b5hvujq626fcc" path="res://inspector/tools/note/note_inspector_tool.gd" id="2_gbkrt"]
+[ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_iao0u"]
+[ext_resource type="Texture2D" uid="uid://c1lgx7sk01g20" path="res://inspector/tools/note/flat.png" id="4_3p5om"]
+[ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="4_vy3bi"]
+[ext_resource type="Texture2D" uid="uid://c6bcdjts6dwh2" path="res://inspector/tools/note/sharp.png" id="4_wbtmg"]
+[ext_resource type="Texture2D" uid="uid://bwse28cwab1kk" path="res://inspector/tools/note/left_bracket.png" id="4_xj5ip"]
+[ext_resource type="Texture2D" uid="uid://d18yq1n2xxsxc" path="res://inspector/tools/note/right_bracket.png" id="5_w6m1k"]
+
+[node name="note_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("note_text", "note_button", "note_underline", "accidental_texture_rect") instance=ExtResource("1_wmbkc")]
+script = ExtResource("2_gbkrt")
+note_text = NodePath("note/Label")
+note_button = NodePath("note")
+note_underline = NodePath("note/underline")
+accidental_texture_rect = NodePath("accidental/texture")
+accidental_to_texture = Dictionary[int, Texture]({
+0: null,
+1: ExtResource("4_3p5om"),
+2: ExtResource("4_wbtmg")
+})
+
+[node name="note" type="Button" parent="." index="1" unique_id=694263786]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_right = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_iao0u")
+
+[node name="underline" type="ColorRect" parent="note" index="0" unique_id=237218987]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.92156863, 0.92941177, 0.9137255, 1)
+
+[node name="Label" type="Label" parent="note" index="1" unique_id=362217756]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "A"
+label_settings = ExtResource("4_vy3bi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left_bracket" type="TextureRect" parent="note" index="2" unique_id=996837897]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+texture = ExtResource("4_xj5ip")
+
+[node name="accidental" type="Button" parent="." index="2" unique_id=1877474286]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_iao0u")
+
+[node name="texture" type="TextureRect" parent="accidental" index="0" unique_id=117546890]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_vertical = 2
+texture = ExtResource("4_3p5om")
+
+[node name="right_bracket" type="TextureRect" parent="accidental" index="1" unique_id=1440113213]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_w6m1k")
+
+[connection signal="pressed" from="note" to="." method="_on_note_pressed"]
+[connection signal="pressed" from="accidental" to="." method="_on_accidental_pressed"]

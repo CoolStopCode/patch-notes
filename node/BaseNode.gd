@@ -41,6 +41,9 @@ var creation_drag := true
 var duplicate_props := true
 
 func _ready():
+	if duplicate_props:
+		duplicate_properties()
+	
 	node = get_node_or_null("NODE")
 	initiate_children()
 	
@@ -52,9 +55,6 @@ func _ready():
 		add_child(node)
 	else:
 		node.actuate_output.connect(emit_output)
-	
-	if duplicate_props:
-		duplicate_properties()
 	
 	for property in properties:
 		property.value_changed.connect(func(): property_changed(property))
@@ -122,7 +122,6 @@ func _process(_delta: float) -> void:
 		var free_pos := get_global_mouse_position() + drag_offset
 		global_position = Constants.snap_to_grid(free_pos)
 	if node_selected:
-		print(properties[0].get_instance_id())
 		selected_outline.modulate.a = 0.35 * sin(Constants.global_time * 5.0) + 0.65
 
 func initiate_children():

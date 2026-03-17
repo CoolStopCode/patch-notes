@@ -17,6 +17,7 @@ func _on_pressed() -> void:
 	if Cursor.dragging: return
 	var node := node_scene.instantiate()
 	node.mouse_dragging = true
+	node.duplicate_props = true
 	node.drag_offset = Vector2(0, 0)
 	Cursor.dragging = true
 	GlobalNodes.nodes.add_node(node)
