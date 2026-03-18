@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dvj3ru77ubm3w" path="res://inspector/tools/base_inspector_tool.tscn" id="1_ml8ev"]
 [ext_resource type="Script" uid="uid://wrr3q51pahy5" path="res://inspector/tools/arrows/arrows_inspector_tool.gd" id="2_bsjpt"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="3_fu0hw"]
-[ext_resource type="Texture2D" uid="uid://bus0ip84oiiey" path="res://inspector/tools/arrows/left_arrow_disabled.png" id="4_0g5hy"]
-[ext_resource type="Texture2D" uid="uid://b8qfhv5lcq1vi" path="res://inspector/tools/arrows/left_arrow.png" id="4_1pvmd"]
-[ext_resource type="Texture2D" uid="uid://bkvddo1v6laq1" path="res://inspector/tools/arrows/right_arrow.png" id="5_rv0ms"]
-[ext_resource type="Texture2D" uid="uid://b5qp534wklh7j" path="res://inspector/tools/arrows/right_arrow_disabled.png" id="6_55gqe"]
+[ext_resource type="Texture2D" uid="uid://bus0ip84oiiey" path="res://inspector/tools/general/left_arrow_disabled.png" id="4_0g5hy"]
+[ext_resource type="Texture2D" uid="uid://b8qfhv5lcq1vi" path="res://inspector/tools/general/left_arrow.png" id="4_1pvmd"]
+[ext_resource type="Texture2D" uid="uid://bkvddo1v6laq1" path="res://inspector/tools/general/right_arrow.png" id="5_rv0ms"]
+[ext_resource type="Texture2D" uid="uid://b5qp534wklh7j" path="res://inspector/tools/general/right_arrow_disabled.png" id="6_55gqe"]
 
 [node name="arrows_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("line_edit_node", "left_button", "left_texture_rect", "right_button", "right_texture_rect") instance=ExtResource("1_ml8ev")]
 script = ExtResource("2_bsjpt")

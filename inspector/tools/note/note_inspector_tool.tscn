@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://c1lgx7sk01g20" path="res://inspector/tools/note/flat.png" id="4_3p5om"]
 [ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="4_vy3bi"]
 [ext_resource type="Texture2D" uid="uid://c6bcdjts6dwh2" path="res://inspector/tools/note/sharp.png" id="4_wbtmg"]
-[ext_resource type="Texture2D" uid="uid://bwse28cwab1kk" path="res://inspector/tools/note/left_bracket.png" id="4_xj5ip"]
-[ext_resource type="Texture2D" uid="uid://d18yq1n2xxsxc" path="res://inspector/tools/note/right_bracket.png" id="5_w6m1k"]
+[ext_resource type="Texture2D" uid="uid://bwse28cwab1kk" path="res://inspector/tools/general/left_bracket.png" id="4_xj5ip"]
+[ext_resource type="Texture2D" uid="uid://d18yq1n2xxsxc" path="res://inspector/tools/general/right_bracket.png" id="5_w6m1k"]
+[ext_resource type="Texture2D" uid="uid://bus0ip84oiiey" path="res://inspector/tools/general/left_arrow_disabled.png" id="6_kk43b"]
+[ext_resource type="Texture2D" uid="uid://b5qp534wklh7j" path="res://inspector/tools/general/right_arrow_disabled.png" id="8_1iquq"]
+[ext_resource type="Texture2D" uid="uid://b8qfhv5lcq1vi" path="res://inspector/tools/general/left_arrow.png" id="9_3tlvb"]
+[ext_resource type="Texture2D" uid="uid://bkvddo1v6laq1" path="res://inspector/tools/general/right_arrow.png" id="10_djv78"]
 
-[node name="note_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("note_text", "note_button", "note_underline", "accidental_texture_rect") instance=ExtResource("1_wmbkc")]
+[node name="note_inspector_tool" unique_id=37643168 node_paths=PackedStringArray("note_text", "note_button", "note_underline", "accidental_texture_rect", "octave_line_edit", "octave_left_button", "octave_right_button", "octave_left_texture", "octave_right_texture") instance=ExtResource("1_wmbkc")]
 script = ExtResource("2_gbkrt")
 note_text = NodePath("note/Label")
 note_button = NodePath("note")
@@ -20,6 +24,15 @@ accidental_to_texture = Dictionary[int, Texture]({
 1: ExtResource("4_3p5om"),
 2: ExtResource("4_wbtmg")
 })
+octave_line_edit = NodePath("octave/LineEdit")
+octave_left_button = NodePath("octave/left")
+octave_right_button = NodePath("octave/right")
+octave_left_texture = NodePath("octave/left/TextureRect")
+octave_right_texture = NodePath("octave/right/TextureRect2")
+left_texture_enabled = ExtResource("9_3tlvb")
+left_texture_disabled = ExtResource("6_kk43b")
+right_texture_enabled = ExtResource("10_djv78")
+right_texture_disabled = ExtResource("8_1iquq")
 
 [node name="note" type="Button" parent="." index="1" unique_id=694263786]
 layout_mode = 1
@@ -106,5 +119,91 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("5_w6m1k")
 
+[node name="octave" type="Control" parent="." index="3" unique_id=2102295857]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_right = -29.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="octave" index="0" unique_id=374128889]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_iao0u")
+text = "10"
+alignment = 1
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+caret_blink = true
+caret_blink_interval = 0.4
+
+[node name="left" type="Button" parent="octave" index="1" unique_id=1466353391]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -3.0
+offset_bottom = 3.0
+grow_vertical = 2
+theme = ExtResource("3_iao0u")
+
+[node name="TextureRect" type="TextureRect" parent="octave/left" index="0" unique_id=1953321384]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_3tlvb")
+
+[node name="right" type="Button" parent="octave" index="2" unique_id=229457100]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_iao0u")
+
+[node name="TextureRect2" type="TextureRect" parent="octave/right" index="0" unique_id=1076939676]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_djv78")
+
 [connection signal="pressed" from="note" to="." method="_on_note_pressed"]
 [connection signal="pressed" from="accidental" to="." method="_on_accidental_pressed"]
+[connection signal="text_changed" from="octave/LineEdit" to="." method="_on_text_changed"]
+[connection signal="text_submitted" from="octave/LineEdit" to="." method="_on_text_submitted"]
+[connection signal="pressed" from="octave/left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="octave/right" to="." method="_on_right_pressed"]

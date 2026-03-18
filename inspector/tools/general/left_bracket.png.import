@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvj75tldd4qob"
-path="res://.godot/imported/left_bracket.png-443da381c2e131182a0d87cdfca5e3a5.ctex"
+uid="uid://bwse28cwab1kk"
+path="res://.godot/imported/left_bracket.png-40c7b301b893b7c6d8ef73590135901e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inspector/tools/file/left_bracket.png"
-dest_files=["res://.godot/imported/left_bracket.png-443da381c2e131182a0d87cdfca5e3a5.ctex"]
+source_file="res://inspector/tools/general/left_bracket.png"
+dest_files=["res://.godot/imported/left_bracket.png-40c7b301b893b7c6d8ef73590135901e.ctex"]
 
 [params]
 

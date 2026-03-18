@@ -37,20 +37,9 @@ value = 1.0
 default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
-[sub_resource type="Resource" id="Resource_ac53w"]
-script = ExtResource("8_0i5sh")
-min_value = 0.01
-max_value = 1000.0
-min_slider = 0.1
-max_slider = 5.0
-step_slider = 0.01
-property_name = "Speed"
-value = 1.0
-default_value = null
-metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
-
 [sub_resource type="Resource" id="Resource_6gnqw"]
 script = ExtResource("10_d0xiy")
+octave = 1
 metadata/_custom_type_script = "uid://dx8fgligx7ucy"
 
 [sub_resource type="Resource" id="Resource_iyhyi"]
@@ -60,17 +49,22 @@ value = SubResource("Resource_6gnqw")
 default_value = null
 metadata/_custom_type_script = "uid://75nch6h8dtlg"
 
+[sub_resource type="Resource" id="Resource_w3q15"]
+script = ExtResource("10_d0xiy")
+octave = 3
+metadata/_custom_type_script = "uid://dx8fgligx7ucy"
+
 [sub_resource type="Resource" id="Resource_u76gg"]
 script = ExtResource("9_rasoo")
 property_name = "To"
-value = SubResource("Resource_6gnqw")
+value = SubResource("Resource_w3q15")
 default_value = null
 metadata/_custom_type_script = "uid://75nch6h8dtlg"
 
-[node name="template_node" unique_id=1970947894 instance=ExtResource("1_7ku8g")]
+[node name="note_node" unique_id=1970947894 instance=ExtResource("1_7ku8g")]
 NODE_SCENE = ExtResource("2_44v7l")
 BODY_SPRITE = ExtResource("3_tn8ta")
 ports_in = Array[ExtResource("4_gagng")]([SubResource("Resource_ynjab")])
 ports_out = Array[ExtResource("4_gagng")]([SubResource("Resource_awp2p")])
 right_menu_icon = ExtResource("5_80joa")
-properties = Array[ExtResource("6_rasoo")]([SubResource("Resource_d0xiy"), SubResource("Resource_0i5sh"), SubResource("Resource_ac53w"), SubResource("Resource_iyhyi"), SubResource("Resource_u76gg")])
+properties = Array[ExtResource("6_rasoo")]([SubResource("Resource_d0xiy"), SubResource("Resource_0i5sh"), SubResource("Resource_iyhyi"), SubResource("Resource_u76gg")])
