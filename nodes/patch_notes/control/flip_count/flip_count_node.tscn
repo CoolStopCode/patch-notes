@@ -33,7 +33,6 @@ metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [sub_resource type="Resource" id="Resource_7vw7j"]
 script = ExtResource("6_bgs13")
-min_value = 1
 max_value = 1
 property_name = "Progress"
 value = 1

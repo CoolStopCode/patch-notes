@@ -44,6 +44,10 @@ window/size/initial_position=Vector2i(0, -200)
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="/Users/gh/projects/godot/patch-notes/export.avi"
+
 [file_customization]
 
 folder_colors={
