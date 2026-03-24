@@ -193,10 +193,14 @@ func port_clicked(port, inputoutput):
 		ConnectionManager.connection_started.emit(self, port, inputoutput)
 
 func selected():
+	if node.has_method("selected"):
+		node.selected()
 	selected_outline.show()
 	node_selected = true
 
 func deselected():
+	if node.has_method("deselected"):
+		node.deselected()
 	selected_outline.hide()
 	node_selected = false
 

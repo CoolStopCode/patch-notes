@@ -17,8 +17,16 @@ func _ready() -> void:
 	properties = base_node.properties
 	update_sprites()
 
-func property_changed(_property : InspectorProperty):
-	pass
+func property_changed(property : InspectorProperty):
+	if property == properties[0]:
+		update_inspector()
+	if property == properties[1]:
+		current_count = properties[1].value
+		if current_count >= properties[0].value:
+			current_count = 0
+			outputting_top = not outputting_top
+		update_inspector()
+		update_sprites()
 
 func emit_output(port := 0):
 	actuate_output.emit(port)
@@ -34,6 +42,9 @@ func receive_input(_port := 0):
 	else:
 		emit_output(0)
 	update_sprites()
+	
+	if base_node.node_selected:
+		update_inspector()
 
 func update_sprites():
 	if outputting_top:
@@ -46,3 +57,11 @@ func update_sprites():
 		return
 	var progress : float = float(current_count) / float(properties[0].value - 1)
 	progress_bar.size.x = round(progress * 12)
+
+func selected():
+	update_inspector()
+
+func update_inspector():
+	properties[1].value = current_count
+	properties[1].max_value = properties[0].value
+	GlobalNodes.inspector.update_node_inspector()

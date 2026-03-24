@@ -30,7 +30,8 @@ func set_ports(count : int):
 	shape.set_size(base_node.BODY_SIZE)
 	base_node.area_collision_node.shape = shape
 	base_node.area_collision_node.position.y = (base_node.BODY_SIZE.y - 16) / 2
-	
+	base_node.selected_outline.size = shape.size + Vector2(2, 2)
+	base_node.selected_outline.position = Vector2(-11, -11)
 	
 	rect.size = Vector2(20, 4 * count + 16)
 	base_node.ports_out.clear()

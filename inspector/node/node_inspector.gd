@@ -31,6 +31,19 @@ func open(node : Node2D):
 		icon_node.texture = node.right_menu_icon
 	active = true
 
+func update():
+	Constants.clear_children(properties_container)
+	for property: InspectorProperty in active_node.properties:
+		var script: Script = property.get_script()
+		var ui : Control = property_scenes[script].instantiate()
+		properties_container.add_child(ui)
+		ui.initiate(property, active_node)
+	
+	state_button.load_state(active_node.node_state)
+	if active_node.right_menu_icon:
+		icon_node.texture = active_node.right_menu_icon
+	active = true
+
 func close():
 	if not active: return
 	active_node.deselected()

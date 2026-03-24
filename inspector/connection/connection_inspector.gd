@@ -28,6 +28,13 @@ func open(connection : Connection):
 		if color_button.color == connection.color:
 			color_button.selected_rect.show()
 
+func update():
+	color_set.emit(active_connection.color)
+	state_button.load_state(active_connection.connection_state)
+	for color_button in colors_parent.get_children():
+		if color_button.color == active_connection.color:
+			color_button.selected_rect.show()
+
 func close():
 	if not active: return
 	active_connection.deselected()

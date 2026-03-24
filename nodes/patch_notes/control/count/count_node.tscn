@@ -20,10 +20,17 @@ metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_c6fri"]
 script = ExtResource("6_ro87n")
-value = 2
 min_value = 1
 max_value = 1000
-property_name = "Count"
+property_name = "Steps"
+value = 2
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_jxhpr"]
+script = ExtResource("6_ro87n")
+max_value = 1
+property_name = "Progress"
+value = 1
 metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [node name="count_node" unique_id=1970947894 instance=ExtResource("1_bd3y7")]
@@ -33,4 +40,4 @@ BODY_SPRITE = ExtResource("3_ibxdi")
 ports_in = Array[ExtResource("4_ro87n")]([SubResource("Resource_hd5vt")])
 ports_out = Array[ExtResource("4_ro87n")]([SubResource("Resource_ujpu8")])
 right_menu_icon = ExtResource("4_py11v")
-properties = Array[ExtResource("5_ab1hs")]([SubResource("Resource_c6fri")])
+properties = Array[ExtResource("5_ab1hs")]([SubResource("Resource_c6fri"), SubResource("Resource_jxhpr")])
