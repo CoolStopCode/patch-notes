@@ -36,7 +36,8 @@ metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [sub_resource type="Resource" id="Resource_6gnqw"]
 script = ExtResource("10_d0xiy")
-octave = 1
+note = 2
+octave = 3
 metadata/_custom_type_script = "uid://dx8fgligx7ucy"
 
 [sub_resource type="Resource" id="Resource_iyhyi"]
