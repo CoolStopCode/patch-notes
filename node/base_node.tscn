@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rk88bpc6g6w5"]
 
-[ext_resource type="Script" uid="uid://c4l3hr0qkmk6f" path="res://node/BaseNode.gd" id="1_68giq"]
+[ext_resource type="Script" uid="uid://c4l3hr0qkmk6f" path="res://node/base_node.gd" id="1_68giq"]
 [ext_resource type="PackedScene" uid="uid://dwkbfvuetmc7t" path="res://node/port/port.tscn" id="2_iqnxv"]
 [ext_resource type="Texture2D" uid="uid://bmmbsc677qey6" path="res://node/selected_outline.png" id="3_iqnxv"]
 

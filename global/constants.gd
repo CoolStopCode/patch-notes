@@ -5,7 +5,7 @@ extends Node
 @export var PACK_LIST : PackList = load("res://nodes/pack_list.tres")
 @export var DEFAULT_CONNECTION_COLOR : Color = Color("394a50")
 @export var global_time : float = 0.0
-
+@export var DISTANCE_TO_START_DRAG : float = 4.0
 enum NodeState {
 	NORMAL,
 	PASS,
@@ -52,6 +52,12 @@ func deep_duplicate_properties(props: Array[InspectorProperty]) -> Array[Inspect
 func _ready() -> void:
 	DEV_MODE = OS.has_feature("editor") or "-dev" in OS.get_cmdline_args()
 	if DEV_MODE: print("===================\n  DEV MODE ACTIVE  \n===================\n")
+
+func is_approx_equal(a: float, b: float, precision: float) -> bool:
+	return abs(a - b) <= precision
+
+func is_approx_equal_vec2(a: Vector2, b: Vector2, precision: float) -> bool:
+	return a.distance_to(b) <= precision
 
 func note_to_letter(note : Constants.Note) -> String:
 	var key : Dictionary[Constants.Note, String] = {

@@ -6,9 +6,12 @@ extends Control
 func _ready() -> void:
 	GlobalNodes.inspector = self
 
-func open_node_inspector(node : Node):
-	node_inspector.open(node)
+func open_node_inspector():
+	node_inspector.open()
 	connection_inspector.close()
+
+func close_node_inspector():
+	node_inspector.close()
 
 func update_node_inspector():
 	node_inspector.update()

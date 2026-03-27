@@ -32,17 +32,22 @@ var node : Node
 
 signal mouse_hovering_changed(value: bool)
 var mouse_hovering := false
+var mouse_down := false
+var mouse_dragging := false
 var node_selected := false
 
-var mouse_dragging := false
+var initial_click_pos : Vector2
 var drag_offset : Vector2
-var pre_drag_pos : Vector2
+
 var creation_drag := true
 var duplicate_props := true
+
 
 func _ready():
 	if duplicate_props:
 		duplicate_properties()
+	if creation_drag:
+		mouse_dragging = true
 	
 	node = get_node_or_null("NODE")
 	initiate_children()
@@ -87,40 +92,87 @@ func receive_input(port := 0):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if (event.pressed and mouse_hovering) and not mouse_dragging:
-			get_viewport().set_input_as_handled()
-			
-			pre_drag_pos = global_position
-			drag_offset = global_position - get_global_mouse_position()
-			mouse_dragging = true
-			Cursor.dragging = true
-			if node.has_method("start_drag"):
-				node.start_drag()
-		elif (not event.pressed) and mouse_dragging:
-			if pre_drag_pos == global_position:
-				if node.has_method("end_drag"):
-					node.end_drag()
-				GlobalNodes.inspector.open_node_inspector(self)
-			else:
-				if node.has_method("end_drag"):
-					node.end_drag()
-				if creation_drag:
-					History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position, properties))
-				else:
-					History.commit(HistoryNodeMove.new(ID, pre_drag_pos, global_position))
-				creation_drag = false
+		if event.pressed:
+			if mouse_hovering and not mouse_dragging: # start drag
+				initial_click_pos = get_global_mouse_position()
+				drag_offset = global_position - get_global_mouse_position()
+				Cursor.dragging = true
+				mouse_down = true
+				#for n in SelectionManager.selected_nodes:
+					#n.initial_click_pos = n.global_position
+		else:
 			Cursor.dragging = false
-			mouse_dragging = false
+			mouse_down = false
+			if mouse_hovering and not mouse_dragging: # select
+				var additive := Input.is_key_pressed(KEY_SHIFT)
+				if not node_selected:
+					SelectionManager.select(self, additive)
+				else:
+					SelectionManager.deselect(self)
+			else: # end drag
+				mouse_dragging = false
+	
+	if event is InputEventMouseMotion:
+		if mouse_dragging:
+			var motion_from_start := (get_global_mouse_position() + drag_offset) - initial_click_pos
+			
+			if Input.is_key_pressed(KEY_SHIFT):
+				for n in SelectionManager.selected_nodes:
+					n.global_position = Constants.snap_to_grid(n.initial_click_pos + motion_from_start)
+					n.move.emit()
+			else:
+				global_position = Constants.snap_to_grid(initial_click_pos + motion_from_start)
+				move.emit()
+		elif mouse_down:
+			if not Constants.is_approx_equal_vec2(initial_click_pos, get_global_mouse_position(), Constants.DISTANCE_TO_START_DRAG):
+				mouse_dragging = true
 
-	if event is InputEventMouseMotion and mouse_dragging:
-		var free_pos := get_global_mouse_position() + drag_offset
-		global_position = Constants.snap_to_grid(free_pos)
-		move.emit()
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		#if (event.pressed and mouse_hovering) and not mouse_dragging:
+			#get_viewport().set_input_as_handled()
+			#
+			#var additive := Input.is_key_pressed(KEY_SHIFT)
+			#SelectionManager.select(self, additive)
+			#
+			#pre_drag_pos = global_position
+			#drag_offset = global_position - get_global_mouse_position()
+			#mouse_dragging = true
+			#Cursor.dragging = true
+			#if node.has_method("start_drag"):
+				#node.start_drag()
+		#elif (not event.pressed) and mouse_dragging:
+			#if pre_drag_pos != global_position:
+				#if node.has_method("end_drag"):
+					#node.end_drag()
+				#if creation_drag:
+					#History.commit(HistoryNodeCreate.new(load(scene_file_path), ID, global_position, properties))
+				#else:
+					#var node_ids : Array[int]
+					#for n in SelectionManager.selected_nodes:
+						#node_ids.append(n.ID)
+					#History.commit(HistoryNodeMove.new(node_ids, global_position - pre_drag_pos))
+			#else:
+				#if node.has_method("end_drag"):
+					#node.end_drag()
+				#GlobalNodes.inspector.open_node_inspector(self)
+				#
+				#creation_drag = false
+			#Cursor.dragging = false
+			#mouse_dragging = false
+
+	#if event is InputEventMouseMotion and mouse_dragging:
+		#var delta := get_global_mouse_position() - (global_position - drag_offset)
+	#
+		#var free_pos := get_global_mouse_position() + drag_offset
+		#global_position = Constants.snap_to_grid(free_pos)
+		
+		#for n in SelectionManager.selected_nodes:
+			#n.global_position = Constants.snap_to_grid(n.global_position + delta)
+			#n.move.emit()
+		#drag_offset = global_position - get_global_mouse_position()
 
 func _process(_delta: float) -> void:
-	if mouse_dragging:
-		var free_pos := get_global_mouse_position() + drag_offset
-		global_position = Constants.snap_to_grid(free_pos)
+	#print(mouse_down, ", ", mouse_dragging, ", ", mouse_hovering)
 	if node_selected:
 		selected_outline.modulate.a = 0.35 * sin(Constants.global_time * 5.0) + 0.65
 

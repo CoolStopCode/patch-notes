@@ -2,6 +2,7 @@ extends HBoxContainer
 
 @export var node_type_scene : PackedScene
 @export var library_button_node : Button
+
 func _ready() -> void:
 	GlobalNodes.node_bar = self
 	refresh()

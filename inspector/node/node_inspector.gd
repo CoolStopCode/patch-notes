@@ -15,20 +15,29 @@ var property_scenes: Dictionary = {
 var active_node : Node
 var active := false
 
-func open(node : Node2D):
-	active_node = node
-	active_node.selected()
+func are_nodes_same():
+	var first := SelectionManager.selected_nodes[0].NODE_SCENE
+	for n in SelectionManager.selected_nodes:
+		if n.NODE_SCENE != first:
+			return false
+	return true
+
+func open():
 	show()
 	Constants.clear_children(properties_container)
-	for property: InspectorProperty in node.properties:
-		var script: Script = property.get_script()
-		var ui : Control = property_scenes[script].instantiate()
-		properties_container.add_child(ui)
-		ui.initiate(property, node)
+	if are_nodes_same():
+		for i in range(SelectionManager.selected_nodes[0].properties.size()):
+			var script: Script = SelectionManager.selected_nodes[0].properties[i].get_script()
+			var ui : Control = property_scenes[script].instantiate()
+			properties_container.add_child(ui)
+			var properties_list_of_index : Array[InspectorProperty]
+			for n in SelectionManager.selected_nodes:
+				properties_list_of_index.append(n.properties[i])
+			ui.initiate(properties_list_of_index)
 	
-	state_button.load_state(node.node_state)
-	if node.right_menu_icon:
-		icon_node.texture = node.right_menu_icon
+	state_button.load_state(SelectionManager.selected_nodes[0].node_state)
+	if SelectionManager.selected_nodes[0].right_menu_icon:
+		icon_node.texture = SelectionManager.selected_nodes[0].right_menu_icon
 	active = true
 
 func update():
@@ -46,7 +55,6 @@ func update():
 
 func close():
 	if not active: return
-	active_node.deselected()
 	hide()
 	active = false
 	Constants.clear_children(properties_container)
@@ -57,7 +65,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var pos := get_global_mouse_position()
 		if not get_global_rect().has_point(pos):
-			close()
+			if not Cursor.hovering:
+				SelectionManager.deselect_all()
 
 func _on_delete_pressed() -> void:
 	if active:
@@ -85,9 +94,6 @@ func duplicate_node():
 		copy.global_position,
 		copy.properties
 	))
-
-	close()
-	open(copy)
 
 func delete_node():
 	History.commit(HistoryNodeDelete.new(
