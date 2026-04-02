@@ -14,7 +14,6 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	if Cursor.dragging: return
 	var node := node_scene.instantiate()
 	node.creation_drag = true
 	node.duplicate_props = true

@@ -1,30 +1,37 @@
 class_name HistoryNodeCreate
 extends HistoryAction
 
-var node_scene : PackedScene
-var id : int
-var position : Vector2
-var properties : Array[InspectorProperty]
+var node_scenes : Array[PackedScene]
+var ids : Array[int]
+var positions : Array[Vector2]
+var properties : Array[Array]
 
 func undo():
-	var node : Node = GlobalNodes.nodes.get_node_instance(id)
-	node.queue_free()
-	if GlobalNodes.inspector.node_inspector.active_node == node:
-		GlobalNodes.inspector.node_inspector.close()
+	for id in ids:
+		var node : Node = GlobalNodes.nodes.get_node_instance(id)
+		node.queue_free()
+		if node in SelectionManager.selected_nodes:
+			SelectionManager.deselect(node)
 
 func redo():
-	var node = node_scene.instantiate()
-	node.creation_drag = false
-	node.duplicate_props = false
-	node.position = position
-	node.properties = properties
-	node.ID = id
-	GlobalNodes.nodes.add_child(node)
-	GlobalNodes.nodes.nodes[id] = node
+	for i in range(ids.size()):
+		var node = node_scenes[i].instantiate()
+		node.creation_drag = false
+		node.duplicate_props = false
+		node.position = positions[i]
+		node.properties = properties[i]
+		node.ID = ids[i]
+		GlobalNodes.nodes.add_child(node)
+		GlobalNodes.nodes.nodes[ids[i]] = node
 
-func _init(_node_scene, _id, _position, _properties) -> void:
+func _init(
+	_node_scenes : Array[PackedScene],
+	_ids : Array[int],
+	_positions : Array[Vector2],
+	_properties : Array[Array]
+) -> void:
 	name = "Node Create"
-	node_scene = _node_scene
-	id = _id
-	position = _position
+	node_scenes = _node_scenes
+	ids = _ids
+	positions = _positions
 	properties = _properties

@@ -2,21 +2,22 @@ class_name HistoryPropertyModify
 extends HistoryAction
 
 var properties : Array[InspectorProperty]
-var from : Variant
+var froms : Array[Variant]
 var to : Variant
 
 func undo():
-	for property in properties:
-		property.value = from
+	for i in range(properties.size()):
+		var property = properties[i]
+		property.value = froms[i]
 		property.value_changed.emit()
-
+	
 func redo():
 	for property in properties:
 		property.value = to
 		property.value_changed.emit()
 
-func _init(_properties : Array[InspectorProperty], _from : Variant, _to : Variant) -> void:
+func _init(_properties : Array[InspectorProperty], _froms : Array[Variant], _to : Variant) -> void:
 	name = "Property Modify"
 	properties = _properties
-	from = _from
+	froms = _froms
 	to = _to

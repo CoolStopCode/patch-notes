@@ -94,14 +94,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if mouse_hovering and not mouse_dragging: # start drag
+				get_viewport().set_input_as_handled()
 				initial_click_pos = get_global_mouse_position()
 				drag_offset = global_position - get_global_mouse_position()
-				Cursor.dragging = true
+				for n in SelectionManager.selected_nodes:
+					n.initial_click_pos = n.global_position
+				
 				mouse_down = true
-				#for n in SelectionManager.selected_nodes:
-					#n.initial_click_pos = n.global_position
 		else:
-			Cursor.dragging = false
 			mouse_down = false
 			if mouse_hovering and not mouse_dragging: # select
 				var additive := Input.is_key_pressed(KEY_SHIFT)
@@ -111,21 +111,40 @@ func _unhandled_input(event: InputEvent) -> void:
 					SelectionManager.deselect(self)
 			else: # end drag
 				mouse_dragging = false
-	
+				if creation_drag:
+					var node_scenes : Array[PackedScene] = [load(scene_file_path)]
+					var ids : Array[int] = [ID]
+					var positions : Array[Vector2] = [global_position]
+					var properties : Array[Array] = [properties]
+
+					History.commit(HistoryNodeCreate.new(
+						node_scenes,
+						ids,
+						positions,
+						properties
+					))
+					creation_drag = false
+				if node.has_method("end_drag"):
+					node.end_drag()
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if mouse_dragging:
 			var motion_from_start := (get_global_mouse_position() + drag_offset) - initial_click_pos
 			
+			global_position = Constants.snap_to_grid(initial_click_pos + motion_from_start)
+			move.emit()
 			if Input.is_key_pressed(KEY_SHIFT):
 				for n in SelectionManager.selected_nodes:
-					n.global_position = Constants.snap_to_grid(n.initial_click_pos + motion_from_start)
+					if n == self: continue
+					var offset = n.initial_click_pos - initial_click_pos
+					n.global_position = global_position + offset
 					n.move.emit()
-			else:
-				global_position = Constants.snap_to_grid(initial_click_pos + motion_from_start)
-				move.emit()
 		elif mouse_down:
 			if not Constants.is_approx_equal_vec2(initial_click_pos, get_global_mouse_position(), Constants.DISTANCE_TO_START_DRAG):
 				mouse_dragging = true
+				if node.has_method("start_drag"):
+					node.start_drag()
 
 	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		#if (event.pressed and mouse_hovering) and not mouse_dragging:
@@ -189,14 +208,10 @@ func initiate_children():
 	area_collision_node.shape = shape
 	
 	area_node.mouse_entered.connect(func():
-		mouse_hovering = true
-		hover_rectangle_node.visible = true
-		Cursor.hovering = true
+		SelectionManager.start_hover(self)
 	)
 	area_node.mouse_exited.connect(func(): 
-		mouse_hovering = false
-		hover_rectangle_node.visible = false
-		Cursor.hovering = false
+		SelectionManager.end_hover(self)
 	)
 	hover_rectangle_node.visible = false
 	
@@ -244,6 +259,14 @@ func port_clicked(port, inputoutput):
 	else:
 		ConnectionManager.connection_started.emit(self, port, inputoutput)
 
+func hover_started():
+	mouse_hovering = true
+	hover_rectangle_node.show()
+
+func hover_ended():
+	mouse_hovering = false
+	hover_rectangle_node.hide()
+ 
 func selected():
 	if node.has_method("selected"):
 		node.selected()

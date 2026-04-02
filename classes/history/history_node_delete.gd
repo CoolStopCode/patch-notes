@@ -1,91 +1,92 @@
 class_name HistoryNodeDelete
 extends HistoryAction
 
-# TODO: fix this 😭
+class NodeSnapshot:
+	var node_scene: PackedScene
+	var id: int
+	var position: Vector2
+	var properties: Array[InspectorProperty]
 
-var node_scene : PackedScene
-var id : int
-var position : Vector2
-var properties : Array[InspectorProperty]
+class ConnectionSnapshot:
+	var id: int
+	var from_id: int
+	var from_port: int
+	var to_id: int
+	var to_port: int
+	var color: Color
+	var points: PackedVector2Array
+	var state: Constants.ConnectionState
 
-var connections : Array[Connection]
-var ids : Array[int]
-var from_ids : Array[int]
-var from_ports : Array[int]
-var to_ids : Array[int]
-var to_ports : Array[int]
-var colors : Array[Color]
-var pointss : Array[PackedVector2Array]
-var states : Array[Constants.ConnectionState]
+var node_snapshots: Array[NodeSnapshot] = []
+var connection_snapshots: Array[ConnectionSnapshot] = []
 
-func undo():
-	var node = node_scene.instantiate()
-	node.creation_drag = false
-	node.duplicate_props = false
-	node.position = position
-	node.properties = properties
-	node.ID = id
-	GlobalNodes.nodes.add_child(node)
-	GlobalNodes.nodes.nodes[id] = node
-	
-	for i in range(ids.size()):
-		var connection_id = ids[i]
-		var from_id = from_ids[i]
-		var from_port = from_ports[i]
-		var to_id = to_ids[i]
-		var to_port = to_ports[i]
-		var color = colors[i]
-		var points = pointss[i]
-		var connection_state = states[i]
-		
-		var line : Node2D = GlobalNodes.connections.quick_create_line(points, color)
+func undo() -> void:
+	for snap in node_snapshots:
+		var node = snap.node_scene.instantiate()
+		node.creation_drag = false
+		node.duplicate_props = false
+		node.position = snap.position
+		node.properties = snap.properties
+		node.ID = snap.id
+		GlobalNodes.nodes.add_child(node)
+		GlobalNodes.nodes.nodes[snap.id] = node
+
+	for snap in connection_snapshots:
+		var line : Node2D = GlobalNodes.connections.quick_create_line(snap.points, snap.color)
 		GlobalNodes.connections.add_child(line)
-		
-		var connection : Connection = Connection.new(
-			GlobalNodes.nodes.get_node_instance(from_id),
-			from_port,
-			GlobalNodes.nodes.get_node_instance(to_id),
-			to_port,
+
+		var connection := Connection.new(
+			GlobalNodes.nodes.get_node_instance(snap.from_id),
+			snap.from_port,
+			GlobalNodes.nodes.get_node_instance(snap.to_id),
+			snap.to_port,
 			line
 		)
-		connection.ID = connection_id
-		connection.set_line_color(color)
-		connection.connection_state = connection_state
-		connections[i] = connection
-		
-		GlobalNodes.connections.connections[connection_id] = connection
+		connection.ID = snap.id
+		connection.set_line_color(snap.color)
+		connection.connection_state = snap.state
+		GlobalNodes.connections.connections[snap.id] = connection
 
-func redo():
-	var node : Node = GlobalNodes.nodes.get_node_instance(id)
-	node.queue_free()
-	if GlobalNodes.inspector.node_inspector.active_node == node:
-		GlobalNodes.inspector.node_inspector.close()
+func redo() -> void:
+	for snap in node_snapshots:
+		var node : BaseNode = GlobalNodes.nodes.get_node_instance(snap.id)
+		if GlobalNodes.inspector.node_inspector.active_node == node:
+			GlobalNodes.inspector.node_inspector.close()
+		node.queue_free()
 
-func _init(_node_scene, _id, _position, _properties) -> void:
+func _init(
+	_node_scenes: Array[PackedScene],
+	_ids: Array[int],
+	_positions: Array[Vector2],
+	_properties: Array[Array]
+) -> void:
 	name = "Node Delete"
-	node_scene = _node_scene
-	id = _id
-	position = _position
-	properties = _properties
-	
+
+	var deleted_ids := {}
+	for i in _ids.size():
+		var snap := NodeSnapshot.new()
+		snap.node_scene = _node_scenes[i]
+		snap.id = _ids[i]
+		snap.position = _positions[i]
+		snap.properties = _properties[i]
+		node_snapshots.append(snap)
+		deleted_ids[_ids[i]] = true
+
+	var seen_connection_ids := {}
 	for connection in GlobalNodes.connections.connections:
-		if connection.to == GlobalNodes.nodes.get_node_instance(id):
-			connections.append(connection)
-			ids.append(connection.ID)
-			from_ids.append(connection.from.ID)
-			from_ports.append(connection.from_port)
-			to_ids.append(connection.to.ID)
-			to_ports.append(connection.to_port)
-			colors.append(connection.color)
-			pointss.append(connection.line.line.points)
-			states.append(connection.connection_state)
-		elif connection.from == GlobalNodes.nodes.get_node_instance(id):
-			connections.append(connection)
-			ids.append(connection.ID)
-			from_ids.append(connection.from.ID)
-			from_ports.append(connection.from_port)
-			to_ids.append(connection.to.ID)
-			to_ports.append(connection.to_port)
-			colors.append(connection.color)
-			pointss.append(connection.line.line.points)
-			states.append(connection.connection_state)
+		if not (connection.from.ID in deleted_ids or connection.to.ID in deleted_ids):
+			continue
+		if connection.ID in seen_connection_ids:
+			continue
+		seen_connection_ids[connection.ID] = true
+
+		var snap := ConnectionSnapshot.new()
+		snap.id = connection.ID
+		snap.from_id = connection.from.ID
+		snap.from_port = connection.from_port
+		snap.to_id = connection.to.ID
+		snap.to_port = connection.to_port
+		snap.color = connection.color
+		snap.points = connection.line.line.points
+		snap.state = connection.connection_state
+		connection_snapshots.append(snap)

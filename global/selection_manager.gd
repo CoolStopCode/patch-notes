@@ -2,6 +2,22 @@ extends Node
 
 signal selection_changed(nodes: Array[BaseNode])
 var selected_nodes: Array[BaseNode] = []
+var hovered_nodes: Array[BaseNode] = []
+
+func start_hover(node: BaseNode):
+	if node not in hovered_nodes:
+		hovered_nodes.append(node)
+	for n in hovered_nodes:
+		n.hover_ended()
+	node.hover_started()
+
+func end_hover(node: BaseNode):
+	if node in hovered_nodes:
+		hovered_nodes.erase(node)
+	
+	node.hover_ended()
+	if hovered_nodes.size() > 0:
+		hovered_nodes[0].hover_started()
 
 func select(node: BaseNode, additive := false):
 	if not additive:

@@ -17,11 +17,12 @@ func initiate(props: Array[InspectorProperty]) -> void:
 	update_value(props[0].value)
 
 func set_value(value : Variant):
-	var old_value : Variant = property.value
+	var old_values : Array[Variant]
 	for prop in properties:
+		old_values.append(prop.value)
 		prop.value = value
 		prop.value_changed.emit()
-	History.commit(HistoryPropertyModify.new(properties, old_value, value))
+	History.commit(HistoryPropertyModify.new(properties, old_values, value))
 	# node.property_changed(property)
 
 func update_value(value : Variant):

@@ -22,22 +22,27 @@ func are_nodes_same():
 			return false
 	return true
 
-func open():
+func open() -> void:
 	show()
 	Constants.clear_children(properties_container)
-	if are_nodes_same():
-		for i in range(SelectionManager.selected_nodes[0].properties.size()):
-			var script: Script = SelectionManager.selected_nodes[0].properties[i].get_script()
-			var ui : Control = property_scenes[script].instantiate()
-			properties_container.add_child(ui)
-			var properties_list_of_index : Array[InspectorProperty]
-			for n in SelectionManager.selected_nodes:
-				properties_list_of_index.append(n.properties[i])
-			ui.initiate(properties_list_of_index)
 	
-	state_button.load_state(SelectionManager.selected_nodes[0].node_state)
-	if SelectionManager.selected_nodes[0].right_menu_icon:
-		icon_node.texture = SelectionManager.selected_nodes[0].right_menu_icon
+	var primary_node := SelectionManager.selected_nodes[0]
+	
+	if are_nodes_same():
+		for i in primary_node.properties.size():
+			var script: Script = primary_node.properties[i].get_script()
+			var ui: Control = property_scenes[script].instantiate()
+			properties_container.add_child(ui)
+			
+			var properties_at_index: Array[InspectorProperty] = []
+			for n in SelectionManager.selected_nodes:
+				properties_at_index.append(n.properties[i])
+			ui.initiate(properties_at_index)
+	
+	state_button.load_state(primary_node.node_state)
+	if primary_node.right_menu_icon:
+		icon_node.texture = primary_node.right_menu_icon
+	
 	active = true
 
 func update():
@@ -65,7 +70,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var pos := get_global_mouse_position()
 		if not get_global_rect().has_point(pos):
-			if not Cursor.hovering:
+			if SelectionManager.hovered_nodes.is_empty():
 				SelectionManager.deselect_all()
 
 func _on_delete_pressed() -> void:
@@ -77,32 +82,59 @@ func _on_duplicate_pressed() -> void:
 		duplicate_node()
 
 func duplicate_node():
-	var node_scene := load(active_node.scene_file_path)
-	var copy : Node = node_scene.instantiate()
+	var new_selected : Array[BaseNode]
+	
+	var node_scenes : Array[PackedScene]
+	var ids : Array[int]
+	var positions : Array[Vector2]
+	var properties : Array[Array]
+	for node in SelectionManager.selected_nodes:
+		var node_scene := load(node.scene_file_path)
+		var copy : Node = node_scene.instantiate()
 
-	copy.properties = active_node.properties
-	copy.duplicate_props = true
+		copy.properties = node.properties
+		copy.duplicate_props = true
 
-	copy.global_position = active_node.global_position + Constants.snap_to_grid(Vector2(5, 5))
-	copy.creation_drag = false
+		copy.global_position = node.global_position + Constants.snap_to_grid(Vector2(5, 5))
+		copy.creation_drag = false
 
-	GlobalNodes.nodes.add_node(copy)
+		GlobalNodes.nodes.add_node(copy)
+		new_selected.append(copy)
+		
+		node_scenes.append(node_scene)
+		ids.append(copy.ID)
+		positions.append(copy.global_position)
+		properties.append(copy.properties)
 
 	History.commit(HistoryNodeCreate.new(
-		node_scene,
-		copy.ID,
-		copy.global_position,
-		copy.properties
+		node_scenes,
+		ids,
+		positions,
+		properties
 	))
+	SelectionManager.select_multiple(new_selected)
 
 func delete_node():
+	var node_scenes: Array[PackedScene]
+	var ids: Array[int]
+	var positions: Array[Vector2]
+	var properties: Array[Array]
+	
+	var temp_selected_nodes : Array[BaseNode] = SelectionManager.selected_nodes.duplicate(false)
+	
+	for node in temp_selected_nodes:
+		node_scenes.append(load(node.scene_file_path))
+		ids.append(node.ID)
+		positions.append(node.global_position)
+		properties.append(node.properties)
+		SelectionManager.deselect(node)
+		node.queue_free()
 	History.commit(HistoryNodeDelete.new(
-		load(active_node.scene_file_path), 
-		active_node.ID, 
-		active_node.global_position, 
-		active_node.properties
+		node_scenes, 
+		ids,
+		positions,
+		properties
 	))
-	active_node.queue_free()
 	close()
 
 func _on_state_set(state: Constants.NodeState) -> void:
