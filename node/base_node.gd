@@ -115,13 +115,13 @@ func _unhandled_input(event: InputEvent) -> void:
 					var node_scenes : Array[PackedScene] = [load(scene_file_path)]
 					var ids : Array[int] = [ID]
 					var positions : Array[Vector2] = [global_position]
-					var properties : Array[Array] = [properties]
+					var props : Array[Array] = [properties]
 
 					History.commit(HistoryNodeCreate.new(
 						node_scenes,
 						ids,
 						positions,
-						properties
+						props
 					))
 					creation_drag = false
 				if node.has_method("end_drag"):
