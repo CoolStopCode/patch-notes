@@ -152,6 +152,7 @@ func delete_node():
 		positions.append(node.global_position)
 		properties.append(node.properties)
 		SelectionManager.deselect(node)
+		SelectionManager.end_hover(node)
 		node.queue_free()
 	History.commit(HistoryNodeDelete.new(
 		node_scenes, 
