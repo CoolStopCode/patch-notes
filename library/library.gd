@@ -66,7 +66,6 @@ func node_used(node : NodeType):
 	var instance := node.node_scene.instantiate()
 	instance.mouse_dragging = true
 	instance.drag_offset = Vector2(0, 0)
-	Cursor.dragging = true
 	GlobalNodes.nodes.add_node(instance)
 	close()
 

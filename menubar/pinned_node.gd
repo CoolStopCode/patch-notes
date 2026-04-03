@@ -18,5 +18,4 @@ func _on_pressed() -> void:
 	node.creation_drag = true
 	node.duplicate_props = true
 	node.drag_offset = Vector2(0, 0)
-	Cursor.dragging = true
 	GlobalNodes.nodes.add_node(node)

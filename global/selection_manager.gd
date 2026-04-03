@@ -1,7 +1,14 @@
 extends Node
 
+enum CursorState {
+	NORMAL,
+	HOVER,
+	DRAG
+}
+
 signal selection_changed(nodes: Array[BaseNode])
 var selected_nodes: Array[BaseNode] = []
+var dragged_nodes: Array[BaseNode] = []
 var hovered_nodes: Array[BaseNode] = []
 
 func start_hover(node: BaseNode):
@@ -10,6 +17,7 @@ func start_hover(node: BaseNode):
 	for n in hovered_nodes:
 		n.hover_ended()
 	node.hover_started()
+	update_cursor_state()
 
 func end_hover(node: BaseNode):
 	if node in hovered_nodes:
@@ -18,6 +26,19 @@ func end_hover(node: BaseNode):
 	node.hover_ended()
 	if hovered_nodes.size() > 0:
 		hovered_nodes[0].hover_started()
+	update_cursor_state()
+
+func start_drag(node: BaseNode):
+	if node not in dragged_nodes:
+		dragged_nodes.append(node)
+	node.drag_started()
+	update_cursor_state()
+
+func end_drag():
+	for node in dragged_nodes:
+		node.drag_ended()
+		dragged_nodes.erase(node)
+	update_cursor_state()
 
 func select(node: BaseNode, additive := false):
 	if not additive:
@@ -63,3 +84,11 @@ func update_inspector():
 		GlobalNodes.inspector.close_node_inspector()
 	else:
 		GlobalNodes.inspector.open_node_inspector()
+
+func update_cursor_state():
+	if not dragged_nodes.is_empty():
+		Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+	elif not hovered_nodes.is_empty():
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+	else:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)

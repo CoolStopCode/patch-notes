@@ -1,20 +1,22 @@
 class_name HistoryNodeStateModify
 extends HistoryAction
 
-var id : int
-var from : Constants.NodeState
+var ids : Array[int]
+var froms : Array[Constants.NodeState]
 var to : Constants.NodeState
 
 func undo():
-	GlobalNodes.nodes.get_node_instance(id).node_state = from
+	for i in range(ids.size()):
+		GlobalNodes.nodes.get_node_instance(ids[i]).node_state = froms[i]
 	GlobalNodes.inspector.node_inspector.update_state_button()
 
 func redo():
-	GlobalNodes.nodes.get_node_instance(id).node_state = to
+	for id in ids:
+		GlobalNodes.nodes.get_node_instance(id).node_state = to
 	GlobalNodes.inspector.node_inspector.update_state_button()
 
-func _init(_id : int, _from : Constants.NodeState, _to : Constants.NodeState) -> void:
+func _init(_ids : Array[int], _froms : Array[Constants.NodeState], _to : Constants.NodeState) -> void:
 	name = "Node State Modify"
-	id = _id
-	from = _from
+	ids = _ids
+	froms = _froms
 	to = _to

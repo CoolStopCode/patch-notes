@@ -9,7 +9,8 @@ extends Node
 enum NodeState {
 	NORMAL,
 	PASS,
-	BROKEN
+	BROKEN,
+	NULL
 }
 enum ConnectionState {
 	NORMAL,

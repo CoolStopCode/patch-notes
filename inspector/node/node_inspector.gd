@@ -3,6 +3,8 @@ extends Control
 @export var properties_container: VBoxContainer
 @export var state_button : Button
 @export var icon_node : TextureRect
+@export var missing_key : Texture
+@export var multi_key : Texture
 
 var property_scenes: Dictionary = {
 	InspectorCheckbox: preload("res://inspector/tools/checkbox/checkbox_inspector_tool.tscn"),
@@ -22,6 +24,13 @@ func are_nodes_same():
 			return false
 	return true
 
+func are_states_same():
+	var first := SelectionManager.selected_nodes[0].node_state
+	for n in SelectionManager.selected_nodes:
+		if n.node_state != first:
+			return false
+	return true
+
 func open() -> void:
 	show()
 	Constants.clear_children(properties_container)
@@ -38,25 +47,40 @@ func open() -> void:
 			for n in SelectionManager.selected_nodes:
 				properties_at_index.append(n.properties[i])
 			ui.initiate(properties_at_index)
-	
-	state_button.load_state(primary_node.node_state)
-	if primary_node.right_menu_icon:
-		icon_node.texture = primary_node.right_menu_icon
+		if primary_node.right_menu_icon:
+			icon_node.texture = primary_node.right_menu_icon
+		else:
+			icon_node.texture = missing_key
+	else:
+		icon_node.texture = multi_key
 	
 	active = true
+	update_state_button()
 
 func update():
 	Constants.clear_children(properties_container)
-	for property: InspectorProperty in active_node.properties:
-		var script: Script = property.get_script()
-		var ui : Control = property_scenes[script].instantiate()
-		properties_container.add_child(ui)
-		ui.initiate(property, active_node)
 	
-	state_button.load_state(active_node.node_state)
-	if active_node.right_menu_icon:
-		icon_node.texture = active_node.right_menu_icon
+	var primary_node := SelectionManager.selected_nodes[0]
+	
+	if are_nodes_same():
+		for i in primary_node.properties.size():
+			var script: Script = primary_node.properties[i].get_script()
+			var ui: Control = property_scenes[script].instantiate()
+			properties_container.add_child(ui)
+			
+			var properties_at_index: Array[InspectorProperty] = []
+			for n in SelectionManager.selected_nodes:
+				properties_at_index.append(n.properties[i])
+			ui.initiate(properties_at_index)
+		if primary_node.right_menu_icon:
+			icon_node.texture = primary_node.right_menu_icon
+		else:
+			icon_node.texture = missing_key
+	else:
+		icon_node.texture = multi_key
+	
 	active = true
+	update_state_button()
 
 func close():
 	if not active: return
@@ -138,14 +162,24 @@ func delete_node():
 	close()
 
 func _on_state_set(state: Constants.NodeState) -> void:
-	if active:
-		var from : Constants.NodeState = active_node.node_state
-		active_node.node_state = state
-		History.commit(HistoryNodeStateModify.new(active_node.ID, from, state))
+	if not active: return
+	
+	var ids : Array[int]
+	var froms : Array[Constants.NodeState]
+	for node in SelectionManager.selected_nodes:
+		ids.append(node.ID)
+		froms.append(node.node_state)
+		node.node_state = state
+	History.commit(HistoryNodeStateModify.new(ids, froms, state))
 
 func update_state_button():
-	if active:
-		state_button.apply_state(active_node.node_state)
+	if not active: return
+	var primary_node := SelectionManager.selected_nodes[0]
+	
+	if are_states_same():
+		state_button.load_state(primary_node.node_state)
+	else:
+		state_button.load_state(Constants.NodeState.NULL)
 
 func _unhandled_input(event):
 	if not active: return

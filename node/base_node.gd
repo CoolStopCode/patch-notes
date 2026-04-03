@@ -48,6 +48,7 @@ func _ready():
 		duplicate_properties()
 	if creation_drag:
 		mouse_dragging = true
+		SelectionManager.start_drag(self)
 	
 	node = get_node_or_null("NODE")
 	initiate_children()
@@ -108,9 +109,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not node_selected:
 					SelectionManager.select(self, additive)
 				else:
-					SelectionManager.deselect(self)
+					if additive:
+						SelectionManager.deselect(self)
+					else:
+						SelectionManager.select(self, false)
 			else: # end drag
 				mouse_dragging = false
+				SelectionManager.end_drag()
 				if creation_drag:
 					var node_scenes : Array[PackedScene] = [load(scene_file_path)]
 					var ids : Array[int] = [ID]
@@ -143,6 +148,7 @@ func _input(event: InputEvent) -> void:
 		elif mouse_down:
 			if not Constants.is_approx_equal_vec2(initial_click_pos, get_global_mouse_position(), Constants.DISTANCE_TO_START_DRAG):
 				mouse_dragging = true
+				SelectionManager.start_drag(self)
 				if node.has_method("start_drag"):
 					node.start_drag()
 
@@ -267,6 +273,12 @@ func hover_ended():
 	mouse_hovering = false
 	hover_rectangle_node.hide()
  
+func drag_started():
+	pass
+
+func drag_ended():
+	pass
+
 func selected():
 	if node.has_method("selected"):
 		node.selected()

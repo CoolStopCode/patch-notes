@@ -22,7 +22,6 @@ buses/default_bus_layout="uid://cn15nkhantyef"
 [autoload]
 
 Constants="*res://global/constants.gd"
-Cursor="*res://global/cursor.gd"
 ConnectionManager="*res://global/connection_manager.gd"
 GlobalNodes="*uid://cejucmy7okxjl"
 Save="*uid://dehjvdhsukuxm"

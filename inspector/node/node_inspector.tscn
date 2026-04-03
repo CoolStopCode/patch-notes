@@ -4,13 +4,16 @@
 [ext_resource type="Script" uid="uid://dxidv2tldn8jv" path="res://inspector/node/node_inspector.gd" id="1_hvs03"]
 [ext_resource type="Texture2D" uid="uid://ctw0junlp5n77" path="res://inspector/node/buttons/delete.png" id="2_p64rp"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="2_p862u"]
+[ext_resource type="Texture2D" uid="uid://c0dlltsi1rh78" path="res://inspector/node/missing_key.png" id="2_xorhb"]
 [ext_resource type="Texture2D" uid="uid://ctxlm3ma4eu61" path="res://inspector/node/buttons/duplicate.png" id="3_e8c74"]
+[ext_resource type="Texture2D" uid="uid://ybo318h0bjt2" path="res://inspector/node/multi_key.png" id="3_m6bff"]
 [ext_resource type="Texture2D" uid="uid://ck6wq8srxwul3" path="res://inspector/node/buttons/normal.png" id="4_mj7ji"]
 [ext_resource type="Texture2D" uid="uid://d4g8e82qpmda4" path="res://nodes/patch_notes/control/delay/key.png" id="5_mj7ji"]
 [ext_resource type="Script" uid="uid://bexdng7pcgnsp" path="res://inspector/node/state_button.gd" id="5_xj2kl"]
 [ext_resource type="Texture2D" uid="uid://cat3amsm3f710" path="res://inspector/node/buttons/pass.png" id="7_11p25"]
 [ext_resource type="Texture2D" uid="uid://clapmhhos6k4h" path="res://inspector/node/buttons/broken.png" id="8_hvs03"]
 [ext_resource type="PackedScene" uid="uid://g7kg48r4r52w" path="res://inspector/tools/arrows/arrows_inspector_tool.tscn" id="11_4ytif"]
+[ext_resource type="Texture2D" uid="uid://ckhmq2xxa21b1" path="res://inspector/node/buttons/null.png" id="12_m6bff"]
 
 [node name="node_inspector" type="Control" unique_id=1063628290 node_paths=PackedStringArray("properties_container", "state_button", "icon_node")]
 layout_mode = 3
@@ -21,6 +24,8 @@ script = ExtResource("1_hvs03")
 properties_container = NodePath("properties")
 state_button = NodePath("state")
 icon_node = NodePath("icon")
+missing_key = ExtResource("2_xorhb")
+multi_key = ExtResource("3_m6bff")
 
 [node name="bg" type="NinePatchRect" parent="." unique_id=2129196231]
 layout_mode = 1
@@ -104,6 +109,7 @@ script = ExtResource("5_xj2kl")
 normal_texture = ExtResource("4_mj7ji")
 pass_texture = ExtResource("7_11p25")
 broken_texture = ExtResource("8_hvs03")
+null_texture = ExtResource("12_m6bff")
 texture_rect = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="state" unique_id=1900099764]
