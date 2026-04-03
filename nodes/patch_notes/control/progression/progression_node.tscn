@@ -21,7 +21,6 @@ min_value = 1
 max_value = 8
 property_name = "Steps"
 value = 4
-default_value = null
 metadata/_custom_type_script = "uid://dxvjtenevrdxg"
 
 [sub_resource type="Resource" id="Resource_my6vv"]
@@ -32,14 +31,12 @@ min_slider = 40.0
 max_slider = 240.0
 property_name = "BPM"
 value = 120.0
-default_value = null
 metadata/_custom_type_script = "uid://c8k7ogqy4nlf1"
 
 [sub_resource type="Resource" id="Resource_jstek"]
 script = ExtResource("8_45bmu")
-property_name = "Global Time"
+property_name = "Global Sync"
 value = true
-default_value = null
 metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
 [node name="progression_node" unique_id=1970947894 instance=ExtResource("1_qnsx0")]

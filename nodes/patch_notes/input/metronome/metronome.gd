@@ -49,10 +49,10 @@ func pulse():
 
 	var base := Color(1, 1, 1)
 	var bright := base * 2.0
-	
+	var duration : float = 60.0 / properties[0].value
 	if properties[1].value:
 		audio.play()
-	pulse_tween.tween_property(base_node.body_sprite_node, "modulate", base, 0.3).from(bright)
+	pulse_tween.tween_property(base_node.body_sprite_node, "modulate", base, duration).from(bright)
 
 func start_drag():
 	button.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -82,7 +82,6 @@ func _on_button_mouse_entered() -> void:
 func _on_button_mouse_exited() -> void:
 	hovering = true
 	sprite.modulate = Color(1.0, 1.0, 1.0)
-	
 
 
 func _on_button_button_down() -> void:

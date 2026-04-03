@@ -43,7 +43,7 @@ metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
 [sub_resource type="Resource" id="Resource_esrpt"]
 script = ExtResource("7_ew62m")
-property_name = "Global Time"
+property_name = "Global Sync"
 value = true
 metadata/_custom_type_script = "uid://b4mbe53ef6bwf"
 
