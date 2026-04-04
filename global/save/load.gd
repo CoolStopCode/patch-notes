@@ -25,6 +25,7 @@ func load_from(path : String):
 		node_instance.properties = node.properties
 		node_instance.node_state = node.node_state
 		node_instance.ID = node.id
+		node_instance.creation_drag = false
 		GlobalNodes.nodes.add_child(node_instance)
 		id_map[node.id] = node_instance
 	

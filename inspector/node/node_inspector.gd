@@ -153,13 +153,14 @@ func delete_node():
 		properties.append(node.properties)
 		SelectionManager.deselect(node)
 		SelectionManager.end_hover(node)
-		node.queue_free()
 	History.commit(HistoryNodeDelete.new(
 		node_scenes, 
 		ids,
 		positions,
 		properties
 	))
+	for node in temp_selected_nodes:
+		node.queue_free()
 	close()
 
 func _on_state_set(state: Constants.NodeState) -> void:

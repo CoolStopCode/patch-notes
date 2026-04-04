@@ -74,6 +74,7 @@ func _init(
 
 	var seen_connection_ids := {}
 	for connection in GlobalNodes.connections.connections:
+		if connection.freed: continue
 		if not (connection.from.ID in deleted_ids or connection.to.ID in deleted_ids):
 			continue
 		if connection.ID in seen_connection_ids:

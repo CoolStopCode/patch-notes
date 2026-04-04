@@ -25,7 +25,12 @@ func end_hover(node: BaseNode):
 	
 	node.hover_ended()
 	if hovered_nodes.size() > 0:
-		hovered_nodes[0].hover_started()
+		var max_node : BaseNode = hovered_nodes[0]
+		for n in hovered_nodes:
+			if n.ID > max_node.ID:
+				max_node = n
+		if max_node:
+			max_node.hover_started()
 	update_cursor_state()
 
 func start_drag(node: BaseNode):

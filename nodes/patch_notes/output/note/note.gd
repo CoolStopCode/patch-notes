@@ -70,7 +70,7 @@ func note_to_semitone(n: Note) -> int:
 		_:
 			return 0
 	
-	var shift := -1
+	var shift := 0
 	match n.accidental:
 		Constants.Accidental.NORMAL:
 			shift = 0
@@ -85,6 +85,7 @@ func calculate_pitch(from : Note, to : Note):
 	var b = note_to_semitone(to)
 	
 	var diff = b - a
+	print(pow(2.0, diff / 12.0))
 	return pow(2.0, diff / 12.0)
 
 func pulse():

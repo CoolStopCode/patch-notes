@@ -33,7 +33,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if is_mouse_on_line(line, get_global_mouse_position(), line.width):
-				selected()
 				pressed.emit()
 
 func _process(_delta: float) -> void:

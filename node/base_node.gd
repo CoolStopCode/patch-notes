@@ -37,6 +37,7 @@ var mouse_dragging := false
 var node_selected := false
 
 var initial_click_pos : Vector2
+var initial_pos : Vector2
 var drag_offset : Vector2
 
 var creation_drag := true
@@ -97,6 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if mouse_hovering and not mouse_dragging: # start drag
 				get_viewport().set_input_as_handled()
 				initial_click_pos = get_global_mouse_position()
+				initial_pos = global_position
 				drag_offset = global_position - get_global_mouse_position()
 				for n in SelectionManager.selected_nodes:
 					n.initial_click_pos = n.global_position
@@ -114,23 +116,33 @@ func _unhandled_input(event: InputEvent) -> void:
 					else:
 						SelectionManager.select(self, false)
 			else: # end drag
-				mouse_dragging = false
-				SelectionManager.end_drag()
-				if creation_drag:
-					var node_scenes : Array[PackedScene] = [load(scene_file_path)]
-					var ids : Array[int] = [ID]
-					var positions : Array[Vector2] = [global_position]
-					var props : Array[Array] = [properties]
+				if mouse_dragging:
+					mouse_dragging = false
+					if creation_drag:
+						var node_scenes : Array[PackedScene] = [load(scene_file_path)]
+						var ids : Array[int] = [ID]
+						var positions : Array[Vector2] = [global_position]
+						var props : Array[Array] = [properties]
 
-					History.commit(HistoryNodeCreate.new(
-						node_scenes,
-						ids,
-						positions,
-						props
-					))
-					creation_drag = false
-				if node.has_method("end_drag"):
-					node.end_drag()
+						History.commit(HistoryNodeCreate.new(
+							node_scenes,
+							ids,
+							positions,
+							props
+						))
+						creation_drag = false
+					else:
+						var ids : Array[int]
+						for n in SelectionManager.dragged_nodes:
+							ids.append(n.ID)
+						History.commit(HistoryNodeMove.new(
+							ids,
+							global_position - initial_pos
+						))
+						print(drag_offset)
+					SelectionManager.end_drag()
+					if node.has_method("end_drag"):
+						node.end_drag()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

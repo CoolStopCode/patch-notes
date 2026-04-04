@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
 
 [sub_resource type="Resource" id="Resource_d0xiy"]
 script = ExtResource("7_d0xiy")
+filters = ["*.mp3", "*.wav"]
 property_name = "Source"
 value = null
 metadata/_custom_type_script = "uid://dpcev18b4nbi1"
