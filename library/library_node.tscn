@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3c6ex4ug4bl6"]
 
-[ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/patch_notes/output/sound/icon.png" id="1_hhv8j"]
+[ext_resource type="Texture2D" uid="uid://0iudrin47xw4" path="res://nodes/patch_notes/output/extension/sound/icon.png" id="1_hhv8j"]
 [ext_resource type="Script" uid="uid://clx645hkpr81m" path="res://library/library_node.gd" id="1_m2qwc"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="1_oh1vx"]
 [ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="2_o3wjt"]

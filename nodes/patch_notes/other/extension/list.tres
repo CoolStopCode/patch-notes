@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NodeList" format=3 uid="uid://binywuylt6ow3"]
+
+[ext_resource type="Script" uid="uid://dkpeaewtb25r8" path="res://classes/node/node_type.gd" id="1_bgkug"]
+[ext_resource type="Texture2D" uid="uid://byctymw8dov4a" path="res://nodes/patch_notes/other/extension/other.png" id="1_s2f6o"]
+[ext_resource type="Texture2D" uid="uid://bggo5rodmf8y1" path="res://nodes/patch_notes/other/extension/template/icon.png" id="3_s2f6o"]
+[ext_resource type="PackedScene" uid="uid://bq7cgrr5o25ia" path="res://nodes/patch_notes/other/extension/template/template_node.tscn" id="4_uhups"]
+[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/node_list.gd" id="16_p3g67"]
+
+[sub_resource type="Resource" id="Resource_8ul01"]
+script = ExtResource("1_bgkug")
+name = "template"
+icon = ExtResource("3_s2f6o")
+node_scene = ExtResource("4_uhups")
+metadata/_custom_type_script = "uid://dkpeaewtb25r8"
+
+[resource]
+script = ExtResource("16_p3g67")
+name = "Other"
+icon = ExtResource("1_s2f6o")
+node_list = Array[ExtResource("1_bgkug")]([SubResource("Resource_8ul01")])
+metadata/_custom_type_script = "uid://bcon2a66d3gb3"
