@@ -1,7 +1,7 @@
 extends Control
 
-signal category_opened(category : NodeList)
-var category : NodeList
+signal category_opened(category : Extension)
+var category : Extension
 @export var icon : TextureRect
 @export var text : Label
 

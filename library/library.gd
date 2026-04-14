@@ -37,7 +37,7 @@ func load_categories():
 	nodes_page.hide()
 	Constants.clear_children(nodes_page)
 	exit_button.hide()
-	for category : NodeList in Constants.PACK_LIST.pack_list:
+	for category : Extension in FileManager.EXTENSION_LIST.extension_list:
 		var instance := category_scene.instantiate()
 		instance.icon.texture = category.icon
 		instance.text.text = category.name
@@ -45,7 +45,7 @@ func load_categories():
 		instance.category_opened.connect(load_nodes)
 		categories_page.add_child(instance)
 
-func load_nodes(node_list : NodeList):
+func load_nodes(node_list : Extension):
 	categories = false
 	categories_page.hide()
 	Constants.clear_children(categories_page)

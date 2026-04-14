@@ -13,7 +13,7 @@ func refresh():
 			continue
 		remove_child(n)
 		n.queue_free()
-	for node_list in Constants.PACK_LIST.pack_list:
+	for node_list in FileManager.EXTENSION_LIST.extension_list:
 		for node_type in node_list.node_list:
 			if node_type.pinned:
 				var node := node_type_scene.instantiate()

@@ -1,5 +1,5 @@
 extends Resource
-class_name NodeList
+class_name Extension
 
 @export var name : String
 @export var icon : Texture

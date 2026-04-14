@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://pm452txd0wsg" path="res://nodes/patch_notes/input/extension/metronome/metronome_node.tscn" id="5_08id2"]
 [ext_resource type="Texture2D" uid="uid://dbcyu7fkjb1kh" path="res://nodes/patch_notes/input/extension/toggle/icon.png" id="5_ww6ov"]
 [ext_resource type="PackedScene" uid="uid://bqmk3eri0dw0w" path="res://nodes/patch_notes/input/extension/toggle/toggle_node.tscn" id="9_pd64a"]
-[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/node_list.gd" id="16_j77p4"]
+[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/extension.gd" id="16_j77p4"]
 
 [sub_resource type="Resource" id="Resource_p202v"]
 script = ExtResource("1_xeufe")
