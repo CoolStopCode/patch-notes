@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NodeList" format=3 uid="uid://b2ulr2qglv4dy"]
+[gd_resource type="Resource" script_class="Extension" format=3 uid="uid://b2ulr2qglv4dy"]
 
 [ext_resource type="Texture2D" uid="uid://d16mg5pqr1712" path="res://nodes/patch_notes/input/extension/input.png" id="1_nn5wm"]
 [ext_resource type="Script" uid="uid://dkpeaewtb25r8" path="res://classes/node/node_type.gd" id="1_xeufe"]
