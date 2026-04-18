@@ -21,9 +21,11 @@ func _on_download_completed(result, response_code, headers, body, as_name : Stri
 	DirAccess.remove_absolute(zip_path)
 	
 	var list_path = FileManager.EXTENSIONS_PATH.path_join(extracted_root).path_join("list.tres")
+	var list = load(list_path)
 	
+	ConfigManager.add_default_pins(list)
 	FileManager.EXTENSION_LIST.extension_list.append(
-		load(list_path)
+		list
 	)
 
 func install_embedded_extensions():
@@ -32,3 +34,20 @@ func install_embedded_extensions():
 		"res://nodes".path_join("extension_list.tres"),
 		FileManager.EXTENSIONS_PATH.path_join("extension_list.tres")
 	)
+	var list : ExtensionList = load(FileManager.EXTENSIONS_PATH.path_join("extension_list.tres"))
+	for extension in list.extension_list:
+		ConfigManager.add_default_pins(extension)
+
+func rebuild_references_of_extension(extension : Extension):
+	# loop through the extensions node_list
+	for node_type in extension.node_list:
+		pass
+
+func rebuild_reference():
+	# get resource_path of the resource
+	# convert res:// path to global filesystem path
+	# go to that location and set the resource there to a variable
+	# go back to the reference and set it to that variable
+	
+	
+	pass

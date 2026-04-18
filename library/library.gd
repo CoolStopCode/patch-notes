@@ -57,7 +57,7 @@ func load_nodes(node_list : Extension):
 		instance.icon.texture = node.icon
 		instance.text.text = node.name
 		instance.node = node
-		instance.pinned = node.pinned
+		instance.pinned = ConfigManager.is_pinned(node)
 		instance.node_used.connect(node_used)
 		instance.node_pin_update.connect(node_pin_update)
 		nodes_page.add_child(instance)
@@ -70,7 +70,7 @@ func node_used(node : NodeType):
 	close()
 
 func node_pin_update(node : NodeType, pinned : bool):
-	node.pinned = pinned
+	ConfigManager.set_pinned(node, pinned)
 	GlobalNodes.node_bar.refresh()
 
 func _on_exit_pressed() -> void:

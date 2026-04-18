@@ -15,7 +15,7 @@ func refresh():
 		n.queue_free()
 	for node_list in FileManager.EXTENSION_LIST.extension_list:
 		for node_type in node_list.node_list:
-			if node_type.pinned:
+			if ConfigManager.is_pinned(node_type):
 				var node := node_type_scene.instantiate()
 				node.node_icon = node_type.icon
 				node.name = node_type.name

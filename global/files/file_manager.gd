@@ -83,6 +83,8 @@ func _ready() -> void:
 		ExtensionManager.install_embedded_extensions()
 	FileManager.EXTENSION_LIST = load(FileManager.EXTENSIONS_PATH.path_join("extension_list.tres"))
 	FileManager.save_extension_list()
+	
+	ConfigManager.load_config()
 
 func create_dir_if_not_exist(path : String):
 	if not DirAccess.dir_exists_absolute(path):

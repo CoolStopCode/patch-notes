@@ -17,7 +17,7 @@ script = ExtResource("1_72m6c")
 name = "Count"
 icon = ExtResource("3_x6mv4")
 node_scene = ExtResource("7_brhsd")
-pinned = true
+default_pinned = true
 metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 
 [sub_resource type="Resource" id="Resource_wbw8c"]
@@ -39,7 +39,7 @@ script = ExtResource("1_72m6c")
 name = "Progression"
 icon = ExtResource("9_8xp0t")
 node_scene = ExtResource("15_3cv1f")
-pinned = true
+default_pinned = true
 metadata/_custom_type_script = "uid://dkpeaewtb25r8"
 
 [resource]
