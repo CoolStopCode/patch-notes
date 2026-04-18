@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://clgxkosdcnw2q"]
+
+[ext_resource type="Script" uid="uid://bo0ggfgw1apaj" path="res://nodess/patch_notes/output/extension/note/note.gd" id="1_tx0ln"]
+[ext_resource type="AudioStream" uid="uid://csf25osi0dk8p" path="res://nodess/patch_notes/output/extension/note/guitarC.wav" id="2_1ylgg"]
+[ext_resource type="FontFile" uid="uid://benkqrjttu8iv" path="res://assets/font/notes.ttf" id="3_1ylgg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxxvr"]
+font = ExtResource("3_1ylgg")
+font_color = Color(0.2784314, 0.5058824, 0.19607843, 1)
+
+[node name="note" type="Node2D" unique_id=493411972 node_paths=PackedStringArray("audio_node", "label")]
+script = ExtResource("1_tx0ln")
+audio_node = NodePath("AudioStreamPlayer")
+label = NodePath("Label")
+default_audio_file = ExtResource("2_1ylgg")
+audio_file = ExtResource("2_1ylgg")
+
+[node name="Label" type="Label" parent="." unique_id=1807454699]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 11.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ab"
+label_settings = SubResource("LabelSettings_nxxvr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1742790882]

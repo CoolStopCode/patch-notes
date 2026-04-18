@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dgvuhk048w2q"]
+
+[ext_resource type="PackedScene" uid="uid://rk88bpc6g6w5" path="res://node/base_node.tscn" id="1_bd3y7"]
+[ext_resource type="PackedScene" uid="uid://ysvcdv8n6720" path="res://nodess/patch_notes/control/count/count.tscn" id="2_qhtw3"]
+[ext_resource type="Texture2D" uid="uid://dji0b6d2nb0vy" path="res://nodess/patch_notes/control/count/count.png" id="3_ibxdi"]
+[ext_resource type="Texture2D" uid="uid://clpkyxbf751py" path="res://nodess/patch_notes/control/count/key2.png" id="4_py11v"]
+[ext_resource type="Script" uid="uid://dx0yuxgrwvv8" path="res://classes/port.gd" id="4_ro87n"]
+[ext_resource type="Script" uid="uid://cxi1lhcg5yvty" path="res://classes/inspector_properties/inspector_property.gd" id="5_ab1hs"]
+[ext_resource type="Script" uid="uid://dxvjtenevrdxg" path="res://classes/inspector_properties/inspector_arrows.gd" id="6_ro87n"]
+
+[sub_resource type="Resource" id="Resource_hd5vt"]
+script = ExtResource("4_ro87n")
+position = Vector2(-6, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_ujpu8"]
+script = ExtResource("4_ro87n")
+position = Vector2(6, 0)
+metadata/_custom_type_script = "uid://dx0yuxgrwvv8"
+
+[sub_resource type="Resource" id="Resource_c6fri"]
+script = ExtResource("6_ro87n")
+min_value = 1
+max_value = 1000
+property_name = "Steps"
+value = 2
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[sub_resource type="Resource" id="Resource_jxhpr"]
+script = ExtResource("6_ro87n")
+max_value = 1
+property_name = "Progress"
+value = 1
+metadata/_custom_type_script = "uid://dxvjtenevrdxg"
+
+[node name="count_node" unique_id=1970947894 instance=ExtResource("1_bd3y7")]
+NODE_SCENE = ExtResource("2_qhtw3")
+BODY_SIZE = Vector2(12, 12)
+BODY_SPRITE = ExtResource("3_ibxdi")
+ports_in = Array[ExtResource("4_ro87n")]([SubResource("Resource_hd5vt")])
+ports_out = Array[ExtResource("4_ro87n")]([SubResource("Resource_ujpu8")])
+right_menu_icon = ExtResource("4_py11v")
+properties = Array[ExtResource("5_ab1hs")]([SubResource("Resource_c6fri"), SubResource("Resource_jxhpr")])

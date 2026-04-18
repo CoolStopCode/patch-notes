@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://uyuyhtcv53xk" path="res://library/library_category.gd" id="1_e8f71"]
 [ext_resource type="Theme" uid="uid://4bven1lkpiqj" path="res://inspector/inspector.tres" id="1_oh1vx"]
 [ext_resource type="LabelSettings" uid="uid://cosdrrt3ct7mw" path="res://assets/font/single.tres" id="2_o3wjt"]
-[ext_resource type="Texture2D" uid="uid://dh13j20wld4kg" path="res://nodes/patch_notes/control/extension/control.png" id="2_oh1vx"]
+[ext_resource type="Texture2D" uid="uid://dh13j20wld4kg" path="res://nodess/patch_notes/control/control.png" id="2_oh1vx"]
 
 [node name="library_category" type="Control" unique_id=744828149 node_paths=PackedStringArray("icon", "text")]
 custom_minimum_size = Vector2(72, 12)

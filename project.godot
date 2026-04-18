@@ -63,11 +63,11 @@ folder_colors={
 "res://main/": "pink",
 "res://menubar/": "green",
 "res://node/": "purple",
-"res://nodes/": "gray",
-"res://nodes/patch_notes/control/": "red",
-"res://nodes/patch_notes/input/": "yellow",
-"res://nodes/patch_notes/other/": "green",
-"res://nodes/patch_notes/output/": "blue"
+"res://nodess/": "gray",
+"res://nodess/patch_notes/control/": "red",
+"res://nodess/patch_notes/input/": "yellow",
+"res://nodess/patch_notes/other/": "green",
+"res://nodess/patch_notes/output/": "blue"
 }
 
 [input]
