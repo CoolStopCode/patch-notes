@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Extension" format=3 uid="uid://b2ulr2qglv4dy"]
+
+[ext_resource type="Texture2D" uid="uid://d16mg5pqr1712" path="res://nodess/patch_notes/input/input.png" id="1_nn5wm"]
+[ext_resource type="Script" uid="uid://dkpeaewtb25r8" path="res://classes/node/node_type.gd" id="1_xeufe"]
+[ext_resource type="Texture2D" uid="uid://4bkcya176km3" path="res://nodess/patch_notes/input/metronome/icon.png" id="3_nn5wm"]
+[ext_resource type="PackedScene" uid="uid://pm452txd0wsg" path="res://nodess/patch_notes/input/metronome/metronome_node.tscn" id="5_08id2"]
+[ext_resource type="Texture2D" uid="uid://dbcyu7fkjb1kh" path="res://nodess/patch_notes/input/toggle/icon.png" id="5_ww6ov"]
+[ext_resource type="PackedScene" uid="uid://bqmk3eri0dw0w" path="res://nodess/patch_notes/input/toggle/toggle_node.tscn" id="9_pd64a"]
+[ext_resource type="Script" uid="uid://bcon2a66d3gb3" path="res://classes/node/extension.gd" id="16_j77p4"]
+
+[sub_resource type="Resource" id="Resource_p202v"]
+script = ExtResource("1_xeufe")
+name = "Metronome"
+icon = ExtResource("3_nn5wm")
+node_scene = ExtResource("5_08id2")
+pinned = true
+metadata/_custom_type_script = "uid://dkpeaewtb25r8"
+
+[sub_resource type="Resource" id="Resource_yixbm"]
+script = ExtResource("1_xeufe")
+name = "Toggle"
+icon = ExtResource("5_ww6ov")
+node_scene = ExtResource("9_pd64a")
+metadata/_custom_type_script = "uid://dkpeaewtb25r8"
+
+[resource]
+script = ExtResource("16_j77p4")
+name = "Input"
+icon = ExtResource("1_nn5wm")
+node_list = Array[ExtResource("1_xeufe")]([SubResource("Resource_p202v"), SubResource("Resource_yixbm")])
+metadata/_custom_type_script = "uid://bcon2a66d3gb3"

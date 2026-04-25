@@ -139,7 +139,6 @@ func _unhandled_input(event: InputEvent) -> void:
 							ids,
 							global_position - initial_pos
 						))
-						print(drag_offset)
 					SelectionManager.end_drag()
 					if node.has_method("end_drag"):
 						node.end_drag()

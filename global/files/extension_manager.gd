@@ -24,6 +24,7 @@ func _on_download_completed(result, response_code, headers, body, root_name : St
 	file.close()
 	
 	# Mount it immediately without needing a restart
+	print("LOADING ", path)
 	var success = ProjectSettings.load_resource_pack(path)
 	if not success:
 		push_error("Failed to mount extension: " + path)
@@ -51,3 +52,6 @@ func build_extension_list():
 
 func install_embedded_extensions():
 	download_extension(SITE + "extensions/control.pck", "control")
+	download_extension(SITE + "extensions/input.pck", "input")
+	download_extension(SITE + "extensions/output.pck", "output")
+	download_extension(SITE + "extensions/other.pck", "other")
