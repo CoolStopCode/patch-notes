@@ -37,7 +37,7 @@ func load_categories():
 	nodes_page.hide()
 	Constants.clear_children(nodes_page)
 	exit_button.hide()
-	for category : Extension in FileManager.EXTENSION_LIST.extension_list:
+	for category : Extension in ExtensionManager.EXTENSION_LIST.extension_list:
 		var instance := category_scene.instantiate()
 		instance.icon.texture = category.icon
 		instance.text.text = category.name
