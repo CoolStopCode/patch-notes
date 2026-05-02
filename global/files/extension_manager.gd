@@ -9,32 +9,56 @@ func download_extension(url : String, root_name : String):
 	request.request_completed.connect(_on_download_completed.bind(root_name))
 	request.request(url)
 
-func _on_download_completed(result, response_code, headers, body, root_name : String):
+func _on_download_completed(result, response_code, headers, body, root_name: String):
 	if response_code != 200:
 		print("Failed to download extension")
 		return
 	
-	# Write the downloaded bytes to a .pck file
+	var path := _save_pck(body, root_name)
+	if path == "":
+		return
+	
+	if not _mount_pck(path):
+		return
+	
+	var extension = _load_extension(root_name)
+	if extension == null:
+		return
+	
+	_register_extension(extension, path, root_name)
+
+func _save_pck(body: PackedByteArray, root_name: String) -> String:
 	var path := FileManager.EXTENSIONS_PATH.path_join(root_name + ".pck")
 	var file = FileAccess.open(path, FileAccess.WRITE)
+	
 	if not file:
 		push_error("Failed to write extension: " + root_name)
-		return
+		return ""
+	
 	file.store_buffer(body)
 	file.close()
-	
-	# Mount it immediately without needing a restart
+	return path
+
+func _mount_pck(path: String) -> bool:
 	print("LOADING ", path)
+	
 	var success = ProjectSettings.load_resource_pack(path)
 	if not success:
 		push_error("Failed to mount extension: " + path)
-		return
+		return false
 	
+	return true
+
+func _load_extension(root_name: String):
 	var extension = load("res://" + root_name + "/list.tres")
+	
 	if not extension:
 		push_error("No list.tres found in root: " + root_name)
-		return
+		return null
 	
+	return extension
+
+func _register_extension(extension, path: String, root_name: String) -> void:
 	EXTENSION_LIST.extension_list.append(extension)
 	ConfigManager.new_extension_data(path, root_name)
 	
